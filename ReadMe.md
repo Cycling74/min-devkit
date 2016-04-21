@@ -1,18 +1,17 @@
-# Max-DevKit
-[![Build Status](https://travis-ci.org/Cycling74/max-devkit.svg?branch=master)](https://travis-ci.org/Cycling74/max-devkit)
-[![Build status](https://ci.appveyor.com/api/projects/status/4u6n0eseaemdp2t5?svg=true)](https://ci.appveyor.com/project/tap/max-devkit)
+# Min-DevKit
+[![Build Status](https://travis-ci.org/Cycling74/min-devkit.svg?branch=master)](https://travis-ci.org/Cycling74/min-devkit)
+[![Build status](https://ci.appveyor.com/api/projects/status/4u6n0esaemdp2t5?svg=true)](https://ci.appveyor.com/project/tap/min-devkit)
 
 
-Tools, documentation, and reference implementation of a Max Package built using the Max-API.
+Tools, documentation, and reference implementation of a Max Package built using the Min-API.
 
-For full backwards compatibility or additional functionality, the [legacy Max SDK](https://github.com/Cycling74/max-sdk) may provide an alternate path for those wishing to create their own package including Max external objects written in C/C++.
 
 ## Structure
 
-There are two levels of material included in the Max-DevKit package.  The outer level is a Max package folder named, appropriately, "max-devkit".  The inner level is a folder called "max-api". 
+There are two levels of material included in the Min-DevKit package.  The outer level is a Max package folder named, appropriately, "min-devkit".  The inner level is a folder called "min-api". 
 
-* `max-devkit` is an example package following current best-practices package creation.
-* `max-api` is a folder containing all of the support files you will need to compile an external object written in C/C++.  This folder you will include in your own package's source folder.
+* `min-devkit` is an example package following current best-practices package creation.
+* `min-api` is a folder containing all of the support files you will need to compile an external object written in modern C++.  This folder you will include in your own package's source folder.
 
 
 ## Prerequisites
@@ -60,10 +59,10 @@ It is highly recommended that you test your code thoroughly. One option is use t
 
 Continuous Integration (CI) is...
 
-The Max-DevKit project models CI using two different services, both of which are free and very easy to set up if your project is hosted publically on Github.
+The Min-DevKit project models CI using two different services, both of which are free and very easy to set up if your project is hosted publically on Github.
 
-* **Mac**: go to http://travis-ci.org and sign up.  If your repository follows the same model as Max-DevKit, you can copy `.travis.yml` directly with no changes.  Now every push to your repository will trigger an automatic build for the Mac with Travis CI.
-* **Windows**: go to http://appveyor.com and sign up.  If your repository follows the same model as Max-DevKit, you can copy `appveyor.yml` directly with no changes.  Now every push to your repository will trigger automatic builds for both 32 and 64-bit Windows with Appveyor.
+* **Mac**: go to http://travis-ci.org and sign up.  If your repository follows the same model as Min-DevKit, you can copy `.travis.yml` directly with no changes.  Now every push to your repository will trigger an automatic build for the Mac with Travis CI.
+* **Windows**: go to http://appveyor.com and sign up.  If your repository follows the same model as Min-DevKit, you can copy `appveyor.yml` directly with no changes.  Now every push to your repository will trigger automatic builds for both 32 and 64-bit Windows with Appveyor.
 
 ### Fetching your builds
 
@@ -72,7 +71,7 @@ The Max-DevKit project models CI using two different services, both of which are
 
 #### S3 Integration
 
-The builds from Travis for this package can be found on [this S3-hosted page](https://s3-us-west-2.amazonaws.com/cycling74-ci/index.html?prefix=max-devkit/).
+The builds from Travis for this package can be found on [this S3-hosted page](https://s3-us-west-2.amazonaws.com/cycling74-ci/index.html?prefix=min-devkit/).
 
 To setup your own page:
 
@@ -81,7 +80,7 @@ To setup your own page:
 2. Add the correct info to your `.travis.yml` file for your S3 bucket as described in the [Travis S3 Documentation](https://docs.travis-ci.com/user/deployment/s3).
 3. At this point, builds should go from Travis to a folder in your S3 bucket.
 4. To access the build, you can log in to your S3 account and download it. Alternatively you may want to make your builds publically available. If you wish to do the later, read on...
-5. upload the files from this folder's `source/max-api/site` folder to your S3 bucket's root folder. For more information on the content of these files, please visit the Github page for the [S3 Bucket Listing Code](https://github.com/rgrp/s3-bucket-listing).
+5. upload the files from this folder's `source/min-api/max-api/site` folder to your S3 bucket's root folder. For more information on the content of these files, please visit the Github page for the [S3 Bucket Listing Code](https://github.com/rgrp/s3-bucket-listing).
 6. As described on the above Github page, you will need to set the permissions for your bucket such that "Everyone" has both `listing` and `viewing` access.
 
 
