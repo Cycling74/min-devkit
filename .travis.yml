@@ -1,0 +1,47 @@
+language:
+- objective-c
+- c++
+
+compiler:
+- clang
+
+sudo: false
+os: osx
+osx_image: xcode7.3
+
+script:
+- mkdir build
+- cd build
+- cmake -G Xcode ..
+- cmake --build . --config Release
+- cd ..
+- PACKAGE_NAME=`echo $TRAVIS_REPO_SLUG | sed 's/.*\///g'`
+- PACKAGE_REV=`echo $TRAVIS_COMMIT | sed -e 's/^[[:alnum:]]\{6\}/&-/g' | sed 's/-.*//'`
+- mkdir $PACKAGE_NAME
+- if [ -e *.json ]; then cp *.json $PACKAGE_NAME; fi
+- if [ -e *.md ]; then cp *.json $PACKAGE_NAME; fi
+- if [ -e *.png ]; then cp *.json $PACKAGE_NAME; fi
+- if [ -d docs ]; then cp -r docs $PACKAGE_NAME; fi
+- if [ -d externals ]; then cp -r externals $PACKAGE_NAME; fi
+- if [ -d extras ]; then cp -r extras $PACKAGE_NAME; fi
+- if [ -d help ]; then cp -r help $PACKAGE_NAME; fi
+- if [ -d init ]; then cp -r init $PACKAGE_NAME; fi
+- if [ -d javascript ]; then cp -r javascript $PACKAGE_NAME; fi
+- if [ -d media ]; then cp -r media $PACKAGE_NAME; fi
+- if [ -d misc ]; then cp -r misc $PACKAGE_NAME; fi
+- if [ -d patchers ]; then cp -r help $PACKAGE_NAME; fi
+- mkdir dist
+- zip -r dist/$PACKAGE_NAME-$PACKAGE_REV.zip $PACKAGE_NAME
+
+deploy:
+  provider: s3
+  access_key_id: AKIAIWE3SI2TMXC5AJBA
+  secret_access_key:
+    secure: HUKaAnjUJOF9N4TQhhXqDb7ZJQPD/VLFOzRtf7cmt8fhLCv7yE2tmIC8GcW+CJbMKIxszgcw19Wasl9vY6gUOCRd6f8jkqFYEZr9fyD+pJ2sUniZBjuJrR6iNmZy+pBmH/z6ho8H4U/VhDKNz2rAudzjEgUzmgqDfJBR3qz2x+7CG6C+V8r4Yj71HzfT6F/vD0vO8vR+D1/h+H3J66HTCJNNd9fpYrEfEOLGxN7+4P9tSUyXGWAzWrZuzobnH9grz9mZuH3NSYXje+q9uFlgHM45lYJzAu8SLoxEcwcJ1YJPOciZRLUM/NKrDQM7j/0zFuzLHZxn+ZJgVSYQPol+xQ9AP/q/RpWTCNNMt4y9UFLigTTav6kbM8vHex1T7lu9Lub5NKOJBbtrTrVKFgIJOc5dwP6ldMxVCjvrzvX0UxU7e0lIsBLEHaNN5tn9M4wO4HbjDBjlybuqeQgIY/jzpAFMzTweO75Fc4bZSjz1EPmjxc1SREpGzRJoKa4z5iSmnKNSDY3BUuyE6ZCKeYJ3WnyMs3r6+OMe/ukP1WKMcGrZIGWmsfhlGbLTo2aDUMqD9GJoRLAO8XSFFtBP1Z7LqwOLQJI1+Dg8GGrD/w07WdJuTHguF4LYhFupABgWCIjjeohv5I1cmEiJ7Tb//F++TrTe8Qt/mmzKMwGV4Zg3PNc=
+  bucket: cycling74-ci
+  skip_cleanup: true
+  local-dir: dist
+  upload-dir: max-devkit
+  acl: public_read
+  on:
+    repo: Cycling74/max-devkit

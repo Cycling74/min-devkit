@@ -1,0 +1,35 @@
+#version: '7.2.0.{build}'
+
+environment:
+  CMAKE_PATH: $(APPVEYOR_BUILD_FOLDER)\cmake-3.4.1-win32-x86
+  VS_VERSION: "Visual Studio 12"
+
+configuration: Release
+shallow_clone: false
+
+platform:
+  - x86
+  - x64
+
+build_script:
+  - if "%platform%" == "x86" SET VS_FULL=%VS_VERSION%
+  - if "%platform%" == "x86" SET CUSTOM_FLAG=""
+  - if "%platform%" == "x64" SET VS_FULL=%VS_VERSION% Win64
+  - if "%platform%" == "x64" SET CUSTOM_FLAG="-DWIN64:Bool=True"
+  - mkdir build
+  - cd build
+  - cmake -G "%VS_FULL%" %CUSTOM_FLAG% .. > %APPVEYOR_BUILD_FOLDER%\configure.log			
+  - cmake --build . --config Release > %APPVEYOR_BUILD_FOLDER%\build.log
+  - cd ..
+  - mkdir %APPVEYOR_PROJECT_NAME%
+  - cp -r externals %APPVEYOR_PROJECT_NAME%
+  - cp -r help %APPVEYOR_PROJECT_NAME%
+  - cp License.md %APPVEYOR_PROJECT_NAME%
+  - cp ReadMe.md %APPVEYOR_PROJECT_NAME%
+  - 7z a %APPVEYOR_PROJECT_NAME%-win-%platform%.zip %APPVEYOR_PROJECT_NAME% > %APPVEYOR_BUILD_FOLDER%\archive.log
+
+artifacts:
+  - name: Build
+    path: '*.zip'
+  - name: Log files
+    path: '*.log'

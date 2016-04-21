@@ -1,0 +1,24 @@
+{
+	"author" : "Cycling '74",
+	"description" : "Lightweight reference implementation of a package built using the Min-API.",
+	"homepatcher" : "min-devkit.maxpat",
+	"max_version_min" : "7.1",
+	"name" : "min-devkit",
+	"os" : {
+		"macintosh" : {
+			"platform" : [ "ia32", "x64" ],
+			"min_version" : "none"
+		},
+		"windows" : {
+			"platform" : [ "ia32", "x64" ],
+			"min_version" : "none"
+		}
+	},
+	"package_extra" : { 
+		"reverse_domain" : "com.cycling74",
+		"copyright" : "Copyright (c) 2016 Cycling '74"
+	},
+	"tags" : [ ],
+	"version" : "@GIT_VERSION_MAJ@.@GIT_VERSION_MIN@.@GIT_VERSION_SUB@",
+	"website" : "http://www.github.com/Cycling74/min-devkit"
+}
