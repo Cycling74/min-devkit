@@ -5,78 +5,85 @@ using namespace c74::min;
 class lores : public audio_object {
 public:
 	
-	INLET  (input, "(signal) Input");
-	INLET  (frequency_control, "(signal/float) Cutoff Frequency");
-	INLET  (resonance_control, "(signal/float) Resonance Control (0-1)");
-	OUTLET (output, "(signal) Output", "signal");
-	
+	inlet	input				= { this, "(signal) Input" };
+	inlet	frequency_control	= { this, "(signal/float) Cutoff Frequency" };
+	inlet	resonance_control	= { this, "(signal/float) Resonance Control (0-1)" };
+	outlet	output				= { this, "(signal) Output", "signal" };
+
 	
 	lores(atoms args) {
 		if (args.size() > 0)
 			frequency = args[0];
 		if (args.size() > 1)
 			resonance = args[1];
-		calc();
+		calculate_coefficients();
 	}
 	
 	
 	~lores() {}
 	
 	
+	/// The 'number' method is called for both ints and floats coming into the object
 	METHOD (number) {
 		if (current_inlet() == 1) {
 			frequency = args[0];
-			calc();
+			calculate_coefficients();
 		}
 		else if (current_inlet() == 2) {
 			resonance = args[0];
-			calc();
+			calculate_coefficients();
 		}
 	}
 	END
 
 
-	METHOD (clear) { y_1 = y_2 = 0.0; } END			// clear sample memory to recover from blowup
+	/// Clear sample memory, e.g. to recover from a blowup
+	METHOD (clear) { y_1 = y_2 = 0.0; } END
 
 
+	/// The 'dspsetup' method is called any time the audio signal chain is re-compiled
 	METHOD (dspsetup) {
 		double samplerate = args[0];
 		
 		two_pi_over_sr = M_2_PI / samplerate;
-		calc();
+		calculate_coefficients();
 		clear();
 	}
 	END
 
 
+	/// The 'perform' function is called at each signal vector when the audio signal chain is running
+	/// Note: this is not exposed as a METHOD
 	void perform(audio_bundle input, audio_bundle output) {
-		double*	in = input.samples[0];
-		double*	out = output.samples[0];
-		double	freq = inlets[1]->has_signal_connection() ? *input.samples[1] : frequency;
-		double	reso = inlets[2]->has_signal_connection() ? *input.samples[2] : resonance;
-		int		n = input.frame_count;
+		auto in = input.samples[0];
+		auto out = output.samples[0];
+		auto freq = inlets[1]->has_signal_connection() ? input.samples[1][0] : frequency;
+		auto reso = inlets[2]->has_signal_connection() ? input.samples[2][0] : resonance;
 		
-		if (freq != frequency || reso != resonance)	{	// do we need to recompute coefficients?
+		// do we need to recompute coefficients?
+		if (freq != frequency || reso != resonance)	{
 			frequency = freq;
 			resonance = reso;
-			calc();
+			calculate_coefficients();
 		}
 
-		double	a1 = a_1;
-		double	a2 = a_2;
-		double	ym1 = y_1;
-		double	ym2 = y_2;
-		double	scale = 1.0 + a1 + a2;
+		// cache vars locally for performance
+		auto a1 = a_1;
+		auto a2 = a_2;
+		auto y1 = y_1;
+		auto y2 = y_2;
+		auto scale = 1.0 + a1 + a2;
 		
-		while (n--) {
-			double val = *in++;
-			double temp = ym1;
-			ym1 = scale * val - a1 * ym1 - a2 * ym2;
-			ym2 = temp;
-			*out++ = ym1;
+		for (auto i=0; i<input.frame_count; ++i) {
+			auto temp = y1;
+			y1 = scale * in[i] - a1 * y1 - a2 * y2;
+			y2 = temp;
+			out[i] = y1;
 		}
-		y_1 = ym1;
-		y_2 = ym2;
+		
+		// update state with cached vars before returning
+		y_1 = y1;
+		y_2 = y2;
 	}
 
 
@@ -91,7 +98,7 @@ private:
 
 
 	// calculate filter coefficients from frequency and resonance
-	void calc() {
+	void calculate_coefficients() {
 		resonance = c74::max::clamp(resonance, 0.0, 1.0 - 1E-20);
 		double resterm = exp(resonance * 0.125) * 0.882497;
 		a_1 = -2. * resterm * cos(two_pi_over_sr * frequency);

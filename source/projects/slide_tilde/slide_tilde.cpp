@@ -5,10 +5,10 @@ using namespace c74::min;
 class slide : public audio_object {
 public:
 	
-	INLET  (input, "(signal) Input");
-	INLET  (frequency_control, "(float) Slide up");
-	INLET  (resonance_control, "(float) Slide down");
-	OUTLET (output, "(signal) Output", "signal");
+	inlet	input				= { this, "(signal) Input" };
+	inlet	slide_up_inlet		= { this, "(float) Slide up" };
+	inlet	slide_down_inlet	= { this, "(float) Slide down" };
+	outlet	output				= { this, "(signal) Output", "signal" };
 	
 	
 	slide(atoms args) {
@@ -22,7 +22,8 @@ public:
 	~slide() {}
 	
 	
-	METHOD (number) {						// The 'number' method sets up bindings for both ints and floats/doubles
+	/// The 'number' method is called for both ints and floats coming into the object
+	METHOD (number) {
 		switch (current_inlet()) {
 			case 1:
 				slide_up = args[0];
@@ -31,18 +32,23 @@ public:
 				slide_down = args[0];
 				break;
 			default:
-				cur = args[0];
+				y_1 = args[0];
 				break;
 		}
-		cur = args[0];
+		y_1 = args[0];
 	}
 	END
 
 
-	METHOD (reset) { cur = 0.0; }};
+	/// Clear sample memory, e.g. to recover from a blowup
+	METHOD (reset) {
+		y_1 = 0.0;
+	}
+	END
 
 
-	ATTRIBUTE (slide_up, double, 1.0) {		// Attributes are given a name, a type, a default value, and function to be called when setting the value
+	/// Attributes are given a name, a type, a default value, and function to be called when setting the value
+	ATTRIBUTE (slide_up, double, 1.0) {
 		double n = args[0];
 		
 		if (n < 0)
@@ -56,7 +62,8 @@ public:
 	END
 
 
-	ATTRIBUTE (slide_down, double, 1.0) {	// The optional function is executed prior to assigning the args to slide_down so it can be used for range checking.
+	/// The optional function is executed prior to assigning the args to slide_down so it can be used for range checking.
+	ATTRIBUTE (slide_down, double, 1.0) {
 		double n = args[0];
 		
 		if (n < 0)
@@ -70,32 +77,33 @@ public:
 	END
 
 
+	/// The 'perform' function is called at each signal vector when the audio signal chain is running
+	/// Note: this is not exposed as a METHOD
 	void perform(audio_bundle input, audio_bundle output) {
-		double*	in = input.samples[0];
-		double*	out = output.samples[0];
-		int		n = input.frame_count;
-		double	up_ = up;
-		double	down_ = down;
-		double	x0;
+		auto	in = input.samples[0];
+		auto	out = output.samples[0];
+		auto	up_ = up;
+		auto	down_ = down;
 		double	y0;
-		double	y1 = cur;
+		auto	y1 = y_1;
 		
-		while (n--) {
-			x0 = *in++;
+		for (auto i=0; i<input.frame_count; ++i) {
+			double x0 = in[i];
+			
 			if (x0 > y1)
 				y0 = y1 + ((x0 - y1) * up_);
 			else
 				y0 = y1 + ((x0 - y1) * down_);
-			*out++ = y1 = y0;
+			out[i] = y1 = y0;
 		}
-		cur = y0;
+		y_1 = y0;
 	}
 
 
 private:
 	double up;			// one over the number of samples up time
 	double down;		// one over the number of samples decay time
-	double cur = 0.0;	// the current output sample.
+	double y_1 = 0.0;	// the current output sample.
 };
 
 
