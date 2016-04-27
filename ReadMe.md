@@ -41,10 +41,10 @@ You can build on the command line using Makefiles, or you can generate an Xcode 
 
 ### Windows
 
-The exact command line you use will depend on what version of Visual Studio you have installed.  You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2013, the commands to generate the projects will look like this:
+If you are using Visual Studio then Visual Studio 2015 is the minimum requirement.  You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2015, the commands to generate the projects will look like this:
 
-* 32 bit: `cmake -G "Visual Studio 12" ..`
-* 64 bit: `cmake -G "Visual Studio 12 Win64" -DWIN64:Bool=True ..`
+* 32 bit: `cmake -G "Visual Studio 14 2015" ..`
+* 64 bit: `cmake -G "Visual Studio 14 2015 Win64" -DWIN64:Bool=True ..`
 
 Having generated the projects, you can now build by opening the .sln file in the build folder with the Visual Studio app (just double-click the .sln file) or you can build on the command line like this:
 
