@@ -8,10 +8,10 @@ Tools, documentation, and reference implementation of a Max Package built using 
 
 ## Structure
 
-There are two levels of material included in the Min-DevKit package.  The outer level is a Max package folder named, appropriately, "min-devkit".  The inner level is a folder called "min-api". 
+There are two layers of material included in the Min-DevKit package. 
 
-* `min-devkit` is an example package following current best-practices package creation.
-* `min-api` is a folder containing all of the support files you will need to compile an external object written in modern C++.  This folder you will include in your own package's source folder.
+* `min-devkit` is an example package following current best-practices for package creation.
+* `min-api` is a folder within the devkit containing all of the support files you will need to compile an external object written in modern C++.  This folder you will include in your own package's source folder.
 
 
 ## Prerequisites
@@ -19,14 +19,14 @@ There are two levels of material included in the Min-DevKit package.  The outer 
 To build the externals in this package you will need some form of compiler support on your system. 
 
 * On the Mac this means Xcode (you can get from the App Store for free). 
-* On Windows this most likely means some version of Visual Studio (the free versions should work fine).
+* On Windows this means Visual Studio 2015 (you can download a free version from Microsoft). The installer for Visual Studio 2015 offers an option to install Git, which you should choose to do.
 
 You will also need to install [CMake](https://cmake.org/download/).
 
 
 ## Building
 
-0. Get the code from Github, or download a zip and unpack it into a folder.
+0. Clone the code from Github, or download a zip and unpack it into a folder.
 1. In the Terminal or Console app of your choice, change directories (cd) into the folder you created in step 0.
 2. `mkdir build` to create a folder with your various build files
 3. `cd build` to put yourself into that folder
