@@ -35,7 +35,6 @@ public:
 				y_1 = args[0];
 				break;
 		}
-		y_1 = args[0];
 	}
 	END
 
