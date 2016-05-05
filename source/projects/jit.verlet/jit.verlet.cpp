@@ -39,12 +39,12 @@ public:
 	END
 
 	
-	template<typename T>
-	T calc_cell(T input, const matrix_info& source, matrix_coord& position) {
-		T output;
+	template<class matrix_type, size_t planecount>
+	cell<matrix_type,planecount> calc_cell(cell<matrix_type,planecount> input, const matrix_info& source, matrix_coord& position) {
+		cell<matrix_type,planecount> output;
         auto x1 = MIN_CLAMP( position.x() + 1, 0, source.width());
         auto y1 = MIN_CLAMP( 0, position.y() + 1, source.height());
-		auto p1 = source.in_pixel(x1, position.y());
+		auto p1 = source.in_cell<matrix_type,planecount>(x1, position.y());
         double dx1 = input[0]-p1[0];
         double dy1 = input[1]-p1[1];
         double dz1 = input[2]-p1[2];
@@ -55,7 +55,7 @@ public:
         double oy1 = input[1]+amt1*dy1;
         double oz1 = input[2]+amt1*dz1;
         
-        p1 = source.in_pixel(position.x(),y1);
+        p1 = source.in_cell<matrix_type,planecount>(position.x(),y1);
         dx1 = ox1-p1[0];
         dy1 = oy1-p1[1];
         dz1 = oz1-p1[2];
