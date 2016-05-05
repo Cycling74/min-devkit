@@ -29,14 +29,27 @@ public:
 	// So we define "calc_cell" instead of "calc_matrix"
 	
 	template<typename T>
-	T calc_cell(const T input) {
-		return c74::max::clamp<T>(input, min, max);
+	T calc_cell(T input, const matrix_info& info, matrix_coord& position) {
+		T output;
+		
+		for (auto plane=0; plane<info.planecount(); ++plane)
+			output[plane] = MIN_CLAMP(input[plane], min, max);
+		
+		return output;
 	}
-	
-	// We override the case for the char type to use the cache attribute values in the 0-255 range
 
-	uchar calc_cell(const uchar input) {
-		return c74::max::clamp(input, cmin, cmax);
+	
+	// We override the case for the char type to use the cached attribute values in the 0-255 range
+	
+	pixel calc_cell(pixel input, const matrix_info& info, matrix_coord& position) {
+		pixel output;
+		
+		output[alpha]	= MIN_CLAMP(input[alpha], cmin, cmax);
+		output[red]		= MIN_CLAMP(input[red], cmin, cmax);
+		output[green]	= MIN_CLAMP(input[green], cmin, cmax);
+		output[blue]	= MIN_CLAMP(input[blue], cmin, cmax);
+		
+		return output;
 	}
 
 	
