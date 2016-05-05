@@ -9,7 +9,7 @@ class pedro : public object {
 public:
 
 	inlet	input			= { this, "(toggle) on/off" };
-	outlet	bang_out		= { this, "(bang) triggers at randomized interval" };
+	outlet	bang_out		= { this, "(bang) triggers at according to specified pattern" };
 	outlet	interval_out	= { this, "(float) the interval for the current bang" };
 
 	pedro(atoms args) {
@@ -21,12 +21,7 @@ public:
 
 
 	CLOCK (metro) {
-		//auto interval = generate_random_number();
-        std::vector<float> sequence = {250,250,250,250,500,500,500,500};
-        
-        interval =sequence[index];
-
-        
+		double interval = sequence[index];
 		
         interval_out.send(interval);
 		bang_out.send("bang");
@@ -36,13 +31,10 @@ public:
         index += 1;
     
         if (index == sequence.size())
-            index = 0.0;
+            index = 0;
         
 	}
 	END
-
-
-
 
 
 
@@ -62,14 +54,18 @@ public:
 	}
 	END
 	
-
-private:
+	
+	METHOD (dictionary) {
+		dict d = args[0];
+		sequence = d["pattern"];
+	}
+	END
 	
 
+private:
 
     int index = 0;
-    float interval = 0;
-		
+	atoms sequence = { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
 };
 
 
