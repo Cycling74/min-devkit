@@ -40,7 +40,7 @@ public:
 
 	
 	// We override the case for the char type to use the cached attribute values in the 0-255 range
-	
+		
 	pixel calc_cell(pixel input, const matrix_info& info, matrix_coord& position) {
 		pixel output;
 		
