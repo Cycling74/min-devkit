@@ -47,7 +47,7 @@ public:
 	template<class matrix_type, size_t planecount>
 	cell<matrix_type,planecount> calc_cell(cell<matrix_type,planecount> input, const matrix_info& source, matrix_coord& position) {
 		cell<matrix_type,planecount> output;
-        auto x1 = MIN_CLAMP( position.x() + 1, 0, source.width());
+        long x1 = MIN_CLAMP( position.x() + 1, 0, source.width());
         auto p1 = source.in_cell<matrix_type,planecount>(x1, position.y());
         
         //auto y1 = MIN_CLAMP( 0, position.y() + 1, source.height());
@@ -75,7 +75,7 @@ public:
         output[2] = oz1-amt1*dz1;
         */
         for ( int i = 0; i < planecount; i++){
-            output[i] = input[i]-p1[i];
+            output[i] = p1[i];
         }
 		return output;
 	}
