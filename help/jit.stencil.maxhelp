@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 100.0, 100.0, 1146.0, 766.0 ],
+		"rect" : [ 744.0, 79.0, 1146.0, 766.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -76,7 +76,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 100.0, 126.0, 1146.0, 740.0 ],
+						"rect" : [ 744.0, 105.0, 1146.0, 740.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -116,7 +116,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 942.0, 185.5, 150.0, 23.0 ],
-									"presentation_rect" : [ 942.0, 186.5, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -133,7 +132,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 942.0, 156.0, 150.0, 23.0 ],
-									"presentation_rect" : [ 942.0, 157.0, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -150,7 +148,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 942.0, 124.5, 150.0, 23.0 ],
-									"presentation_rect" : [ 942.0, 125.5, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -166,7 +163,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 873.0, 284.0, 78.0, 36.0 ],
-									"presentation_rect" : [ 873.0, 285.0, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -286,9 +282,9 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 69.0, 454.5, 123.0, 23.0 ],
+									"patching_rect" : [ 69.0, 454.5, 137.0, 23.0 ],
 									"style" : "",
-									"text" : "jit.noise 4 float 12 8"
+									"text" : "jit.noise 4 float32 12 8"
 								}
 
 							}
@@ -954,32 +950,32 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
-			"obj-2::obj-7::obj-4::obj-21" : [ "number", "number", 0 ],
 			"obj-2::obj-7::obj-4::obj-18" : [ "number[1]", "number[1]", 0 ],
-			"obj-2::obj-7::obj-4::obj-20" : [ "live.tab[1]", "live.tab[1]", 0 ]
+			"obj-2::obj-7::obj-4::obj-20" : [ "live.tab[1]", "live.tab[1]", 0 ],
+			"obj-2::obj-7::obj-4::obj-21" : [ "number", "number", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "helpname.js",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/resources",
+				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "helpdetails.js",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/resources",
+				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "demovideo.maxpat",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/jitter-help",
+				"bootpath" : "C74:/help/jitter",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "helpstarter.js",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/resources",
+				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
