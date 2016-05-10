@@ -72,4 +72,4 @@ private:
 };
 
 
-MIN_EXTERNAL(jit_stencil, "jit.stencil");
+MIN_EXTERNAL(jit_stencil);

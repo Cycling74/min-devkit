@@ -111,4 +111,4 @@ private:
 };
 
 
-MIN_EXTERNAL(slide, "slide~");
+MIN_EXTERNAL(slide);

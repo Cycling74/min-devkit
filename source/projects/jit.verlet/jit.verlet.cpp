@@ -114,4 +114,4 @@ private:
 };
 
 
-MIN_EXTERNAL(jit_verlet, "jit.verlet");
+MIN_EXTERNAL(jit_verlet);

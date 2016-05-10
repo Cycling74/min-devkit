@@ -57,4 +57,4 @@ public:
 };
 
 
-MIN_EXTERNAL(buffer_index, "buffer.index~");
+MIN_EXTERNAL(buffer_index);

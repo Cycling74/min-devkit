@@ -64,4 +64,4 @@ private:
 };
 
 
-MIN_EXTERNAL(jit_clamp, "jit.clamp");
+MIN_EXTERNAL(jit_clamp);

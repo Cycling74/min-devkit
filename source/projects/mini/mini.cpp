@@ -161,4 +161,4 @@ private:
 };
 
 
-MIN_EXTERNAL(mini, "mini");
+MIN_EXTERNAL(mini);

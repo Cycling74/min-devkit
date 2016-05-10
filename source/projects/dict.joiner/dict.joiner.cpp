@@ -59,4 +59,4 @@ private:
 };
 
 
-MIN_EXTERNAL(dict_joiner, "dict.joiner");
+MIN_EXTERNAL(dict_joiner);

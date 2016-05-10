@@ -112,4 +112,4 @@ private:
 
 };
 
-MIN_EXTERNAL(lores, "lores~");
+MIN_EXTERNAL(lores);

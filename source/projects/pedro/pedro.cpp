@@ -73,4 +73,4 @@ private:
 };
 
 
-MIN_EXTERNAL(pedro, "pedro");
+MIN_EXTERNAL(pedro);

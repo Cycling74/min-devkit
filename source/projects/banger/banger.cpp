@@ -90,4 +90,4 @@ private:
 };
 
 
-MIN_EXTERNAL(banger, "banger");
+MIN_EXTERNAL(banger);

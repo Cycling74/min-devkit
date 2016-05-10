@@ -103,4 +103,4 @@ private:
 
 };
 
-MIN_EXTERNAL(yo, "yo~");
+MIN_EXTERNAL(yo);
