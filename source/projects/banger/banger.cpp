@@ -4,7 +4,6 @@
 ///	@license	Usage of this file and its contents is governed by the MIT License
 
 #include "c74_min.h"
-#include <random>
 
 using namespace c74::min;
 
@@ -28,7 +27,7 @@ public:
 
 
 	CLOCK (metro) {
-		auto interval = generate_random_number();
+		auto interval = math::random(min, max);
 		
 		interval_out.send(interval);
 		bang_out.send("bang");
@@ -73,19 +72,6 @@ public:
 		on = args[0];
 	}
 	END
-	
-
-private:
-	
-	/// code from http://en.cppreference.com/w/cpp/numeric/random/uniform_real_distribution
-	/// see also http://en.cppreference.com/w/cpp/numeric/random
-
-	double generate_random_number() {
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_real_distribution<> dis(min, max);
-		return dis(gen);
-	}
 		
 };
 
