@@ -41,7 +41,7 @@ deploy:
   bucket: cycling74-ci
   skip_cleanup: true
   local-dir: dist
-  upload-dir: max-devkit
+  upload-dir: min-devkit
   acl: public_read
   on:
-    repo: Cycling74/max-devkit
+    repo: Cycling74/min-devkit
