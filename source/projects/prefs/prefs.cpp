@@ -1,0 +1,35 @@
+/// @file	
+///	@ingroup 	minexamples
+///	@copyright	Copyright (c) 2016, Cycling '74
+///	@license	Usage of this file and its contents is governed by the MIT License
+
+#include "c74_min.h"
+#include <random>
+
+using namespace c74::min;
+
+
+class prefs : public object {
+public:
+
+	inlet	input	= { this, "(bang) get the path to the preferences folder" };
+	outlet	output	= { this, "(symbol) preferences folder path" };
+
+	prefs(atoms args) {}
+	~prefs() {}
+
+	
+	METHOD (bang) {
+		std::string str = p;
+		output.send(str);
+	}
+	END
+	
+	
+private:
+	path	p = path::system::preferences;
+	
+};
+
+
+MIN_EXTERNAL(prefs);
