@@ -1,7 +1,6 @@
 # Min-DevKit
-[![Build Status](https://travis-ci.org/Cycling74/min-devkit.svg?branch=master)](https://travis-ci.org/Cycling74/min-devkit)
-[![Build status](https://ci.appveyor.com/api/projects/status/4u6n0esaemdp2t5?svg=true)](https://ci.appveyor.com/project/tap/min-devkit)
-
+[![Build Status](https://travis-ci.com/Cycling74/min-devkit.svg?token=GAmnsUEo9aYasSF5pz8q&branch=master)](https://travis-ci.com/Cycling74/min-devkit)
+[![Build status](https://ci.appveyor.com/api/projects/status/0koqc3l3qyfu0l8b?svg=true)](https://ci.appveyor.com/project/c74/min-devkit)
 
 Tools, documentation, and reference implementation of a Max Package built using the Min-API.
 
