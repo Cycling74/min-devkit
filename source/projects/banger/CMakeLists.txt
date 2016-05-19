@@ -18,3 +18,27 @@ add_library(
 
 include(${C74_MIN_API_DIR}/script/min-posttarget.cmake)
 
+
+#############################################################
+# UNIT TEST
+#############################################################
+
+project(test_${PROJECT_NAME})
+
+if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.cpp")
+	enable_testing()
+
+	include_directories( 
+		"${C74_MIN_API_DIR}/test/catch/include"
+		"${C74_MIN_API_DIR}/test/mock"
+	)
+
+	add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+
+	set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+	set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+
+	add_test(NAME ${PROJECT_NAME}
+	         COMMAND ${PROJECT_NAME})
+
+endif ()

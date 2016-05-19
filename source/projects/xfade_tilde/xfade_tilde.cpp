@@ -20,6 +20,10 @@ namespace modes {
 	static const symbol fast = "fast";
 }
 
+//enum modes : size_t {
+//	precision = (size_t)c74::max::gensym("precision")
+//};
+
 
 using lookup_table = std::vector<double>;
 
