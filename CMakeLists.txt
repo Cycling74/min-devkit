@@ -12,6 +12,11 @@ execute_process(
 include(${CMAKE_CURRENT_SOURCE_DIR}/source/min-api/script/min-package.cmake)
 
 
+# Add unit tests for the API
+enable_testing()
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/source/min-api)
+
+
 # Generate a project for every folder in the "source/projects" folder
 SUBDIRLIST(PROJECT_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/source/projects)
 foreach (project_dir ${PROJECT_DIRS})
