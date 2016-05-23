@@ -4,6 +4,11 @@ set(C74_MIN_API_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../min-api)
 include(${C74_MIN_API_DIR}/script/min-pretarget.cmake)
 
 
+#############################################################
+# MAX EXTERNAL
+#############################################################
+
+
 include_directories( 
 	"${C74_INCLUDES}"
 )
@@ -40,5 +45,11 @@ if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.cpp")
 
 	add_test(NAME ${PROJECT_NAME}
 	         COMMAND ${PROJECT_NAME})
+
+	if(WIN32)
+		target_link_libraries(${PROJECT_NAME} ${MaxAPI_LIB})
+		target_link_libraries(${PROJECT_NAME} ${MaxAudio_LIB})
+		target_link_libraries(${PROJECT_NAME} ${Jitter_LIB})
+  	endif()
 
 endif ()
