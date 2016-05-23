@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class lores : public audio_object {
+class lores : public object, perform_operator {
 public:
 	
 	inlet	input				= { this, "(signal) Input" };

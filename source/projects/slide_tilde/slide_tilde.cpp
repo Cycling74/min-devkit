@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class slide : public audio_object {
+class slide : public object, perform_operator {
 public:
 	
 	inlet	input				= { this, "(signal) Input" };

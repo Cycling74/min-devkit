@@ -17,11 +17,8 @@ public:
 	outlet	bang_out		= { this, "(bang) triggers at according to specified pattern" };
 	outlet	interval_out	= { this, "(float) the interval for the current bang" };
 
-	pedro(atoms args) {
-
-	}
-
-
+	
+	pedro(atoms args) {}
 	~pedro() {}
 
 
@@ -40,9 +37,6 @@ public:
         
 	}
 	END
-
-
-
 
 
 	ATTRIBUTE (on, bool, 0) {
@@ -68,7 +62,6 @@ public:
 	
 
 private:
-
     int index = 0;
 	atoms sequence = { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
 };

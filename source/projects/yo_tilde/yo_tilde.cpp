@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class yo : public audio_object {
+class yo : public object, perform_operator {
 public:
 	
 	inlet	input				= { this, "(signal)/float Frequency" };
