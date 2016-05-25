@@ -46,10 +46,14 @@ if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.cpp")
 	add_test(NAME ${PROJECT_NAME}
 	         COMMAND ${PROJECT_NAME})
 
-	if(WIN32)
+	if (APPLE)
+		target_link_libraries(${PROJECT_NAME} "-weak_framework JitterAPI")
+		set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-Wl,-F${C74_MAX_API_DIR}/lib/mac")
+	endif ()
+	if (WIN32)
 		target_link_libraries(${PROJECT_NAME} ${MaxAPI_LIB})
 		target_link_libraries(${PROJECT_NAME} ${MaxAudio_LIB})
 		target_link_libraries(${PROJECT_NAME} ${Jitter_LIB})
-  	endif()
+  	endif ()
 
 endif ()
