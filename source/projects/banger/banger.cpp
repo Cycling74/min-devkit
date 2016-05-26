@@ -49,6 +49,7 @@ public:
     END
 
 
+	/// Attributes are given a name, a type, a default value, and function to be called when setting the value
     ATTRIBUTE (max, double, 1500.0) {
 		double value = args[0];
 		
@@ -60,6 +61,7 @@ public:
     END
 
 
+	/// The optional function is executed prior to assigning the args to slide_down so it can be used for range checking.
 	ATTRIBUTE (on, bool, 0) {
 		if (args[0] == true)
 			metro.delay(0.0);	// fire the first one straight-away
