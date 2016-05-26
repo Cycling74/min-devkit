@@ -38,6 +38,10 @@ if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.cpp")
 		"${C74_MIN_API_DIR}/test/mock"
 	)
 
+	add_definitions(
+		-D_USE_MATH_DEFINES
+	)
+
 	add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
 
 	set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
