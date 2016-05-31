@@ -75,11 +75,14 @@ public:
                 fstep = freq/samplerate;
             }
             if(siginput2) maxi = fmax(input.samples[1][i],0.0);
-            if(siginput3) offi = fmax(input.samples[2][i],0.0);
+            //if(siginput3) offi = fmax(input.samples[2][i],0.0);
             current += fstep;
             if (maxi == 0) current = 0.0;
             else if (fstep >= 0){
-                if (current>maxi) while(current>maxi) {current-=maxi;};
+                if (current>maxi){
+                    while(current>maxi) {current-=maxi;};
+                    if(siginput3) offi = fmax(input.samples[2][i],0.0);
+                }
             }
             else if (current<0.0) while (current<0.0) {current+=maxi;};
             
