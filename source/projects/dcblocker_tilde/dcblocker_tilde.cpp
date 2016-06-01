@@ -88,6 +88,17 @@ public:
 		}
 	}
 
+	void foo() {
+		
+		int npoints = 5;
+		
+		double weights_[npoints];
+
+		std::vector<double> weights(5);
+		
+		
+	}
+	
 
 private:
 	sample	x_1;	///< Input history

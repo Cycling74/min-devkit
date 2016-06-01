@@ -4,8 +4,6 @@
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "c74_mock.h"
-
 #include "dcblocker_tilde.cpp"
 
 
