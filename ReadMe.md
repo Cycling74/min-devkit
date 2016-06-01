@@ -53,9 +53,22 @@ Having generated the projects, you can now build by opening the .sln file in the
 `cmake --build . --config Release`
 
 
-## Testing
+## Unit Testing
 
-It is highly recommended that you test your code thoroughly. One option is use the [max-test](https://github.com/Cycling74/max-test) package.
+On the command like you can run all unit tests using Cmake:
+
+* on debug builds: `ctest -C Debug .`
+* on release builds: `ctest -C Release .`
+
+Or you can run an individual test, which is simply a command line program:
+
+* `cd ..`
+* `cd tests`
+* mac example: `./test_dcblocker_tilde -s`
+* win example: `test_dcblocker_tilde.exe -s`
+
+Or run them your IDE's debugger.
+
 
 ## Continuous Integration
 
