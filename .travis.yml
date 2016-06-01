@@ -23,6 +23,7 @@ script:
 - if [ -e *.md ]; then cp *.json $PACKAGE_NAME; fi
 - if [ -e *.png ]; then cp *.json $PACKAGE_NAME; fi
 - if [ -d docs ]; then cp -r docs $PACKAGE_NAME; fi
+- if [ -d extensions ]; then cp -r extensions $PACKAGE_NAME; fi
 - if [ -d externals ]; then cp -r externals $PACKAGE_NAME; fi
 - if [ -d extras ]; then cp -r extras $PACKAGE_NAME; fi
 - if [ -d help ]; then cp -r help $PACKAGE_NAME; fi
