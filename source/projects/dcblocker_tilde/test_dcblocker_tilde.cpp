@@ -106,6 +106,13 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 				REQUIRE( output != input );
 		}
 		WHEN( "the input goes silent" ) {
+			// dirty the history first
+			for (auto x : input) {
+				auto y = my_object.calculate(x);
+				//output.push_back(y);
+			}
+
+			// then zero and process
 			std::fill_n(input.begin(), buffersize, 0.0);
 			
 			samples output;

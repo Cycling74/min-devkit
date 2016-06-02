@@ -87,22 +87,11 @@ public:
 			return y;
 		}
 	}
-
-	void foo() {
-		
-		int npoints = 5;
-		
-		double weights_[npoints];
-
-		std::vector<double> weights(5);
-		
-		
-	}
 	
 
 private:
-	sample	x_1;	///< Input history
-	sample	y_1;	///< Output history
+	sample	x_1 = 0.0;	///< Input history
+	sample	y_1 = 0.0;	///< Output history
 };
 
 
