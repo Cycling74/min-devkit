@@ -38,7 +38,7 @@ build_script:
 
 test_script:
   - cd build
-  - ctest --config Release .
+  - ctest -C Release .
 
 artifacts:
   - name: Build
