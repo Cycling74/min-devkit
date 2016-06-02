@@ -38,7 +38,7 @@ build_script:
 
 test_script:
   - cd build
-  - ctest -C Release . -V
+  - ctest -C Release . -V --no-compress-output -T Test || /usr/bin/true
 
 artifacts:
   - name: Build

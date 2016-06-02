@@ -14,7 +14,7 @@ script:
 - cd build
 - cmake -G Xcode ..
 - cmake --build . --config Release
-- ctest -C Release -j8 --output-on-failure
+- ctest -C Release . -V --no-compress-output -T Test || /usr/bin/true
 - cd ..
 - PACKAGE_NAME=`echo $TRAVIS_REPO_SLUG | sed 's/.*\///g'`
 - PACKAGE_REV=`echo $TRAVIS_COMMIT | sed -e 's/^[[:alnum:]]\{6\}/&-/g' | sed 's/-.*//'`
