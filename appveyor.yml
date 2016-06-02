@@ -36,6 +36,9 @@ build_script:
   - cp ReadMe.md %APPVEYOR_PROJECT_NAME%
   - 7z a %APPVEYOR_PROJECT_NAME%-win-%platform%.zip %APPVEYOR_PROJECT_NAME% > %APPVEYOR_BUILD_FOLDER%\archive.log
 
+test_script:
+  - ctest --config Release .
+
 artifacts:
   - name: Build
     path: '*.zip'
