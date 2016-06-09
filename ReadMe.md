@@ -99,6 +99,12 @@ To setup your own page:
 6. As described on the above Github page, you will need to set the permissions for your bucket such that "Everyone" has both `listing` and `viewing` access.
 
 
+## Additional Documentation
+
+* [How to Create a New Object](https://github.com/Cycling74/HowTo-NewObject)
+* [How to Create a New Package](https://github.com/Cycling74/HowTo-NewPackage)
+
+
 ## Support
  
 For support, please use the developer forums at:
