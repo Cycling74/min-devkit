@@ -101,8 +101,8 @@ To setup your own page:
 
 ## Additional Documentation
 
-* [How to Create a New Object](https://github.com/Cycling74/HowTo-NewObject.md)
-* [How to Create a New Package](https://github.com/Cycling74/HowTo-NewPackage.md)
+* [How to Create a New Object](https://github.com/Cycling74/min-devkit/HowTo-NewObject.md)
+* [How to Create a New Package](https://github.com/Cycling74/min-devkit/HowTo-NewPackage.md)
 
 
 ## Support
