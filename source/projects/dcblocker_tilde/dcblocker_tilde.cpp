@@ -58,7 +58,7 @@ public:
 	outlet	output				= { this, "(signal) Output", "signal" };
 
 	
-	dcblocker(atoms args) {}
+	dcblocker(atoms args={}) {}
 	~dcblocker() {}
 	
 	

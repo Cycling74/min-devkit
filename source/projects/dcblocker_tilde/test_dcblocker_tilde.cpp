@@ -10,8 +10,7 @@
 TEST_CASE( "produces valid impulse response" ) {
 
 	// create an instance of our object
-	atoms		as;
-	dcblocker	my_object(as);
+	dcblocker	my_object;
 	
 	// create an impulse buffer to process
 	const int	buffersize = 256;
@@ -44,8 +43,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 	std::generate(input.begin(), input.end(), math::cosine<sample>(buffersize, 10));
 	
 	GIVEN( "An instance of dcblocker~" ) {
-		atoms		as;
-		dcblocker	my_object(as);
+		dcblocker	my_object;
 		
 		REQUIRE( my_object.bypass == false );	// default attr value
 		

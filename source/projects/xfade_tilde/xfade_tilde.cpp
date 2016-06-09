@@ -37,11 +37,11 @@ public:
 		sqrt.resize(size);
 		
 		for (auto i=0; i<size; ++i) {
-			double j = i;
+			double normalized_index = double(i) / (size-1);
 			
-			linear[i]		= j / (size-1);
-			equal_power[i]	= sin(j / (size-1));
-			sqrt[i]			= std::sqrt(j / (size-1));
+			linear[i]		= normalized_index;
+			equal_power[i]	= std::sin(normalized_index * M_PI_2);
+			sqrt[i]			= std::sqrt(normalized_index);
 		}
 	}
 	
@@ -75,25 +75,28 @@ public:
 	outlet	output	= { this, "(signal) Output", "signal" };
 
 	
-	xfade(atoms args) {}
+	xfade(atoms args={}) {}
 	~xfade() {}
 	
 	
 	ATTRIBUTE (shape, symbol, shapes::equal_power) {
-		table = tables.get(shape);
-		std::tie(weight1, weight2) = calculate_weights(position);
+		table = tables.get(args[0]);
+		std::tie(weight1, weight2) = calculate_weights(mode, position);
 	}
 	END
 
 	
-	ATTRIBUTE (mode, symbol, modes::fast) {} END
+	ATTRIBUTE (mode, symbol, modes::fast) {
+		std::tie(weight1, weight2) = calculate_weights(args[0], position);
+	}
+	END
 
 	
 	ATTRIBUTE (position, double, 0.5) {
 		double n = c74::max::clamp<double>(args[0], 0.0, 1.0);
 		args[0] = n;
 		
-		std::tie(weight1, weight2) = calculate_weights(n);
+		std::tie(weight1, weight2) = calculate_weights(mode, n);
 	}
 	END
 
@@ -104,20 +107,20 @@ public:
 	/// Process one sample
 	/// Note: it takes three samples as input because we defined this class to inherit from sample_operator<3,1>
 	
-	sample calculate(sample in1, sample in2, sample position) {
+	sample calculate(sample in1, sample in2, sample position = 0.5) {
 		auto weight1 = this->weight1;
 		auto weight2 = this->weight2;
 		
 		if (in_pos.has_signal_connection()) {
-			if (mode == modes::fast) {
-				size_t index1 = (1.0 - position) * (lookup_tables::size-1);
-				size_t index2 = position * (lookup_tables::size-1);
-			
-				weight1 = (*table)[index1];
-				weight2 = (*table)[index2];
-			}
-			else	// calculate
-				std::tie(weight1, weight2) = calculate_weights(position);
+//			if (mode == modes::fast) {
+//				size_t index1 = (1.0 - position) * (lookup_tables::size-1);
+//				size_t index2 = position * (lookup_tables::size-1);
+//
+//				weight1 = (*table)[index1];
+//				weight2 = (*table)[index2];
+//			}
+//			else	// calculate
+				std::tie(weight1, weight2) = calculate_weights(mode, position);
 		}
 		return in1*weight1 + in2*weight2;
 	}
@@ -125,31 +128,41 @@ public:
 	
 private:
 	
-	auto calculate_weights(double position)
+	auto calculate_weights(symbol mode, double position)
 	-> std::pair<double,double> {
-		symbol	shape = this->shape;
-		double	v1;
-		double	v2;
+		double weight1;
+		double weight2;
+
+		if (mode == "fast") {
+			size_t index1 = (1.0 - position) * (lookup_tables::size-1);
+			size_t index2 = position * (lookup_tables::size-1);
 		
-		if (shape == shapes::equal_power) {
-			auto rad_position = position * M_PI_2;
-			v1 = cos(rad_position);
-			v2 = sin(rad_position);
+			weight1 = (*table)[index1];
+			weight2 = (*table)[index2];
 		}
-		else if (shape == shapes::square_root) {
-			v1 = sqrt(1.0 - position);
-			v2 = sqrt(position);
+		else {
+			symbol	shape = this->shape;
+		
+			if (shape == shapes::equal_power) {
+				auto rad_position = position * M_PI_2;
+				weight1 = cos(rad_position);
+				weight2 = sin(rad_position);
+			}
+			else if (shape == shapes::square_root) {
+				weight1 = sqrt(1.0 - position);
+				weight2 = sqrt(position);
+			}
+			else { // linear
+				weight1 = 1.0 - position;
+				weight2 = position;
+			}
 		}
-		else { // linear
-			v1 = 1.0 - position;
-			v2 = position;
-		}
-		return std::make_pair(v1, v2);
+		return std::make_pair(weight1, weight2);
 	}
 
-	lookup_table*	table = tables.get(shapes::equal_power);
-	double			weight1 = 0.5;
-	double			weight2 = 0.5;
+	lookup_table*	table;
+	double			weight1;
+	double			weight2;
 
 };
 
