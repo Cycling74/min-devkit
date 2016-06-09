@@ -1,5 +1,15 @@
 cmake_minimum_required(VERSION 3.0)
 
+
+
+if (${CMAKE_GENERATOR} MATCHES "Xcode")
+ 		if (${XCODE_VERSION} VERSION_LESS 7)
+  			message(STATUS "Xcode 7 is required. Please install from the Mac App Store")
+			return ()
+		endif ()
+endif ()
+
+
 # Fetch the correct verion of the min-api
 message(STATUS "Updating Git Submodules")
 execute_process(

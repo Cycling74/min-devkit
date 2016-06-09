@@ -5,14 +5,9 @@ language:
 compiler:
 - clang
 
-matrix:
-  include:
-    - os: osx
-      osx_image: xcode7.3
-      sudo: false
-    - os: osx
-      osx_image: xcode6.4
-      sudo: false
+sudo: false
+os: osx
+osx_image: xcode7.3
 
 script:
 - mkdir build
