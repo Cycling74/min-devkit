@@ -5,7 +5,6 @@
 ///	@license	Usage of this file and its contents is governed by the MIT License
 
 #include "c74_min.h"
-#include <random>
 
 using namespace c74::min;
 
@@ -28,10 +27,7 @@ public:
 
 
 	METHOD (bang) {
-        std::random_device rd;
-        std::mt19937 mt(rd());
-        std::uniform_real_distribution<double> dist(min, max);
-        double value = dist(mt);
+        double value = math::random(min,max);
 		output.send(value);
 	}
 	END
