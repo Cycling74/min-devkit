@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 124.0, 45.0, 904.0, 535.0 ],
+		"rect" : [ 124.0, 45.0, 1216.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,20 @@
 		"style" : "tap",
 		"subpatcher_template" : "tap.template",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 450.0, 285.0, 50.0, 23.0 ],
+					"presentation_rect" : [ 451.799988, 283.0, 0.0, 0.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-12",
 					"maxclass" : "number",
@@ -79,6 +93,7 @@
 			}
 , 			{
 				"box" : 				{
+					"code" : "y = x * 3.14;",
 					"id" : "obj-31",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -282,7 +297,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 550.0, 285.0, 50.0, 23.0 ],
 					"style" : "",
-					"text" : "23."
+					"text" : "27."
 				}
 
 			}
@@ -314,6 +329,7 @@
 			}
 , 			{
 				"box" : 				{
+					"code" : "y = x*x*x;",
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -440,6 +456,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}

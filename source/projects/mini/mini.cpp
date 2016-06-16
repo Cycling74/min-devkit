@@ -67,7 +67,6 @@ private:
 	symbol				name;
 	symbol				code;				// TODO: make string class in the symbol header?
 	string				complete_code;
-	//	c74::max::t_string*	complete_code;
 	c74::max::t_object*	compiler;			// TODO: make instance
 	minifun_method*		method = nullptr;
 };
@@ -81,15 +80,20 @@ public:
 	outlet		output	= { this, "Output" };
 	
 
-	mini(atoms args) {
+	mini(atoms args={}) {
 		std::string str;
 		
-		if (args.empty())
-			str = "y = 3.1415;";
-		else
-			str = atoms_to_string(args);
-		
-		define({ "anonymous", str });
+		if (!args.empty()) {
+			define({ "anonymous", to_string(args) });
+			embed = false;
+		}
+		else {
+			auto saved_code = state["code"];							// 'state' is the dictionary for our object in the patcher
+			if (!saved_code.empty())									// we save our code internally in a custom key named 'code'
+				define({ "anonymous", std::to_string(saved_code) });
+			else
+				define({ "anonymous", "y = x * 3.1415;" });
+		}
 	}
 	
 	
@@ -102,9 +106,6 @@ public:
 		output.send(ret);
 	}
 	END
-	
-	
-	// TODO: Save state!
 	
 	
 	METHOD (define) {
@@ -149,15 +150,29 @@ public:
 	END
 	
 	
+	METHOD (savestate) {
+		if (embed) {
+			auto f = functions["anonymous"];
+			if (f) {
+				dict d = args[0];
+				d["code"] = f->code;
+			}
+		}
+	}
+	END
+	
+	
 private:
 
+	bool			embed = true;	// save contents in the patcher file
+	
 	// TODO: below should be a unique pointer!
 	map<minifun*>	functions;
 
-	texteditor	editor	= { this, [this](const char* text) {
-		atoms as = { "anonymous", text };
-		define(as);
-	}};
+	texteditor		editor = { this, [this](const char* text) {
+									atoms as = { "anonymous", text };
+									define(as);
+							}};
 	
 };
 
