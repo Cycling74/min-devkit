@@ -11,10 +11,10 @@ using namespace c74::min;
 class buffer_index : public object, perform_operator {
 public:
 	
-	inlet	index_inlet		= { this, "(signal) Sample index" };
-	inlet	channel_inlet	= { this, "(float) Audio channel to use from buffer~" };
-	outlet	output			= { this, "(signal) Sample value at index", "signal" };
-	buffer	buffer			= { this };
+	inlet				index_inlet		= { this, "(signal) Sample index" };
+	inlet				channel_inlet	= { this, "(float) Audio channel to use from buffer~" };
+	outlet				output			= { this, "(signal) Sample value at index", "signal" };
+	buffer_reference	buffer			= { this };
 	
 	
 	buffer_index(atoms args) {
