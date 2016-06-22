@@ -9,14 +9,14 @@
 using namespace c74::min;
 
 
-class banger : public object {
+class banger : public object<banger> {
 public:
 
 	inlet	input			= { this, "(toggle) on/off" };
 	outlet	bang_out		= { this, "(bang) triggers at randomized interval" };
 	outlet	interval_out	= { this, "(float) the interval for the current bang" };
 
-	banger(atoms args) {
+	banger(const atoms& args = {}) {
 		if (args.size() > 0)
 			min = args[0];
 		if (args.size() > 1)
@@ -62,7 +62,7 @@ public:
 
 
 	/// The optional function is executed prior to assigning the args to slide_down so it can be used for range checking.
-	ATTRIBUTE (on, bool, 0) {
+	ATTRIBUTE (on, bool, false) {
 		if (args[0] == true)
 			metro.delay(0.0);	// fire the first one straight-away
 		else

@@ -10,7 +10,7 @@
 using namespace c74::min;
 
 
-class pedro : public object {
+class pedro : public object<pedro> {
 public:
 
 	inlet	input			= { this, "(toggle) on/off" };

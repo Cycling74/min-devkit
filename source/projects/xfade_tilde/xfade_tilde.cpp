@@ -111,17 +111,8 @@ public:
 		auto weight1 = this->weight1;
 		auto weight2 = this->weight2;
 		
-		if (in_pos.has_signal_connection()) {
-//			if (mode == modes::fast) {
-//				size_t index1 = (1.0 - position) * (lookup_tables::size-1);
-//				size_t index2 = position * (lookup_tables::size-1);
-//
-//				weight1 = (*table)[index1];
-//				weight2 = (*table)[index2];
-//			}
-//			else	// calculate
-				std::tie(weight1, weight2) = calculate_weights(mode, position);
-		}
+		if (in_pos.has_signal_connection())
+			std::tie(weight1, weight2) = calculate_weights(mode, position);
 		return in1*weight1 + in2*weight2;
 	}
 

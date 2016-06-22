@@ -73,7 +73,7 @@ private:
 
 
 
-class mini : public object {
+class mini : public object<mini> {
 public:
 	
 	inlet		input	= { this, "Input" };
@@ -88,8 +88,9 @@ public:
 			embed = false;
 		}
 		else {
-			auto saved_code = state["code"];							// 'state' is the dictionary for our object in the patcher
-			if (!saved_code.empty())									// we save our code internally in a custom key named 'code'
+			auto saved_state = state();							// 'state()' fetches the dictionary for our object in the patcher
+			auto saved_code = saved_state["code"];				// we save our code internally in a custom key named 'code'
+			if (!saved_code.empty())
 				define({ "anonymous", std::to_string(saved_code) });
 			else
 				define({ "anonymous", "y = x * 3.1415;" });
@@ -125,7 +126,7 @@ public:
 		if (f->method)
 			functions.store(name, f);
 		else {
-			object_error(this->maxobj, "function '%s' not added to object", (const char*)name);
+			post(logger::type::error) << "function '" << name << "' not added to object";
 			delete f;
 		}
 	}

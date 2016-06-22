@@ -9,7 +9,7 @@
 using namespace c74::min;
 
 
-class jit_stencil : public object, matrix_operator {
+class jit_stencil : public object<jit_stencil>, matrix_operator {
 public:
 	
 	inlet	input	= { this, "(matrix) Input", "matrix" };

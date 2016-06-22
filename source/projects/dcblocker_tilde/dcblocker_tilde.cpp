@@ -51,7 +51,7 @@ using namespace c74::min;
 /// which at fs=44100 translates to 1759.59 Hz.
 
 
-class dcblocker : public object, sample_operator<1,1> {
+class dcblocker : public object<dcblocker>, sample_operator<1,1> {
 public:
 	
 	inlet	input				= { this, "(signal) Input" };

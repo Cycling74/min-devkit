@@ -9,7 +9,7 @@
 using namespace c74::min;
 
 
-class dict_joiner : public object {
+class dict_joiner : public object<dict_joiner> {
 public:
 	
 	inlet	left	= { this, "dictionary to combined with dictionary at right inlet",	"" };
@@ -37,6 +37,9 @@ public:
 
 		if (!d.valid()) {				// make sure we have a legit dictionary before proceeding
 			c74::max::object_error(nullptr, "mf");
+			post(logger::type::error) << "mf";
+			post() << "fooey";
+			std::cout << "blech";
 			return;
 		}
 		

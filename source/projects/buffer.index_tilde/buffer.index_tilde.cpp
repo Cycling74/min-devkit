@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class buffer_index : public object, perform_operator {
+class buffer_index : public object<buffer_index>, perform_operator {
 public:
 	
 	inlet				index_inlet		= { this, "(signal) Sample index" };

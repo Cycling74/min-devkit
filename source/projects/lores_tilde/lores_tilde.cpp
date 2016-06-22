@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class lores : public object, perform_operator {
+class lores : public object<lores>, perform_operator {
 public:
 	
 	inlet	input				= { this, "(signal) Input" };
@@ -63,8 +63,8 @@ public:
 	void perform(audio_bundle input, audio_bundle output) {
 		auto in = input.samples[0];
 		auto out = output.samples[0];
-		auto freq = inlets[1]->has_signal_connection() ? input.samples[1][0] : frequency;
-		auto reso = inlets[2]->has_signal_connection() ? input.samples[2][0] : resonance;
+		auto freq = frequency_control.has_signal_connection() ? input.samples[1][0] : frequency;
+		auto reso = resonance_control.has_signal_connection() ? input.samples[2][0] : resonance;
 		
 		// do we need to recompute coefficients?
 		if (freq != frequency || reso != resonance)	{

@@ -10,7 +10,7 @@
 using namespace c74::min;
 
 
-class prefs : public object {
+class prefs : public object<prefs> {
 public:
 
 	inlet	input	= { this, "(bang) get the path to the preferences folder" };

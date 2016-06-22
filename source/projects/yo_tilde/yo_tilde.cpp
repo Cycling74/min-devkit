@@ -8,12 +8,12 @@
 
 using namespace c74::min;
 
-class yo : public object, perform_operator {
+class yo : public object<yo>, perform_operator {
 public:
 	
-	inlet	input				= { this, "(signal)/float Frequency" };
-	inlet	max_control         = { this, "(signal/float) Ramp Maximum" };
-    inlet   offset_control      = { this, "(signal/float) Offset" };
+	inlet	freq_control	= { this, "(signal)/float Frequency" };
+	inlet	max_control		= { this, "(signal/float) Ramp Maximum" };
+    inlet   offset_control	= { this, "(signal/float) Offset" };
     outlet	output			= { this, "(signal) Output", "signal" };
     outlet  ramp            = { this, "(signal) Normalized Ramp", "signal" };
 
@@ -32,15 +32,11 @@ public:
 	
 	/// The 'number' method is called for both ints and floats coming into the object
 	METHOD (number) {
-		if (current_inlet() == 0) {
-			frequency = args[0];
+		switch (current_inlet()) {
+			case 0: frequency = args[0];			break;
+			case 1: max_val = fmax(args[0],0.0);	break;
+			case 2: off_val = args[2];				break;
 		}
-        else if (current_inlet() == 1) {
-            max_val = fmax(args[0],0.0);
-        }
-        else if (current_inlet() == 2) {
-            off_val = args[2];
-        }
 	}
 	END
 
@@ -55,18 +51,18 @@ public:
 	/// The 'perform' function is called at each signal vector when the audio signal chain is running
 	/// Note: this is not exposed as a METHOD
 	void perform(audio_bundle input, audio_bundle output) {
-        auto freq = inlets[0]->has_signal_connection() ? input.samples[0][0] : frequency;
+        auto freq = freq_control.has_signal_connection() ? input.samples[0][0] : frequency;
 		auto out = output.samples[0];
         auto rmp = output.samples[1];
-		auto maxi = inlets[1]->has_signal_connection() ? fmax(input.samples[1][0],0.0) : max_val;
-        auto offi = inlets[2]->has_signal_connection() ? fmax(input.samples[2][0],0.0) : off_val;
+		auto maxi = max_control.has_signal_connection() ? fmax(input.samples[1][0],0.0) : max_val;
+        auto offi = offset_control.has_signal_connection() ? fmax(input.samples[2][0],0.0) : off_val;
 
 
 		// cache vars locally for performance
 		auto fstep = freq / samplerate;
-        bool siginput1 = inlets[0]->has_signal_connection();
-        bool siginput2 = inlets[1]->has_signal_connection();
-        bool siginput3 = inlets[2]->has_signal_connection();
+        bool siginput1 = freq_control.has_signal_connection();
+        bool siginput2 = max_control.has_signal_connection();
+        bool siginput3 = offset_control.has_signal_connection();
         auto current = y_1;
 		
 		for (auto i=0; i<input.frame_count; ++i) {

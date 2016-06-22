@@ -9,7 +9,7 @@
 using namespace c74::min;
 
 
-class randfloat : public object {
+class randfloat : public object<randfloat> {
 public:
 
 	inlet	input	= { this, "(bang) generate random floating point number" };
