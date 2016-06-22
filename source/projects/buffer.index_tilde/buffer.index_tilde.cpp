@@ -17,7 +17,7 @@ public:
 	buffer_reference	buffer			= { this };
 	
 	
-	buffer_index(atoms args) {
+	buffer_index(const atoms& args = {}) {
 		if (args.size() > 0)
 			buffer.set(args[0]);
 		if (args.size() > 1)

@@ -15,7 +15,7 @@ public:
 	inlet	input	= { this, "(bang) generate random floating point number" };
 	outlet	output	= { this, "(float) random floating point number output" };
 
-	randfloat(atoms args) {
+	randfloat(const atoms& args = {}) {
 		if (args.size() > 0)
 			min = args[0];
 		if (args.size() > 1)

@@ -16,7 +16,7 @@ public:
 	outlet	output	= { this, "(matrix) Output", "matrix" };
 	
 	
-	jit_verlet(atoms args) {}
+	jit_verlet(const atoms& args = {}) {}
 	~jit_verlet() {}
 
 	

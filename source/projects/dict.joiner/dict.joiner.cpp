@@ -17,7 +17,7 @@ public:
 	outlet	output	= { this, "dictionary of entries combined from both inlets",		"dictionary" };
 	
 	
-	dict_joiner(atoms args) {
+	dict_joiner(const atoms& args = {}) {
 		if (!args.empty())
 			dict_right = dict(args);
 	}

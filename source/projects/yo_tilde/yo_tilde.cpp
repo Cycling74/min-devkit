@@ -18,7 +18,7 @@ public:
     outlet  ramp            = { this, "(signal) Normalized Ramp", "signal" };
 
 	
-	yo (atoms args) {
+    yo (const atoms& args = {}) {
 		if (args.size() > 0)
 			frequency = args[0];
 		if (args.size() > 1)

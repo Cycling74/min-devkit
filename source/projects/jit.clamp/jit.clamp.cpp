@@ -16,7 +16,7 @@ public:
 	outlet	output	= { this, "(matrix) Output", "matrix" };
 	
 	
-	jit_clamp(atoms args) {}
+	jit_clamp(const atoms& args = {}) {}
 	~jit_clamp() {}
 
 

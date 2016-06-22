@@ -16,7 +16,7 @@ public:
 	outlet	output	= { this, "(matrix) Output", "matrix" };
 	
 	
-	jit_stencil(atoms args) {}
+	jit_stencil(const atoms& args = {}) {}
 	~jit_stencil() {}
 
 	

@@ -80,7 +80,7 @@ public:
 	outlet		output	= { this, "Output" };
 	
 
-	mini(atoms args={}) {
+	mini(const atoms& args = {}) {
 		std::string str;
 		
 		if (!args.empty()) {

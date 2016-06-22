@@ -18,7 +18,7 @@ public:
 	outlet	interval_out	= { this, "(float) the interval for the current bang" };
 
 	
-	pedro(atoms args) {}
+	pedro(const atoms& args = {}) {}
 	~pedro() {}
 
 

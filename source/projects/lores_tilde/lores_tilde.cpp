@@ -17,7 +17,7 @@ public:
 	outlet	output				= { this, "(signal) Output", "signal" };
 
 	
-	lores(atoms args) {
+	lores(const atoms& args = {}) {
 		if (args.size() > 0)
 			frequency = args[0];
 		if (args.size() > 1)

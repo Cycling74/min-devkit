@@ -75,7 +75,7 @@ public:
 	outlet	output	= { this, "(signal) Output", "signal" };
 
 	
-	xfade(atoms args={}) {}
+	xfade(const atoms& args = {}) {}
 	~xfade() {}
 	
 	

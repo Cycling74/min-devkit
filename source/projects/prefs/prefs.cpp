@@ -16,7 +16,7 @@ public:
 	inlet	input	= { this, "(bang) get the path to the preferences folder" };
 	outlet	output	= { this, "(symbol) preferences folder path" };
 
-	prefs(atoms args) {}
+	prefs(const atoms& args = {}) {}
 	~prefs() {}
 
 	
