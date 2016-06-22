@@ -33,26 +33,22 @@ public:
 	
 	
 	METHOD (dictionary) {
-		dict d = { args[0] };
-
-		if (!d.valid()) {				// make sure we have a legit dictionary before proceeding
-			c74::max::object_error(nullptr, "mf");
-			post(logger::type::error) << "mf";
-			post() << "fooey";
-			std::cout << "blech";
-			return;
+		try {
+			dict d = { args[0] };
+			
+			if (current_inlet() == 0) {
+				dict_merged = dict_right;	// start with our stored dict contents
+				dict_merged.copyunique(d);	// now merge in any keys that are not duplicated in the incoming dict
+				bang();						// send the dictionary name out the outlet
+				dict_merged.touch();		// notify anything listening remotely (e.g. dict.view objects) that we changed
+			}
+			else {
+				dict_right = d;
+			}
 		}
-		
-		if (current_inlet() == 0) {
-			dict_merged = dict_right;	// start with our stored dict contents
-			dict_merged.copyunique(d);	// now merge in any keys that are not duplicated in the incoming dict
-			bang();						// send the dictionary name out the outlet
-			dict_merged.touch();		// notify anything listening remotely (e.g. dict.view objects) that we changed
+		catch (std::runtime_error& e) {
+			post(logger::type::error) << e.what();
 		}
-		else {
-			dict_right = d;
-		}
-		
 	}
 	END
 	
