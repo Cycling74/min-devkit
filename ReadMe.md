@@ -101,9 +101,15 @@ To setup your own page:
 
 ## Additional Documentation
 
-* [How to Create a New Object](https://github.com/Cycling74/min-devkit/blob/master/HowTo-NewObject.md)
-* [How to Create a New Package](https://github.com/Cycling74/min-devkit/blob/master/HowTo-NewPackage.md)
+* [How to Create a New Object](./HowTo-NewObject.md)
+* [How to Create a New Package](./HowTo-NewPackage.md)
+* [How to Contribute to Min](./HowTo-Contribute.md)
 
+
+## Contributors / Acknowledgements
+
+* See the [GitHub Contributor Graph](https://github.com/Cycling74/min-api/graphs/contributors) for the API
+* See the [GitHub Contributor Graph](https://github.com/Cycling74/min-devkit/graphs/contributors) for the DevKit
 
 ## Support
  
