@@ -63,7 +63,7 @@ private:
 static lookup_tables tables;
 
 
-class xfade : public object, sample_operator<3,1> {
+class xfade : public object<xfade>, sample_operator<3,1> {
 public:
 	
 	// above we inherited from sample_operator<3,1> which means 3 inputs and 1 output for our calculate method
