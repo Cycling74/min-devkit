@@ -27,54 +27,52 @@ public:
 	~banger() {}
 
 
-	CLOCK (metro) {
+	timer metro = { this, MIN_FUNCTION {
 		auto interval = math::random(min, max);
 		
 		interval_out.send(interval);
 		bang_out.send("bang");
 		
 		metro.delay(interval);
-	}
-	END
-
-
-    ATTRIBUTE (min, double, 250.0) {
-		double value = args[0];
-		
-		if (value < 1.0)
-			value = 1.0;
-		
-		args[0] = value;
-    }
-    END
+		return {};
+	}};
 
 
 	/// Attributes are given a name, a type, a default value, and function to be called when setting the value
-    ATTRIBUTE (max, double, 1500.0) {
+	attribute<double> min = { this, "min", 250.0, MIN_FUNCTION {
 		double value = args[0];
 		
 		if (value < 1.0)
 			value = 1.0;
+		return {value};
+    }};
+
+
+	/// The returned atoms from the function are what will actually be assigned to the variable
+	attribute<double> max = { this, "max", 1500.0, MIN_FUNCTION {
+		double value = args[0];
 		
-		args[0] = value;
-    }
-    END
+		if (value < 1.0)
+			value = 1.0;
+		return {value};
+    }};
 
 
 	/// The optional function is executed prior to assigning the args to slide_down so it can be used for range checking.
-	ATTRIBUTE (on, bool, false) {
+	attribute<bool> on = {this, "on", false, MIN_FUNCTION {
 		if (args[0] == true)
 			metro.delay(0.0);	// fire the first one straight-away
 		else
 			metro.stop();
-	}
-	END
+		return args;
+	}};
 	
 	
-	METHOD (toggle) {			// toggle method defines an "int" input but with special metadata
+	/// toggle method defines an "int" input but with special metadata
+	method toggle = { this, "toggle", MIN_FUNCTION {
 		on = args[0];
-	}
-	END
+		return {};
+	}};
 		
 };
 

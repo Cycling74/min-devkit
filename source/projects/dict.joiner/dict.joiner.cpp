@@ -26,13 +26,13 @@ public:
 	~dict_joiner() {}
 	
 	
-	METHOD (bang) {
+	method bang = { this, "bang", MIN_FUNCTION {
 		output.send("dictionary", dict_merged.name());
-	}
-	END
+		return {};
+	}};
 	
 	
-	METHOD (dictionary) {
+	method dictionary = { this, "dictionary", MIN_FUNCTION {
 		try {
 			dict d = { args[0] };
 			
@@ -49,8 +49,8 @@ public:
 		catch (std::runtime_error& e) {
 			post(logger::type::error) << e.what();
 		}
-	}
-	END
+		return {};
+	}};
 	
 	
 private:

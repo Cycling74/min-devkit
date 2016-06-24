@@ -20,15 +20,16 @@ public:
 	~jit_clamp() {}
 
 
-	ATTRIBUTE (min, double, 0.0) {
+	attribute<double> min = { this, "min", 0.0, MIN_FUNCTION {
 		cmin = c74::max::clamp((double)args[0] * 255.0, 0.0, 255.0);
-	}
-	END
+		return args;
+	}};
 	
-	ATTRIBUTE (max, double, 1.0) {
+	
+	attribute<double> max = { this, "max", 1.0, MIN_FUNCTION {
 		cmax = c74::max::clamp((double)args[0] * 255.0, 0.0, 255.0);
-	}
-	END
+		return args;
+	}};
 
 
 	// This object process each cell independently

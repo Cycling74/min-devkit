@@ -9,8 +9,8 @@ Changes should be submitted as Github Pull Request.
 Your pull request should: 
 
 * Include a description of what your change intends to do
-* It is desirable, but not necessary, for all the tests to pass at each commit. Please see [ReadMe.md](./ReadMe.md) for instructions to build and run the test suite. 
-* Have clear and unambiguous commit messages 
+* The final commit of the pull request must pass all tests on all platforms or it will not be considered. It is desirable, but not necessary, for all the tests to pass at each commit. Please see [ReadMe.md](./ReadMe.md) for instructions to build and run the test suite.
+* All commits must have clear and unambiguous commit messages, linked to Github issue tracker number (for example, the commit message includes the text "see #1974" to link it to issue number 1974.) 
 * Include appropriate tests 
     * Tests should include reasonable permutations of the target fix/change
     * Include baseline changes with your change

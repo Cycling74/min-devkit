@@ -22,7 +22,7 @@ public:
 	~pedro() {}
 
 
-	CLOCK (metro) {
+	timer metro = {this, MIN_FUNCTION {
 		double interval = sequence[index];
 		
         interval_out.send(interval);
@@ -34,36 +34,35 @@ public:
     
         if (index == sequence.size())
             index = 0;
-        
-	}
-	END
+		return {};
+	}};
 
 
-	ATTRIBUTE (on, bool, 0) {
+	attribute<bool> on = { this, "on", false, MIN_FUNCTION {
 		if (args[0] == true)
 			metro.delay(0.0);	// fire the first one straight-away
 		else
 			metro.stop();
-	}
-	END
+		return args;
+	}};
 	
 	
-	METHOD (toggle) {			// toggle method defines an "int" input but with special metadata
+	method toggle = { this, "toggle", MIN_FUNCTION {			// toggle method defines an "int" input but with special metadata
 		on = args[0];
-	}
-	END
+		return {};
+	}};
 	
 	
-	METHOD (dictionary) {
+	method dictionary = { this, "dictionary", MIN_FUNCTION {
 		dict d = args[0];
 		sequence = d["pattern"];
-	}
-	END
+		return {};
+	}};
 	
 
 private:
-    int index = 0;
-	atoms sequence = { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
+    int		index = 0;
+	atoms	sequence = { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
 };
 
 

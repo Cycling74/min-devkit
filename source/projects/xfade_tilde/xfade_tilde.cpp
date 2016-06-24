@@ -79,30 +79,41 @@ public:
 	~xfade() {}
 	
 	
-	ATTRIBUTE (shape, symbol, shapes::equal_power) {
+	// attributes are initialized in the order in which they are defined
+	// in this case it is very important that shape be defined first so that the `table` member will be initialized
+	// prior to accessing the table in the following attribute definitions
+	//
+	// additionally, it is important to think through what this initialization means for members besides other attributes.
+	// for example, this attribute initialization will set the private `table` pointer which is declared at the end of this class.
+	// if that member were to be initialized at that point ( e.g. `lookup_table*	table = nullptr;` ) then that will override
+	// the work we do here because that comes later in the file.
+	
+	attribute<symbol> shape = {this, "shape", shapes::equal_power, MIN_FUNCTION {
 		table = tables.get(args[0]);
 		std::tie(weight1, weight2) = calculate_weights(mode, position);
-	}
-	END
+		return args;
+	}};
 
 	
-	ATTRIBUTE (mode, symbol, modes::fast) {
+	attribute<symbol> mode = {this, "mode", modes::fast, MIN_FUNCTION {
 		std::tie(weight1, weight2) = calculate_weights(args[0], position);
-	}
-	END
+		return args;
+	}};
 
 	
-	ATTRIBUTE (position, double, 0.5) {
-		double n = c74::max::clamp<double>(args[0], 0.0, 1.0);
-		args[0] = n;
+	attribute<double> position = {this, "position", 0.5, MIN_FUNCTION {
+		auto n = c74::max::clamp<double>(args[0], 0.0, 1.0);
 		
 		std::tie(weight1, weight2) = calculate_weights(mode, n);
-	}
-	END
+		return {n};
+	}};
 
 	
-	METHOD (number) { position = args[0]; } END
-	
+	method number = {this, "number", MIN_FUNCTION {
+		position = args[0];
+		return {};
+	}};
+
 
 	/// Process one sample
 	/// Note: it takes three samples as input because we defined this class to inherit from sample_operator<3,1>

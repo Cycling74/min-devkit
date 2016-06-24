@@ -25,27 +25,27 @@ public:
 			max_val = args[1];
         if (args.size() > 2)
             off_val = args[2];
-        }
+	}
 	
 	~yo() {}
 	
 	
 	/// The 'number' method is called for both ints and floats coming into the object
-	METHOD (number) {
+	method number = { this, "number", MIN_FUNCTION {
 		switch (current_inlet()) {
 			case 0: frequency = args[0];			break;
 			case 1: max_val = fmax(args[0],0.0);	break;
 			case 2: off_val = args[2];				break;
 		}
-	}
-	END
+		return {};
+	}};
 
 
 	/// The 'dspsetup' method is called any time the audio signal chain is re-compiled
-	METHOD (dspsetup) {
+	method dspsetup = { this, "dspsetup", MIN_FUNCTION {
         samplerate = args[0];
-	}
-	END
+		return {};
+	}};
 
 
 	/// The 'perform' function is called at each signal vector when the audio signal chain is running

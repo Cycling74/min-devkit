@@ -101,15 +101,15 @@ public:
 	~mini() {}
 	
 	
-	METHOD (number) {
+	method number = { this, "number", MIN_FUNCTION {
 		auto f = functions["anonymous"];
 		auto ret = f->method(args[0]);
 		output.send(ret);
-	}
-	END
+		return {};
+	}};
 	
 	
-	METHOD (define) {
+	method define = { this, "define", MIN_FUNCTION {
 		symbol		name = args[0];
 		symbol		code = args[1];
 		std::string	complete_code;
@@ -129,29 +129,29 @@ public:
 			post(logger::type::error) << "function '" << name << "' not added to object";
 			delete f;
 		}
-	}
-	END
+		return {};
+	}};
 	
 	
-	METHOD (anything) {
+	method anything = { this, "anything", MIN_FUNCTION {
 		auto f = functions[args[0]];
 		if (f) {
 			double ret = f->method(args[1]);
 			output.send(ret);
 		}
-	}
-	END
+		return {};
+	}};
 	
 	
-	METHOD (dblclick) {
+	method dblclick = { this, "dblclick", MIN_FUNCTION {
 		auto f = functions["anonymous"];
 		if (f)
 			editor.open(f->code);
-	}
-	END
+		return {};
+	}};
 	
 	
-	METHOD (savestate) {
+	method savestate = { this, "savestate", MIN_FUNCTION {
 		if (embed) {
 			auto f = functions["anonymous"];
 			if (f) {
@@ -159,8 +159,8 @@ public:
 				d["code"] = f->code;
 			}
 		}
-	}
-	END
+		return {};
+	}};
 	
 	
 private:
