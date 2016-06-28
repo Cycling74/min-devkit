@@ -68,9 +68,13 @@ public:
 	/// or if the feedback has become corrupted (such as might happen if a NaN is fed in)
 	/// then it may be neccesary to clear the filter by calling this method.
 	
-	METHOD (clear) { x_1 = y_1 = 0.0; } END
+	method clear = { this, "clear", MIN_FUNCTION {
+		x_1 = y_1 = 0.0;
+		return {};
+	}};
 	
-	ATTRIBUTE (bypass, bool, false) {} END
+	
+	attribute<bool>	bypass = { this, "bypass" , false };
 
 
 	/// Process one sample

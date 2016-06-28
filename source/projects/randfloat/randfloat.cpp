@@ -26,25 +26,17 @@ public:
 	~randfloat() {}
 
 
-	METHOD (bang) {
-        /// using math::random(), which is defined in c74_min_accessories.h (along with some other useful functions)
+	method bang = { this, "bang", MIN_FUNCTION {
+        // using math::random(), which is defined in c74_min_accessories.h (along with some other useful functions)
         double value = math::random(min,max);
 		output.send(value);
-	}
-	END
+		return {};
+	}};
 
-    /// Attributes are given a name, a type, a default value, and function to be called when setting the value
-    ATTRIBUTE (min, double, 0.0) {
-		double value = args[0];
-		args[0] = value;
-    }
-    END
-
-    ATTRIBUTE (max, double, 1.0) {
-		double value = args[0];
-		args[0] = value;
-    }
-    END
+    // Attributes are given a pointer to an owner (this, a name, and a default value.
+	// Here the optional function argument has been omitted because there is nothing special to do.
+	attribute<double> min = { this, "min", 0.0 };
+	attribute<double> max = { this, "max", 1.0 };
 };
 
 

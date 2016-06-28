@@ -28,13 +28,12 @@ public:
 	~buffer_index() {}
 	
 
-	ATTRIBUTE (channel, int, 1) {
+	attribute<int> channel = { this, "channel", 1, MIN_FUNCTION {
 		int n = args[0];
 		if (n < 1)
 			n = 1;
-		args[0] = n;
-	}
-	END
+		return {n};
+	}};
 
 
 	void perform(audio_bundle input, audio_bundle output) {

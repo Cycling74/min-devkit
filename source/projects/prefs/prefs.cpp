@@ -20,11 +20,11 @@ public:
 	~prefs() {}
 
 	
-	METHOD (bang) {
+	method bang = {this, "bang", MIN_FUNCTION {
 		std::string str = p;
 		output.send(str);
-	}
-	END
+		return {};
+	}};
 	
 	
 private:

@@ -30,32 +30,30 @@ public:
 	
 	
 	/// The 'number' method is called for both ints and floats coming into the object
-	METHOD (number) {
-		if (current_inlet() == 1) {
-			frequency = args[0];
-			calculate_coefficients();
+	method number = { this, "number", MIN_FUNCTION {
+		switch (current_inlet()) {
+			case 1: frequency = args[0]; break;
+			case 2: resonance = args[0]; break;
+			default: assert(false);
 		}
-		else if (current_inlet() == 2) {
-			resonance = args[0];
-			calculate_coefficients();
-		}
-	}
-	END
+		calculate_coefficients();
+		return {};
+	}};
 
 
 	/// Clear sample memory, e.g. to recover from a blowup
-	METHOD (clear) { y_1 = y_2 = 0.0; } END
+	method clear = { this, "clear", MIN_FUNCTION { y_1 = y_2 = 0.0; return{}; }};
 
 
 	/// The 'dspsetup' method is called any time the audio signal chain is re-compiled
-	METHOD (dspsetup) {
+	method dspsetup = { this, "dspsetup", MIN_FUNCTION {
 		double samplerate = args[0];
 		
 		two_pi_over_sr = M_2_PI / samplerate;
 		calculate_coefficients();
 		clear();
-	}
-	END
+		return {};
+	}};
 
 
 	/// The 'perform' function is called at each signal vector when the audio signal chain is running

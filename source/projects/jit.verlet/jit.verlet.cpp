@@ -23,26 +23,22 @@ public:
 	// TODO: mode attr for how to handle the edges
 	
 
-	ATTRIBUTE (distance, double, 0.1) {
+	attribute<double> distance = { this, "distance", 0.1, MIN_FUNCTION {
 		double value = args[0];
 		
 		if (value < 0.0)
 			value = 0.0;
-		
-		args[0] = value;
-	}
-	END
+		return {value};
+	}};
 	
 	
-	ATTRIBUTE (strength, double , 0.2) {
+	attribute<double> strength = { this, "strength", 0.2, MIN_FUNCTION {
 		double value = args[0];
 		
 		if (value < 0.0)
 			value = 0.0;
-		
-		args[0] = value;
-	}
-	END
+		return {value};
+	}};
 
 	
 	template<class matrix_type, size_t planecount>
