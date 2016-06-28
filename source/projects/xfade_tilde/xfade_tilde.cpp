@@ -132,6 +132,10 @@ private:
 	
 	auto calculate_weights(symbol mode, double position)
 	-> std::pair<double,double> {
+
+		if (position < 0.0 || position > 1.0)	// if position is out of range then we must not have initialized position yet
+			return std::make_pair(0.0, 0.0);	// so we bail...
+
 		double weight1;
 		double weight2;
 
@@ -165,7 +169,6 @@ private:
 	lookup_table*	table;
 	double			weight1;
 	double			weight2;
-
 };
 
 
