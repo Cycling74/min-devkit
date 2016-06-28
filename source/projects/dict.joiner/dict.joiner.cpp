@@ -47,7 +47,7 @@ public:
 			}
 		}
 		catch (std::runtime_error& e) {
-			post(logger::type::error) << e.what();
+			cerr << e.what() << endl;
 		}
 		return {};
 	}};

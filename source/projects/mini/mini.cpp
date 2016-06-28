@@ -126,7 +126,7 @@ public:
 		if (f->method)
 			functions.store(name, f);
 		else {
-			post(logger::type::error) << "function '" << name << "' not added to object";
+			cerr << "function '" << name << "' not added to object" << endl;
 			delete f;
 		}
 		return {};
