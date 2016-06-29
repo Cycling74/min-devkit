@@ -113,6 +113,18 @@ public:
 		position = args[0];
 		return {};
 	}};
+	
+	
+	// the "maxclass_setup" method is called when the class is created
+	// it is not called on an instance at what we think of in Max as "runtime"
+	method maxclass_setup = { this, "maxclass_setup", MIN_FUNCTION {
+		c74::max::t_class* c = args[0];
+		
+		CLASS_ATTR_ENUM(c,	"shape", 0, "linear equal_power square_root");
+		CLASS_ATTR_LABEL(c,	"shape", 0, "Shape of the crossfade function");
+		
+		return {};
+	}};
 
 
 	/// Process one sample
