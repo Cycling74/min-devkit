@@ -24,10 +24,7 @@ public:
 			resonance = args[1];
 		calculate_coefficients();
 	}
-	
-	
-	~lores() {}
-	
+		
 	
 	/// The 'number' method is called for both ints and floats coming into the object
 	method number = { this, "number", MIN_FUNCTION {

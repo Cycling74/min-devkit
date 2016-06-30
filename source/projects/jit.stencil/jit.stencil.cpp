@@ -17,7 +17,6 @@ public:
 	
 	
 	jit_stencil(const atoms& args = {}) {}
-	~jit_stencil() {}
 
 	
 	// TODO: mode attr for how to handle the edges

@@ -19,7 +19,6 @@ public:
 
 	
 	pedro(const atoms& args = {}) {}
-	~pedro() {}
 
 
 	timer metro = {this, MIN_FUNCTION {

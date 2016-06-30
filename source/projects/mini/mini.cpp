@@ -96,10 +96,7 @@ public:
 				define({ "anonymous", "y = x * 3.1415;" });
 		}
 	}
-	
-	
-	~mini() {}
-	
+		
 	
 	method number = { this, "number", MIN_FUNCTION {
 		auto f = functions["anonymous"];

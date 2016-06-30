@@ -76,7 +76,6 @@ public:
 
 	
 	xfade(const atoms& args = {}) {}
-	~xfade() {}
 	
 	
 	// attributes are initialized in the order in which they are defined

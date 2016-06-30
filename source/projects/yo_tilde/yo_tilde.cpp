@@ -26,9 +26,7 @@ public:
         if (args.size() > 2)
             off_val = args[2];
 	}
-	
-	~yo() {}
-	
+		
 	
 	/// The 'number' method is called for both ints and floats coming into the object
 	method number = { this, "number", MIN_FUNCTION {

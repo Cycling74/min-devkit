@@ -17,7 +17,6 @@ public:
 	
 	
 	jit_clamp(const atoms& args = {}) {}
-	~jit_clamp() {}
 
 
 	attribute<double> min = { this, "min", 0.0, MIN_FUNCTION {

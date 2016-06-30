@@ -23,10 +23,7 @@ public:
 		if (args.size() > 1)
 			channel = args[1];
 	}
-	
-	
-	~buffer_index() {}
-	
+		
 
 	attribute<int> channel = { this, "channel", 1, MIN_FUNCTION {
 		int n = args[0];

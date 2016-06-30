@@ -21,10 +21,7 @@ public:
 		if (!args.empty())
 			dict_right = dict(args);
 	}
-	
-	
-	~dict_joiner() {}
-	
+		
 	
 	method bang = { this, "bang", MIN_FUNCTION {
 		output.send("dictionary", dict_merged.name());

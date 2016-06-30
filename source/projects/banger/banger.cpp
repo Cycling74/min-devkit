@@ -24,9 +24,6 @@ public:
 	}
 
 
-	~banger() {}
-
-
 	timer metro = { this, MIN_FUNCTION {
 		auto interval = math::random(min, max);
 		

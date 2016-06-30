@@ -17,7 +17,6 @@ public:
 	
 	
 	jit_verlet(const atoms& args = {}) {}
-	~jit_verlet() {}
 
 	
 	// TODO: mode attr for how to handle the edges

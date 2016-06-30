@@ -59,7 +59,6 @@ public:
 
 	
 	dcblocker(const atoms& args = {}) {}
-	~dcblocker() {}
 	
 	
 	///	Reset the DC-Blocking filter.

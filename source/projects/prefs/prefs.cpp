@@ -17,8 +17,6 @@ public:
 	outlet	output	= { this, "(symbol) preferences folder path" };
 
 	prefs(const atoms& args = {}) {}
-	~prefs() {}
-
 	
 	method bang = {this, "bang", MIN_FUNCTION {
 		std::string str = p;
@@ -26,10 +24,8 @@ public:
 		return {};
 	}};
 	
-	
 private:
 	path	p = path::system::preferences;
-	
 };
 
 

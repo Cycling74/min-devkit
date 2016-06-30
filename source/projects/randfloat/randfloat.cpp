@@ -23,9 +23,6 @@ public:
 	}
 
 
-	~randfloat() {}
-
-
 	method bang = { this, "bang", MIN_FUNCTION {
         // using math::random(), which is defined in c74_min_accessories.h (along with some other useful functions)
         double value = math::random(min,max);
