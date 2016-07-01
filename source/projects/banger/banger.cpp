@@ -36,33 +36,39 @@ public:
 
 
 	/// Attributes are given a name, a type, a default value, and function to be called when setting the value
-	attribute<double> min = { this, "min", 250.0, MIN_FUNCTION {
-		double value = args[0];
-		
-		if (value < 1.0)
-			value = 1.0;
-		return {value};
-    }};
+	attribute<double> min = { this, "min", 250.0,
+		setter { MIN_FUNCTION {
+			double value = args[0];
+			
+			if (value < 1.0)
+				value = 1.0;
+			return {value};
+		}}
+	};
 
 
 	/// The returned atoms from the function are what will actually be assigned to the variable
-	attribute<double> max = { this, "max", 1500.0, MIN_FUNCTION {
-		double value = args[0];
-		
-		if (value < 1.0)
-			value = 1.0;
-		return {value};
-    }};
+	attribute<double> max = { this, "max", 1500.0,
+		setter { MIN_FUNCTION {
+			double value = args[0];
+			
+			if (value < 1.0)
+				value = 1.0;
+			return {value};
+		}}
+	};
 
 
 	/// The optional function is executed prior to assigning the args to slide_down so it can be used for range checking.
-	attribute<bool> on = {this, "on", false, MIN_FUNCTION {
-		if (args[0] == true)
-			metro.delay(0.0);	// fire the first one straight-away
-		else
-			metro.stop();
-		return args;
-	}};
+	attribute<bool> on = {this, "on", false,
+		setter { MIN_FUNCTION {
+			if (args[0] == true)
+				metro.delay(0.0);	// fire the first one straight-away
+			else
+				metro.stop();
+			return args;
+		}}
+	};
 	
 	
 	/// toggle method defines an "int" input but with special metadata

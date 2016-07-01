@@ -37,13 +37,15 @@ public:
 	}};
 
 
-	attribute<bool> on = { this, "on", false, MIN_FUNCTION {
-		if (args[0] == true)
-			metro.delay(0.0);	// fire the first one straight-away
-		else
-			metro.stop();
-		return args;
-	}};
+	attribute<bool> on = { this, "on", false,
+		setter { MIN_FUNCTION {
+			if (args[0] == true)
+				metro.delay(0.0);	// fire the first one straight-away
+			else
+				metro.stop();
+			return args;
+		}}
+	};
 	
 	
 	method toggle = { this, "toggle", MIN_FUNCTION {			// toggle method defines an "int" input but with special metadata
