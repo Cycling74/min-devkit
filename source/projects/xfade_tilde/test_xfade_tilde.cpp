@@ -23,6 +23,8 @@ SCENARIO( "object produces correct output" ) {
 	GIVEN( "An instance of xfade~" ) {
 		xfade	my_object;
 		
+//		my_object.reset();
+		
 		// check that default attr values are correct
 		
 		REQUIRE( my_object.shape == "equal_power" );	// note: symbols can be compared with strings
