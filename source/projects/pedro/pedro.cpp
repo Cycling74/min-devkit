@@ -55,7 +55,8 @@ public:
 	
 	
 	method dictionary = { this, "dictionary", MIN_FUNCTION {
-		dict d = args[0];
+		dict d{ args[0] };
+		
 		sequence = d["pattern"];
 		return {};
 	}};

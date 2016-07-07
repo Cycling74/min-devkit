@@ -152,7 +152,7 @@ public:
 		if (embed) {
 			auto f = functions["anonymous"];
 			if (f) {
-				dict d = args[0];
+				dict d { args[0] };
 				d["code"] = f->code;
 			}
 		}
