@@ -106,6 +106,9 @@ To setup your own page:
 * [How to Create a New Package](./HowTo-NewPackage.md)
 * [How to Contribute to Min](./HowTo-Contribute.md)
 
+* [Guide To Writing Objects](https://github.com/Cycling74/min-api/doc/GuideToWritingObjects.md)
+
+
 
 ## Contributors / Acknowledgements
 
