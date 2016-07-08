@@ -72,6 +72,8 @@ private:
 };
 
 
+using function_map = std::unordered_map<string, std::unique_ptr<minifun>>;
+
 
 class mini : public object<mini> {
 public:
@@ -99,7 +101,7 @@ public:
 		
 	
 	method number = { this, "number", MIN_FUNCTION {
-		auto f = functions["anonymous"];
+		auto f = functions["anonymous"].get();
 		auto ret = f->method(args[0]);
 		output.send(ret);
 		return {};
@@ -117,21 +119,18 @@ public:
 		complete_code += ";";				// in case we have a 1-liner with no semi-colon at the end
 		complete_code += "return y;}";
 		
-		auto f = new minifun(name, code, complete_code);
-		// TODO: above should be unique pointer -- can we use C++14?
-		// TODO: leaking this memory if successful!
+		auto f = std::make_unique<minifun>(name, code, complete_code);
 		if (f->method)
-			functions.store(name, f);
-		else {
+			functions[string(name)] = std::move(f);
+		else
 			cerr << "function '" << name << "' not added to object" << endl;
-			delete f;
-		}
+
 		return {};
 	}};
 	
 	
 	method anything = { this, "anything", MIN_FUNCTION {
-		auto f = functions[args[0]];
+		auto f = functions[args[0]].get();
 		if (f) {
 			double ret = f->method(args[1]);
 			output.send(ret);
@@ -141,7 +140,7 @@ public:
 	
 	
 	method dblclick = { this, "dblclick", MIN_FUNCTION {
-		auto f = functions["anonymous"];
+		auto f = functions["anonymous"].get();
 		if (f)
 			editor.open(f->code);
 		return {};
@@ -150,7 +149,7 @@ public:
 	
 	method savestate = { this, "savestate", MIN_FUNCTION {
 		if (embed) {
-			auto f = functions["anonymous"];
+			auto f = functions["anonymous"].get();
 			if (f) {
 				dict d { args[0] };
 				d["code"] = f->code;
@@ -161,12 +160,9 @@ public:
 	
 	
 private:
-
-	bool			embed = true;	// save contents in the patcher file
 	
-	// TODO: below should be a unique pointer!
-	map<minifun*>	functions;
-
+	bool			embed = true;	// save contents in the patcher file
+	function_map	functions;
 	texteditor		editor = { this, [this](const char* text) {
 									atoms as = { "anonymous", text };
 									define(as);
