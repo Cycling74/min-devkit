@@ -88,7 +88,7 @@ public:
 			embed = false;
 		}
 		else {
-			auto saved_state = state();							// 'state()' fetches the dictionary for our object in the patcher
+			auto saved_state { state() };							// 'state()' fetches the dictionary for our object in the patcher
 			auto saved_code = saved_state["code"];				// we save our code internally in a custom key named 'code'
 			if (!saved_code.empty())
 				define({ "anonymous", std::to_string(saved_code) });
