@@ -9,10 +9,46 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
+#ifdef DOESNT_WORK_YET
 
 // 1. Include the source of our object so that we can access it
 
-#include "xfade_tilde.cpp"
+#include "banger.cpp"
+
+
+// 1.5  We need special test stuff
+// TODO: where do we put this stuff?
+
+// mock lib
+
+// Special stuff for the mocked testing environment
+
+namespace c74 {
+namespace max {
+		
+
+	/**	A vector of atoms.	*/
+	typedef std::vector<c74::max::t_atom>	t_atom_vector;
+
+	/** A sequence of atom vectors.
+		Used to log inlet and outlet activity in the mock environment.
+		We can use logging of inlet and outlet sequences for BDD.
+		We can also do more traditional state-based testing.
+		Or mix-n-match as we see fit...
+	 
+		@remark		should sequences have time-stamps?
+	 */
+	typedef std::vector<t_atom_vector>	t_sequence;
+
+
+	t_sequence& object_getoutput(void *o, int outletnum);
+
+}}
+
+using namespace std;
+using namespace std::chrono_literals;
+
+
 
 
 // 2. Now write a Catch unit test as described at
@@ -20,43 +56,51 @@
 
 SCENARIO( "object produces correct output" ) {
 	
-	GIVEN( "An instance of xfade~" ) {
-		xfade	my_object;
-		
-//		my_object.reset();
+	using namespace std::chrono_literals;
+//	std::cout << "Hello waiter" << std::endl;
+//	auto start = std::chrono::high_resolution_clock::now();
+//	std::this_thread::sleep_for(2s);
+//	auto end = std::chrono::high_resolution_clock::now();
+//	std::chrono::duration<double, std::milli> elapsed = end-start;
+//	std::cout << "Waited " << elapsed.count() << " ms\n";
+
+	GIVEN( "An instance of our object" ) {
+		banger	my_object;
 		
 		// check that default attr values are correct
 		
-		REQUIRE( my_object.shape == "equal_power" );	// note: symbols can be compared with strings
-		REQUIRE( my_object.mode == "fast" );
-		REQUIRE( my_object.position == Approx(0.5) );	// note: floating-point values may be subject to rounding errors
+		REQUIRE( my_object.on == false );
+		REQUIRE( my_object.min == Approx(250.0) );		// note: floating-point values may be subject to rounding errors
+		REQUIRE( my_object.max == Approx(1500.0) );
 		
 		// now proceed to testing various sequences of events
-		
 		WHEN( "the defaults are used" ) {
-			THEN( "the output is equal-power" ) {
+			THEN( "nothing is produced by the object after waiting 5 seconds" ) {
+			
+				cout << "About to wait for 5 seconds..." << endl;
 				
-				// args are the audio inputs: source-1, source-2, and position (optional)
+				// 1. Wait for 5 seconds
+				std::this_thread::sleep_for(5s);
 				
-				auto result = my_object.calculate(0.0, 1.0);
-				
-				// the default mode is 'fast', which means a 512-point lookup table is used
-				// thus we have 9-bits of resolution and the quantization error for that is -56 dB
-				// which calculates out to approx 0.00195 -- so we use that as epsilon
-				// to determine the amount of acceptable deviation in our check below
-				
-				REQUIRE( result == Approx ( std::sqrt(2.0)/2.0 ).epsilon(0.00195) );
+				cout << "done!" << endl;
+				// 2. See if there was any output
+				auto output = c74::max::object_getoutput(my_object, 0);
+				REQUIRE( output.size() == 0 );
 			}
-			AND_THEN( "verify the output is equal-power by swapping the inputs" ) {
+			AND_THEN( "turning it on does produce output" ) {
 				
-				// this will make sure that both input signals are being scaled appropriately
+				// 1. Wait for 5 seconds
+				std::this_thread::sleep_for(5s);
+
 				
-				auto result = my_object.calculate(1.0, 0.0);
+				// 2. See if there was any output
 				
-				REQUIRE( result == Approx ( std::sqrt(2.0)/2.0 ).epsilon(0.00195) );
+				
+				
 			}
 		}
 		
+/*
 		AND_WHEN( "The mode is set to 'precision'" ) {
 			THEN ("the results are more accurate") {
 				
@@ -112,5 +156,8 @@ SCENARIO( "object produces correct output" ) {
 				REQUIRE( result4 == Approx ( 0.5 ).epsilon(0.00195) );
 			}
 		}
+ */
 	}
 }
+
+#endif // DOESNT_WORK_YET

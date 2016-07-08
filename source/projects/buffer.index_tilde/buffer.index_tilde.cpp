@@ -25,12 +25,14 @@ public:
 	}
 		
 
-	attribute<int> channel = { this, "channel", 1, MIN_FUNCTION {
-		int n = args[0];
-		if (n < 1)
-			n = 1;
-		return {n};
-	}};
+	attribute<int> channel = { this, "channel", 1,
+		setter { MIN_FUNCTION {
+			int n = args[0];
+			if (n < 1)
+				n = 1;
+			return {n};
+		}}
+	};
 
 
 	void perform(audio_bundle input, audio_bundle output) {

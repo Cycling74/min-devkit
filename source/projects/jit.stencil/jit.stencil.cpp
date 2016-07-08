@@ -22,22 +22,26 @@ public:
 	// TODO: mode attr for how to handle the edges
 	
 
-	attribute<long> x = { this, "x", 0, MIN_FUNCTION {
-		double value = args[0];
-		
-		if (value < 0)
-			value = 0;
-		return {value};
-	}};
+	attribute<long> x = { this, "x", 0,
+		setter { MIN_FUNCTION {
+			double value = args[0];
+			
+			if (value < 0)
+				value = 0;
+			return {value};
+		}}
+	};
 	
 	
-	attribute<long> y = { this, "y", 0, MIN_FUNCTION {
-		double value = args[0];
-		
-		if (value < 0)
-			value = 0;
-		return {value};
-	}};
+	attribute<long> y = { this, "y", 0,
+		setter { MIN_FUNCTION {
+			double value = args[0];
+			
+			if (value < 0)
+				value = 0;
+			return {value};
+		}}
+	};
 
 	
 	template<class matrix_type, size_t planecount>

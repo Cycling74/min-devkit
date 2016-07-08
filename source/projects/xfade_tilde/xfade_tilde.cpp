@@ -15,15 +15,6 @@ namespace shapes {
 	static const symbol square_root = "square_root";
 }
 
-namespace modes {
-	static const symbol precision = "precision";
-	static const symbol fast = "fast";
-}
-
-//enum modes : size_t {
-//	precision = (size_t)c74::max::gensym("precision")
-//};
-
 
 using lookup_table = std::vector<double>;
 
@@ -87,25 +78,45 @@ public:
 	// if that member were to be initialized at that point ( e.g. `lookup_table*	table = nullptr;` ) then that will override
 	// the work we do here because that comes later in the file.
 	
-	attribute<symbol> shape = {this, "shape", shapes::equal_power, MIN_FUNCTION {
-		table = tables.get(args[0]);
-		std::tie(weight1, weight2) = calculate_weights(mode, position);
-		return args;
-	}};
-
+	attribute<symbol> shape = {
+		this,
+		"shape",
+		shapes::equal_power,
+		setter { MIN_FUNCTION {
+			table = tables.get(args[0]);
+			std::tie(weight1, weight2) = calculate_weights(mode, position);
+			return args;
+		}},
+		title {"Shape of Crossfade Function"},
+		range {shapes::linear, shapes::equal_power, shapes::square_root}
+	};
 	
-	attribute<symbol> mode = {this, "mode", modes::fast, MIN_FUNCTION {
-		std::tie(weight1, weight2) = calculate_weights(args[0], position);
-		return args;
-	}};
 
+	attribute<symbol> mode = {
+		this,
+		"mode",
+		"fast",
+		setter { MIN_FUNCTION {
+			std::tie(weight1, weight2) = calculate_weights(args[0], position);
+			return args;
+		}},
+		title {"Calculation Modality"},
+		range {"fast", "precision"}
+	};
 	
-	attribute<double> position = {this, "position", 0.5, MIN_FUNCTION {
-		auto n = c74::max::clamp<double>(args[0], 0.0, 1.0);
-		
-		std::tie(weight1, weight2) = calculate_weights(mode, n);
-		return {n};
-	}};
+	
+	attribute<double> position = {
+		this,
+		"position",
+		0.5,
+		setter { MIN_FUNCTION {
+			auto n = c74::max::clamp<double>(args[0], 0.0, 1.0);
+			std::tie(weight1, weight2) = calculate_weights(mode, n);
+			return {n};
+		}},
+		title {"Normalized Position"},
+		range { 0.0, 1.0}
+	};
 
 	
 	method number = {this, "number", MIN_FUNCTION {
@@ -113,18 +124,6 @@ public:
 		return {};
 	}};
 	
-	
-	// the "maxclass_setup" method is called when the class is created
-	// it is not called on an instance at what we think of in Max as "runtime"
-	method maxclass_setup = { this, "maxclass_setup", MIN_FUNCTION {
-		c74::max::t_class* c = args[0];
-		
-		CLASS_ATTR_ENUM(c,	"shape", 0, "linear equal_power square_root");
-		CLASS_ATTR_LABEL(c,	"shape", 0, "Shape of the crossfade function");
-		
-		return {};
-	}};
-
 
 	/// Process one sample
 	/// Note: it takes three samples as input because we defined this class to inherit from sample_operator<3,1>
