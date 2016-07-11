@@ -55,8 +55,7 @@
 					"maxclass" : "scope~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 725.0, 515.0, 130.0, 130.0 ],
-					"presentation_rect" : [ 723.0, 517.0, 0.0, 0.0 ],
+					"patching_rect" : [ 545.0, 690.0, 130.0, 130.0 ],
 					"style" : ""
 				}
 
@@ -67,7 +66,7 @@
 					"maxclass" : "scope~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 360.0, 515.0, 130.0, 130.0 ],
+					"patching_rect" : [ 550.0, 555.0, 130.0, 130.0 ],
 					"style" : ""
 				}
 
@@ -78,7 +77,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 485.0, 720.0, 45.0, 45.0 ],
+					"patching_rect" : [ 210.0, 645.0, 45.0, 45.0 ],
 					"style" : ""
 				}
 

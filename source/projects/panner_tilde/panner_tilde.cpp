@@ -56,7 +56,7 @@ private:
 static lookup_tables tables;
 
 
-class panner : public object<panner>, sample_operator<2,2> {
+class panner : public object<panner>, public sample_operator<2,2> {
 public:
 	
 	inlet	in1		= { this, "(signal) Input 1" };

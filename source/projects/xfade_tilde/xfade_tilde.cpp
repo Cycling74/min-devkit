@@ -54,7 +54,7 @@ private:
 static lookup_tables tables;
 
 
-class xfade : public object<xfade>, sample_operator<3,1> {
+class xfade : public object<xfade>, public sample_operator<3,1> {
 public:
 	
 	// above we inherited from sample_operator<3,1> which means 3 inputs and 1 output for our calculate method
@@ -128,13 +128,13 @@ public:
 	/// Process one sample
 	/// Note: it takes three samples as input because we defined this class to inherit from sample_operator<3,1>
 	
-	sample calculate(sample in1, sample in2, sample position = 0.5) {
+	samples<1> calculate(sample in1, sample in2, sample position = 0.5) {
 		auto weight1 = this->weight1;
 		auto weight2 = this->weight2;
 		
 		if (in_pos.has_signal_connection())
 			std::tie(weight1, weight2) = calculate_weights(mode, position);
-		return in1*weight1 + in2*weight2;
+		return {{ in1*weight1 + in2*weight2 }};
 	}
 
 	
