@@ -5,6 +5,7 @@ sysbuild
 *.opensdf
 log.txt
 externals
+extensions
 support
 build
 tests

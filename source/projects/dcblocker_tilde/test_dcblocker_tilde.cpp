@@ -13,13 +13,14 @@ TEST_CASE( "produces valid impulse response" ) {
 	dcblocker	my_object;
 	
 	// create an impulse buffer to process
-	const int	buffersize = 256;
-	samples		impulse(buffersize);
+	const int		buffersize = 256;
+	sample_vector	impulse(buffersize);
+	
 	std::fill_n(impulse.begin(), buffersize, 0.0);
 	impulse[0] = 1.0;
 	
 	// output from our object's processing
-	samples		output;
+	sample_vector	output;
 	
 	// run the calculations
 	for (auto x : impulse) {
@@ -38,8 +39,9 @@ TEST_CASE( "produces valid impulse response" ) {
 SCENARIO( "responds appropriately to messages and attrs" ) {
 	
 	// create an input buffer to process... 10 cycles of a cos wave
-	const int	buffersize = 1024;
-	samples		input(buffersize);
+	const int		buffersize = 1024;
+	sample_vector	input(buffersize);
+	
 	std::generate(input.begin(), input.end(), math::cosine<sample>(buffersize, 10));
 	
 	GIVEN( "An instance of dcblocker~" ) {
@@ -51,7 +53,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			for (auto& x : input)
 				x += 1.5;
 
-			samples output;
+			sample_vector output;
 
 			// run the processing a few times to give the filter time to settle
 			for (auto i=0; i<100; ++i) {
@@ -82,7 +84,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 		WHEN( "the bypass attr is turned-on" ) {
 			my_object.bypass = true;
 			
-			samples output;
+			sample_vector output;
 			for (auto x : input) {
 				auto y = my_object.calculate(x);
 				output.push_back(y);
@@ -94,7 +96,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 		AND_WHEN( "the bypass is turned back off" ) {
 			my_object.bypass = false;
 			
-			samples output;
+			sample_vector output;
 			for (auto x : input) {
 				auto y = my_object.calculate(x);
 				output.push_back(y);
@@ -113,14 +115,14 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			// then zero and process
 			std::fill_n(input.begin(), buffersize, 0.0);
 			
-			samples output;
+			sample_vector output;
 			for (auto x : input) {
 				auto y = my_object.calculate(x);
 				output.push_back(y);
 			}
 			
 			THEN( "the input is all zeroes" )
-				REQUIRE( input == samples(buffersize, 0.0) );
+				REQUIRE( input == sample_vector(buffersize, 0.0) );
 			AND_THEN( "the output will not immediately go down zero" )
 				REQUIRE( output != input );
 		}
@@ -128,14 +130,14 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			std::fill_n(input.begin(), buffersize, 0.0);
 			my_object.clear();
 			
-			samples output;
+			sample_vector output;
 			for (auto x : input) {
 				auto y = my_object.calculate(x);
 				output.push_back(y);
 			}
 			
 			THEN( "the input is still all zeroes" )
-				REQUIRE( input == samples(buffersize, 0.0) );
+				REQUIRE( input == sample_vector(buffersize, 0.0) );
 			AND_THEN( "the output snaps immediately to zero" )
 				REQUIRE( output == input );
 		}

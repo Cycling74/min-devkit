@@ -7,7 +7,9 @@
 #include "c74_min.h"
 
 using namespace c74::min;
+using namespace std;
 
+// TODO: all of this can be shared with the xfade~ object...
 
 namespace shapes {
 	static const symbol linear = "linear";
@@ -54,29 +56,20 @@ private:
 static lookup_tables tables;
 
 
-class xfade : public object<xfade>, public sample_operator<3,1> {
+class panner : public object<panner>, public sample_operator<2,2> {
 public:
 	
-	// above we inherited from sample_operator<3,1> which means 3 inputs and 1 output for our calculate method
-	// we still need to create the interface for the object though, which includes the assistance strings...
-	
 	inlet	in1		= { this, "(signal) Input 1" };
-	inlet	in2		= { this, "(signal) Input 2" };
 	inlet	in_pos	= { this, "(signal) Position between them (0..1)" };
-	outlet	output	= { this, "(signal) Output", "signal" };
+	outlet	out1	= { this, "(signal) Left Output", "signal" };
+	outlet	out2	= { this, "(signal) Right Output", "signal" };
 
 	
-	xfade(const atoms& args = {}) {}
+	panner(const atoms& args = {}) {}
 	
 	
-	// attributes are initialized in the order in which they are defined
-	// in this case it is very important that shape be defined first so that the `table` member will be initialized
-	// prior to accessing the table in the following attribute definitions
-	//
-	// additionally, it is important to think through what this initialization means for members besides other attributes.
-	// for example, this attribute initialization will set the private `table` pointer which is declared at the end of this class.
-	// if that member were to be initialized at that point ( e.g. `lookup_table*	table = nullptr;` ) then that will override
-	// the work we do here because that comes later in the file.
+	// TODO: even the attributes and methods are the same as xfade~ ...
+	
 	
 	attribute<symbol> shape = {
 		this,
@@ -126,15 +119,15 @@ public:
 	
 
 	/// Process one sample
-	/// Note: it takes three samples as input because we defined this class to inherit from sample_operator<3,1>
 	
-	sample calculate(sample in1, sample in2, sample position = 0.5) {
+	samples<2> calculate(sample input, sample position = 0.5) {
 		auto weight1 = this->weight1;
 		auto weight2 = this->weight2;
 		
 		if (in_pos.has_signal_connection())
 			std::tie(weight1, weight2) = calculate_weights(mode, position);
-		return in1*weight1 + in2*weight2;
+		
+		return {{ input * weight1, input * weight2 }};
 	}
 
 	
@@ -182,4 +175,4 @@ private:
 };
 
 
-MIN_EXTERNAL(xfade);
+MIN_EXTERNAL(panner);
