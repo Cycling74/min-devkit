@@ -119,7 +119,6 @@ public:
 	
 
 	/// Process one sample
-	/// Note: it takes three samples as input because we defined this class to inherit from sample_operator<3,1>
 	
 	samples<2> calculate(sample input, sample position = 0.5) {
 		auto weight1 = this->weight1;
