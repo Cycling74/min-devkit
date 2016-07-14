@@ -18,7 +18,7 @@ Here are some suggestions:
 The folder will typically contain 3 files:
 
 * The source file for the object (e.g. `xfade_tilde.cpp`)
-* The source file for a unit test (e.g. `test_xfade_tilde.cpp`)
+* The source file for a unit test (e.g. `xfade_tilde_test.cpp`)
 * A project file (e.g. `CMakeLists.txt`)
 
 If you follow the standard convention of the Min-DevKit you will not typically need to open or modify the `CMakeLists.txt` at all.
@@ -32,7 +32,7 @@ The steps to follow are these:
 1. Duplicate the folder of the object you chose as a starting point.
 2. Rename the folder to the name you desire for your object.
 3. Rename the source file for the object to match the name of the folder.
-4. If creating a unit test for your object, rename the source file for the unit test to match the name of the folder but with "test_" prepended to the beginning.
+4. If creating a unit test for your object, rename the source file for the unit test to match the name of the folder but with "_test" added to the end.
 
 
 ## 3. Use CMake to regenerate project files
@@ -61,5 +61,5 @@ Alternatively you can run them on the command line using Cmake, for example:
 
 * `cd ..`
 * `cd tests`
-* mac example: `./test_dcblocker_tilde -s`
-* win example: `test_dcblocker_tilde.exe -s`
+* mac example: `./dcblocker_tilde_test -s`
+* win example: `dcblocker_tilde_test.exe -s`
