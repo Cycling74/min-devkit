@@ -26,15 +26,15 @@ public:
 	friend class mini;
 	
 	mini_function_wrapper(symbol fn_name, symbol fn_code, string fn_complete_code)
-	: name(fn_name)
-	, code(fn_code)
-	, complete_code(fn_complete_code)
+	: m_name			{ fn_name }
+	, m_code			{ fn_code }
+	, m_complete_code	{ fn_complete_code }
 	{
-		compiler = c74::max::object_new(c74::max::CLASS_NOBOX, c74::max::gensym("clang"), (c74::max::t_symbol*)name);
-		object_attr_setlong(compiler, c74::max::gensym("cpp"), 1);
+		m_compiler = c74::max::object_new(c74::max::CLASS_NOBOX, c74::max::gensym("clang"), (c74::max::t_symbol*)m_name);
+		object_attr_setlong(m_compiler, symbol("cpp"), 1);
 		
 		// Configure system paths:
-		object_method(compiler, c74::max::gensym("include_standard_headers"));
+		object_method(m_compiler, symbol("include_standard_headers"));
 		
 		// Configure include paths:
 		// object_method(clang, gensym("include"), gensym("/usr/local/include"));
@@ -44,9 +44,9 @@ public:
 		
 		// Compile C code:
 		atom ret;
-		auto maxstr = c74::max::string_new(complete_code.c_str());
+		auto maxstr = c74::max::string_new(m_complete_code.c_str());
 		
-		object_method_obj(compiler, c74::max::gensym("compile"), (c74::max::t_object*)maxstr, &ret);
+		object_method_obj(m_compiler, c74::max::gensym("compile"), (c74::max::t_object*)maxstr, &ret);
 		// TODO: ???
 		object_free(maxstr);
 		
@@ -59,9 +59,9 @@ public:
 		// Get a function pointer:
 		atom fun;
 		
-		object_method_sym(compiler, c74::max::gensym("getfunction"), c74::max::gensym("func"), &fun);
+		object_method_sym(m_compiler, c74::max::gensym("getfunction"), c74::max::gensym("func"), &fun);
 		
-		method = (mini_function*)atom_getobj(&fun);
+		m_method = (mini_function*)atom_getobj(&fun);
 	}
 	
 	
@@ -71,11 +71,11 @@ public:
 	}
 	
 private:
-	symbol				name;
-	symbol				code;				// TODO: make string class in the symbol header?
-	string				complete_code;
-	c74::max::t_object*	compiler;			// TODO: make instance
-	mini_function*		method = nullptr;
+	symbol				m_name;
+	symbol				m_code;				// TODO: make string class in the symbol header?
+	string				m_complete_code;
+	c74::max::t_object*	m_compiler;			// TODO: make instance
+	mini_function*		m_method { nullptr };
 };
 
 
@@ -125,7 +125,7 @@ public:
 		complete_code += "return y;}";
 		
 		auto f = make_unique<mini_function_wrapper>(name, code, complete_code);
-		if (f->method)
+		if (f->m_method)
 			functions[string(name)] = move(f);
 		else
 			cerr << "function '" << name << "' not added to object" << endl;
@@ -137,7 +137,7 @@ public:
 	/// Execute the "anonymous" method
 	method number { this, "number", MIN_FUNCTION {
 		auto f = functions["anonymous"].get();
-		auto ret = f->method(args[0]);
+		auto ret = f->m_method(args[0]);
 		output.send(ret);
 		return {};
 	}};
@@ -147,7 +147,7 @@ public:
 	method anything { this, "anything", MIN_FUNCTION {
 		auto f = functions[args[0]].get();
 		if (f) {
-			double ret = f->method(args[1]);
+			double ret = f->m_method(args[1]);
 			output.send(ret);
 		}
 		return {};
@@ -158,7 +158,7 @@ public:
 	method dblclick { this, "dblclick", MIN_FUNCTION {
 		auto f = functions["anonymous"].get();
 		if (f)
-			editor.open(f->code);
+			editor.open(f->m_code);
 		return {};
 	}};
 	
@@ -169,7 +169,7 @@ public:
 			auto f = functions["anonymous"].get();
 			if (f) {
 				dict d { args[0] };
-				d["code"] = f->code;
+				d["code"] = f->m_code;
 			}
 		}
 		return {};
