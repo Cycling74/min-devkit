@@ -18,10 +18,7 @@ public:
 	outlet	interval_out	{ this, "(float) the interval for the current bang" };
 
 	
-	pedro(const atoms& args = {}) {}
-
-
-	timer metro {this, MIN_FUNCTION {
+	timer	metro			{this, MIN_FUNCTION {
 		double interval = sequence[index];
 		
         interval_out.send(interval);

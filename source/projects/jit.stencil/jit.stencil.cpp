@@ -14,9 +14,6 @@ public:
 	
 	inlet	input	{ this, "(matrix) Input", "matrix" };
 	outlet	output	{ this, "(matrix) Output", "matrix" };
-	
-	
-	jit_stencil(const atoms& args = {}) {}
 
 	
 	// TODO: mode attr for how to handle the edges

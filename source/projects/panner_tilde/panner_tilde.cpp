@@ -63,12 +63,6 @@ public:
 	inlet	in_pos	{ this, "(signal) Position between them (0..1)" };
 	outlet	out1	{ this, "(signal) Left Output", "signal" };
 	outlet	out2	{ this, "(signal) Right Output", "signal" };
-
-	
-	panner(const atoms& args = {}) {}
-	
-	
-	// TODO: even the attributes and methods are the same as xfade~ ...
 	
 	
 	attribute<symbol> shape {

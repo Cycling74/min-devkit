@@ -15,9 +15,6 @@ public:
 	inlet	input	{ this, "(matrix) Input", "matrix" };
 	outlet	output	{ this, "(matrix) Output", "matrix" };
 	
-	
-	jit_clamp(const atoms& args = {}) {}
-
 
 	attribute<double> min { this, "min", 0.0,
 		setter { MIN_FUNCTION {

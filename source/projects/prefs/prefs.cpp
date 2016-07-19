@@ -15,10 +15,8 @@ public:
 
 	inlet	input	{ this, "(bang) get the path to the preferences folder" };
 	outlet	output	{ this, "(symbol) preferences folder path" };
-
-	prefs(const atoms& args = {}) {}
 	
-	method bang {this, "bang", MIN_FUNCTION {
+	method	bang	{this, "bang", MIN_FUNCTION {
 		std::string str = p;
 		output.send(str);
 		return {};

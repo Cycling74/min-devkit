@@ -56,9 +56,6 @@ public:
 	
 	inlet	input	{ this, "(signal) Input" };
 	outlet	output	{ this, "(signal) Output", "signal" };
-
-	
-	dcblocker(const atoms& args = {}) {}
 	
 	
 	///	Reset the DC-Blocking filter.

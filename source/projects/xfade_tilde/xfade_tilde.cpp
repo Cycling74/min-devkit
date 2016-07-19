@@ -64,10 +64,6 @@ public:
 	inlet	in2		{ this, "(signal) Input 2" };
 	inlet	in_pos	{ this, "(signal) Position between them (0..1)" };
 	outlet	output	{ this, "(signal) Output", "signal" };
-
-	
-	xfade(const atoms& args = {}) {}
-	
 	
 	// attributes are initialized in the order in which they are defined
 	// in this case it is very important that shape be defined first so that the `table` member will be initialized
