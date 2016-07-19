@@ -36,7 +36,7 @@ SCENARIO( "object produces correct output" ) {
 				
 				// args are the audio inputs: source-1, source-2, and position (optional)
 				
-				auto result = my_object.calculate(1.0);
+				auto result = my_object(1.0);
 				
 				// the default mode is 'fast', which means a 512-point lookup table is used
 				// thus we have 9-bits of resolution and the quantization error for that is -56 dB
@@ -55,7 +55,7 @@ SCENARIO( "object produces correct output" ) {
 				
 				my_object.mode = "precision";
 				
-				auto result = my_object.calculate(1.0);
+				auto result = my_object(1.0);
 			
 				// and now we don't need to define a custom epsilon because there is no quantization error
 				
@@ -68,10 +68,10 @@ SCENARIO( "object produces correct output" ) {
 				// internally when we change the attribute value
 				
 				my_object.mode = "precision";
-				auto result_precision = my_object.calculate(1.0)[0];
+				auto result_precision = my_object(1.0)[0];
 
 				my_object.mode = "fast";
-				auto result_fast = my_object.calculate(1.0)[0];
+				auto result_fast = my_object(1.0)[0];
 
 				REQUIRE( result_precision != Approx( result_fast ) );
 			}
@@ -86,7 +86,7 @@ SCENARIO( "object produces correct output" ) {
 				a_new_panner_object.mode = "precision";
 				a_new_panner_object.position = 0.5;
 				
-				auto result = a_new_panner_object.calculate(1.0);
+				auto result = a_new_panner_object(1.0);
 
 				REQUIRE( result[0] == Approx ( 0.5 ) );
 				REQUIRE( result[1] == Approx ( 0.5 ) );
@@ -94,7 +94,7 @@ SCENARIO( "object produces correct output" ) {
 				
 				a_new_panner_object.mode = "fast";
 
-				auto result_b = a_new_panner_object.calculate(1.0);
+				auto result_b = a_new_panner_object(1.0);
 
 				REQUIRE( result_b[0] == Approx ( 0.5 ).epsilon(0.00195) );
 				REQUIRE( result_b[1] == Approx ( 0.5 ).epsilon(0.00195) );

@@ -76,8 +76,8 @@ public:
 	/// Process one sample
 	/// Note that we don't worry about denormal values in the feedback because
 	/// Max takes care of squashing them for us by setting the FTZ bit on the CPU.
-	
-	sample calculate(sample x) {
+
+	sample operator()(sample x) {
 		if (bypass)
 			return x;
 		else {

@@ -116,15 +116,15 @@ public:
 
 	
 	method number {this, "number", MIN_FUNCTION {
-		position = args[0];
+		position = args;
 		return {};
 	}};
 	
 
-	/// Process one sample
-	/// Note: it takes three samples as input because we defined this class to inherit from sample_operator<3,1>
+	/// Call operator: process a single sample
+	/// Note that it takes three samples as input because we defined this class to inherit from sample_operator<3,1>
 	
-	sample calculate(sample in1, sample in2, sample position = 0.5) {
+	sample operator()(sample in1, sample in2, sample position = 0.5) {
 		auto weight1 = this->weight1;
 		auto weight2 = this->weight2;
 		

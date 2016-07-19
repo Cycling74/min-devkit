@@ -24,7 +24,7 @@ TEST_CASE( "produces valid impulse response" ) {
 	
 	// run the calculations
 	for (auto x : impulse) {
-		auto y = my_object.calculate(x);
+		auto y = my_object(x);
 		output.push_back(y);
 	}
 	
@@ -59,7 +59,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			for (auto i=0; i<100; ++i) {
 				output.clear();
 				for (auto x : input) {
-					auto y = my_object.calculate(x);
+					auto y = my_object(x);
 					output.push_back(y);
 				}
 			}
@@ -86,7 +86,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			
 			sample_vector output;
 			for (auto x : input) {
-				auto y = my_object.calculate(x);
+				auto y = my_object(x);
 				output.push_back(y);
 			}
 			
@@ -98,7 +98,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			
 			sample_vector output;
 			for (auto x : input) {
-				auto y = my_object.calculate(x);
+				auto y = my_object(x);
 				output.push_back(y);
 			}
 			
@@ -108,7 +108,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 		WHEN( "the input goes silent" ) {
 			// dirty the history first
 			for (auto x : input) {
-				auto y = my_object.calculate(x);
+				auto y = my_object(x);
 				//output.push_back(y);
 			}
 
@@ -117,7 +117,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			
 			sample_vector output;
 			for (auto x : input) {
-				auto y = my_object.calculate(x);
+				auto y = my_object(x);
 				output.push_back(y);
 			}
 			
@@ -132,7 +132,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			
 			sample_vector output;
 			for (auto x : input) {
-				auto y = my_object.calculate(x);
+				auto y = my_object(x);
 				output.push_back(y);
 			}
 			

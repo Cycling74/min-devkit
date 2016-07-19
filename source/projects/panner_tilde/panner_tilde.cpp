@@ -107,14 +107,14 @@ public:
 
 	
 	method number {this, "number", MIN_FUNCTION {
-		position = args[0];
+		position = args;
 		return {};
 	}};
 	
 
 	/// Process one sample
 	
-	samples<2> calculate(sample input, sample position = 0.5) {
+	samples<2> operator()(sample input, sample position = 0.5) {
 		auto weight1 = this->weight1;
 		auto weight2 = this->weight2;
 		
