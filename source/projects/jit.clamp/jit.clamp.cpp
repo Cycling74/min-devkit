@@ -12,14 +12,11 @@ using namespace c74::min;
 class jit_clamp : public object<jit_clamp>, matrix_operator {
 public:
 	
-	inlet	input	= { this, "(matrix) Input", "matrix" };
-	outlet	output	= { this, "(matrix) Output", "matrix" };
+	inlet	input	{ this, "(matrix) Input", "matrix" };
+	outlet	output	{ this, "(matrix) Output", "matrix" };
 	
-	
-	jit_clamp(const atoms& args = {}) {}
 
-
-	attribute<double> min = { this, "min", 0.0,
+	attribute<double> min { this, "min", 0.0,
 		setter { MIN_FUNCTION {
 			cmin = c74::max::clamp((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
@@ -27,7 +24,7 @@ public:
 	};
 	
 	
-	attribute<double> max = { this, "max", 1.0,
+	attribute<double> max { this, "max", 1.0,
 		setter { MIN_FUNCTION {
 			cmax = c74::max::clamp((double)args[0] * 255.0, 0.0, 255.0);
 			return args;

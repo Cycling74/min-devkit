@@ -13,14 +13,14 @@ using namespace std;
 class convolve : public object<convolve> {
 public:
 
-	inlet	input	= { this, "(list) values to convolve" };
-	outlet	output	= { this, "(list) result of convolution" };
-
+	using fvec = vector<double>;
 	
-	convolve(const atoms& args = {}) {}
+	inlet			input	{ this, "(list) values to convolve" };
+	outlet			output	{ this, "(list) result of convolution" };
 
-	
-	method list = { this, "list", MIN_FUNCTION {
+	attribute<fvec>	kernel	{ this, "kernel", {1.0, 0.0} };
+
+	method			list	{ this, "list", MIN_FUNCTION {
 		const vector<double>&	kernel = this->kernel;
 		atoms					result(args.size());
 		
@@ -42,9 +42,7 @@ public:
 		output.send(result);
 		return {};
 	}};
-	
 
-	attribute<vector<double>> kernel = { this, "kernel", {1.0, 0.0} };
 };
 
 

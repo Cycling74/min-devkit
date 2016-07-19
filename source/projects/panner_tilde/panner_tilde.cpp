@@ -59,19 +59,13 @@ static lookup_tables tables;
 class panner : public object<panner>, public sample_operator<2,2> {
 public:
 	
-	inlet	in1		= { this, "(signal) Input 1" };
-	inlet	in_pos	= { this, "(signal) Position between them (0..1)" };
-	outlet	out1	= { this, "(signal) Left Output", "signal" };
-	outlet	out2	= { this, "(signal) Right Output", "signal" };
-
-	
-	panner(const atoms& args = {}) {}
+	inlet	in1		{ this, "(signal) Input 1" };
+	inlet	in_pos	{ this, "(signal) Position between them (0..1)" };
+	outlet	out1	{ this, "(signal) Left Output", "signal" };
+	outlet	out2	{ this, "(signal) Right Output", "signal" };
 	
 	
-	// TODO: even the attributes and methods are the same as xfade~ ...
-	
-	
-	attribute<symbol> shape = {
+	attribute<symbol> shape {
 		this,
 		"shape",
 		shapes::equal_power,
@@ -85,7 +79,7 @@ public:
 	};
 	
 
-	attribute<symbol> mode = {
+	attribute<symbol> mode {
 		this,
 		"mode",
 		"fast",
@@ -98,7 +92,7 @@ public:
 	};
 	
 	
-	attribute<double> position = {
+	attribute<double> position {
 		this,
 		"position",
 		0.5,
@@ -112,15 +106,15 @@ public:
 	};
 
 	
-	method number = {this, "number", MIN_FUNCTION {
-		position = args[0];
+	method number {this, "number", MIN_FUNCTION {
+		position = args;
 		return {};
 	}};
 	
 
 	/// Process one sample
 	
-	samples<2> calculate(sample input, sample position = 0.5) {
+	samples<2> operator()(sample input, sample position = 0.5) {
 		auto weight1 = this->weight1;
 		auto weight2 = this->weight2;
 		

@@ -36,7 +36,7 @@ SCENARIO( "object produces correct output" ) {
 				
 				// args are the audio inputs: source-1, source-2, and position (optional)
 				
-				auto result = my_object.calculate(0.0, 1.0);
+				auto result = my_object(0.0, 1.0);
 				
 				// the default mode is 'fast', which means a 512-point lookup table is used
 				// thus we have 9-bits of resolution and the quantization error for that is -56 dB
@@ -49,7 +49,7 @@ SCENARIO( "object produces correct output" ) {
 				
 				// this will make sure that both input signals are being scaled appropriately
 				
-				auto result = my_object.calculate(1.0, 0.0);
+				auto result = my_object(1.0, 0.0);
 				
 				REQUIRE( result == Approx ( std::sqrt(2.0)/2.0 ).epsilon(0.00195) );
 			}
@@ -62,8 +62,8 @@ SCENARIO( "object produces correct output" ) {
 				
 				my_object.mode = "precision";
 				
-				auto result1 = my_object.calculate(0.0, 1.0);
-				auto result2 = my_object.calculate(1.0, 0.0);
+				auto result1 = my_object(0.0, 1.0);
+				auto result2 = my_object(1.0, 0.0);
 			
 				// and now we don't need to define a custom epsilon because there is no quantization error
 				
@@ -76,10 +76,10 @@ SCENARIO( "object produces correct output" ) {
 				// internally when we change the attribute value
 				
 				my_object.mode = "precision";
-				auto result_precision = my_object.calculate(1.0, 0.0);
+				auto result_precision = my_object(1.0, 0.0);
 
 				my_object.mode = "fast";
-				auto result_fast = my_object.calculate(1.0, 0.0);
+				auto result_fast = my_object(1.0, 0.0);
 
 				REQUIRE( result_precision != Approx( result_fast ) );
 			}
@@ -94,8 +94,8 @@ SCENARIO( "object produces correct output" ) {
 				a_new_xfade_object.mode = "precision";
 				a_new_xfade_object.position = 0.5;
 				
-				auto result1 = a_new_xfade_object.calculate(0.0, 1.0);
-				auto result2 = a_new_xfade_object.calculate(1.0, 0.0);
+				auto result1 = a_new_xfade_object(0.0, 1.0);
+				auto result2 = a_new_xfade_object(1.0, 0.0);
 
 				REQUIRE( result1 == Approx ( 0.5 ) );
 				REQUIRE( result2 == Approx ( 0.5 ) );
@@ -103,12 +103,39 @@ SCENARIO( "object produces correct output" ) {
 				
 				a_new_xfade_object.mode = "fast";
 
-				auto result3 = a_new_xfade_object.calculate(0.0, 1.0);
-				auto result4 = a_new_xfade_object.calculate(1.0, 0.0);
+				auto result3 = a_new_xfade_object(0.0, 1.0);
+				auto result4 = a_new_xfade_object(1.0, 0.0);
 
 				REQUIRE( result3 == Approx ( 0.5 ).epsilon(0.00195) );
 				REQUIRE( result4 == Approx ( 0.5 ).epsilon(0.00195) );
 			}
+		}
+		
+		AND_WHEN ("The position is changed by attribute") {
+			xfade x;
+			
+			x.mode = "precision";
+			x.shape = "linear";
+			x.position = 0.25;
+			
+			auto y0 = x(0.0, 1.0);
+			auto y1 = x(1.0, 0.0);
+
+			REQUIRE( y0 == Approx(0.25) );
+			REQUIRE( y1 == Approx(0.75) );
+		}
+		AND_WHEN ("The position is changed by number message") {
+			xfade x;
+			
+			x.mode = "precision";
+			x.shape = "linear";
+			x.number(0.33);
+			
+			auto y0 = x(0.0, 1.0);
+			auto y1 = x(1.0, 0.0);
+			
+			REQUIRE( y0 == Approx(0.33) );
+			REQUIRE( y1 == Approx(0.67) );
 		}
 	}
 }

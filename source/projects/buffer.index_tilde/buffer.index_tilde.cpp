@@ -11,10 +11,10 @@ using namespace c74::min;
 class buffer_index : public object<buffer_index>, perform_operator {
 public:
 	
-	inlet				index_inlet		= { this, "(signal) Sample index" };
-	inlet				channel_inlet	= { this, "(float) Audio channel to use from buffer~" };
-	outlet				output			= { this, "(signal) Sample value at index", "signal" };
-	buffer_reference	buffer			= { this };
+	inlet				index_inlet		{ this, "(signal) Sample index" };
+	inlet				channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
+	outlet				output			{ this, "(signal) Sample value at index", "signal" };
+	buffer_reference	buffer			{ this };
 	
 	
 	buffer_index(const atoms& args = {}) {
@@ -25,7 +25,7 @@ public:
 	}
 		
 
-	attribute<int> channel = { this, "channel", 1,
+	attribute<int> channel { this, "channel", 1,
 		setter { MIN_FUNCTION {
 			int n = args[0];
 			if (n < 1)
@@ -36,19 +36,19 @@ public:
 
 
 	void perform(audio_bundle input, audio_bundle output) {
-		auto		in = input.samples[0];
-		auto		out = output.samples[0];
+		auto		in = input.samples(0);
+		auto		out = output.samples(0);
 		buffer_lock	b(buffer);
 		auto		chan = std::min<int>(channel-1, b.channelcount());
 		
 		if (b.valid()) {
-			for (auto i=0; i<input.frame_count; ++i) {
+			for (auto i=0; i<input.framecount(); ++i) {
 				auto frame = in[i] + 0.5;
 				out[i] = b.lookup(frame, chan);
 			}
 		}
 		else {
-			for (auto i=0; i<input.frame_count; ++i)
+			for (auto i=0; i<input.framecount(); ++i)
 				out[i] = 0.0;
 		}
 	}
