@@ -87,8 +87,8 @@ using function_map = std::unordered_map<string, std::unique_ptr<mini_function_wr
 class mini : public object<mini> {
 public:
 	
-	inlet		input	= { this, "Input" };
-	outlet		output	= { this, "Output" };
+	inlet	input  { this, "Input" };
+	outlet	output { this, "Output" };
 	
 
 	/// Arguments to the constructor are interpreted as source code for the "anonymous" method.
@@ -113,7 +113,7 @@ public:
 		
 	
 	/// Define a new method, mapping it to a name
-	method define = { this, "define", MIN_FUNCTION {
+	method define { this, "define", MIN_FUNCTION {
 		symbol	name = args[0];
 		symbol	code = args[1];
 		string	complete_code;
@@ -135,7 +135,7 @@ public:
 	
 	
 	/// Execute the "anonymous" method
-	method number = { this, "number", MIN_FUNCTION {
+	method number { this, "number", MIN_FUNCTION {
 		auto f = functions["anonymous"].get();
 		auto ret = f->method(args[0]);
 		output.send(ret);
@@ -144,7 +144,7 @@ public:
 	
 	
 	/// Execute a named method, the first arg being the name of the method
-	method anything = { this, "anything", MIN_FUNCTION {
+	method anything { this, "anything", MIN_FUNCTION {
 		auto f = functions[args[0]].get();
 		if (f) {
 			double ret = f->method(args[1]);
@@ -155,7 +155,7 @@ public:
 	
 	
 	/// Open the editor window.
-	method dblclick = { this, "dblclick", MIN_FUNCTION {
+	method dblclick { this, "dblclick", MIN_FUNCTION {
 		auto f = functions["anonymous"].get();
 		if (f)
 			editor.open(f->code);
@@ -164,7 +164,7 @@ public:
 	
 	
 	/// Save the state of the editor window with the patcher.
-	method savestate = { this, "savestate", MIN_FUNCTION {
+	method savestate { this, "savestate", MIN_FUNCTION {
 		if (embed) {
 			auto f = functions["anonymous"].get();
 			if (f) {
@@ -178,10 +178,10 @@ public:
 	
 private:
 	
-	bool			embed = true;	// save contents in the patcher file
+	bool			embed { true };	// save contents in the patcher file
 	function_map	functions;		// map names to their corresponding mini_function_wrapper
 	
-	texteditor editor = { this, [this](const char* text) {
+	texteditor editor { this, [this](const char* text) {
 		atoms as = { "anonymous", text };
 		define(as);
 	}};

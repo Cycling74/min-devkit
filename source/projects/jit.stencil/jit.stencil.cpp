@@ -12,8 +12,8 @@ using namespace c74::min;
 class jit_stencil : public object<jit_stencil>, matrix_operator {
 public:
 	
-	inlet	input	= { this, "(matrix) Input", "matrix" };
-	outlet	output	= { this, "(matrix) Output", "matrix" };
+	inlet	input	{ this, "(matrix) Input", "matrix" };
+	outlet	output	{ this, "(matrix) Output", "matrix" };
 	
 	
 	jit_stencil(const atoms& args = {}) {}
@@ -22,7 +22,7 @@ public:
 	// TODO: mode attr for how to handle the edges
 	
 
-	attribute<long> x = { this, "x", 0,
+	attribute<long> x { this, "x", 0,
 		setter { MIN_FUNCTION {
 			double value = args[0];
 			
@@ -33,7 +33,7 @@ public:
 	};
 	
 	
-	attribute<long> y = { this, "y", 0,
+	attribute<long> y { this, "y", 0,
 		setter { MIN_FUNCTION {
 			double value = args[0];
 			

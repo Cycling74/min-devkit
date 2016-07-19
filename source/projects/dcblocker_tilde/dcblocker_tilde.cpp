@@ -54,8 +54,8 @@ using namespace c74::min;
 class dcblocker : public object<dcblocker>, sample_operator<1,1> {
 public:
 	
-	inlet	input				= { this, "(signal) Input" };
-	outlet	output				= { this, "(signal) Output", "signal" };
+	inlet	input	{ this, "(signal) Input" };
+	outlet	output	{ this, "(signal) Output", "signal" };
 
 	
 	dcblocker(const atoms& args = {}) {}
@@ -67,13 +67,13 @@ public:
 	/// or if the feedback has become corrupted (such as might happen if a NaN is fed in)
 	/// then it may be neccesary to clear the filter by calling this method.
 	
-	method clear = { this, "clear", MIN_FUNCTION {
+	method clear { this, "clear", MIN_FUNCTION {
 		x_1 = y_1 = 0.0;
 		return {};
 	}};
 	
 	
-	attribute<bool>	bypass = { this, "bypass" , false };
+	attribute<bool>	bypass { this, "bypass" , false };
 
 
 	/// Process one sample
@@ -93,8 +93,8 @@ public:
 	
 
 private:
-	sample	x_1 = 0.0;	///< Input history
-	sample	y_1 = 0.0;	///< Output history
+	sample	x_1 { 0.0 };	///< Input history
+	sample	y_1 { 0.0 };	///< Output history
 };
 
 

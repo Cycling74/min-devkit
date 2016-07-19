@@ -60,10 +60,10 @@ public:
 	// above we inherited from sample_operator<3,1> which means 3 inputs and 1 output for our calculate method
 	// we still need to create the interface for the object though, which includes the assistance strings...
 	
-	inlet	in1		= { this, "(signal) Input 1" };
-	inlet	in2		= { this, "(signal) Input 2" };
-	inlet	in_pos	= { this, "(signal) Position between them (0..1)" };
-	outlet	output	= { this, "(signal) Output", "signal" };
+	inlet	in1		{ this, "(signal) Input 1" };
+	inlet	in2		{ this, "(signal) Input 2" };
+	inlet	in_pos	{ this, "(signal) Position between them (0..1)" };
+	outlet	output	{ this, "(signal) Output", "signal" };
 
 	
 	xfade(const atoms& args = {}) {}
@@ -78,7 +78,7 @@ public:
 	// if that member were to be initialized at that point ( e.g. `lookup_table*	table = nullptr;` ) then that will override
 	// the work we do here because that comes later in the file.
 	
-	attribute<symbol> shape = {
+	attribute<symbol> shape {
 		this,
 		"shape",
 		shapes::equal_power,
@@ -92,7 +92,7 @@ public:
 	};
 	
 
-	attribute<symbol> mode = {
+	attribute<symbol> mode {
 		this,
 		"mode",
 		"fast",
@@ -105,7 +105,7 @@ public:
 	};
 	
 	
-	attribute<double> position = {
+	attribute<double> position {
 		this,
 		"position",
 		0.5,
@@ -119,7 +119,7 @@ public:
 	};
 
 	
-	method number = {this, "number", MIN_FUNCTION {
+	method number {this, "number", MIN_FUNCTION {
 		position = args[0];
 		return {};
 	}};

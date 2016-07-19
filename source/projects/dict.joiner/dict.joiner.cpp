@@ -12,9 +12,9 @@ using namespace c74::min;
 class dict_joiner : public object<dict_joiner> {
 public:
 	
-	inlet	left	= { this, "dictionary to combined with dictionary at right inlet",	"" };
-	inlet	right	= { this, "dictionary to combined with dictionary at left inlet",	"dictionary" };
-	outlet	output	= { this, "dictionary of entries combined from both inlets",		"dictionary" };
+	inlet	left	{ this, "dictionary to combined with dictionary at right inlet",	"" };
+	inlet	right	{ this, "dictionary to combined with dictionary at left inlet",	"dictionary" };
+	outlet	output	{ this, "dictionary of entries combined from both inlets",		"dictionary" };
 	
 	
 	dict_joiner(const atoms& args = {}) {
@@ -23,13 +23,13 @@ public:
 	}
 		
 	
-	method bang = { this, "bang", MIN_FUNCTION {
+	method bang { this, "bang", MIN_FUNCTION {
 		output.send("dictionary", dict_merged.name());
 		return {};
 	}};
 	
 	
-	method dictionary = { this, "dictionary", MIN_FUNCTION {
+	method dictionary { this, "dictionary", MIN_FUNCTION {
 		try {
 			dict d = { args[0] };
 			
@@ -51,8 +51,8 @@ public:
 	
 	
 private:
-	dict	dict_right = { symbol(true) };
-	dict	dict_merged = { symbol(true) };
+	dict	dict_right { symbol(true) };
+	dict	dict_merged { symbol(true) };
 };
 
 

@@ -13,15 +13,15 @@ using namespace c74::min;
 class pedro : public object<pedro> {
 public:
 
-	inlet	input			= { this, "(toggle) on/off" };
-	outlet	bang_out		= { this, "(bang) triggers at according to specified pattern" };
-	outlet	interval_out	= { this, "(float) the interval for the current bang" };
+	inlet	input			{ this, "(toggle) on/off" };
+	outlet	bang_out		{ this, "(bang) triggers at according to specified pattern" };
+	outlet	interval_out	{ this, "(float) the interval for the current bang" };
 
 	
 	pedro(const atoms& args = {}) {}
 
 
-	timer metro = {this, MIN_FUNCTION {
+	timer metro {this, MIN_FUNCTION {
 		double interval = sequence[index];
 		
         interval_out.send(interval);
@@ -37,7 +37,7 @@ public:
 	}};
 
 
-	attribute<bool> on = { this, "on", false,
+	attribute<bool> on { this, "on", false,
 		setter { MIN_FUNCTION {
 			if (args[0] == true)
 				metro.delay(0.0);	// fire the first one straight-away
@@ -48,13 +48,13 @@ public:
 	};
 	
 	
-	method toggle = { this, "toggle", MIN_FUNCTION {			// toggle method defines an "int" input but with special metadata
+	method toggle { this, "toggle", MIN_FUNCTION {			// toggle method defines an "int" input but with special metadata
 		on = args[0];
 		return {};
 	}};
 	
 	
-	method dictionary = { this, "dictionary", MIN_FUNCTION {
+	method dictionary { this, "dictionary", MIN_FUNCTION {
 		dict d{ args[0] };
 		
 		sequence = d["pattern"];
@@ -63,8 +63,8 @@ public:
 	
 
 private:
-    int		index = 0;
-	atoms	sequence = { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
+	int		index { 0 };
+	atoms	sequence { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
 };
 
 
