@@ -71,12 +71,12 @@ public:
 	};
 	
 	
-	/// toggle method defines an "int" input but with special metadata
-	method toggle { this, "toggle", MIN_FUNCTION {
+	/// toggle the state of the timer
+	method toggle { this, "int", MIN_FUNCTION {
 		on = args[0];
 		return {};
 	}};
-		
+
 };
 
 
