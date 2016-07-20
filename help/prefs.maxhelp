@@ -44,8 +44,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 60.0, 229.0, 496.0, 22.0 ],
-					"style" : "",
-					"text" : "\"Macintosh HD:/Users/tim/Library/Application Support/Cycling '74/Max 7\""
+					"style" : ""
 				}
 
 			}
