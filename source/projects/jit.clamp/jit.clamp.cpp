@@ -35,9 +35,9 @@ public:
 	// This object process each cell independently
 	// So we define "calc_cell" instead of "calc_matrix"
 	
-	template<typename T>
-	T calc_cell(T input, const matrix_info& info, matrix_coord& position) {
-		T output;
+	template<typename matrix_type>
+	matrix_type calc_cell(matrix_type input, const matrix_info& info, matrix_coord& position) {
+		matrix_type output;
 		
 		for (auto plane=0; plane<info.planecount(); ++plane)
 			output[plane] = MIN_CLAMP(input[plane], min, max);
