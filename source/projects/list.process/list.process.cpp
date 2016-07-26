@@ -18,32 +18,30 @@ public:
 	outlet			out2	{ this, "(list) result" };
 
 
+	// For enum attributes you first define your enum class.
+	// The indices must start at zero and increase sequentially.
+
 	enum class operations : int {
 		collect = 0,
 		average
 	};
 
-	
-	attribute<operations> operation { this, "operation", operations::collect };
+	// You then define the symbols to associate with your enum values.
+	// These will be indexed starting at zero.
+	// You must have one for each item in the actual enum.
 
-	
-	message number { this, "number", MIN_FUNCTION {
-		if (operation == operations::collect) {
-			m_data.reserve( m_data.size() + args.size() );
-			m_data.insert( m_data.end(), args.begin(), args.end() );
-		}
-		return {};
-	}};
-	
-	
-	message bang { this, "bang", MIN_FUNCTION {
-		out1.send(m_data);
-		m_data.clear();
-		return {};
-	}};
+	enum_map operations_range = {
+		"collect",
+		"average"
+	};
+
+	// Finally, you create the attribute...
+	// specialized with the type of the enum and with the range passed as one of the optional args.
+
+	attribute<operations> operation { this, "operation", operations::collect, operations_range };
 
 
-	// method to process lists from either the 'list' or 'anything' messages
+	// Here we demonstrate sharing a function to process lists from either the 'list' or 'anything' messages.
 
 	c74::min::function process = MIN_FUNCTION {
 		switch (operation) {
@@ -63,6 +61,22 @@ public:
 	message list		{ this, "list", process };
 	message anything	{ this, "anything", process };
 
+
+	message number { this, "number", MIN_FUNCTION {
+		if (operation == operations::collect) {
+			m_data.reserve( m_data.size() + args.size() );
+			m_data.insert( m_data.end(), args.begin(), args.end() );
+		}
+		return {};
+	}};
+
+
+	message bang { this, "bang", MIN_FUNCTION {
+		out1.send(m_data);
+		m_data.clear();
+		return {};
+	}};
+		
 
 private:
 	atoms	m_data;
