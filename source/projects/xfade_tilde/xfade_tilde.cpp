@@ -106,7 +106,7 @@ public:
 		"position",
 		0.5,
 		setter { MIN_FUNCTION {
-			auto n = c74::max::clamp<double>(args[0], 0.0, 1.0);
+			auto n = MIN_CLAMP(double(args[0]), 0.0, 1.0);
 			std::tie(weight1, weight2) = calculate_weights(mode, n);
 			return {n};
 		}},
@@ -115,7 +115,7 @@ public:
 	};
 
 	
-	method number {this, "number", MIN_FUNCTION {
+	message number {this, "number", MIN_FUNCTION {
 		position = args;
 		return {};
 	}};
