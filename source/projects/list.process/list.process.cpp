@@ -41,9 +41,11 @@ public:
 		m_data.clear();
 		return {};
 	}};
-	
-	
-	message list { this, "list", MIN_FUNCTION {
+
+
+	// method to process lists from either the 'list' or 'anything' messages
+
+	c74::min::function process = MIN_FUNCTION {
 		switch (operation) {
 			case operations::collect:
 				m_data.reserve( m_data.size() + args.size() );
@@ -56,14 +58,14 @@ public:
 				break;
 		}
 		return {};
-	}};
+	};
+	
+	message list		{ this, "list", process };
+	message anything	{ this, "anything", process };
 
-	
-	
+
 private:
 	atoms	m_data;
-	
-}; 
-
+};
 
 MIN_EXTERNAL(list_process);

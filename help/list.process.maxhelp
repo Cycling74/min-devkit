@@ -38,6 +38,34 @@
 		"subpatcher_template" : "tap.template",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 610.0, 205.0, 78.0, 23.0 ],
+					"presentation_rect" : [ 572.0, 74.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "moo shoo flu"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 570.0, 135.0, 90.0, 23.0 ],
+					"presentation_rect" : [ 568.0, 136.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "1 2. foo pi 3.14"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-15",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -83,7 +111,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 595.0, 465.0, 393.0, 23.0 ],
 					"style" : "",
-					"text" : "3. 1.414214"
+					"text" : "1 2 3 4 5"
 				}
 
 			}
@@ -214,7 +242,25 @@
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
 					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-12", 0 ]
 				}
 
 			}
