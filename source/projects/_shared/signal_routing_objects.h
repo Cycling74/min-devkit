@@ -125,8 +125,8 @@ protected:
 		double weight2;
 		
 		if (mode == "fast") {
-			size_t index1 = (1.0 - position) * (lookup_tables::size-1);
-			size_t index2 = position * (lookup_tables::size-1);
+			auto index1 = size_t((1.0 - position) * (lookup_tables::size-1));
+			auto index2 = size_t(position * (lookup_tables::size-1));
 			
 			weight1 = (*table)[index1];
 			weight2 = (*table)[index2];

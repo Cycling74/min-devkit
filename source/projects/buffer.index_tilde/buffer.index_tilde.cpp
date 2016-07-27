@@ -43,7 +43,7 @@ public:
 		
 		if (b.valid()) {
 			for (auto i=0; i<input.framecount(); ++i) {
-				auto frame = in[i] + 0.5;
+				auto frame = size_t(in[i] + 0.5);
 				out[i] = b.lookup(frame, chan);
 			}
 		}

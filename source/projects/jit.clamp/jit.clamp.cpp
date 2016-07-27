@@ -18,7 +18,7 @@ public:
 
 	attribute<double> min { this, "min", 0.0,
 		setter { MIN_FUNCTION {
-			cmin = MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
+			cmin = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
 		}}
 	};
@@ -26,7 +26,7 @@ public:
 	
 	attribute<double> max { this, "max", 1.0,
 		setter { MIN_FUNCTION {
-			cmax = MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
+			cmax = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
 		}}
 	};
