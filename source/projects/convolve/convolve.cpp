@@ -20,7 +20,7 @@ public:
 
 	attribute<fvec>	kernel	{ this, "kernel", {1.0, 0.0} };
 
-	method			list	{ this, "list", MIN_FUNCTION {
+	message			list	{ this, "list", MIN_FUNCTION {
 		const vector<double>&	kernel = this->kernel;
 		atoms					result(args.size());
 		

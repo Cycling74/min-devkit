@@ -45,13 +45,13 @@ public:
 	};
 	
 	
-	method toggle { this, "int", MIN_FUNCTION {
+	message toggle { this, "int", MIN_FUNCTION {
 		on = args[0];
 		return {};
 	}};
 	
 	
-	method dictionary { this, "dictionary", MIN_FUNCTION {
+	message dictionary { this, "dictionary", MIN_FUNCTION {
 		dict d{ args[0] };
 		
 		sequence = d["pattern"];

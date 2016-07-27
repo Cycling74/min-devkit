@@ -18,7 +18,7 @@ public:
 
 	attribute<double> min { this, "min", 0.0,
 		setter { MIN_FUNCTION {
-			cmin = c74::max::clamp((double)args[0] * 255.0, 0.0, 255.0);
+			cmin = MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
 		}}
 	};
@@ -26,7 +26,7 @@ public:
 	
 	attribute<double> max { this, "max", 1.0,
 		setter { MIN_FUNCTION {
-			cmax = c74::max::clamp((double)args[0] * 255.0, 0.0, 255.0);
+			cmax = MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
 		}}
 	};

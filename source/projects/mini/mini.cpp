@@ -113,7 +113,7 @@ public:
 		
 	
 	/// Define a new method, mapping it to a name
-	method define { this, "define", MIN_FUNCTION {
+	message define { this, "define", MIN_FUNCTION {
 		symbol	name = args[0];
 		symbol	code = args[1];
 		string	complete_code;
@@ -135,7 +135,7 @@ public:
 	
 	
 	/// Execute the "anonymous" method
-	method number { this, "number", MIN_FUNCTION {
+	message number { this, "number", MIN_FUNCTION {
 		auto f = functions["anonymous"].get();
 		auto ret = f->m_method(args[0]);
 		output.send(ret);
@@ -144,7 +144,7 @@ public:
 	
 	
 	/// Execute a named method, the first arg being the name of the method
-	method anything { this, "anything", MIN_FUNCTION {
+	message anything { this, "anything", MIN_FUNCTION {
 		auto f = functions[args[0]].get();
 		if (f) {
 			double ret = f->m_method(args[1]);
@@ -155,7 +155,7 @@ public:
 	
 	
 	/// Open the editor window.
-	method dblclick { this, "dblclick", MIN_FUNCTION {
+	message dblclick { this, "dblclick", MIN_FUNCTION {
 		auto f = functions["anonymous"].get();
 		if (f)
 			editor.open(f->m_code);
@@ -164,7 +164,7 @@ public:
 	
 	
 	/// Save the state of the editor window with the patcher.
-	method savestate { this, "savestate", MIN_FUNCTION {
+	message savestate { this, "savestate", MIN_FUNCTION {
 		if (embed) {
 			auto f = functions["anonymous"].get();
 			if (f) {

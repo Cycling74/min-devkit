@@ -23,13 +23,13 @@ public:
 	}
 		
 	
-	method bang { this, "bang", MIN_FUNCTION {
+	message bang { this, "bang", MIN_FUNCTION {
 		output.send("dictionary", dict_merged.name());
 		return {};
 	}};
 	
 	
-	method dictionary { this, "dictionary", MIN_FUNCTION {
+	message dictionary { this, "dictionary", MIN_FUNCTION {
 		try {
 			dict d = { args[0] };
 			

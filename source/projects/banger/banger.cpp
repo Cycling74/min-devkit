@@ -72,7 +72,7 @@ public:
 	
 	
 	/// toggle the state of the timer
-	method toggle { this, "int", MIN_FUNCTION {
+	message toggle { this, "int", MIN_FUNCTION {
 		on = args[0];
 		return {};
 	}};

@@ -17,6 +17,7 @@ include_directories(
 add_library( 
 	${PROJECT_NAME} 
 	MODULE
+	../_shared/signal_routing_objects.h
 	${PROJECT_NAME}.cpp
 )
 
