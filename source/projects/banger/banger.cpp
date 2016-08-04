@@ -14,6 +14,7 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_TAGS		{ "time" };
 	MIN_DESCRIPTION { "Bang at random intervals." };
+	MIN_RELATED		{ "pedro, live.beat, metro, tempo, drunk" };
 
 	inlet	input			{ this, "(toggle) on/off" };
 	outlet	bang_out		{ this, "(bang) triggers at randomized interval" };
