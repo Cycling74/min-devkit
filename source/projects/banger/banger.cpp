@@ -8,14 +8,13 @@
 
 using namespace c74::min;
 
-
 class banger : public object<banger> {
 public:
+
 	MIN_DESCRIPTION { "Bang at random intervals." };
 	MIN_TAGS		{ "time" };
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "pedro, link.beat, metro, tempo, drunk" };
-
 	
 	inlet	input			{ this, "(toggle) on/off" };
 	outlet	bang_out		{ this, "(bang) triggers at randomized interval" };

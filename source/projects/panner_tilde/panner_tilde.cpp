@@ -12,6 +12,11 @@
 class panner : public signal_routing_base<panner>, public sample_operator<2,2> {
 public:
 	
+	MIN_DESCRIPTION { "Pan an input to two outputs." };
+	MIN_TAGS		{ "audio, routing" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "xfade~, matrix~" };
+
 	inlet	in1		{ this, "(signal) Input 1" };
 	inlet	in_pos	{ this, "(signal) Position between them (0..1)" };
 	outlet	out1	{ this, "(signal) Left Output", "signal" };
@@ -30,6 +35,5 @@ public:
 		return {{ input * weight1, input * weight2 }};
 	}
 };
-
 
 MIN_EXTERNAL(panner);

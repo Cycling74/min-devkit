@@ -10,12 +10,12 @@ using namespace c74::min;
 
 class buffer_index : public object<buffer_index>, perform_operator {
 public:
+	
 	MIN_DESCRIPTION { "Read from a buffer~." };
 	MIN_TAGS		{ "audio, sampling" };
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "index~, buffer~, wave~" };
 
-	
 	inlet				index_inlet		{ this, "(signal) Sample index" };
 	inlet				channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
 	outlet				output			{ this, "(signal) Sample value at index", "signal" };

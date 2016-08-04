@@ -8,11 +8,9 @@
 
 using namespace c74::min;
 
-
 class dcblocker : public object<dcblocker>, sample_operator<1,1> {
 public:
-	MIN_AUTHOR		{	"Cycling '74"		};
-	MIN_TAGS		{	"audio, filters"	};
+
 	MIN_DESCRIPTION {	"Filter out DC offset. "
 						"The DC offset or <a href='https://en.wikipedia.org/wiki/DC_bias'>DC bias</a>, is removed by applying a first-order highpass filter to the input."
 						"<br/><br/>"
@@ -54,12 +52,16 @@ public:
 						"For reference, in this last case, the power is attenuated by -6 db (magnitude attenuated by -12 dB) @ 0.0798 * pi,"
 						"which at fs=44100 translates to 1759.59 Hz."
 	};
+	MIN_TAGS		{	"audio, filters"		};
+	MIN_AUTHOR		{	"Cycling '74"			};
+	MIN_RELATED		{	"biquad~, filterdesign"	};
 
 	inlet	input	{ this, "(signal) Input" };
 	outlet	output	{ this, "(signal) Output", "signal" };
 
 
-	message clear { this, "clear", "Reset the DC-Blocking filter. Because this is an IIR filter it has the potential to blow-up, requiring a reset.",
+	message clear { this,
+		"clear", "Reset the DC-Blocking filter. Because this is an IIR filter it has the potential to blow-up, requiring a reset.",
 		MIN_FUNCTION {
 			x_1 = y_1 = 0.0;
 			return {};
@@ -83,7 +85,6 @@ public:
 			return y;
 		}
 	}
-
 
 private:
 	sample	x_1 { 0.0 };	///< Input history

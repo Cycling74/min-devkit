@@ -8,15 +8,20 @@
 
 using namespace c74::min;
 
-
 class jit_clamp : public object<jit_clamp>, matrix_operator {
 public:
 	
+	MIN_DESCRIPTION { "Limit matrix values to a range. The range is specified the object's min and max attributes." };
+	MIN_TAGS		{ "math" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "jit.clip" };
+
 	inlet	input	{ this, "(matrix) Input", "matrix" };
 	outlet	output	{ this, "(matrix) Output", "matrix" };
 	
 
 	attribute<double> min { this, "min", 0.0,
+		description { "The minimum value below which clipping occurs." },
 		setter { MIN_FUNCTION {
 			cmin = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
@@ -25,6 +30,7 @@ public:
 	
 	
 	attribute<double> max { this, "max", 1.0,
+		description { "The maximum value above which clipping occurs." },
 		setter { MIN_FUNCTION {
 			cmax = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
@@ -59,11 +65,9 @@ public:
 		return output;
 	}
 
-	
 private:
 	uchar	cmin;
 	uchar	cmax;
 };
-
 
 MIN_EXTERNAL(jit_clamp);
