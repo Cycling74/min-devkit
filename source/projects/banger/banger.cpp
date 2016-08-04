@@ -20,12 +20,26 @@ public:
 	outlet	bang_out		{ this, "(bang) triggers at randomized interval" };
 	outlet	interval_out	{ this, "(float) the interval for the current bang" };
 
-	banger(const atoms& args = {}) {
-		if (args.size() > 0)
-			min = args[0];
-		if (args.size() > 1)
-			max = args[1];
-	}
+
+	argument minimum_arg	{ this, "minimum", "Initial lower-bound of generated random interval.",
+		MIN_ARGUMENT_HANDLER {
+			min = arg;
+		}
+	};
+
+	argument maximum_arg	{ this, "maximum", "Initial upper-bound of generated random interval.",
+		MIN_ARGUMENT_HANDLER {
+			max = arg;
+		}
+	};
+
+
+//	banger(const atoms& args = {}) {
+//		if (args.size() > 0)
+//			min = args[0];
+//		if (args.size() > 1)
+//			max = args[1];
+//	}
 
 
 	timer metro { this, MIN_FUNCTION {
@@ -41,7 +55,7 @@ public:
 
 	attribute<double> min { this, "min", 250.0,
 		title { "Minimum Interval" },
-		description { "Lower-bound of generated random interval" },
+		description { "Lower-bound of generated random interval." },
 		setter { MIN_FUNCTION {
 			double value = args[0];
 			
@@ -54,7 +68,7 @@ public:
 
 	attribute<double> max { this, "max", 1500.0,
 		title { "Maximum Interval" },
-		description { "Upper-bound of generated random interval" },
+		description { "Upper-bound of generated random interval." },
 		setter { MIN_FUNCTION {
 			double value = args[0];
 			
