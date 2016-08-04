@@ -17,13 +17,19 @@ public:
 	buffer_reference	buffer			{ this };
 	
 	
-	buffer_index(const atoms& args = {}) {
-		if (args.size() > 0)
-			buffer.set(args[0]);
-		if (args.size() > 1)
-			channel = args[1];
-	}
-		
+	argument<symbol> name_arg { this, "buffer-name", "Initial buffer~ from which to read.",
+		MIN_ARGUMENT_HANDLER {
+			buffer.set(arg);
+		}
+	};
+
+
+	argument<int> channel_arg { this, "channel", "Initial channel to read from the buffer~.",
+		MIN_ARGUMENT_HANDLER {
+			channel = arg;
+		}
+	};
+
 
 	attribute<int> channel { this, "channel", 1,
 		setter { MIN_FUNCTION {

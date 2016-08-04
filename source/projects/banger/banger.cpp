@@ -21,25 +21,17 @@ public:
 	outlet	interval_out	{ this, "(float) the interval for the current bang" };
 
 
-	argument minimum_arg	{ this, "minimum", "Initial lower-bound of generated random interval.",
+	argument<number> minimum_arg	{ this, "minimum", "Initial lower-bound of generated random interval.",
 		MIN_ARGUMENT_HANDLER {
 			min = arg;
 		}
 	};
 
-	argument maximum_arg	{ this, "maximum", "Initial upper-bound of generated random interval.",
+	argument<number> maximum_arg	{ this, "maximum", "Initial upper-bound of generated random interval.",
 		MIN_ARGUMENT_HANDLER {
 			max = arg;
 		}
 	};
-
-
-//	banger(const atoms& args = {}) {
-//		if (args.size() > 0)
-//			min = args[0];
-//		if (args.size() > 1)
-//			max = args[1];
-//	}
 
 
 	timer metro { this, MIN_FUNCTION {

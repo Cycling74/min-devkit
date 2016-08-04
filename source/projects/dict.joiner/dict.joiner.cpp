@@ -16,7 +16,9 @@ public:
 	inlet	right	{ this, "dictionary to combined with dictionary at left inlet",	"dictionary" };
 	outlet	output	{ this, "dictionary of entries combined from both inlets",		"dictionary" };
 	
-	
+
+	argument<anything> name_arg { this, "dictionary-syntax", "Define an initial dictionary for joining." };
+
 	dict_joiner(const atoms& args = {}) {
 		if (!args.empty())
 			dict_right = dict(args);
