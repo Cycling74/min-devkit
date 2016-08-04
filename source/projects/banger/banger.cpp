@@ -11,24 +11,25 @@ using namespace c74::min;
 
 class banger : public object<banger> {
 public:
-	MIN_AUTHOR		{ "Cycling '74" };
-	MIN_TAGS		{ "time" };
 	MIN_DESCRIPTION { "Bang at random intervals." };
-	MIN_RELATED		{ "pedro, live.beat, metro, tempo, drunk" };
+	MIN_TAGS		{ "time" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "pedro, link.beat, metro, tempo, drunk" };
 
+	
 	inlet	input			{ this, "(toggle) on/off" };
 	outlet	bang_out		{ this, "(bang) triggers at randomized interval" };
 	outlet	interval_out	{ this, "(float) the interval for the current bang" };
 
 
 	argument<number> minimum_arg	{ this, "minimum", "Initial lower-bound of generated random interval.",
-		MIN_ARGUMENT_HANDLER {
+		MIN_ARGUMENT_FUNCTION {
 			min = arg;
 		}
 	};
 
 	argument<number> maximum_arg	{ this, "maximum", "Initial upper-bound of generated random interval.",
-		MIN_ARGUMENT_HANDLER {
+		MIN_ARGUMENT_FUNCTION {
 			max = arg;
 		}
 	};
