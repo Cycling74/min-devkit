@@ -122,7 +122,7 @@ public:
 	message define { this, "define", "Define a new method, mapping it to a name.",
 		MIN_FUNCTION {
 			symbol	name = args[0];
-			symbol	code = args[1];
+			string	code = args[1];
 			string	complete_code;
 			
 			complete_code = "extern \"C\" double func(double x) {\n";
@@ -133,7 +133,7 @@ public:
 			
 			auto f = make_unique<mini_function_wrapper>(name, code, complete_code);
 			if (f->m_method)
-				functions[string(name)] = move(f);
+				functions[string(name.c_str())] = move(f);
 			else
 				cerr << "function '" << name << "' not added to object" << endl;
 
