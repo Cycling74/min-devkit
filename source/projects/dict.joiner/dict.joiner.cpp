@@ -26,7 +26,11 @@ public:
 	dict_joiner(const atoms& args = {}) {
 		if (!args.empty())
 			dict_right = dict(args);
-		cout << "Hello World" << endl;
+
+		if (k_sym__pound_d)
+			cout << "We were created by Max" << endl;
+		else
+			cout << "We were not created by Max" << endl;
 	}
 		
 	
