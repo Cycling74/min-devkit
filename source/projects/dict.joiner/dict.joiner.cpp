@@ -26,6 +26,7 @@ public:
 	dict_joiner(const atoms& args = {}) {
 		if (!args.empty())
 			dict_right = dict(args);
+		cout << "Hello World" << endl;
 	}
 		
 	
