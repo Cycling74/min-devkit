@@ -14,6 +14,7 @@ using pitch = int;
 using velocity = int;
 using duration = int;
 
+
 // forward declaration of the note class so we can use it in the definition of `note`
 
 class note_make;
@@ -27,19 +28,26 @@ class note {
 public:
 	note(note_make* owner, pitch, duration);
 
+	long id() { return m_id; }
+
 private:
 	note_make*			m_owner;	// we need to know who our owner is for the timer setup and the outlet calls
 	pitch				m_pitch;	// pitch we keep for the noteoff, we don't need velocity
 	c74::min::function	m_off_fn;	// note-off function callback for the timer
 	timer				m_timer;	// each note has its own timer to trigger the noteoff
+	long				m_id;		// unique serial number for each note
+
+	static long s_counter;
 };
 
 
-// We maintain our collection of active notes in an ordered queue.
+// We maintain our collection of active notes in a list.
+// We cannot use a FIFO queue because the duration of the notes may all be independent.
+//
 // Instead of keeping copies of the notes we use references, actually we use unique_ptr...
 // We do this (avoid copies) because the note contains a timer and we cannot make copies of timers.
 
-using notes = std::queue< std::unique_ptr<note> >;
+using notes = std::list< std::unique_ptr<note> >;
 
 
 // Finally, our Max class ...
@@ -102,11 +110,22 @@ private:
 	void start() {
 		velocity_out.send(m_velocity);
 		pitch_out.send(m_pitch);
-		m_notes.push( std::make_unique<note>(this, m_pitch, m_duration) );
+		m_notes.push_back( std::make_unique<note>(this, m_pitch, m_duration) );
 	}
 
-	void remove(note* a_note) {
-		m_notes.pop();
+	void remove(long note_id) {
+		bool note_removed = false;
+
+		for (auto iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
+			const auto& stored_note = (*iter).get();
+
+			if (stored_note->id() == note_id) {
+				m_notes.erase(iter);
+				note_removed = true;
+				break;
+			}
+		}
+		assert(note_removed); // post-condition: if a note wasn't removed we have serious problems.
 	}
 };
 
@@ -120,13 +139,16 @@ note::note(note_make* owner, pitch a_pitch, duration a_duration)
 , m_off_fn { MIN_FUNCTION {
 	m_owner->velocity_out.send(0);
 	m_owner->pitch_out.send(m_pitch);
-	m_owner->remove(this);
+	m_owner->remove(m_id);
 	return {};}
   }
 , m_timer { m_owner, m_off_fn }
+, m_id { ++s_counter }
 {
 	m_timer.delay(a_duration);
 }
+
+long note::s_counter = 0;
 
 
 MIN_EXTERNAL(note_make);
