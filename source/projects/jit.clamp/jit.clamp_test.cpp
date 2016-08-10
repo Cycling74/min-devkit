@@ -24,9 +24,35 @@ SCENARIO( "object produces correct output" ) {
 		jit_clamp	my_object;
 		
 		// check that default attr values are correct
-		
-		REQUIRE( my_object.min == Approx(0.0) );
-		REQUIRE( my_object.max == Approx(1.0) );
+		atoms min = my_object.min;
+		REQUIRE( double(min[0]) == Approx(0.0) );
+
+		atoms max = my_object.max;
+		REQUIRE( double(max[0]) == Approx(1.0) );
+
+		// check that the custom attr getters are called correctly
+		// we do this by setting the value and then getting it to see that it is correctly quantized
+
+		{
+			my_object.min = 0.823961;
+
+			atoms	result = my_object.min;
+			double	fresult = result[0];
+
+			REQUIRE( fresult != Approx(0.823961) );
+			REQUIRE( fresult == Approx(0.823529) );
+		}
+
+
+		{
+			my_object.max = 0.823961;
+
+			atoms	result = my_object.max;
+			double	fresult = result[0];
+
+			REQUIRE( fresult != Approx(0.823961) );
+			REQUIRE( fresult == Approx(0.823529) );
+		}
 
 	}
 }
