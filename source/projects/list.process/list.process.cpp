@@ -9,10 +9,14 @@
 using namespace c74::min;
 using namespace std;
 
-
 class list_process : public object<list_process> {
 public:
 	
+	MIN_DESCRIPTION { "Process lists in various ways." };
+	MIN_TAGS		{ "lists" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "zl" };
+
 	inlet			in		{ this, "(anything) input" };
 	outlet			out1	{ this, "(list) result" };
 	outlet			out2	{ this, "(list) result" };
@@ -38,7 +42,9 @@ public:
 	// Finally, you create the attribute...
 	// specialized with the type of the enum and with the range passed as one of the optional args.
 
-	attribute<operations> operation { this, "operation", operations::collect, operations_range };
+	attribute<operations> operation { this, "operation", operations::collect, operations_range,
+		description {"Choose the operation to perform with the input. Collect items into a list or calculate the mean from a list."}
+	};
 
 
 	// Here we demonstrate sharing a function to process lists from either the 'list' or 'anything' messages.
@@ -58,25 +64,28 @@ public:
 		return {};
 	};
 	
-	message list		{ this, "list", process };
-	message anything	{ this, "anything", process };
+	message list		{ this, "list", "Operate on the list. Either add it to the collection or calculate the mean.", process };
+	message anything	{ this, "anything", "Add content to the collection. Only applicable if using the 'collect' operation.", process };
 
 
-	message number { this, "number", MIN_FUNCTION {
-		if (operation == operations::collect) {
-			m_data.reserve( m_data.size() + args.size() );
-			m_data.insert( m_data.end(), args.begin(), args.end() );
+	message number { this, "number", "Add content to the collection. Only applicable if using the 'collect' operation.",
+		MIN_FUNCTION {
+			if (operation == operations::collect) {
+				m_data.reserve( m_data.size() + args.size() );
+				m_data.insert( m_data.end(), args.begin(), args.end() );
+			}
+			return {};
 		}
-		return {};
-	}};
+	};
 
 
-	message bang { this, "bang", MIN_FUNCTION {
-		out1.send(m_data);
-		m_data.clear();
-		return {};
-	}};
-		
+	message bang { this, "bang", "Send out the collected list. Only applicable if using the 'collect' operation.",
+		MIN_FUNCTION {
+			out1.send(m_data);
+			m_data.clear();
+			return {};
+		}
+	};
 
 private:
 	atoms	m_data;

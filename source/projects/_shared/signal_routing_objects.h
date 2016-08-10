@@ -77,6 +77,7 @@ public:
 			return args;
 		}},
 		title {"Shape of Crossfade Function"},
+		description {"Shape of function. Transition across the position using one of several shapes: 'linear', 'equal_power', or 'square_root'."},
 		range {shapes::linear, shapes::equal_power, shapes::square_root}
 	};
 	
@@ -90,6 +91,7 @@ public:
 			return args;
 		}},
 		title {"Calculation Modality"},
+		description {"Calculation Modality. Choose whether to perform calculations on-the-fly for greater accuracy or use a lookup table for greater speed."},
 		range {"fast", "precision"}
 	};
 	
@@ -104,14 +106,17 @@ public:
 			return {n};
 		}},
 		title {"Normalized Position"},
+		description {"Normalized position. This is the position within the function defined by the 'shape' attribute."},
 		range { 0.0, 1.0}
 	};
 	
 	
-	message number {this, "number", MIN_FUNCTION {
-		position = args;
-		return {};
-	}};
+	message number {this, "number", "Set the normalized position in the function.",
+		MIN_FUNCTION {
+			position = args;
+			return {};
+		}
+	};
 	
 protected:
 	

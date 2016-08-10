@@ -12,6 +12,11 @@
 class xfade : public signal_routing_base<xfade>, public sample_operator<3,1> {
 public:
 	
+	MIN_DESCRIPTION { "Crossfade between two signals." };
+	MIN_TAGS		{ "audio, routing" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "panner~, matrix~" };
+
 	// above we inherited from sample_operator<3,1> which means 3 inputs and 1 output for our calculate method
 	// we still need to create the interface for the object though, which includes the assistance strings...
 	
@@ -33,6 +38,5 @@ public:
 		return in1*weight1 + in2*weight2;
 	}
 };
-
 
 MIN_EXTERNAL(xfade);

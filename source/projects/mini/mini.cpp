@@ -16,7 +16,6 @@ using std::to_string;
 using mini_function = double(double);
 
 
-
 /// The mini_function_wrapper is a class the our object uses internally
 /// to represent a single mini_function.
 /// This class holds the source code for the mini_function and compiles and
@@ -86,14 +85,22 @@ using function_map = std::unordered_map<string, std::unique_ptr<mini_function_wr
 /// A Max class that creates and executes mini_functions
 class mini : public object<mini> {
 public:
-	
+
+	MIN_DESCRIPTION { "Execute simple c++ expressions." };
+	MIN_TAGS		{ "code, expressions" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "expr, gen~" };
+
 	inlet	input  { this, "Input" };
 	outlet	output { this, "Output" };
 	
 
-	/// Arguments to the constructor are interpreted as source code for the "anonymous" method.
-	/// If it is a one-liner then the semi-colon is optional.
-	/// If there are no args code saved in the editor window will be used for the "anonymous" method.
+	argument<anything> name_arg { this, "code",
+		"Arguments to the constructor are interpreted as source code for the 'anonymous' method. "
+		"If it is a one-liner then the semi-colon is optional. "
+		"If there are no args code saved in the editor window will be used for the 'anonymous' method. "
+	};
+
 	mini(const atoms& args = {}) {
 		string str;
 		
@@ -112,46 +119,49 @@ public:
 	}
 		
 	
-	/// Define a new method, mapping it to a name
-	message define { this, "define", MIN_FUNCTION {
-		symbol	name = args[0];
-		symbol	code = args[1];
-		string	complete_code;
-		
-		complete_code = "extern \"C\" double func(double x) {\n";
-		complete_code += "double y=0;\n";
-		complete_code += code;
-		complete_code += ";";				// in case we have a 1-liner with no semi-colon at the end
-		complete_code += "return y;}";
-		
-		auto f = make_unique<mini_function_wrapper>(name, code, complete_code);
-		if (f->m_method)
-			functions[string(name)] = move(f);
-		else
-			cerr << "function '" << name << "' not added to object" << endl;
+	message define { this, "define", "Define a new method, mapping it to a name.",
+		MIN_FUNCTION {
+			symbol	name = args[0];
+			string	code = args[1];
+			string	complete_code;
+			
+			complete_code = "extern \"C\" double func(double x) {\n";
+			complete_code += "double y=0;\n";
+			complete_code += code;
+			complete_code += ";";				// in case we have a 1-liner with no semi-colon at the end
+			complete_code += "return y;}";
+			
+			auto f = make_unique<mini_function_wrapper>(name, code, complete_code);
+			if (f->m_method)
+				functions[string(name.c_str())] = move(f);
+			else
+				cerr << "function '" << name << "' not added to object" << endl;
 
-		return {};
-	}};
-	
-	
-	/// Execute the "anonymous" method
-	message number { this, "number", MIN_FUNCTION {
-		auto f = functions["anonymous"].get();
-		auto ret = f->m_method(args[0]);
-		output.send(ret);
-		return {};
-	}};
-	
-	
-	/// Execute a named method, the first arg being the name of the method
-	message anything { this, "anything", MIN_FUNCTION {
-		auto f = functions[args[0]].get();
-		if (f) {
-			double ret = f->m_method(args[1]);
-			output.send(ret);
+			return {};
 		}
-		return {};
-	}};
+	};
+	
+	
+	message number { this, "number", "Execute the 'anonymous' method. The number is passed in as the variable 'x'.",
+		MIN_FUNCTION {
+			auto f = functions["anonymous"].get();
+			auto ret = f->m_method(args[0]);
+			output.send(ret);
+			return {};
+		}
+	};
+	
+	
+	message anything { this, "anything", "Execute a named method. The first arg is the name of the method. The second arg is passed to the method as the variable 'x'.",
+		MIN_FUNCTION {
+			auto f = functions[args[0]].get();
+			if (f) {
+				double ret = f->m_method(args[1]);
+				output.send(ret);
+			}
+			return {};
+		}
+	};
 	
 	
 	/// Open the editor window.
@@ -187,6 +197,5 @@ private:
 	}};
 	
 };
-
 
 MIN_EXTERNAL(mini);

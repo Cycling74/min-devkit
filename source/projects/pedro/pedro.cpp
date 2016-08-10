@@ -9,9 +9,13 @@
 
 using namespace c74::min;
 
-
 class pedro : public object<pedro> {
 public:
+	
+	MIN_DESCRIPTION { "Bang at random intervals." };
+	MIN_TAGS		{ "time" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "banger, link.beat, metro, tempo, drunk" };
 
 	inlet	input			{ this, "(toggle) on/off" };
 	outlet	bang_out		{ this, "(bang) triggers at according to specified pattern" };
@@ -35,6 +39,7 @@ public:
 
 
 	attribute<bool> on { this, "on", false,
+		description { "Turn on/off the internal timer." },
 		setter { MIN_FUNCTION {
 			if (args[0] == true)
 				metro.delay(0.0);	// fire the first one straight-away
@@ -45,24 +50,27 @@ public:
 	};
 	
 	
-	message toggle { this, "int", MIN_FUNCTION {
-		on = args[0];
-		return {};
-	}};
+	message toggle { this, "int", "Turn on/off the internal timer.",
+		MIN_FUNCTION {
+			on = args[0];
+			return {};
+		}
+	};
 	
 	
-	message dictionary { this, "dictionary", MIN_FUNCTION {
-		dict d{ args[0] };
-		
-		sequence = d["pattern"];
-		return {};
-	}};
-	
+	message dictionary { this, "dictionary", "Use a dictionary to define the pattern of bangs produced.",
+		MIN_FUNCTION {
+			dict d{ args[0] };
+
+			sequence = d["pattern"];
+			return {};
+		}
+	};
+
 
 private:
 	int		index { 0 };
 	atoms	sequence { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
 };
-
 
 MIN_EXTERNAL(pedro);

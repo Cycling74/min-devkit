@@ -8,20 +8,30 @@
 
 using namespace c74::min;
 
-
 class banger : public object<banger> {
 public:
 
+	MIN_DESCRIPTION { "Bang at random intervals." };
+	MIN_TAGS		{ "time" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "pedro, link.beat, metro, tempo, drunk" };
+	
 	inlet	input			{ this, "(toggle) on/off" };
 	outlet	bang_out		{ this, "(bang) triggers at randomized interval" };
 	outlet	interval_out	{ this, "(float) the interval for the current bang" };
 
-	banger(const atoms& args = {}) {
-		if (args.size() > 0)
-			min = args[0];
-		if (args.size() > 1)
-			max = args[1];
-	}
+
+	argument<number> minimum_arg	{ this, "minimum", "Initial lower-bound of generated random interval.",
+		MIN_ARGUMENT_FUNCTION {
+			min = arg;
+		}
+	};
+
+	argument<number> maximum_arg	{ this, "maximum", "Initial upper-bound of generated random interval.",
+		MIN_ARGUMENT_FUNCTION {
+			max = arg;
+		}
+	};
 
 
 	timer metro { this, MIN_FUNCTION {
@@ -35,8 +45,9 @@ public:
 	}};
 
 
-	/// Attributes are given a name, a type, a default value, and function to be called when setting the value
 	attribute<double> min { this, "min", 250.0,
+		title { "Minimum Interval" },
+		description { "Lower-bound of generated random interval." },
 		setter { MIN_FUNCTION {
 			double value = args[0];
 			
@@ -47,8 +58,9 @@ public:
 	};
 
 
-	/// The returned atoms from the function are what will actually be assigned to the variable
 	attribute<double> max { this, "max", 1500.0,
+		title { "Maximum Interval" },
+		description { "Upper-bound of generated random interval." },
 		setter { MIN_FUNCTION {
 			double value = args[0];
 			
@@ -59,8 +71,9 @@ public:
 	};
 
 
-	/// The optional function is executed prior to assigning the args to slide_down so it can be used for range checking.
 	attribute<bool> on { this, "on", false,
+		title { "On/Off" },
+		description { "Activate the timer." },
 		setter { MIN_FUNCTION {
 			if (args[0] == true)
 				metro.delay(0.0);	// fire the first one straight-away
@@ -70,12 +83,13 @@ public:
 		}}
 	};
 	
-	
-	/// toggle the state of the timer
-	message toggle { this, "int", MIN_FUNCTION {
-		on = args[0];
-		return {};
-	}};
+
+	message toggle { this, "int", "Toggle the state of the timer.",
+		MIN_FUNCTION {
+			on = args[0];
+			return {};
+		}
+	};
 
 };
 
