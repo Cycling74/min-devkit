@@ -54,7 +54,9 @@ public:
 			if (value < 1.0)
 				value = 1.0;
 			return {value};
-		}}
+		}},
+		category { "Range" },
+		order { 1 }
 	};
 
 
@@ -67,7 +69,9 @@ public:
 			if (value < 1.0)
 				value = 1.0;
 			return {value};
-		}}
+		}},
+		category { "Range" },
+		order { 2 }
 	};
 
 
