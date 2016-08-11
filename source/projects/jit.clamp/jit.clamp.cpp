@@ -25,6 +25,9 @@ public:
 		setter { MIN_FUNCTION {
 			cmin = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
+		}},
+		getter { MIN_GETTER_FUNCTION {
+			return { cmin / 255.0 };
 		}}
 	};
 	
@@ -34,6 +37,9 @@ public:
 		setter { MIN_FUNCTION {
 			cmax = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
 			return args;
+		}},
+		getter { MIN_GETTER_FUNCTION {
+			return { cmax / 255.0 };
 		}}
 	};
 
