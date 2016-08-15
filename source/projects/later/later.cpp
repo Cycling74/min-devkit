@@ -13,58 +13,50 @@ using namespace c74::min;
 class later : public object<later> {
 public:
 
-	MIN_DESCRIPTION { "Delay any type of message into the future. The time at which to delay may be quantized to the beat." };
+	MIN_DESCRIPTION { "Delay number messages into the future. The time at which to delay may be quantized to the beat." };
 	MIN_TAGS		{ "time" };
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "delay, speedlim, note.make" };
 	
-	inlet	in		{ this, "(anything) message to be delayed" };
-	outlet	out		{ this, "(anything) delayed message" };
+	inlet	in		{ this, "(number) message to be delayed" };
+	outlet	out		{ this, "(number) delayed message" };
 
 
 	later (const atoms& args = {}) {
-		if (!atoms.empty())
+		if (!args.empty())
 			delay = args;
 	}
 
 
-	attribute<time_value> delay = { this, "delay", 0.0 };
+	attribute<time_value> quantize = { this, "quantize", 0.0,
+		description { "Boundary interval at which to quantize. Quantization is with respect to the global transport." },
+		time_flags::tempo_based,
+	};
+
+
+	attribute<time_value> delay = { this, "delay", 0.0,
+		description { "The amount by which to delay. May be any time value." },
+		time_flags::tempo_based,				// only ticks, bbu, and notevalues permitted
+		time_callback { later::callback },		// if a callback is present, then the time_value will be able to schedule events
+		time_quantization { quantize }			// pass in an attribute to use for quantizing scheduling of the callback
+	};
 
 
 	message number { this, "number", "A number to be delayed.",
 		MIN_FUNCTION {
+			const time_value& d = delay;
+			m_value = args[0];
+			d.start();
 			return {};
 		}
 	};
 
-
 private:
-	notes		m_notes;
-	pitch		m_pitch;
-	velocity	m_velocity;
-	duration	m_duration;
+	double m_value; // cached input value to be delayed
 
-	void start() {
-		velocity_out.send(m_velocity);
-		pitch_out.send(m_pitch);
-		m_notes.push_back( std::make_unique<note>(this, m_pitch, m_duration) );
-	}
-
-	void remove(long note_id) {
-		bool note_removed = false;
-
-		for (auto iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
-			const auto& stored_note = (*iter).get();
-
-			if (stored_note->id() == note_id) {
-				m_notes.erase(iter);
-				note_removed = true;
-				break;
-			}
-		}
-		assert(note_removed); // post-condition: if a note wasn't removed we have serious problems.
+	void callback() {
+		out.send(m_value);
 	}
 };
-
 
 MIN_EXTERNAL(later);
