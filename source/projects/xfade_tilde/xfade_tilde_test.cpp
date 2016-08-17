@@ -25,8 +25,8 @@ SCENARIO( "object produces correct output" ) {
 		
 		// check that default attr values are correct
 		
-		REQUIRE( my_object.shape == "equal_power" );	// note: symbols can be compared with strings
-		REQUIRE( my_object.mode == "fast" );
+		REQUIRE( my_object.shape == symbol("equal_power") );	// note: symbols can be compared with strings
+		REQUIRE( my_object.mode == symbol("fast") );
 		REQUIRE( my_object.position == Approx(0.5) );	// note: floating-point values may be subject to rounding errors
 		
 		// now proceed to testing various sequences of events

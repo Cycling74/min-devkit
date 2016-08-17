@@ -49,10 +49,12 @@ public:
 	
 	template<typename matrix_type>
 	matrix_type calc_cell(matrix_type input, const matrix_info& info, matrix_coord& position) {
-		matrix_type output;
+		matrix_type	output;
+		double		fmin = min;
+		double		fmax = max;
 		
 		for (auto plane=0; plane<info.planecount(); ++plane)
-			output[plane] = MIN_CLAMP(input[plane], min, max);
+			output[plane] = MIN_CLAMP(input[plane], fmin, fmax);
 		
 		return output;
 	}
