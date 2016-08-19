@@ -37,7 +37,7 @@ public:
 	attribute<time_value> delay = { this, "delay", 0.0,
 		description { "The amount by which to delay. May be any time value." },
 		time_flags::tempo_based,				// only ticks, bbu, and notevalues permitted
-		time_callback { later::callback },		// if a callback is present, then the time_value will be able to schedule events
+		time_callback { std::bind(&later::callback, this) },		// if a callback is present, then the time_value will be able to schedule events
 		time_quantization { quantize }			// pass in an attribute to use for quantizing scheduling of the callback
 	};
 
