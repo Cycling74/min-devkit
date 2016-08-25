@@ -95,6 +95,12 @@ public:
 		}
 	};
 
+
+	message maxclass_setup { this, "maxclass_setup", MIN_FUNCTION {
+		cout << "hello world" << endl;
+		return {};
+	}};
+
 };
 
 
