@@ -45,7 +45,7 @@ public:
 	}};
 
 
-	attribute<double> min { this, "min", 250.0,
+	attribute<number> min { this, "min", 250.0,
 		title { "Minimum Interval" },
 		description { "Lower-bound of generated random interval." },
 		setter { MIN_FUNCTION {
@@ -60,7 +60,7 @@ public:
 	};
 
 
-	attribute<double> max { this, "max", 1500.0,
+	attribute<number> max { this, "max", 1500.0,
 		title { "Maximum Interval" },
 		description { "Upper-bound of generated random interval." },
 		setter { MIN_FUNCTION {

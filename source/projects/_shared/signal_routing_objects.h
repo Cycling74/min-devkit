@@ -96,7 +96,7 @@ public:
 	};
 	
 	
-	attribute<double> position {
+	attribute<number> position {
 		this,
 		"position",
 		0.5,

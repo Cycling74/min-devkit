@@ -20,7 +20,7 @@ public:
 	outlet	output	{ this, "(matrix) Output", "matrix" };
 	
 
-	attribute<double> min { this, "min", 0.0,
+	attribute<number> min { this, "min", 0.0,
 		description { "The minimum value below which clipping occurs." },
 		setter { MIN_FUNCTION {
 			cmin = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
@@ -32,7 +32,7 @@ public:
 	};
 	
 	
-	attribute<double> max { this, "max", 1.0,
+	attribute<number> max { this, "max", 1.0,
 		description { "The maximum value above which clipping occurs." },
 		setter { MIN_FUNCTION {
 			cmax = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
