@@ -4,6 +4,7 @@
 /// @author		Timothy Place
 ///	@license	Usage of this file and its contents is governed by the MIT License
 
+#include "c74_min.h"
 #include "../_shared/signal_routing_objects.h"
 
 // The xfade~ object inherits all of it's attributes and messages from the signal_routing_base class.

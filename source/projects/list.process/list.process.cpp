@@ -26,8 +26,9 @@ public:
 	// The indices must start at zero and increase sequentially.
 
 	enum class operations : int {
-		collect = 0,
-		average
+		collect,
+		average,
+		enum_count
 	};
 
 	// You then define the symbols to associate with your enum values.

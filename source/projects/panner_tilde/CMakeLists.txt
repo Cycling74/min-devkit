@@ -14,11 +14,15 @@ include_directories(
 )
 
 
+set( SOURCE_FILES
+	${PROJECT_NAME}.cpp
+)
+
+
 add_library( 
 	${PROJECT_NAME} 
 	MODULE
-	../_shared/signal_routing_objects.h
-	${PROJECT_NAME}.cpp
+	${SOURCE_FILES}
 )
 
 

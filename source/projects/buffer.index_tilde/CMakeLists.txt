@@ -14,10 +14,15 @@ include_directories(
 )
 
 
+set( SOURCE_FILES
+	${PROJECT_NAME}.cpp
+)
+
+
 add_library( 
 	${PROJECT_NAME} 
 	MODULE
-	${PROJECT_NAME}.cpp
+	${SOURCE_FILES}
 )
 
 
