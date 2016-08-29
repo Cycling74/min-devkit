@@ -40,11 +40,6 @@
 			<description>Execute a named method. The first arg is the name of the method. The second arg is passed to the method as the variable 'x'.</description>
 		</method>
 
-		<method name='savestate'>
-			<digest></digest>
-			<description></description>
-		</method>
-
 		<method name='float'>
 			<digest>Execute the 'anonymous' method</digest>
 			<description>Execute the 'anonymous' method. The number is passed in as the variable 'x'.</description>
