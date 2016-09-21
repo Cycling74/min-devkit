@@ -52,14 +52,18 @@ public:
 
 	c74::min::function process = MIN_FUNCTION {
 		switch (operation) {
-			case operations::collect:
+			case operations::collect: {
 				m_data.reserve( m_data.size() + args.size() );
 				m_data.insert( m_data.end(), args.begin(), args.end() );
 				break;
-			case operations::average:
+			}
+			case operations::average: {
 				auto x = from_atoms<std::vector<double>>(args);
 				auto y = math::mean<double>(x);
 				out1.send(y.first, y.second);
+				break;
+			}
+			case operations::enum_count:
 				break;
 		}
 		return {};
