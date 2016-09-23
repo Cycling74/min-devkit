@@ -5,7 +5,7 @@
 ///	@license	Usage of this file and its contents is governed by the MIT License
 
 #include "c74_min.h"
-#include "../_shared/signal_routing_objects.h"
+#include "../shared/signal_routing_objects.h"
 
 // The xfade~ object inherits all of it's attributes and messages from the signal_routing_base class.
 // The panner~ object does exactly the same, allowing us to share the code between the two similar but opposite classes.

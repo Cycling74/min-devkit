@@ -12,7 +12,7 @@
 
 // 1. Include the source of our object so that we can access it
 
-#include "jit.clamp.cpp"
+#include "min.jit.clamp.cpp"
 
 
 // 2. Now write a Catch unit test as described at

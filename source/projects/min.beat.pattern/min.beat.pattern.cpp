@@ -9,13 +9,13 @@
 
 using namespace c74::min;
 
-class pedro : public object<pedro> {
+class beat_pattern : public object<beat_pattern> {
 public:
 	
 	MIN_DESCRIPTION { "Bang at random intervals." };
 	MIN_TAGS		{ "time" };
 	MIN_AUTHOR		{ "Cycling '74" };
-	MIN_RELATED		{ "banger, link.beat, metro, tempo, drunk" };
+	MIN_RELATED		{ "min.beat.random, link.beat, metro, tempo, drunk" };
 
 	inlet	input			{ this, "(toggle) on/off" };
 	outlet	bang_out		{ this, "(bang) triggers at according to specified pattern" };
@@ -73,4 +73,4 @@ private:
 	atoms	sequence { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
 };
 
-MIN_EXTERNAL(pedro);
+MIN_EXTERNAL(beat_pattern);

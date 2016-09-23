@@ -13,7 +13,7 @@
 
 // 1. Include the source of our object so that we can access it
 
-#include "banger.cpp"
+#include "min.beat.random.cpp"
 
 
 // 1.5  We need special test stuff

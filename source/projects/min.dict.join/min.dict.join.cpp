@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class dict_joiner : public object<dict_joiner> {
+class dict_join : public object<dict_join> {
 public:
 	
 	MIN_DESCRIPTION { "Merge the content of two dictionaries." };
@@ -23,7 +23,7 @@ public:
 
 	argument<anything> name_arg { this, "dictionary-syntax", "Define an initial dictionary for joining." };
 
-	dict_joiner(const atoms& args = {}) {
+	dict_join(const atoms& args = {}) {
 		if (!args.empty())
 			dict_right = dict(args);
 
@@ -70,4 +70,4 @@ private:
 	dict	dict_merged { symbol(true) };
 };
 
-MIN_EXTERNAL(dict_joiner);
+MIN_EXTERNAL(dict_join);

@@ -12,12 +12,12 @@
 
 // 1. Include the source of our object so that we can access it
 
-#include "list.process.cpp"
+#include "min.panner_tilde.cpp"
 
 
 // 2. Now write a Catch unit test as described at
 //    https://github.com/philsquared/Catch/blob/master/docs/tutorial.md
-/*
+
 SCENARIO( "object produces correct output" ) {
 	
 	GIVEN( "An instance of xfade~" ) {
@@ -25,8 +25,8 @@ SCENARIO( "object produces correct output" ) {
 		
 		// check that default attr values are correct
 		
-		REQUIRE( my_object.shape == "equal_power" );	// note: symbols can be compared with strings
-		REQUIRE( my_object.mode == "fast" );
+		REQUIRE( my_object.shape == symbol("equal_power") );	// note: symbols can be compared with strings
+		REQUIRE( my_object.mode == symbol("fast") );
 		REQUIRE( my_object.position == Approx(0.5) );	// note: floating-point values may be subject to rounding errors
 		
 		// now proceed to testing various sequences of events
@@ -102,4 +102,3 @@ SCENARIO( "object produces correct output" ) {
 		}
 	}
 }
-*/

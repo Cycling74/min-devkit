@@ -12,7 +12,7 @@
 
 // 1. Include the source of our object so that we can access it
 
-#include "dict.joiner.cpp"
+#include "min.dict.join.cpp"
 
 
 // 2. Now write a Catch unit test as described at
@@ -21,7 +21,7 @@
 SCENARIO( "object produces correct output" ) {
 	
 	GIVEN( "An instance of dict_joiner" ) {
-		dict_joiner	my_object;
+		dict_join	my_object;
 		
 		// check that the object instantiated successfully
 		

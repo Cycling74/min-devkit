@@ -4,7 +4,7 @@
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "dcblocker_tilde.cpp"
+#include "min.dcblocker_tilde.cpp"
 
 
 TEST_CASE( "produces valid impulse response" ) {
