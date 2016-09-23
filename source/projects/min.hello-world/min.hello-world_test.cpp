@@ -9,14 +9,14 @@
 // https://github.com/philsquared/Catch/blob/master/docs/tutorial.md
 
 SCENARIO( "object produces correct output" ) {
+	ext_main(nullptr);	// every unit test must call ext_main() once to configure the class
 
 	GIVEN( "An instance of our object" ) {
-		ext_main(nullptr);
-		auto o = (c74::min::minwrap<hello_world>*)c74::min::wrapper_new<hello_world>(symbol("min.hello-world"), 0, nullptr);
-		hello_world& my_object = o->min_object;
+
+		test_wrapper<hello_world> an_instance;
+		hello_world& my_object = an_instance;
 
 		// check that default attr values are correct
-		
 		REQUIRE(( my_object.greeting == symbol("hello world") ));
 
 		// now proceed to testing various sequences of events
