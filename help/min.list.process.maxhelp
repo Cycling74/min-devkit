@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 4,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -44,7 +44,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 970.0, 360.0, 70.0, 23.0 ],
-					"presentation_rect" : [ 970.0, 359.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "operation 5"
 				}
@@ -58,7 +57,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 955.0, 325.0, 70.0, 23.0 ],
-					"presentation_rect" : [ 957.0, 326.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "operation 0"
 				}
@@ -197,9 +195,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 765.0, 230.0, 67.0, 23.0 ],
+					"patching_rect" : [ 765.0, 230.0, 89.0, 23.0 ],
 					"style" : "",
-					"text" : "list.process"
+					"text" : "min.list.process"
 				}
 
 			}
@@ -413,7 +411,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "list.process.mxo",
+				"name" : "min.list.process.mxo",
 				"type" : "iLaX"
 			}
  ],

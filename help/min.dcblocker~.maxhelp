@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 2,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -44,7 +44,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 110.0, 40.0, 29.5, 23.0 ],
-					"presentation_rect" : [ 111.0, 39.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "-1"
 				}
@@ -58,7 +57,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 180.0, 40.0, 29.5, 23.0 ],
-					"presentation_rect" : [ 179.0, 39.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "0"
 				}
@@ -187,9 +185,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 215.0, 180.0, 69.0, 22.0 ],
+					"patching_rect" : [ 215.0, 180.0, 92.0, 22.0 ],
 					"style" : "",
-					"text" : "dcblocker~"
+					"text" : "min.dcblocker~"
 				}
 
 			}
@@ -317,7 +315,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "dcblocker~.mxo",
+				"name" : "min.dcblocker~.mxo",
 				"type" : "iLaX"
 			}
  ],

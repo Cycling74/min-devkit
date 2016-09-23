@@ -4,12 +4,12 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 2,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 744.0, 79.0, 1146.0, 766.0 ],
+		"rect" : [ 740.0, 79.0, 1146.0, 766.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -71,12 +71,12 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 2,
-							"revision" : 2,
-							"architecture" : "x64",
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 744.0, 105.0, 1146.0, 740.0 ],
+						"rect" : [ 740.0, 105.0, 1146.0, 740.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -188,9 +188,9 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 699.0, 172.0, 60.0, 23.0 ],
+									"patching_rect" : [ 699.0, 172.0, 85.0, 23.0 ],
 									"style" : "",
-									"text" : "jit.stencil"
+									"text" : "min.jit.stencil"
 								}
 
 							}
@@ -423,9 +423,9 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 330.0, 405.0, 60.0, 23.0 ],
+									"patching_rect" : [ 330.0, 405.0, 85.0, 23.0 ],
 									"style" : "",
-									"text" : "jit.stencil"
+									"text" : "min.jit.stencil"
 								}
 
 							}
@@ -888,8 +888,8 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 2,
-							"revision" : 2,
-							"architecture" : "x64",
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -951,8 +951,8 @@
 		"lines" : [  ],
 		"parameters" : 		{
 			"obj-2::obj-7::obj-4::obj-18" : [ "number[1]", "number[1]", 0 ],
-			"obj-2::obj-7::obj-4::obj-20" : [ "live.tab[1]", "live.tab[1]", 0 ],
-			"obj-2::obj-7::obj-4::obj-21" : [ "number", "number", 0 ]
+			"obj-2::obj-7::obj-4::obj-21" : [ "number", "number", 0 ],
+			"obj-2::obj-7::obj-4::obj-20" : [ "live.tab[1]", "live.tab[1]", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -980,7 +980,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "jit.stencil.mxo",
+				"name" : "min.jit.stencil.mxo",
 				"type" : "iLaX"
 			}
  ],

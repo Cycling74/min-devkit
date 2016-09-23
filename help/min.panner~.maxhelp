@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 4,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -102,9 +102,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 640.0, 425.0, 54.0, 23.0 ],
+					"patching_rect" : [ 640.0, 425.0, 75.0, 23.0 ],
 					"style" : "",
-					"text" : "panner~"
+					"text" : "min.panner~"
 				}
 
 			}
@@ -169,7 +169,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "panner~.mxo",
+				"name" : "min.panner~.mxo",
 				"type" : "iLaX"
 			}
  ],

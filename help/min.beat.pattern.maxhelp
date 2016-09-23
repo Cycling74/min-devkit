@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
@@ -119,9 +119,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 202.0, 76.0, 69.0, 22.0 ],
+					"patching_rect" : [ 202.0, 76.0, 97.0, 22.0 ],
 					"style" : "",
-					"text" : "pedro"
+					"text" : "min.beat.pattern"
 				}
 
 			}
@@ -195,7 +195,7 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "pedro.mxo",
+				"name" : "min.beat.pattern.mxo",
 				"type" : "iLaX"
 			}
  ],

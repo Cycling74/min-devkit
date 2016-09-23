@@ -101,7 +101,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 140.0, 410.0, 32.0, 23.0 ],
 					"style" : "",
-					"text" : "mini"
+					"text" : "min.function"
 				}
 
 			}
@@ -190,7 +190,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 190.0, 190.0, 179.0, 23.0 ],
 					"style" : "",
-					"text" : "mini for (int i=1\\; i<=x\\; i++) y += i\\;"
+					"text" : "min.function for (int i=1\\; i<=x\\; i++) y += i\\;"
 				}
 
 			}
@@ -231,7 +231,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 65.0, 190.0, 71.0, 23.0 ],
 					"style" : "",
-					"text" : "mini y = x*x"
+					"text" : "min.function y = x*x"
 				}
 
 			}
@@ -337,7 +337,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 550.0, 245.0, 32.0, 23.0 ],
 					"style" : "",
-					"text" : "mini"
+					"text" : "min.function"
 				}
 
 			}
@@ -470,7 +470,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "mini.mxo",
+				"name" : "min.function.mxo",
 				"type" : "iLaX"
 			}
  ],

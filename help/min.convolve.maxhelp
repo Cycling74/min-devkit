@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 2,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -51,8 +51,8 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 2,
-							"revision" : 2,
-							"architecture" : "x64",
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -182,9 +182,9 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 258.0, 220.0, 57.0, 23.0 ],
+									"patching_rect" : [ 258.0, 220.0, 78.0, 23.0 ],
 									"style" : "",
-									"text" : "convolve"
+									"text" : "min.convolve"
 								}
 
 							}
@@ -208,17 +208,15 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 10.0, 11.0, 195.0, 64.0 ],
+									"patching_rect" : [ 10.0, 11.0, 282.0, 64.0 ],
 									"style" : "",
-									"text" : "convolve"
+									"text" : "min.convolve"
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"bubble" : 1,
-									"fontname" : "Lato Light",
-									"fontsize" : 12.0,
 									"id" : "obj-7",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -326,7 +324,6 @@
 						"description" : "",
 						"digest" : "",
 						"fontname" : "Lato Light",
-						"fontsize" : 12.0,
 						"globalpatchername" : "",
 						"style" : "",
 						"tags" : ""
@@ -351,8 +348,8 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 2,
-							"revision" : 2,
-							"architecture" : "x64",
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -413,7 +410,7 @@
  ],
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
-				"name" : "convolve.mxo",
+				"name" : "min.convolve.mxo",
 				"type" : "iLaX"
 			}
  ],

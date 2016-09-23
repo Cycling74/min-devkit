@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 2,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -56,9 +56,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 50.0, 230.0, 58.0, 23.0 ],
+					"patching_rect" : [ 50.0, 230.0, 83.0, 23.0 ],
 					"style" : "",
-					"text" : "jit.clamp"
+					"text" : "min.jit.clamp"
 				}
 
 			}
@@ -215,9 +215,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 450.0, 275.0, 53.0, 23.0 ],
+					"patching_rect" : [ 450.0, 275.0, 75.0, 23.0 ],
 					"style" : "",
-					"text" : "jit.clamp"
+					"text" : "min.jit.clamp"
 				}
 
 			}
@@ -433,19 +433,19 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-17::obj-4::obj-21" : [ "number", "number", 0 ],
 			"obj-17::obj-4::obj-18" : [ "number[1]", "number[1]", 0 ],
+			"obj-17::obj-4::obj-21" : [ "number", "number", 0 ],
 			"obj-17::obj-4::obj-20" : [ "live.tab[1]", "live.tab[1]", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "demovideo.maxpat",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/jitter-help",
+				"bootpath" : "C74:/help/jitter",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "jit.clamp.mxo",
+				"name" : "min.jit.clamp.mxo",
 				"type" : "iLaX"
 			}
  ],

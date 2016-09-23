@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 2,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -67,9 +67,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 60.0, 171.0, 37.0, 22.0 ],
+					"patching_rect" : [ 60.0, 171.0, 60.0, 22.0 ],
 					"style" : "",
-					"text" : "prefs"
+					"text" : "min.prefs"
 				}
 
 			}
@@ -94,7 +94,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "prefs.mxo",
+				"name" : "min.prefs.mxo",
 				"type" : "iLaX"
 			}
  ],

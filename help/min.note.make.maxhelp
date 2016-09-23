@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 2,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -120,9 +120,9 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 435.0, 360.0, 112.0, 23.0 ],
+					"patching_rect" : [ 435.0, 360.0, 134.0, 23.0 ],
 					"style" : "",
-					"text" : "note.make 60 1000"
+					"text" : "min.note.make 60 1000"
 				}
 
 			}
@@ -174,7 +174,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "note.make.mxo",
+				"name" : "min.note.make.mxo",
 				"type" : "iLaX"
 			}
  ],

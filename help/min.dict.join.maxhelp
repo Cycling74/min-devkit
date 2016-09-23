@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 2,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -51,8 +51,8 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 2,
-							"revision" : 2,
-							"architecture" : "x64",
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -330,8 +330,8 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 2,
-							"revision" : 2,
-							"architecture" : "x64",
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -452,9 +452,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "dictionary" ],
-									"patching_rect" : [ 20.0, 250.0, 281.0, 23.0 ],
+									"patching_rect" : [ 20.0, 250.0, 294.0, 23.0 ],
 									"style" : "",
-									"text" : "dict.joiner frog: pig: horse: duck: \"quack quack\""
+									"text" : "min.dict.join frog: pig: horse: duck: \"quack quack\""
 								}
 
 							}
@@ -493,7 +493,7 @@
 									"filename" : "helpdetails.js",
 									"id" : "obj-2",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "dict.join" ],
+									"jsarguments" : [ "min.dict.join" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -515,8 +515,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 305.0, 250.0, 100.0, 24.0 ],
-									"presentation_rect" : [ 305.0, 250.0, 100.0, 24.0 ]
+									"patching_rect" : [ 305.0, 250.0, 195.866592, 39.0 ],
+									"presentation_rect" : [ 305.0, 250.0, 195.866592, 39.0 ]
 								}
 
 							}
@@ -559,15 +559,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-1", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -590,6 +581,15 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-8", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "", 0 ]
 								}
 
 							}
@@ -631,8 +631,8 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 2,
-							"revision" : 2,
-							"architecture" : "x64",
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -694,30 +694,30 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "helpargs.js",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/resources",
+				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "helpdetails.js",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/resources",
+				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "helpstarter.js",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/resources",
+				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "helpname.js",
-				"bootpath" : "~/Code/Max/maxmsp-misc/help/resources",
+				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "dict.joiner.mxo",
+				"name" : "min.dict.join.mxo",
 				"type" : "iLaX"
 			}
  ],

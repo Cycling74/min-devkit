@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 2,
-			"architecture" : "x64",
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -46,9 +46,9 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 46.0, 211.5, 47.0, 22.0 ],
+					"patching_rect" : [ 46.0, 210.5, 70.0, 22.0 ],
 					"style" : "",
-					"text" : "xfade~"
+					"text" : "min.xfade~"
 				}
 
 			}
@@ -105,9 +105,9 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 152.0, 399.5, 47.0, 22.0 ],
+					"patching_rect" : [ 152.0, 399.5, 70.0, 22.0 ],
 					"style" : "",
-					"text" : "xfade~"
+					"text" : "min.xfade~"
 				}
 
 			}
@@ -595,7 +595,7 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "xfade~.mxo",
+				"name" : "min.xfade~.mxo",
 				"type" : "iLaX"
 			}
  ],

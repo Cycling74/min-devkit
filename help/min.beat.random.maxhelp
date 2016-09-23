@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 2,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
@@ -45,7 +45,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 282.0, 88.0, 150.0, 22.0 ],
-					"presentation_rect" : [ 284.0, 109.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -107,9 +106,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 219.0, 160.0, 48.0, 22.0 ],
+					"patching_rect" : [ 219.0, 160.0, 101.0, 22.0 ],
 					"style" : "",
-					"text" : "banger"
+					"text" : "min.beat.random"
 				}
 
 			}
@@ -161,7 +160,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "banger.mxo",
+				"name" : "min.beat.random.mxo",
 				"type" : "iLaX"
 			}
  ],
