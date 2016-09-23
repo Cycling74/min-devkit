@@ -16,7 +16,7 @@ On the command line run the script passing the path where you wish your new pack
 * run **CMake** as appropriate for your platform (see the [ReadMe](https://github.com/Cycling74/min-devkit) for details)
 * **build** as documented in the [ReadMe](https://github.com/Cycling74/min-devkit)
 * run **unit tests** in the [ReadMe](https://github.com/Cycling74/min-devkit)
-* try the default `foo` object in Max to make sure it works using the help patcher
+* try the default `foo.hello-world` object in Max to make sure it works using the help patcher
 
 
 ## 3. Begin creating your own objects

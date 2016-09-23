@@ -16,8 +16,8 @@ Here are some suggestions:
 
 The folder will typically contain 3 files:
 
-* The source file for the object (e.g. `xfade_tilde.cpp`)
-* The source file for a unit test (e.g. `xfade_tilde_test.cpp`)
+* The source file for the object (e.g. `hello-world.cpp`)
+* The source file for a unit test (e.g. `hello-world_test.cpp`)
 * A project file (e.g. `CMakeLists.txt`)
 
 If you follow the standard convention of the Min-DevKit you will not typically need to open or modify the `CMakeLists.txt` at all.
@@ -48,7 +48,7 @@ Now you can edit your code to make your external object do amazing things.
 
 ## 5. Document
 
-To be an upstanding citizen of the Max ecosystem your object should have both a **help patcher** added to the `help` folder and a reference page added to the `docs` folder.
+To be an upstanding citizen of the Max ecosystem your object should have both a **help patcher** added to the `help` folder. A reference page will be generated and added to the `docs` folder automatically when you instantiate your object the first time.
 
 ## 6. Unit Testing
 
