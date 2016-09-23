@@ -44,8 +44,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 110.0, 200.0, 145.0, 23.0 ],
-					"style" : "",
-					"text" : "aloha"
+					"style" : ""
 				}
 
 			}
