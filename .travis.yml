@@ -23,6 +23,7 @@ script:
 - for f in *.md; do [ -e "$f" ] && cp "$f" $PACKAGE_NAME ; done
 - if [ -e icon.png ]; then cp icon.png $PACKAGE_NAME; fi
 - if [ -d docs ]; then cp -r docs $PACKAGE_NAME; fi
+- if [ -d examples ]; then cp -r examples $PACKAGE_NAME; fi
 - if [ -d extensions ]; then cp -r extensions $PACKAGE_NAME; fi
 - if [ -d externals ]; then cp -r externals $PACKAGE_NAME; fi
 - if [ -d extras ]; then cp -r extras $PACKAGE_NAME; fi
