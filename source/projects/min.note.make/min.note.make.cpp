@@ -61,12 +61,12 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "makenote" };
 	
-	inlet	pitch_in		{ this, "(int) pitch" };
-	inlet	velocity_in		{ this, "(int) velocity" };
-	inlet	duration_in		{ this, "(int) duration" };
+	inlet<>		pitch_in		{ this, "(int) pitch" };
+	inlet<>		velocity_in		{ this, "(int) velocity" };
+	inlet<>		duration_in		{ this, "(int) duration" };
 
-	outlet	pitch_out		{ this, "(int) pitch" };
-	outlet	velocity_out	{ this, "(int) velocity" };
+	outlet<>	pitch_out		{ this, "(int) pitch" };
+	outlet<>	velocity_out	{ this, "(int) velocity" };
 
 	argument<number> velocity_arg	{ this, "velocity", "Initial MIDI velocity.",
 		MIN_ARGUMENT_FUNCTION {
@@ -80,7 +80,12 @@ public:
 		}
 	};
 
-	message ints { this, "int", "MIDI note information",
+	// the truth is that this only sort-of threadsafe
+	// when receiving some bits of info from the scheduler and some from the main thread
+	// it won't crash or do anything catastrophic
+	// however, the wrong velocities might be paired with the wrong pitches, etc.
+
+	message<threadsafe::yes> ints { this, "int", "MIDI note information",
 		MIN_FUNCTION {
 			switch (current_inlet()) {
 				case 0:
@@ -96,7 +101,6 @@ public:
 				default:
 					assert(false);
 			}
-
 			return {};
 		}
 	};

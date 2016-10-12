@@ -16,9 +16,9 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "min.beat.pattern, link.beat, metro, tempo, drunk" };
 	
-	inlet	input			{ this, "(toggle) on/off" };
-	outlet	bang_out		{ this, "(bang) triggers at randomized interval" };
-	outlet	interval_out	{ this, "(float) the interval for the current bang" };
+	inlet<>			input			{ this, "(toggle) on/off" };
+	outlet<>		bang_out		{ this, "(bang) triggers at randomized interval" };
+	outlet<>		interval_out	{ this, "(float) the interval for the current bang" };
 
 
 	argument<number> minimum_arg	{ this, "minimum", "Initial lower-bound of generated random interval.",
@@ -86,9 +86,9 @@ public:
 			return args;
 		}}
 	};
-	
 
-	message toggle { this, "int", "Toggle the state of the timer.",
+
+	message<> toggle { this, "int", "Toggle the state of the timer.",
 		MIN_FUNCTION {
 			on = args[0];
 			return {};

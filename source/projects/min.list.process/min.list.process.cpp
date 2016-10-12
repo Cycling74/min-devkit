@@ -7,7 +7,10 @@
 #include "c74_min.h"
 
 using namespace c74::min;
-using namespace std;
+
+
+// one could easily imagine calling the number message with a metro/counter but then
+// banging the results with mouse-clicks or an sfplay~ "done" notification
 
 class list_process : public object<list_process> {
 public:
@@ -17,9 +20,9 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "zl" };
 
-	inlet			in		{ this, "(anything) input" };
-	outlet			out1	{ this, "(list) result" };
-	outlet			out2	{ this, "(list) result" };
+	inlet<>		in		{ this, "(anything) input" };
+	outlet<>	out1	{ this, "(list) result" };
+	outlet<>	out2	{ this, "(list) result" };
 
 
 	// For enum attributes you first define your enum class.
@@ -53,13 +56,16 @@ public:
 	c74::min::function process = MIN_FUNCTION {
 		switch (operation) {
 			case operations::collect: {
+				lock lock { m_mutex };
 				m_data.reserve( m_data.size() + args.size() );
 				m_data.insert( m_data.end(), args.begin(), args.end() );
 				break;
 			}
 			case operations::average: {
+				lock lock { m_mutex };
 				auto x = from_atoms<std::vector<double>>(args);
 				auto y = math::mean<double>(x);
+				lock.unlock();
 				out1.send(y.first, y.second);
 				break;
 			}
@@ -69,31 +75,25 @@ public:
 		return {};
 	};
 	
-	message list		{ this, "list", "Operate on the list. Either add it to the collection or calculate the mean.", process };
-	message anything	{ this, "anything", "Add content to the collection. Only applicable if using the 'collect' operation.", process };
+	message<threadsafe::yes> list		{ this, "list", "Operate on the list. Either add it to the collection or calculate the mean.", process };
+	message<threadsafe::yes> anything	{ this, "anything", "Add content to the collection. Only applicable if using the 'collect' operation.", process };
+	message<threadsafe::yes> number		{ this, "number", "Add content to the collection. Only applicable if using the 'collect' operation.", process };
 
-
-	message number { this, "number", "Add content to the collection. Only applicable if using the 'collect' operation.",
+	message<threadsafe::yes> bang		{ this, "bang", "Send out the collected list. Only applicable if using the 'collect' operation.",
 		MIN_FUNCTION {
-			if (operation == operations::collect) {
-				m_data.reserve( m_data.size() + args.size() );
-				m_data.insert( m_data.end(), args.begin(), args.end() );
-			}
-			return {};
-		}
-	};
-
-
-	message bang { this, "bang", "Send out the collected list. Only applicable if using the 'collect' operation.",
-		MIN_FUNCTION {
-			out1.send(m_data);
+			lock lock { m_mutex };
+			atoms data_copy = m_data;
 			m_data.clear();
+			lock.unlock();
+
+			out1.send(data_copy);
 			return {};
 		}
 	};
 
 private:
 	atoms	m_data;
+	mutex	m_mutex;
 };
 
 MIN_EXTERNAL(list_process);

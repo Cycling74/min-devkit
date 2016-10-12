@@ -16,9 +16,9 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "index~, buffer~, wave~" };
 
-	inlet				index_inlet		{ this, "(signal) Sample index" };
-	inlet				channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
-	outlet				output			{ this, "(signal) Sample value at index", "signal" };
+	inlet<>				index_inlet		{ this, "(signal) Sample index" };
+	inlet<>				channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
+	outlet<>			output			{ this, "(signal) Sample value at index", "signal" };
 	buffer_reference	buffer			{ this };
 	
 	

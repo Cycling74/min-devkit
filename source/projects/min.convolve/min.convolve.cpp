@@ -17,8 +17,8 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "buffir~, jit.convolve" };
 
-	inlet			input	{ this, "(list) values to convolve" };
-	outlet			output	{ this, "(list) result of convolution" };
+	inlet<>			input	{ this, "(list) values to convolve" };
+	outlet<>		output	{ this, "(list) result of convolution" };
 
 
 	using fvec = vector<double>;
@@ -27,7 +27,7 @@ public:
 	};
 
 
-	message list { this, "list", "Input to the convolution function.",
+	message<> list { this, "list", "Input to the convolution function.",
 		MIN_FUNCTION {
 			const vector<double>&	kernel = this->kernel;
 			atoms					result(args.size());

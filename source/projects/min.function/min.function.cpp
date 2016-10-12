@@ -91,8 +91,8 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "expr, gen~" };
 
-	inlet	input  { this, "Input" };
-	outlet	output { this, "Output" };
+	inlet<>		input  { this, "Input" };
+	outlet<>	output { this, "Output" };
 	
 
 	argument<anything> name_arg { this, "code",
@@ -119,7 +119,7 @@ public:
 	}
 		
 	
-	message define { this, "define", "Define a new method, mapping it to a name.",
+	message<> define { this, "define", "Define a new method, mapping it to a name.",
 		MIN_FUNCTION {
 			symbol	name = args[0];
 			string	code = args[1];
@@ -142,7 +142,7 @@ public:
 	};
 	
 	
-	message number { this, "number", "Execute the 'anonymous' method. The number is passed in as the variable 'x'.",
+	message<> number { this, "number", "Execute the 'anonymous' method. The number is passed in as the variable 'x'.",
 		MIN_FUNCTION {
 			auto f = functions["anonymous"].get();
 			auto ret = f->m_method(args[0]);
@@ -152,7 +152,7 @@ public:
 	};
 	
 	
-	message anything { this, "anything", "Execute a named method. The first arg is the name of the method. The second arg is passed to the method as the variable 'x'.",
+	message<> anything { this, "anything", "Execute a named method. The first arg is the name of the method. The second arg is passed to the method as the variable 'x'.",
 		MIN_FUNCTION {
 			auto f = functions[args[0]].get();
 			if (f) {
@@ -165,7 +165,7 @@ public:
 	
 	
 	/// Open the editor window.
-	message dblclick { this, "dblclick", MIN_FUNCTION {
+	message<> dblclick { this, "dblclick", MIN_FUNCTION {
 		auto f = functions["anonymous"].get();
 		if (f)
 			editor.open(f->m_code);
@@ -174,7 +174,7 @@ public:
 	
 	
 	/// Save the state of the editor window with the patcher.
-	message savestate { this, "savestate", MIN_FUNCTION {
+	message<> savestate { this, "savestate", MIN_FUNCTION {
 		if (embed) {
 			auto f = functions["anonymous"].get();
 			if (f) {
