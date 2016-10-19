@@ -19,8 +19,15 @@ public:
 	inlet				index_inlet		{ this, "(signal) Sample index" };
 	inlet				channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
 	outlet				output			{ this, "(signal) Sample value at index", "signal" };
-	buffer_reference	buffer			{ this };
-	
+	outlet				changed			{ this, "(bang) Notification that the content of the buffer~ changed." };
+
+	buffer_reference	buffer			{ this, 
+		MIN_FUNCTION {
+			changed.send(k_sym_bang);
+			return {};
+		}
+	};
+
 	
 	argument<symbol> name_arg { this, "buffer-name", "Initial buffer~ from which to read.",
 		MIN_ARGUMENT_FUNCTION {
