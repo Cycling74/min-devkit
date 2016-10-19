@@ -145,7 +145,7 @@ public:
 	};
 	
 	
-	message number {this, "number", "Set the normalized position in the function.",
+	message<threadsafe::yes> number {this, "number", "Set the normalized position in the function.",
 		MIN_FUNCTION {
 			position = args;
 			return {};

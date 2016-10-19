@@ -18,10 +18,10 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "xfade~, matrix~" };
 
-	inlet	in1		{ this, "(signal) Input 1" };
-	inlet	in_pos	{ this, "(signal) Position between them (0..1)" };
-	outlet	out1	{ this, "(signal) Left Output", "signal" };
-	outlet	out2	{ this, "(signal) Right Output", "signal" };
+	inlet<>			in1		{ this, "(signal) Input 1" };
+	inlet<>			in_pos	{ this, "(signal) Position between them (0..1)" };
+	outlet<>		out1	{ this, "(signal) Left Output", "signal" };
+	outlet<>		out2	{ this, "(signal) Right Output", "signal" };
 	
 
 	/// Process one sample

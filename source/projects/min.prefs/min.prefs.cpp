@@ -17,10 +17,10 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "conformpath" };
 
-	inlet	input	{ this, "(bang) get the path to the preferences folder" };
-	outlet	output	{ this, "(symbol) preferences folder path" };
+	inlet<>		input	{ this, "(bang) get the path to the preferences folder" };
+	outlet<>	output	{ this, "(symbol) preferences folder path" };
 
-	message	bang	{this, "bang", "Return the path to the preferences folder.",
+	message<>	bang	{this, "bang", "Return the path to the preferences folder.",
 		MIN_FUNCTION {
 			std::string str = p;
 			output.send(str);

@@ -17,9 +17,9 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "min.beat.random, link.beat, metro, tempo, drunk" };
 
-	inlet	input			{ this, "(toggle) on/off" };
-	outlet	bang_out		{ this, "(bang) triggers at according to specified pattern" };
-	outlet	interval_out	{ this, "(float) the interval for the current bang" };
+	inlet<>		input			{ this, "(toggle) on/off" };
+	outlet<>	bang_out		{ this, "(bang) triggers at according to specified pattern" };
+	outlet<>	interval_out	{ this, "(float) the interval for the current bang" };
 
 	
 	timer	metro			{this, MIN_FUNCTION {
@@ -50,7 +50,7 @@ public:
 	};
 	
 	
-	message toggle { this, "int", "Turn on/off the internal timer.",
+	message<> toggle { this, "int", "Turn on/off the internal timer.",
 		MIN_FUNCTION {
 			on = args[0];
 			return {};
@@ -58,7 +58,7 @@ public:
 	};
 	
 	
-	message dictionary { this, "dictionary", "Use a dictionary to define the pattern of bangs produced.",
+	message<> dictionary { this, "dictionary", "Use a dictionary to define the pattern of bangs produced.",
 		MIN_FUNCTION {
 			dict d{ args[0] };
 

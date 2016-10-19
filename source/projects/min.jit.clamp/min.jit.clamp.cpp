@@ -16,8 +16,8 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "jit.clip" };
 
-	inlet	input	{ this, "(matrix) Input", "matrix" };
-	outlet	output	{ this, "(matrix) Output", "matrix" };
+	inlet<>		input	{ this, "(matrix) Input", "matrix" };
+	outlet<>	output	{ this, "(matrix) Output", "matrix" };
 	
 
 	attribute<number> min { this, "min", 0.0,

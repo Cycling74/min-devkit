@@ -56,11 +56,11 @@ public:
 	MIN_AUTHOR		{	"Cycling '74"			};
 	MIN_RELATED		{	"biquad~, filterdesign"	};
 
-	inlet	input	{ this, "(signal) Input" };
-	outlet	output	{ this, "(signal) Output", "signal" };
+	inlet<>			input	{ this, "(signal) Input" };
+	outlet<>		output	{ this, "(signal) Output", "signal" };
 
 
-	message clear { this,
+	message<> clear { this,
 		"clear", "Reset the DC-Blocking filter. Because this is an IIR filter it has the potential to blow-up, requiring a reset.",
 		MIN_FUNCTION {
 			x_1 = y_1 = 0.0;

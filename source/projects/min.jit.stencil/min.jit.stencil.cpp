@@ -16,8 +16,8 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "jit.avg4" };
 
-	inlet	input	{ this, "(matrix) Input", "matrix" };
-	outlet	output	{ this, "(matrix) Output", "matrix" };
+	inlet<>		input	{ this, "(matrix) Input", "matrix" };
+	outlet<>	output	{ this, "(matrix) Output", "matrix" };
 
 	
 	// TODO: mode attr for how to handle the edges

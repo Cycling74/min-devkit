@@ -16,9 +16,9 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "pedro, dict.join" };
 
-	inlet	left	{ this, "dictionary to combined with dictionary at right inlet",	"" };
-	inlet	right	{ this, "dictionary to combined with dictionary at left inlet",	"dictionary" };
-	outlet	output	{ this, "dictionary of entries combined from both inlets",		"dictionary" };
+	inlet<>		left	{ this, "dictionary to combined with dictionary at right inlet",	"" };
+	inlet<>		right	{ this, "dictionary to combined with dictionary at left inlet",	"dictionary" };
+	outlet<>	output	{ this, "dictionary of entries combined from both inlets",		"dictionary" };
 	
 
 	argument<anything> name_arg { this, "dictionary-syntax", "Define an initial dictionary for joining." };
@@ -34,7 +34,7 @@ public:
 	}
 		
 	
-	message bang { this, "bang", "Resend the most recently combined dictionary",
+	message<> bang { this, "bang", "Resend the most recently combined dictionary",
 		MIN_FUNCTION {
 			output.send("dictionary", dict_merged.name());
 			return {};
@@ -42,7 +42,7 @@ public:
 	};
 	
 	
-	message dictionary { this, "dictionary",
+	message<> dictionary { this, "dictionary",
 		"Dictionary from the second inlet is combined with the dictionary from the first inlet and a new dictionary is sent",
 		MIN_FUNCTION {
 			try {
