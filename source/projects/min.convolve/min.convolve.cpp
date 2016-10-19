@@ -27,9 +27,12 @@ public:
 	};
 
 
-	message<> list { this, "list", "Input to the convolution function.",
+	message<threadsafe::yes> list { this, "list",
+		"Input to the convolution function.",
 		MIN_FUNCTION {
-			const vector<double>&	kernel = this->kernel;
+			// here we must make a local *copy* of the kernel for thread-safety
+			// otherwise we would require locks on the shared data
+			const vector<double>	kernel = this->kernel;
 			atoms					result(args.size());
 			
 			for (auto i=0; i<args.size(); ++i) {
