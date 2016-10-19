@@ -16,14 +16,14 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "index~, buffer~, wave~" };
 
-	inlet				index_inlet		{ this, "(signal) Sample index" };
-	inlet				channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
-	outlet				output			{ this, "(signal) Sample value at index", "signal" };
-	outlet				changed			{ this, "(bang) Notification that the content of the buffer~ changed." };
+	inlet<>				index_inlet		{ this, "(signal) Sample index" };
+	inlet<>				channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
+	outlet<>			output			{ this, "(signal) Sample value at index", "signal" };
+	outlet<>			changed			{ this, "(symbol) Notification that the content of the buffer~ changed." };
 
 	buffer_reference	buffer			{ this, 
 		MIN_FUNCTION {
-			changed.send(k_sym_bang);
+			changed.send(args);
 			return {};
 		}
 	};
