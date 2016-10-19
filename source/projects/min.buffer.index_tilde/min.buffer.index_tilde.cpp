@@ -23,6 +23,7 @@ public:
 
 	buffer_reference	buffer			{ this, 
 		MIN_FUNCTION {
+			// will receive a symbol arg indicating 'binding', 'unbinding', or 'modified'
 			changed.send(args);
 			return {};
 		}
