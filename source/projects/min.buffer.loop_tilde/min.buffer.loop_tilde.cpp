@@ -20,11 +20,10 @@ public:
 	inlet<>				channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
 	outlet<>			output			{ this, "(signal) Sample value at index", "signal" };
 	outlet<>			sync			{ this, "(signal) Sync", "signal" };
-//	outlet<>			changed			{ this, "(symbol) Notification that the content of the buffer~ changed." };
 
 	buffer_reference	buffer			{ this, 
 		MIN_FUNCTION {
-//			changed.send(args);
+			length.touch();
 			return {};
 		}
 	};
@@ -53,24 +52,46 @@ public:
 		}}
 	};
 
+
+	attribute<number> length { this, "length", 1000.0,
+		title { "Length (ms)"},
+		description { "Length of the buffer~ in milliseconds." },
+		setter { MIN_FUNCTION {
+			number new_length = args[0];
+			if (new_length <= 0.0)
+				new_length = 1.0;
+
+			buffer_lock<false> b { buffer };
+			b.resize(new_length);
+
+			return {new_length};
+		}},
+		getter { MIN_GETTER_FUNCTION {
+			buffer_lock<false> b { buffer };
+			return { b.length_in_seconds() * 1000.0 };
+		}}
+	};
+
+
 	attribute<number> speed { this, "speed", 1.0,
 		description { "Playback speed of the loop" }
 	};
 
 
 	message<> dspsetup { this, "dspsetup", MIN_FUNCTION {
-		double sr = args[0];
-		m_one_over_samplerate = 1.0 / sr;
+		double samplerate = args[0];
+
+		m_one_over_samplerate = 1.0 / samplerate;
 		return {};
 	}};
 
 
 	void perform(audio_bundle input, audio_bundle output) {
-		auto		in = input.samples(0);
-		auto		out = output.samples(0);
-		auto		sync = output.samples(1);
-		buffer_lock	b(buffer);
-		auto		chan = std::min<int>(channel-1, b.channelcount());
+		auto			in = input.samples(0);
+		auto			out = output.samples(0);
+		auto			sync = output.samples(1);
+		buffer_lock<>	b(buffer);
+		auto			chan = std::min<int>(channel-1, b.channelcount());
 		
 		if (b.valid()) {
 			number position = m_position;
@@ -101,7 +122,6 @@ public:
 
 private:
 	double	m_position { 0.0 };
-	double	m_samplerate { 44100.0 };
 	double	m_one_over_samplerate = { 1.0 };
 };
 

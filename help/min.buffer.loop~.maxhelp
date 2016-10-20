@@ -56,7 +56,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 172.0, 105.0, 593.0, 414.0 ],
+						"rect" : [ 172.0, 131.0, 593.0, 388.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -85,6 +85,19 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"attr" : "length",
+									"id" : "obj-6",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 25.0, 157.0, 183.0, 23.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-8",
 									"maxclass" : "button",
@@ -172,7 +185,7 @@
 									"outlettype" : [ "signal", "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
 									"patching_rect" : [ 25.0, 290.0, 118.0, 38.0 ],
-									"presentation_rect" : [ 0.0, 0.0, 50.0, 24.0 ],
+									"presentation_rect" : [ 0.0, 0.0, 50.0, 38.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_longname" : "live.gain~",
@@ -276,7 +289,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 25.0, 177.0, 150.0, 23.0 ],
+									"patching_rect" : [ 58.0, 185.0, 150.0, 23.0 ],
 									"style" : ""
 								}
 
@@ -350,6 +363,15 @@
 									"destination" : [ "obj-13", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
 									"source" : [ "obj-9", 0 ]
 								}
 
@@ -413,7 +435,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 593.0, 414.0 ],
+						"rect" : [ 0.0, 26.0, 593.0, 388.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,

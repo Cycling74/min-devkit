@@ -57,6 +57,11 @@
 			<description>Playback speed of the loop </description>
 		</attribute>
 
+		<attribute name='length' get='1' set='1' type='float64' size='1' >
+			<digest>Length of the buffer~ in milliseconds</digest>
+			<description>Length of the buffer~ in milliseconds. </description>
+		</attribute>
+
 		<attribute name='channel' get='1' set='1' type='long' size='1' >
 			<digest>Channel to read from the buffer~</digest>
 			<description>Channel to read from the buffer~. </description>
