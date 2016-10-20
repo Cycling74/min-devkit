@@ -40,6 +40,11 @@
 
 	<methodlist>
 
+		<method name='float'>
+			<digest>Toggle the recording attribute</digest>
+			<description>Toggle the recording attribute. </description>
+		</method>
+
 		<method name='set'>
 			<digest>Choose a named buffer~ from which to read</digest>
 			<description>Choose a named buffer~ from which to read. </description>
@@ -51,6 +56,11 @@
 	<!--ATTRIBUTES-->
 
 	<attributelist>
+
+		<attribute name='record' get='1' set='1' type='long' size='1' >
+			<digest>Record into the loop </digest>
+			<description>Record into the loop </description>
+		</attribute>
 
 		<attribute name='speed' get='1' set='1' type='float64' size='1' >
 			<digest>Playback speed of the loop </digest>

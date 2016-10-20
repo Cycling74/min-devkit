@@ -78,6 +78,19 @@ public:
 	};
 
 
+	attribute<bool> record { this, "record", false,
+		description { "Record into the loop" }
+	};
+
+
+	message<> number_message { this, "number", "Toggle the recording attribute.",
+		MIN_FUNCTION {
+			record = args[0];
+			return {};
+		}
+	};
+
+
 	message<> dspsetup { this, "dspsetup", MIN_FUNCTION {
 		double samplerate = args[0];
 
@@ -94,12 +107,12 @@ public:
 		auto			chan = std::min<int>(channel-1, b.channelcount());
 		
 		if (b.valid()) {
-			number position = m_position;
-			number speed = this->speed;
-			number frames = b.framecount();
-			number length_in_seconds = b.length_in_seconds();
-			number frequency = (1.0 / length_in_seconds) * speed;
-			number stepsize = frequency * m_one_over_samplerate;
+			number	speed = this->speed;
+			auto	position = m_playback_position;
+			auto	frames = b.framecount();
+			auto	length_in_seconds = b.length_in_seconds();
+			auto	frequency = (1.0 / length_in_seconds) * speed;
+			auto	stepsize = frequency * m_one_over_samplerate;
 
 			for (auto i=0; i<input.framecount(); ++i) {
 				// phasor
@@ -111,8 +124,21 @@ public:
 				auto frame = position * frames;
 				out[i] = b.lookup(frame, chan);
 			}
+			m_playback_position = position;
 
-			m_position = position;
+			if (bool(record)) {
+				auto record_position = m_record_position;
+
+				for (auto i=0; i<input.framecount(); ++i) {
+					if (record_position >= frames)
+						record_position = 0;
+					b.lookup(record_position, chan) = in[i];
+					++record_position;
+				}
+				m_record_position = record_position;
+				b.dirty();
+			}
+
 		}
 		else {
 			for (auto i=0; i<input.framecount(); ++i)
@@ -121,8 +147,9 @@ public:
 	}
 
 private:
-	double	m_position { 0.0 };
-	double	m_one_over_samplerate = { 1.0 };
+	double	m_playback_position		{ 0.0 };	// normalized range
+	size_t	m_record_position		{ 0 };		// native range
+	double	m_one_over_samplerate	{ 1.0 };
 };
 
 
