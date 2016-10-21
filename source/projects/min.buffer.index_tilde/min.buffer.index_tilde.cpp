@@ -55,10 +55,10 @@ public:
 
 
 	void perform(audio_bundle input, audio_bundle output) {
-		auto		in = input.samples(0);
-		auto		out = output.samples(0);
-		buffer_lock	b(buffer);
-		auto		chan = std::min<int>(channel-1, b.channelcount());
+		auto			in = input.samples(0);
+		auto			out = output.samples(0);
+		buffer_lock<>	b(buffer);
+		auto			chan = std::min<int>(channel-1, b.channelcount());
 		
 		if (b.valid()) {
 			for (auto i=0; i<input.framecount(); ++i) {
