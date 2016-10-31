@@ -7,7 +7,7 @@
 #include "c74_min.h"
 
 using namespace c74::min;
-using namespace std;
+using std::vector;
 
 class convolve : public object<convolve> {
 public:
@@ -27,13 +27,21 @@ public:
 	};
 
 
-	message<threadsafe::yes> list { this, "list",
+	message<> list { this, "list",
 		"Input to the convolution function.",
 		MIN_FUNCTION {
-			// here we must make a local *copy* of the kernel for thread-safety
-			// otherwise we would require locks on the shared data
-			const vector<double>	kernel = this->kernel;
-			atoms					result(args.size());
+			// here we make a local *copy* of the kernel for thread-safety
+			// it looks great because we do one operation and then require locks on the shared data
+			// but this is *wrong*
+			// std::vector is not trivially copyable...
+			// this copy assignment involved multiple operation internally, both memory allocation and copying
+			// thus the following is not thread-safe!
+			// as such, we have not marked this message as being thread-safe, and thus it will always execute in the main thread.
+			//
+			// const vector<double>	kernel = this->kernel;
+
+			const fvec&	kernel = this->kernel;
+			atoms		result(args.size());
 			
 			for (auto i=0; i<args.size(); ++i) {
 				double y = 0.0;

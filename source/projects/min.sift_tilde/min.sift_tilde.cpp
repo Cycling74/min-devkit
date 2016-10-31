@@ -27,11 +27,11 @@ public:
 		}
 	};
 
-	attribute<number> value { this, "value", 0.0,
+	attribute<number,threadsafe::yes> value { this, "value", 0.0,
 		description { "Value to sift out of the incoming signal." }
 	};
 
-	attribute<bool> high_priority { this, "high_priority", true,
+	attribute<bool,threadsafe::yes> high_priority { this, "high_priority", true,
 		description {
 			"Deliver results in the high-priority scheduler thread. "
 			"If set to false then deliver results in the main thread. "
