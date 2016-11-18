@@ -11,16 +11,16 @@
 SCENARIO( "object produces correct output" ) {
 	ext_main(nullptr);	// every unit test must call ext_main() once to configure the class
 	
-	GIVEN( "An instance of xfade~" ) {
+	GIVEN( "An instance of panner~" ) {
 
 		test_wrapper<panner> an_instance;
 		panner& my_object = an_instance;
 
 		// check that default attr values are correct
 		
-		REQUIRE( my_object.shape == symbol("equal_power") );	// note: symbols can be compared with strings
-		REQUIRE( my_object.mode == symbol("fast") );
-		REQUIRE( my_object.position == Approx(0.5) );	// note: floating-point values may be subject to rounding errors
+		REQUIRE(( my_object.shape == symbol("equal_power") ));	// note: symbols can be compared with strings
+		REQUIRE(( my_object.mode == symbol("fast") ));
+		REQUIRE(( my_object.position == Approx(0.5) ));	// note: floating-point values may be subject to rounding errors
 		
 		// now proceed to testing various sequences of events
 		
