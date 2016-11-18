@@ -31,10 +31,10 @@ build_script:
   - cd ..
   - mkdir %APPVEYOR_PROJECT_NAME%
   - cp -r docs %APPVEYOR_PROJECT_NAME%
-  - if [ -d examples ]; then cp -r examples %APPVEYOR_PROJECT_NAME%; fi
+  - [[ -e examples ]] && cp -r examples %APPVEYOR_PROJECT_NAME%
   - cp -r extensions %APPVEYOR_PROJECT_NAME%
   - cp -r externals %APPVEYOR_PROJECT_NAME%
-  - if [ -d extras ]; then cp -r extras %APPVEYOR_PROJECT_NAME%; fi
+  - [[ -e extras ]] && cp -r extras %APPVEYOR_PROJECT_NAME%
   - cp -r help %APPVEYOR_PROJECT_NAME%
   - cp icon.png %APPVEYOR_PROJECT_NAME%
   - cp License.md %APPVEYOR_PROJECT_NAME%
