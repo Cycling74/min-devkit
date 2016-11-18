@@ -30,7 +30,7 @@ SCENARIO( "object produces correct output" ) {
 				atoms input { 1.0, 2.0, 3.0, 4.0 };
 
 				my_object.list( input );
-				auto output = c74::max::object_getoutput(my_object, 0);
+				auto& output = *c74::max::object_getoutput(my_object, 0);
 				REQUIRE(( output.size() == 1 ));
 				REQUIRE(( output[0].size() == input.size() ));
 				for (auto i=0; i<output.size(); ++i) {

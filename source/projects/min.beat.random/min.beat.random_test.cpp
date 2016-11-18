@@ -43,7 +43,7 @@ SCENARIO( "object produces correct output" ) {
 				
 				cout << "done!" << endl;
 				// 2. See if there was any output
-				auto output = c74::max::object_getoutput(my_object, 0);
+				auto& output = *c74::max::object_getoutput(my_object, 0);
 				REQUIRE( output.size() == 0 );
 			}
 			AND_THEN( "turning it on does produce output" ) {
