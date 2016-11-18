@@ -32,7 +32,7 @@ build_script:
   - mkdir %APPVEYOR_PROJECT_NAME%
   - cp -r docs %APPVEYOR_PROJECT_NAME%
   - if exist examples cp -r examples %APPVEYOR_PROJECT_NAME%
-  - cp -r extensions %APPVEYOR_PROJECT_NAME%
+  - if exist extensions cp -r extensions %APPVEYOR_PROJECT_NAME%
   - cp -r externals %APPVEYOR_PROJECT_NAME%
   - if exist extras cp -r extras %APPVEYOR_PROJECT_NAME%
   - cp -r help %APPVEYOR_PROJECT_NAME%
