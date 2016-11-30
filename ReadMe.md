@@ -47,7 +47,7 @@ Note: you can add the `-j4` option where "4" is the number of cores to use.  Thi
 If you are using Visual Studio, You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2015, the commands to generate the projects will look like this:
 
 * 32 bit: `cmake -G "Visual Studio 14 2015" ..`
-* 64 bit: `cmake -G "Visual Studio 14 2015 Win64" -DWIN64:Bool=True ..`
+* 64 bit: `cmake -G "Visual Studio 14 2015 Win64" ..`
 
 Having generated the projects, you can now build by opening the .sln file in the build folder with the Visual Studio app (just double-click the .sln file) or you can build on the command line like this:
 

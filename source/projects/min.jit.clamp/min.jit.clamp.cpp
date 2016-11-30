@@ -23,7 +23,8 @@ public:
 	attribute<number> min { this, "min", 0.0,
 		description { "The minimum value below which clipping occurs." },
 		setter { MIN_FUNCTION {
-			cmin = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
+			double in = args[0];
+			cmin = static_cast<uchar>(c74::max::clamp(255.0 * in, 0.0, 255.0));
 			return args;
 		}},
 		getter { MIN_GETTER_FUNCTION {
@@ -35,7 +36,8 @@ public:
 	attribute<number> max { this, "max", 1.0,
 		description { "The maximum value above which clipping occurs." },
 		setter { MIN_FUNCTION {
-			cmax = (uchar)MIN_CLAMP((double)args[0] * 255.0, 0.0, 255.0);
+			double in = args[0];
+			cmax = static_cast<uchar>(c74::max::clamp(255.0 * in, 0.0, 255.0));
 			return args;
 		}},
 		getter { MIN_GETTER_FUNCTION {
@@ -50,12 +52,13 @@ public:
 	template<typename matrix_type>
 	matrix_type calc_cell(matrix_type input, const matrix_info& info, matrix_coord& position) {
 		matrix_type	output;
-		double		fmin = min;
-		double		fmax = max;
+		double fmin = min;
+		double fmax = max;
 		
-		for (auto plane=0; plane<info.planecount(); ++plane)
-			output[plane] = MIN_CLAMP(input[plane], fmin, fmax);
-		
+		for (auto plane=0; plane<info.planecount(); ++plane) {
+			auto dummy = input[plane];
+			output[plane] = c74::max::clamp<decltype(dummy)>(input[plane], fmin, fmax);
+		}
 		return output;
 	}
 
@@ -65,10 +68,10 @@ public:
 	pixel calc_cell(pixel input, const matrix_info& info, matrix_coord& position) {
 		pixel output;
 		
-		output[alpha]	= MIN_CLAMP(input[alpha], cmin, cmax);
-		output[red]		= MIN_CLAMP(input[red], cmin, cmax);
-		output[green]	= MIN_CLAMP(input[green], cmin, cmax);
-		output[blue]	= MIN_CLAMP(input[blue], cmin, cmax);
+		output[alpha]	= c74::max::clamp(input[alpha], cmin, cmax);
+		output[red]		= c74::max::clamp(input[red], cmin, cmax);
+		output[green]	= c74::max::clamp(input[green], cmin, cmax);
+		output[blue]	= c74::max::clamp(input[blue], cmin, cmax);
 		
 		return output;
 	}

@@ -65,7 +65,7 @@ private:
 
 	void drain_the_fifo() {
 		number x;
-		while(m_fifo.try_dequeue(x))
+		while (m_fifo.try_dequeue(x))
 			output.send(x);
 	}
 };

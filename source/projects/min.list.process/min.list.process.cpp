@@ -81,8 +81,9 @@ public:
 
 	message<threadsafe::yes> bang		{ this, "bang", "Send out the collected list. Only applicable if using the 'collect' operation.",
 		MIN_FUNCTION {
-			lock lock { m_mutex };
-			atoms data_copy = m_data;
+			lock	lock { m_mutex };
+			atoms	data_copy = m_data;
+
 			m_data.clear();
 			lock.unlock();
 

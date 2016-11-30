@@ -29,7 +29,7 @@ public:
 	, m_code			{ fn_code }
 	, m_complete_code	{ fn_complete_code }
 	{
-		m_compiler = c74::max::object_new(c74::max::CLASS_NOBOX, c74::max::gensym("clang"), (c74::max::t_symbol*)m_name);
+		m_compiler = c74::max::object_new(c74::max::CLASS_NOBOX, symbol("clang"), m_name);
 		object_attr_setlong(m_compiler, symbol("cpp"), 1);
 		
 		// Configure system paths:
@@ -45,7 +45,7 @@ public:
 		atom ret;
 		auto maxstr = c74::max::string_new(m_complete_code.c_str());
 		
-		object_method_obj(m_compiler, c74::max::gensym("compile"), (c74::max::t_object*)maxstr, &ret);
+		object_method_obj(m_compiler, symbol("compile"), maxstr, &ret);
 		// TODO: ???
 		object_free(maxstr);
 		
@@ -58,9 +58,9 @@ public:
 		// Get a function pointer:
 		atom fun;
 		
-		object_method_sym(m_compiler, c74::max::gensym("getfunction"), c74::max::gensym("func"), &fun);
+		object_method_sym(m_compiler, symbol("getfunction"), symbol("func"), &fun);
 		
-		m_method = (mini_function*)atom_getobj(&fun);
+		m_method = reinterpret_cast<mini_function*>(atom_getobj(&fun));
 	}
 	
 	

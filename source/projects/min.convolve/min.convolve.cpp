@@ -50,8 +50,10 @@ public:
 					auto	index = i-k;
 					double	x;
 					
-					if (index < 0) x = 0.0;
-					else x = (double)args[index];
+					if (index < 0)
+						x = 0.0;
+					else
+						x = args[index];
 					
 					y += x * kernel[k];    // convolve: multiply and accumulate
 				}
