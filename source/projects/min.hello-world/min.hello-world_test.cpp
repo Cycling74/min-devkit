@@ -23,7 +23,7 @@ SCENARIO( "object produces correct output" ) {
 		WHEN( "a 'bang' is received" ) {
 			my_object.bang();
 			THEN( "our greeting is produced at the outlet" ) {
-				auto output = c74::max::object_getoutput(my_object, 0);
+				auto& output = *c74::max::object_getoutput(my_object, 0);
 				REQUIRE(( output.size() == 1 ));
 				REQUIRE(( output[0].size() == 1 ));
 				REQUIRE(( output[0][0] == symbol("hello world") ));
