@@ -25,10 +25,14 @@ public:
 
 	c74::min::function check = MIN_FUNCTION {
 		 // check scheduler last because it might be running in main or audio threads depending on settings
-		if ( c74::max::systhread_ismainthread() )			outlet_main.send(k_sym_bang);
-		else if ( c74::max::systhread_isaudiothread() )		outlet_audio.send(k_sym_bang);
-		else if ( c74::max::systhread_istimerthread() )		outlet_sched.send(k_sym_bang);
-		else												outlet_other.send(k_sym_bang);
+		if ( c74::max::systhread_ismainthread() )
+			outlet_main.send(k_sym_bang);
+		else if ( c74::max::systhread_isaudiothread() )
+			outlet_audio.send(k_sym_bang);
+		else if ( c74::max::systhread_istimerthread() )
+			outlet_sched.send(k_sym_bang);
+		else
+			outlet_other.send(k_sym_bang);
 		return {};
 	};
 

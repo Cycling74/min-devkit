@@ -16,7 +16,7 @@ lookup_tables::lookup_tables() {
 	sqrt.resize(size);
 	
 	for (auto i=0; i<size; ++i) {
-		double normalized_index = double(i) / (size-1);
+		double normalized_index = static_cast<double>(i) / (size-1);
 		
 		linear[i]		= normalized_index;
 		equal_power[i]	= std::sin(normalized_index * M_PI_2);

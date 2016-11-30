@@ -65,8 +65,8 @@ public:
 private:
 	template<class matrix_type, size_t planecount>
 	cell<matrix_type,planecount> get_cell(const matrix_info& info, int x, int y) {
-		auto x1 = MIN_CLAMP(x, 0, info.width()-1);
-		auto y1 = MIN_CLAMP(y, 0, info.height()-1);
+		auto x1 = c74::max::clamp<decltype(x)>(x, 0, info.width()-1);
+		auto y1 = c74::max::clamp<decltype(y)>(y, 0, info.height()-1);
 		auto c = info.in_cell<matrix_type,planecount>(x1, y1);
 		return c;
 	}
