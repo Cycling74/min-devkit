@@ -3,7 +3,7 @@
 	"description" : "Lightweight reference implementation of a package built using the Min-API.",
 	"homepatcher" : "min-devkit.maxpat",
 	"max_version_min" : "7.1",
-	"name" : "min-devkit",
+	"name" : "@C74_PACKAGE_NAME@",
 	"os" : {
 		"macintosh" : {
 			"platform" : [ "ia32", "x64" ],

@@ -1,5 +1,3 @@
-The software to which this license pertains is the Max API that consists of the C/C++ language header files and source code examples contained within this archive.
-
 The MIT License
 
 Copyright (c) 2016, Cycling '74

@@ -36,12 +36,13 @@ FileUtils::mkdir_p "#{target_dir}"
 olddir = Dir.getwd
 Dir.chdir "#{target_dir}"        # change to libdir so that requires work
 target_dir = `pwd`.chomp
+package_name = File.basename(target_dir)
 Dir.chdir olddir
 
 
 
 puts ""
-puts "    CREATING PACKAGE"
+puts "    CREATING PACKAGE #{package_name}"
 puts ""
 puts "    SOURCE DIR: #{source_dir}"
 puts "    TARGET DIR: #{target_dir}"
@@ -52,8 +53,10 @@ puts ""
 # 3. Copy everything we want, nothing we don't
 # (how do we handle Git submodules -- I guess don't copy them?  What about zip downloads?)
 
+hello_world = "#{package_name}.hello-world"
+
 FileUtils::mkdir_p "#{target_dir}/build"
-FileUtils::mkdir_p "#{target_dir}/source/projects/foobanger"
+FileUtils::mkdir_p "#{target_dir}/source/projects/#{hello_world}"
 FileUtils::mkdir_p "#{target_dir}/help"
 
 FileUtils::cp "#{source_dir}/package-info.json.in", "#{target_dir}/package-info.json.in"
@@ -66,10 +69,10 @@ FileUtils::cp "#{source_dir}/.gitignore", "#{target_dir}/.gitignore"
 FileUtils::cp "#{source_dir}/.travis.yml", "#{target_dir}/.travis.yml"
 FileUtils::cp "#{source_dir}/appveyor.yml", "#{target_dir}/appveyor.yml"
 
-FileUtils::cp "#{source_dir}/source/projects/banger/banger.cpp", "#{target_dir}/source/projects/foobanger/foobanger.cpp"
-FileUtils::cp "#{source_dir}/source/projects/banger/CMakeLists.txt", "#{target_dir}/source/projects/foobanger/CMakeLists.txt"
-# TODO: copy unit test source!
-FileUtils::cp "#{source_dir}/help/banger.maxhelp", "#{target_dir}/help/foobanger.maxhelp"
+FileUtils::cp "#{source_dir}/source/projects/min.hello-world/min.hello-world.cpp", "#{target_dir}/source/projects/#{hello_world}/#{hello_world}.cpp"
+FileUtils::cp "#{source_dir}/source/projects/min.hello-world/min.hello-world_test.cpp", "#{target_dir}/source/projects/#{hello_world}/#{hello_world}_test.cpp"
+FileUtils::cp "#{source_dir}/source/projects/min.hello-world/CMakeLists.txt", "#{target_dir}/source/projects/#{hello_world}/CMakeLists.txt"
+FileUtils::cp "#{source_dir}/help/min.hello-world.maxhelp", "#{target_dir}/help/#{hello_world}.maxhelp"
 
 FileUtils::cp "#{source_dir}/HowTo-NewObject.md", "#{target_dir}/HowTo-NewObject.md"
 
@@ -85,7 +88,8 @@ def substitute_strings_in_file(file_path, old_string, new_string)
 end
 
 
-substitute_strings_in_file "#{target_dir}/help/foobanger.maxhelp", "banger", "foobanger"
+substitute_strings_in_file "#{target_dir}/help/#{hello_world}.maxhelp", "min.hello-world", "#{hello_world}"
+substitute_strings_in_file "#{target_dir}/source/projects/#{hello_world}/#{hello_world}_test.cpp", "min.hello-world", "#{hello_world}"
 
 
 
@@ -93,3 +97,4 @@ Dir.chdir "#{target_dir}"
 `git init`
 `git submodule add https://github.com/Cycling74/min-api.git source/min-api`
 `git commit -m"Min API added as git submodule"`
+`git tag v0.0.1`

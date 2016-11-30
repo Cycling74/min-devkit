@@ -19,10 +19,11 @@ script:
 - PACKAGE_NAME=`echo $TRAVIS_REPO_SLUG | sed 's/.*\///g'`
 - PACKAGE_REV=`echo $TRAVIS_COMMIT | sed -e 's/^[[:alnum:]]\{6\}/&-/g' | sed 's/-.*//'`
 - mkdir $PACKAGE_NAME
-- if [ -e *.json ]; then cp *.json $PACKAGE_NAME; fi
-- if [ -e *.md ]; then cp *.json $PACKAGE_NAME; fi
-- if [ -e *.png ]; then cp *.json $PACKAGE_NAME; fi
+- if [ -e package-info.json ]; then cp package-info.json $PACKAGE_NAME; fi
+- for f in *.md; do [ -e "$f" ] && cp "$f" $PACKAGE_NAME ; done
+- if [ -e icon.png ]; then cp icon.png $PACKAGE_NAME; fi
 - if [ -d docs ]; then cp -r docs $PACKAGE_NAME; fi
+- if [ -d examples ]; then cp -r examples $PACKAGE_NAME; fi
 - if [ -d extensions ]; then cp -r extensions $PACKAGE_NAME; fi
 - if [ -d externals ]; then cp -r externals $PACKAGE_NAME; fi
 - if [ -d extras ]; then cp -r extras $PACKAGE_NAME; fi
@@ -39,7 +40,7 @@ deploy:
   provider: s3
   access_key_id: AKIAIWE3SI2TMXC5AJBA
   secret_access_key:
-    secure: nT5q+qibu71HuieYTUGGRJhjwW7MUXRzPObtND87PeDnnZCMil0ISW8/iHBCPRDiaHDiaP8zezfxHtncQwC4Ubance5jbzWT3Xclfhdpt8UsHX0arMabborrw3yTPuRTHHkTvjn1WS8//w1rKIvJnCvLkXvj9IElqkgH6M4YOEBGKZrofiiRuuGGLu/bYKtBHJb4XwKe/9GLlEV1x7M0mu6/KfbKUoWwyq726f9tn8gzOvLOU0UMy6IAlATuM+sMkVWmDo+6ZdZCN1pxeToqziX0OFshBweqclAtkXYT73NcIgBhDs0xGSrSUHvabOEaDPhRgd/0nypslaiJXCl1FWT5/YXyIHKOM0O24n6yW6XFZZFXUR2437NGRsVSqKXJkpwiBdr57NioP3GvviK5GWSMy5j4O4jMdVVZCUoRfyg+3l3/ygN+A4J4EyJhKQWRO25XPq/BoU6OxmEJ+hY7hfpRQfPUjbnYpN8kJbruy27KY8bW54DNtXIp4o2XSetb5EaNpLrsLqoPSyuSVrUJZjzeMngajQF/CerLsSeVJbIs791Lcoun4k/6grIgMAyRO34op6JIqPKamMK18mSUBUNuXJL3wWq6NqoJuQzHpUKHFnLgJ5vB1rBuhiFksPk/Q8Xduwhtparz7CCBZUzw/+84Qz/MY9s93/64ciffFAo=
+      secure: "Ix69x8rU4Im2ACNX+288d7AO1g2UPvKOeFxpf3Z9XrpNq/60EUQObrTCAOFrWv05ZzNRZadqeBG3OgptY1w6JLgvFqrWjRX1YxwxFRS/Braa1PW1LNT1UIoSIIeH8uteqyYGe7ugGhBEvmMKAqHSpb1FeW3FYUIeMqHvSYFxb7Hf5mBWW/5kWWK67fdBZKay0qZmgkSvd2ypQYZE/wINthExOxaK9olHeluU6pkrQYNci0MhbRF0jtSbGN1Wg4/iyYkGTRPNBsNx3CBXvxv8hZtPz6HVpLp6YEsxFFdzVpcWBdjIj2wo6hk5yJaSJShr0I97/2WOQfAJg3qbqaWtf1ty629nrMBS7jgY2YMANunOmG5+eMiihAJWg3zrQ2PC/zo1b0IQdp6YYbynP1Y7LqM05wMf61agUAnr9hetBQceDxv47LoQHxdanVeEeDYHUR3SycOMAtqoR4buv5rSYcLUQ2SLLvBNcU5h9yWRRKwmklA9qPBYzWv/v/UlkfERfePuSUAyoiyoKQhyknDCpGChsZW4cETT23ANf08+FddK5WGx0e4Wmt9w5MCi9JoQtlHCsPilX2PKI15urQ9e/bRW4tjjp57K2Sh+K7wOUuDPPHlykJqHCaZN+ruZbnPXF/GHHkqVB+7JhuTGmE96SGLEDLj+6s+7/5yHOv2W5ag="
   bucket: cycling74-ci
   skip_cleanup: true
   local-dir: dist

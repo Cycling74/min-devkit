@@ -116,6 +116,6 @@ To setup your own page:
 * See the [GitHub Contributor Graph](https://github.com/Cycling74/min-devkit/graphs/contributors) for the DevKit
 
 ## Support
- 
+
 For support, please use the developer forums at:
 http://cycling74.com/forums/

@@ -3,22 +3,21 @@
 To create a new **Min** external follow these steps...
 
 
-## 1. Find an object you'd like to use as a starting-point. 
+## 1. Find an object you'd like to use as a starting-point.
 Here are some suggestions:
 
-* `source/projects/banger` -- a simple Max object
-* `source/projects/dcblocker_tilde` -- a simple audio object (msp)
-* `source/projects/jit.stencil` -- a simple matrix operator object (jitter)
-* `source/projects/jit.gl.thing` -- a simple open gl object (jitter)
-* `source/projects/dict.joiner` -- an object using dictionaries
-* `source/projects/buffer.index_tilde` -- an object using buffers
+* `source/projects/min.beat.random` -- a simple Max object
+* `source/projects/min.dcblocker_tilde` -- a simple audio object (msp)
+* `source/projects/min.jit.stencil` -- a simple matrix operator object (jitter)
+* `source/projects/min.dict.join` -- an object using dictionaries
+* `source/projects/min.buffer.index_tilde` -- an object using buffers
 
 ## 2. Duplicate the folder and Rename files
 
 The folder will typically contain 3 files:
 
-* The source file for the object (e.g. `xfade_tilde.cpp`)
-* The source file for a unit test (e.g. `xfade_tilde_test.cpp`)
+* The source file for the object (e.g. `hello-world.cpp`)
+* The source file for a unit test (e.g. `hello-world_test.cpp`)
 * A project file (e.g. `CMakeLists.txt`)
 
 If you follow the standard convention of the Min-DevKit you will not typically need to open or modify the `CMakeLists.txt` at all.
@@ -49,11 +48,11 @@ Now you can edit your code to make your external object do amazing things.
 
 ## 5. Document
 
-To be an upstanding citizen of the Max ecosystem your object should have both a **help patcher** added to the `help` folder and a reference page added to the `docs` folder.
+To be an upstanding citizen of the Max ecosystem your object should have both a **help patcher** added to the `help` folder. A reference page will be generated and added to the `docs` folder automatically when you instantiate your object the first time.
 
 ## 6. Unit Testing
 
-Unit testing for Min uses [Catch](https://github.com/philsquared/Catch/blob/master/docs/tutorial.md). 
+Unit testing for Min uses [Catch](https://github.com/philsquared/Catch/blob/master/docs/tutorial.md).
 
 Once your unit test has been written (or at least started), you can run it the Xcode or Visual Studio debugger.
 
@@ -61,5 +60,5 @@ Alternatively you can run them on the command line using Cmake, for example:
 
 * `cd ..`
 * `cd tests`
-* mac example: `./dcblocker_tilde_test -s`
-* win example: `dcblocker_tilde_test.exe -s`
+* mac example: `./min.dcblocker_tilde_test -s`
+* win example: `min.dcblocker_tilde_test.exe -s`
