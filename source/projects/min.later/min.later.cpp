@@ -18,8 +18,8 @@ public:
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "delay, speedlim, note.make" };
 	
-	inlet	in		{ this, "(number) message to be delayed" };
-	outlet	out		{ this, "(number) delayed message" };
+	inlet<>		in	{ this, "(number) message to be delayed" };
+	outlet<>	out	{ this, "(number) delayed message" };
 
 
 	later (const atoms& args = {}) {
@@ -42,7 +42,7 @@ public:
 	};
 
 
-	message number { this, "number", "A number to be delayed.",
+	message<> number { this, "number", "A number to be delayed.",
 		MIN_FUNCTION {
 			const time_value& d = delay;
 			m_value = args[0];
