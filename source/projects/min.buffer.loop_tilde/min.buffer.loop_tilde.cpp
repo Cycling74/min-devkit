@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class buffer_loop : public object<buffer_loop>, vector_operator {
+class buffer_loop : public object<buffer_loop>, public vector_operator {
 public:
 	
 	MIN_DESCRIPTION { "Read from a buffer~." };

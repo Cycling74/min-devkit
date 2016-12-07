@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class jit_stencil : public object<jit_stencil>, matrix_operator {
+class jit_stencil : public object<jit_stencil>, public matrix_operator {
 public:
 	
 	MIN_DESCRIPTION { "Apply a 5-point stencil operation to a matrix. See https://en.wikipedia.org/wiki/Five-point_stencil for more information." };

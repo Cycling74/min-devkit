@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class edgelow : public object<edgelow>, sample_operator<1,0> {
+class edgelow : public object<edgelow>, public sample_operator<1,0> {
 public:
 
 	inlet<>											input			{ this, "(signal) input" };

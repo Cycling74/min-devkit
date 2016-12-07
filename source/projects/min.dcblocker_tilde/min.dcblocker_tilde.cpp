@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class dcblocker : public object<dcblocker>, sample_operator<1,1> {
+class dcblocker : public object<dcblocker>, public sample_operator<1,1> {
 public:
 
 	MIN_DESCRIPTION {	"Filter out DC offset. "
