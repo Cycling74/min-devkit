@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class buffer_loop : public object<buffer_loop>, perform_operator {
+class buffer_loop : public object<buffer_loop>, vector_operator {
 public:
 	
 	MIN_DESCRIPTION { "Read from a buffer~." };
@@ -99,7 +99,7 @@ public:
 	}};
 
 
-	void perform(audio_bundle input, audio_bundle output) {
+	void operator()(audio_bundle input, audio_bundle output) {
 		auto			in = input.samples(0);
 		auto			out = output.samples(0);
 		auto			sync = output.samples(1);
@@ -141,8 +141,7 @@ public:
 
 		}
 		else {
-			for (auto i=0; i<input.framecount(); ++i)
-				out[i] = 0.0;
+			output.clear();
 		}
 	}
 
