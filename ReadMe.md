@@ -18,7 +18,7 @@ There are two layers of material included in the Min-DevKit package.
 
 To build the externals in this package you will need some form of compiler support on your system. 
 
-* On the Mac this means **Xcode 7** (you can get from the App Store for free). 
+* On the Mac this means **Xcode 7 or 8** (you can get from the App Store for free). 
 * On Windows this means **Visual Studio 2015** (you can download a free version from Microsoft). The installer for Visual Studio 2015 offers an option to install Git, which you should choose to do.
 
 You will also need to install [CMake](https://cmake.org/download/).
