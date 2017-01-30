@@ -29,7 +29,7 @@ public:
 	, m_code			{ fn_code }
 	, m_complete_code	{ fn_complete_code }
 	{
-		m_compiler = c74::max::object_new(c74::max::CLASS_NOBOX, symbol("clang"), m_name);
+		m_compiler = c74::max::object_new(c74::max::CLASS_NOBOX, c74::max::gensym("clang"), m_name);
 		object_attr_setlong(m_compiler, symbol("cpp"), 1);
 		
 		// Configure system paths:
