@@ -56,6 +56,31 @@
 
 	<attributelist>
 
+		<attribute name='knobcolor' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='elementcolor' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='tracking' get='1' set='1' type='long' size='1' >
+			<digest>Mouse tracking direction</digest>
+			<description>Mouse tracking direction. </description>
+		</attribute>
+
+		<attribute name='bgcolor' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='offset' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
 		<attribute name='clickjump' get='1' set='1' type='long' size='1' >
 			<digest></digest>
 			<description></description>
@@ -81,11 +106,6 @@
 			<description></description>
 		</attribute>
 
-		<attribute name='offset' get='1' set='1' type='float64' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
 		<attribute name='fontsize' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
@@ -94,11 +114,6 @@
 		<attribute name='range' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
-		</attribute>
-
-		<attribute name='tracking' get='1' set='1' type='long' size='1' >
-			<digest>Mouse tracking direction</digest>
-			<description>Mouse tracking direction. </description>
 		</attribute>
 
 		<attribute name='unit' get='1' set='1' type='symbol' size='1' >

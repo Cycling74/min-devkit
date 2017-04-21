@@ -7,8 +7,9 @@
 #include "c74_min.h"
 
 using namespace c74::min;
+using namespace c74::min::ui;
 
-class min_textslider : public object<min_textslider>, public ui_operator {
+class min_textslider : public object<min_textslider>, public ui_operator<140,24> {
 public:
 
 	MIN_DESCRIPTION { "Display a text label" };
@@ -29,7 +30,6 @@ public:
 		MIN_FUNCTION {
 			set(args);
 			bang();
-			redraw();
 			return {};
 		}
 	};
@@ -39,12 +39,12 @@ public:
 		MIN_FUNCTION {
 			m_unclipped_value = args[0];
 			m_value = MIN_CLAMP(m_unclipped_value, m_range[0], m_range[1]);
+			bool showvalue = m_showvalue;
 
-			//			if ((x->attrShowValue) && (x->mouseOver))
-			//				textslider_updatestringvalue(x);
-			//			else
-			//				jbox_redraw((t_jbox*)x);
-
+			if (showvalue && m_mouseover)
+				update_text();
+			else
+				redraw();
 			return {};
 		}
 	};
@@ -85,11 +85,11 @@ public:
 			return args;
 		}}
 	};
-	attribute<numbers>	m_offset	{ this, "offset", {{10.0, 4.0}} };
+	attribute<numbers>	m_offset	{ this, "offset", {{10.0, 10.0}} };
 	attribute<symbol>	m_label		{ this, "label", "" };
 	attribute<symbol>	m_unit		{ this, "unit", "" };
 	attribute<symbol>	m_fontname	{ this, "fontname", "lato-light" };
-	attribute<number>	m_fontsize	{ this, "fontsize", 12.0 };
+	attribute<number>	m_fontsize	{ this, "fontsize", 14.0 };
 	attribute<bool>		m_showvalue	{ this, "showvalue", true };
 	attribute<bool>		m_clickjump	{ this, "clickjump", true };
 
@@ -109,6 +109,14 @@ public:
 	attribute<tracking> m_tracking { this, "tracking", tracking::horizontal, tracking_info,
 		description { "Mouse tracking direction." }
 	};
+
+
+//	attribute<color>	m_bgcolor		{ this, "bgcolor", "rect_fill"};
+//	attribute<color>	m_elementcolor	{ this, "elementcolor", "side_arch"};
+//	attribute<color>	m_knobcolor		{ this, "knobcolor", "side_arch"};
+	attribute<color>	m_bgcolor		{ this, "bgcolor", color::black, title {"Background Color"} };
+	attribute<color>	m_elementcolor	{ this, "elementcolor", color::white };
+	attribute<color>	m_knobcolor		{ this, "knobcolor", color::gray, title {"Knob Color"} };
 
 
 	message<> mouseenter { this, "mouseenter",
@@ -228,7 +236,7 @@ public:
 
 			rect<fill> {			// background
 				t,
-				color { {0.7, 0.7, 0.7, 1.0} },
+				color { m_bgcolor }
 			};
 
 			rect<> {				// frame
@@ -239,14 +247,14 @@ public:
 
 			rect<fill> {			// active part of the slider
 				t,
-				color { {0.8, 0.6, 0.2, 1.0} },
+				color { m_elementcolor },
 				position { 1.0, 1.0 },
 				size { pos, -2.0 }
 			};
 
 			rect<fill> {			// slider knob
 				t,
-				color { color::black },
+				color { m_knobcolor },
 				position { pos, 1.0 },
 				size { 4.0, -2.0 }
 			};
@@ -277,6 +285,11 @@ private:
 		if (m_mouseover && m_showvalue) {
 			symbol unit = m_unit;
 			m_text = std::to_string(m_unclipped_value);
+			if (string::npos == m_text.find('+', 0)) { // don't mangle scientific notation
+				auto c = m_text.find('.');
+				if (c > 0)
+					m_text.resize(c+2);
+			}
 			m_text += " ";
 			m_text += unit.c_str();
 		}
