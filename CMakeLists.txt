@@ -10,7 +10,7 @@ if (${CMAKE_GENERATOR} MATCHES "Xcode")
 endif ()
 
 
-# Fetch the correct verion of the min-api
+# Fetch the correct version of the min-api
 message(STATUS "Updating Git Submodules")
 execute_process(
 	COMMAND				git submodule update --init --recursive
