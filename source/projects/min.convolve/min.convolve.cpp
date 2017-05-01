@@ -7,7 +7,6 @@
 #include "c74_min.h"
 
 using namespace c74::min;
-using std::vector;
 
 class convolve : public object<convolve> {
 public:
