@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class dcblocker : public object<dcblocker>, public sample_operator<1,1> {
+class dcblocker : public object<dcblocker>, public vector_operator {
 public:
 
 	MIN_DESCRIPTION {	"Filter out DC offset. "
@@ -56,14 +56,31 @@ public:
 	MIN_AUTHOR		{	"Cycling '74"			};
 	MIN_RELATED		{	"biquad~, filterdesign"	};
 
-	inlet<>			input	{ this, "(signal) Input" };
-	outlet<>		output	{ this, "(signal) Output", "signal" };
+
+	// Because our object defines a constructor (below) this argument definition is for
+	// documentation purposes only.
+	argument<int> channelcount_arg { this, "channel_count", "The number of channels to process." };
 
 
-	message<> clear { this,
-		"clear", "Reset the DC-Blocking filter. Because this is an IIR filter it has the potential to blow-up, requiring a reset.",
+	dcblocker(const atoms& args = {}) {
+		if (!args.empty())
+			m_channelcount = args[0];
+
+		for (auto i=0; i<m_channelcount; ++i) {
+			m_inlets.push_back(	 std::make_unique<inlet<>>(this, "(signal) audio input") );
+			m_outlets.push_back( std::make_unique<outlet<>>(this, "(signal) audio output", "signal") );
+		}
+
+		x_1.resize(m_channelcount);
+		y_1.resize(m_channelcount);
+	}
+
+
+	message<> clear { this, "clear",
+		"Reset the DC-Blocking filter. Because this is an IIR filter it has the potential to blow-up, requiring a reset.",
 		MIN_FUNCTION {
-			x_1 = y_1 = 0.0;
+			std::fill(x_1.begin(), x_1.end(), 0.0);
+			std::fill(y_1.begin(), y_1.end(), 0.0);
 			return {};
 		}
 	};
@@ -72,23 +89,42 @@ public:
 	attribute<bool>	bypass { this, "bypass" , false, description{"Pass the input straight-through."} };
 
 
-	/// Process one sample
+
+	/// Wrapper for a vector_operator that allows it to be called like a sample_operator.
+	/// This will not generally be as performant as calling the vector_operator's native routine.
+
+	sample operator()(sample x, int channel = 0) {
+		auto y = x - x_1[channel] + y_1[channel] * 0.9997;
+		y_1[channel] = y;
+		x_1[channel] = x;
+		return y;
+	}
+
+
+	/// Process N channels of audio
 	/// Max takes care of squashing denormal for us by setting the FTZ bit on the CPU.
 
-	sample operator()(sample x) {
+	void operator()(audio_bundle input, audio_bundle output) {
 		if (bypass)
-			return x;
+			output = input;
 		else {
-			auto y = x - x_1 + y_1 * 0.9997;
-			y_1 = y;
-			x_1 = x;
-			return y;
+			for (auto channel=0; channel<m_channelcount; ++channel) {
+				auto x = input.samples(channel);
+				auto y = output.samples(channel);
+
+				for (auto i=0; i<input.framecount(); ++i) {
+					y[i] = (*this)(x[i], channel);
+				}
+			}
 		}
 	}
 
 private:
-	sample	x_1 { 0.0 };	///< Input history
-	sample	y_1 { 0.0 };	///< Output history
+	int								m_channelcount = 1;		///< number of channels
+	vector< unique_ptr<inlet<>> >	m_inlets;				///< this object's inlets
+	vector< unique_ptr<outlet<>> >	m_outlets;				///< this object's outlets
+	vector< sample >				x_1;					///< input history
+	vector< sample >				y_1;					///< output history
 };
 
 MIN_EXTERNAL(dcblocker);

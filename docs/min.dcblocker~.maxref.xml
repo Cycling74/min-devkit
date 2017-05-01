@@ -23,6 +23,11 @@
 
 	<objarglist>
 
+		<objarg name='channel_count' optional='1' type='int'>
+			<digest>The number of channels to process</digest>
+			<description>The number of channels to process. </description>
+		</objarg>
+
 	</objarglist>
 
 
