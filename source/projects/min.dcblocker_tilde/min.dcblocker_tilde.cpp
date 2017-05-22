@@ -71,34 +71,21 @@ public:
 			m_outlets.push_back( std::make_unique<outlet<>>(this, "(signal) audio output", "signal") );
 		}
 
-		x_1.resize(m_channelcount);
-		y_1.resize(m_channelcount);
+		m_filters.resize(m_channelcount);
 	}
 
 
 	message<> clear { this, "clear",
 		"Reset the DC-Blocking filter. Because this is an IIR filter it has the potential to blow-up, requiring a reset.",
 		MIN_FUNCTION {
-			std::fill(x_1.begin(), x_1.end(), 0.0);
-			std::fill(y_1.begin(), y_1.end(), 0.0);
+			for (auto& filter : m_filters)
+				filter->clear();
 			return {};
 		}
 	};
 
 
 	attribute<bool>	bypass { this, "bypass" , false, description{"Pass the input straight-through."} };
-
-
-
-	/// Wrapper for a vector_operator that allows it to be called like a sample_operator.
-	/// This will not generally be as performant as calling the vector_operator's native routine.
-
-	sample operator()(sample x, int channel = 0) {
-		auto y = x - x_1[channel] + y_1[channel] * 0.9997;
-		y_1[channel] = y;
-		x_1[channel] = x;
-		return y;
-	}
 
 
 	/// Process N channels of audio
@@ -109,22 +96,22 @@ public:
 			output = input;
 		else {
 			for (auto channel=0; channel<m_channelcount; ++channel) {
-				auto x = input.samples(channel);
-				auto y = output.samples(channel);
+				auto	x = input.samples(channel);
+				auto	y = output.samples(channel);
+				auto&	f = *m_filters[channel];
 
 				for (auto i=0; i<input.framecount(); ++i) {
-					y[i] = (*this)(x[i], channel);
+					y[i] = f(x[i]);
 				}
 			}
 		}
 	}
 
 private:
-	int								m_channelcount = 1;		///< number of channels
-	vector< unique_ptr<inlet<>> >	m_inlets;				///< this object's inlets
-	vector< unique_ptr<outlet<>> >	m_outlets;				///< this object's outlets
-	vector< sample >				x_1;					///< input history
-	vector< sample >				y_1;					///< output history
+	int										m_channelcount = 1;		///< number of channels
+	vector< unique_ptr<inlet<>> >			m_inlets;				///< this object's inlets
+	vector< unique_ptr<outlet<>> >			m_outlets;				///< this object's outlets
+	vector< unique_ptr<lib::dcblocker> >	m_filters;				///< dc-blocking filters for each channel
 };
 
 MIN_EXTERNAL(dcblocker);
