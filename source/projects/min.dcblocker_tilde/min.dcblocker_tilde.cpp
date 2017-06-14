@@ -106,6 +106,13 @@ public:
 		}
 	}
 
+
+	// Inherit the a sample_operator-style call for processing audio through the vector_operator above
+	// This can helpful (and is in this case) for writing cleaner unit tests
+
+	using vector_operator::operator();
+
+
 private:
 	int										m_channelcount = 1;		///< number of channels
 	vector< unique_ptr<inlet<>> >			m_inlets;				///< this object's inlets
