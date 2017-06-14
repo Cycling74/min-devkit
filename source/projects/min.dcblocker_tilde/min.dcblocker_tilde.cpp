@@ -69,9 +69,8 @@ public:
 		for (auto i=0; i<m_channelcount; ++i) {
 			m_inlets.push_back(	 std::make_unique<inlet<>>(this, "(signal) audio input") );
 			m_outlets.push_back( std::make_unique<outlet<>>(this, "(signal) audio output", "signal") );
+			m_filters.push_back( std::make_unique<lib::dcblocker>() );
 		}
-
-		m_filters.resize(m_channelcount);
 	}
 
 
