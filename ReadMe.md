@@ -12,6 +12,7 @@ There are two layers of material included in the Min-DevKit package.
 
 * `min-devkit` is an example package following current best-practices for package creation.
 * `min-api` is a folder within the devkit containing all of the support files you will need to compile an external object written in modern C++.  This folder you will include in your own package's source folder.
+* `min-lib` contains building blocks, helper classes, and unit generators that may be useful in authoring  C++ code for audio, video, and data processing.
 
 
 ## Prerequisites
@@ -19,9 +20,9 @@ There are two layers of material included in the Min-DevKit package.
 To build the externals in this package you will need some form of compiler support on your system. 
 
 * On the Mac this means **Xcode 7 or 8** (you can get from the App Store for free). 
-* On Windows this means **Visual Studio 2015** (you can download a free version from Microsoft). The installer for Visual Studio 2015 offers an option to install Git, which you should choose to do.
+* On Windows this means **Visual Studio 2017** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
 
-You will also need to install [CMake](https://cmake.org/download/).
+You will also need to install a recent version of [CMake](https://cmake.org/download/).
 
 
 ## Building
