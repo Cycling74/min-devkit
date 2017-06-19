@@ -81,6 +81,15 @@ The Min-DevKit project models CI using two different services, both of which are
 * **Mac**: go to http://travis-ci.org and sign up.  If your repository follows the same model as Min-DevKit, you can copy `.travis.yml` directly with no changes.  Now every push to your repository will trigger an automatic build for the Mac with Travis CI.
 * **Windows**: go to http://appveyor.com and sign up.  If your repository follows the same model as Min-DevKit, you can copy `appveyor.yml` directly with no changes.  Now every push to your repository will trigger automatic builds for both 32 and 64-bit Windows with Appveyor.
 
+#### Private Dependencies
+
+At this time the Min API is a private Github repository. As such there are additional challenges (authentication) that will not be present after the API is released. There are (at least) two paths to authentication for the private repositories:
+
+* If you are creating a C74-owned package, ask Tim to add the `github_rsa_ci` private key to the relevant Travis project.
+* If you are anyone else, generate an SSH key. Upload it to a Github account that has access to the Min-API. Then add the private key to the Travis project.
+
+Yes, this is a pain, but you only have to do it once...
+
 ### Fetching your builds
 
 * **Windows**: On Appveyor it is simple.  You go to the latest build, choose the "Platform" and then look under the "Artifacts" tab.
