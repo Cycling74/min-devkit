@@ -5,7 +5,8 @@ environment:
 configuration: Release
 shallow_clone: false
 
-os: 
+#os: 
+image: 
   - Visual Studio 2017
   - Visual Studio 2015
 
@@ -21,7 +22,7 @@ install:
   - git submodule update --init --recursive
 
 build_script:
-  - echo The APPVEYOR_BUILD_WORKER_IMAGE is %image% or $(APPVEYOR_BUILD_WORKER_IMAGE)
+  - echo The APPVEYOR_BUILD_WORKER_IMAGE is %image% or %APPVEYOR_BUILD_WORKER_IMAGE%
   - if %APPVEYOR_BUILD_WORKER_IMAGE% == "Visual Studio 2017" SET VS_VERSION = "Visual Studio 15 2017"
   - if %APPVEYOR_BUILD_WORKER_IMAGE% == "Visual Studio 2015" SET VS_VERSION = "Visual Studio 14 2015"
   - if "%platform%" == "x86" SET VS_FULL=%VS_VERSION%
