@@ -1,4 +1,10 @@
-os: Visual Studio 2017
+matrix:
+  - os: Visual Studio 2017
+    environment:
+      VS_VERSION: "Visual Studio 15"
+  - os: Visual Studio 2015
+    environment:
+      VS_VERSION: "Visual Studio 14"
 
 environment:
   priv_key:
