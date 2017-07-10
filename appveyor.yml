@@ -23,6 +23,9 @@ install:
 
 build_script:
   - echo The APPVEYOR_BUILD_WORKER_IMAGE is %image% or %APPVEYOR_BUILD_WORKER_IMAGE%
+  - SET MSVC_TEST=`MSBuild.exe /version`
+  - echo %MSVC_TEST%
+  - MSBuild.exe /version
   - if %APPVEYOR_BUILD_WORKER_IMAGE% == "Visual Studio 2017" SET VS_VERSION = "Visual Studio 15 2017"
   - if %APPVEYOR_BUILD_WORKER_IMAGE% == "Visual Studio 2015" SET VS_VERSION = "Visual Studio 14 2015"
   - if "%platform%" == "x86" SET VS_FULL=%VS_VERSION%
