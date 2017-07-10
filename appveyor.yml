@@ -24,7 +24,10 @@ install:
 build_script:
   - mkdir build
   - cd build
-  - cmake -A%PLATFORM% .. > %APPVEYOR_BUILD_FOLDER%\configure.log
+  - if "%platform%" == "x64" SET VS_ARCH=-A%PLATFORM%
+  - if "%platform%" != "x64" SET VS_ARCH=""
+  - echo VS_ARCH = %VS_ARCH%
+  - cmake %VS_ARCH% .. > %APPVEYOR_BUILD_FOLDER%\configure.log
   - cmake --build . --config Release > %APPVEYOR_BUILD_FOLDER%\build.log
   - cd ..
   - mkdir %APPVEYOR_PROJECT_NAME%
