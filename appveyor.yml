@@ -22,19 +22,9 @@ install:
   - git submodule update --init --recursive
 
 build_script:
-#  - echo The APPVEYOR_BUILD_WORKER_IMAGE is %image% or %APPVEYOR_BUILD_WORKER_IMAGE%
-#  - SET MSVC_TEST=`MSBuild.exe /version`
-#  - echo %MSVC_TEST%
-#  - MSBuild.exe /version
-#  - if %APPVEYOR_BUILD_WORKER_IMAGE% == "Visual Studio 2017" SET VS_VERSION = "Visual Studio 15 2017"
-#  - if %APPVEYOR_BUILD_WORKER_IMAGE% == "Visual Studio 2015" SET VS_VERSION = "Visual Studio 14 2015"
-  - if "%platform%" == "x86" SET VS_FULL=%VS_VERSION%
-  - if "%platform%" == "x64" SET VS_FULL=%VS_VERSION% Win64
-  - echo VS_FULL is %VS_FULL%
   - mkdir build
   - cd build
-#  - cmake -G "%VS_FULL%" .. > %APPVEYOR_BUILD_FOLDER%\configure.log
-  - cmake -A "%VS_FULL%" .. > %APPVEYOR_BUILD_FOLDER%\configure.log
+  - cmake -A%PLATFORM% .. > %APPVEYOR_BUILD_FOLDER%\configure.log
   - cmake --build . --config Release > %APPVEYOR_BUILD_FOLDER%\build.log
   - cd ..
   - mkdir %APPVEYOR_PROJECT_NAME%
