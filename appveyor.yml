@@ -30,7 +30,7 @@ build_script:
   - if "%platform%" == "x64" SET VS_ARCH=-A%PLATFORM%
   - echo VS_ARCH = %VS_ARCH%
   - cmake %VS_ARCH% .. > %APPVEYOR_BUILD_FOLDER%\configure.log
-  - cmake --build . --config Release > %APPVEYOR_BUILD_FOLDER%\build.log
+  - cmake --build . --config %CONFIGURATION% > %APPVEYOR_BUILD_FOLDER%\build.log
   - cd ..
   - mkdir %APPVEYOR_PROJECT_NAME%
   - if exist docs cp -r docs %APPVEYOR_PROJECT_NAME%
