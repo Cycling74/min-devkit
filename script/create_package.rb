@@ -50,8 +50,8 @@ puts ""
 
 
 
-# 3. Copy everything we want, nothing we don't
-# (how do we handle Git submodules -- I guess don't copy them?  What about zip downloads?)
+# 3. Copy everything we want, nothing we don't.
+#    Git Submodules will be added at the very end.
 
 hello_world = "#{package_name}.hello-world"
 
@@ -96,5 +96,6 @@ substitute_strings_in_file "#{target_dir}/source/projects/#{hello_world}/#{hello
 Dir.chdir "#{target_dir}"
 `git init`
 `git submodule add https://github.com/Cycling74/min-api.git source/min-api`
-`git commit -m"Min API added as git submodule"`
+`git submodule add https://github.com/Cycling74/min-lib.git source/min-lib`
+`git commit -m"Min-API and Min-Lib added as git submodules"`
 `git tag v0.0.1`
