@@ -111,8 +111,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 		WHEN( "the input goes silent" ) {
 			// dirty the history first
 			for (auto x : input) {
-				auto y = my_object(x);
-				//output.push_back(y);
+				my_object(x);
 			}
 
 			// then zero and process
