@@ -33,8 +33,10 @@ namespace shapes {
 }
 
 
+#ifdef MAC_VERSION
 #pragma mark -
 #pragma mark Lookup Table Class
+#endif
 
 
 /// A lookup table in which we cache pre-calculated values for a function/shape.
@@ -71,8 +73,10 @@ private:
 extern lookup_tables g_tables;
 
 
+#ifdef MAC_VERSION
 #pragma mark -
 #pragma mark Signal Routing Base Class
+#endif
 
 
 /// The signal_routing_base provides the basic facilities for mixing or distributing

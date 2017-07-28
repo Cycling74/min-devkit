@@ -57,7 +57,7 @@ public:
 		auto c4 = get_cell<matrix_type,planecount>(info, position.x()-x, position.y()+0);
 		
 		for (auto plane=0; plane<info.planecount(); ++plane)
-			output[plane] = (input[plane] + c1[plane] + c2[plane] + c3[plane] + c4[plane]) / 5.0;
+			output[plane] = static_cast<matrix_type>( (input[plane] + c1[plane] + c2[plane] + c3[plane] + c4[plane]) / 5.0 );
 		
 		return output;
 	}

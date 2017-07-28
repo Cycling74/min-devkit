@@ -104,7 +104,7 @@ public:
 		auto			out = output.samples(0);
 		auto			sync = output.samples(1);
 		buffer_lock<>	b(buffer);
-		auto			chan = std::min<int>(channel-1, b.channelcount());
+		auto			chan = std::min<size_t>(channel-1, b.channelcount());
 		
 		if (b.valid()) {
 			number	speed = this->speed;
@@ -122,7 +122,7 @@ public:
 
 				// buffer playback
 				auto frame = position * frames;
-				out[i] = b.lookup(frame, chan);
+				out[i] = b.lookup(static_cast<size_t>(frame), chan);
 			}
 			m_playback_position = position;
 
@@ -132,7 +132,7 @@ public:
 				for (auto i=0; i<input.framecount(); ++i) {
 					if (record_position >= frames)
 						record_position = 0;
-					b.lookup(record_position, chan) = in[i];
+					b.lookup(record_position, chan) = static_cast<float>(in[i]);
 					++record_position;
 				}
 				m_record_position = record_position;

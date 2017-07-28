@@ -58,8 +58,9 @@ public:
 		auto			in = input.samples(0);								// get vector for channel 0 (first channel)
 		auto			out = output.samples(0);							// get vector for channel 0 (first channel)
 		buffer_lock<>	b(buffer);											// gain access to the buffer~ content
-		auto			chan = std::min<int>(channel-1, b.channelcount());	// convert from 1-based indexing to 0-based
-		
+//		auto			chan = std::min<int>(channel - 1, b.channelcount());	// convert from 1-based indexing to 0-based
+		auto			chan = std::min<size_t>(channel - 1, b.channelcount());	// convert from 1-based indexing to 0-based
+
 		if (b.valid()) {
 			for (auto i=0; i<input.framecount(); ++i) {
 				auto frame = size_t(in[i] + 0.5);
