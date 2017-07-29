@@ -61,7 +61,7 @@ artifacts:
     path: '*.log'
     
 on_failure:
-  - appveyor PushArtifact '*.log'
+  - appveyor PushArtifact *.log
 
 deploy:
   provider: S3
