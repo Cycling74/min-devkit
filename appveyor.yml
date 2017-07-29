@@ -59,6 +59,9 @@ artifacts:
     path: '*.zip'
   - name: Log files
     path: '*.log'
+    
+on_failure:
+  - appveyor PushArtifact '*.log'
 
 deploy:
   provider: S3
