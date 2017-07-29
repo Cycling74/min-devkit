@@ -61,9 +61,9 @@ artifacts:
     path: '*.log'
     
 on_failure:
-  - appveyor PushArtifact configure.log
-  - appveyor PushArtifact build.log
-  - appveyor PushArtifact test.log
+  - appveyor PushArtifact %APPVEYOR_BUILD_FOLDER%\configure.log
+  - appveyor PushArtifact %APPVEYOR_BUILD_FOLDER%\build.log
+  - appveyor PushArtifact %APPVEYOR_BUILD_FOLDER%\test.log
 
 deploy:
   provider: S3
