@@ -32,7 +32,7 @@ TEST_CASE( "produces valid impulse response" ) {
 	}
 	
 	// get a reference impulse response to compare against
-	auto reference = filters::generate_impulse_response({1.0,-1.0}, {1.0,-0.9997}, buffersize);
+	auto reference = lib::filters::generate_impulse_response({1.0,-1.0}, {1.0,-0.9997}, buffersize);
 	
 	// check it
 //	REQUIRE( output == reference );
