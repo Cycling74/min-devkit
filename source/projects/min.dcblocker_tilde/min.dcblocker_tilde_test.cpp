@@ -45,7 +45,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 	const int		buffersize = 1024;
 	sample_vector	input(buffersize);
 	
-	std::generate(input.begin(), input.end(), math::cosine<sample>(buffersize, 10));
+	std::generate(input.begin(), input.end(), lib::generator::cosine<sample>(buffersize, 10));
 	
 	GIVEN( "An instance of dcblocker~" ) {
 		dcblocker	my_object;
@@ -69,11 +69,11 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			
 			double mean_x;
 			double stdev_x;
-			std::tie(mean_x, stdev_x) = math::mean(input);
+			std::tie(mean_x, stdev_x) = lib::math::mean(input);
 
 			double mean_y;
 			double stdev_y;
-			std::tie(mean_y, stdev_y) = math::mean(output);
+			std::tie(mean_y, stdev_y) = lib::math::mean(output);
 			
 			THEN( "the input has a mean of 1.5" ) {
 				REQUIRE( mean_x == Approx(1.5) );
