@@ -7,6 +7,7 @@
 #include "c74_min.h"
 
 using namespace c74::min;
+using namespace c74::min::lib;
 
 
 // one could easily imagine calling the number message with a metro/counter but then

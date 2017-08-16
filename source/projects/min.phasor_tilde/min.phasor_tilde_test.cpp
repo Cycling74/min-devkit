@@ -46,7 +46,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 	const int		buffersize = 1024;
 	sample_vector	input(buffersize);
 	
-	std::generate(input.begin(), input.end(), math::cosine<sample>(buffersize, 10));
+	std::generate(input.begin(), input.end(), lib::generator::cosine<sample>(buffersize, 10));
 	
 	GIVEN( "An instance of dcblocker~" ) {
 		phasor	my_object;

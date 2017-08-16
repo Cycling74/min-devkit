@@ -35,7 +35,7 @@ public:
 
 
 	timer metro { this, MIN_FUNCTION {
-		auto interval = math::random(min, max);
+		auto interval = lib::math::random(min, max);
 		
 		interval_out.send(interval);
 		bang_out.send("bang");
