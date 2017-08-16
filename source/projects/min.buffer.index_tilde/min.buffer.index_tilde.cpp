@@ -43,14 +43,9 @@ public:
 	};
 
 
-	attribute<int> channel { this, "channel", 1,
+	attribute<int, threadsafe::no, limit::clamp<int>> channel { this, "channel", 1,
 		description { "Channel to read from the buffer~. The channel number uses 1-based counting." },
-		setter { MIN_FUNCTION {
-			int n = args[0];
-			if (n < 1)
-				n = 1;
-			return {n};
-		}}
+		range { 1, buffer_reference::k_max_channels }
 	};
 
 
@@ -58,7 +53,6 @@ public:
 		auto			in = input.samples(0);								// get vector for channel 0 (first channel)
 		auto			out = output.samples(0);							// get vector for channel 0 (first channel)
 		buffer_lock<>	b(buffer);											// gain access to the buffer~ content
-//		auto			chan = std::min<int>(channel - 1, b.channelcount());	// convert from 1-based indexing to 0-based
 		auto			chan = std::min<size_t>(channel - 1, b.channelcount());	// convert from 1-based indexing to 0-based
 
 		if (b.valid()) {
