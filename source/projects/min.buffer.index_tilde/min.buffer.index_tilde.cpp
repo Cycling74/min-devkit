@@ -43,7 +43,7 @@ public:
 	};
 
 
-	attribute<int, threadsafe::no, limit::clamp<int>> channel { this, "channel", 1,
+	attribute<int, threadsafe::no, limit::clamp> channel { this, "channel", 1,
 		description { "Channel to read from the buffer~. The channel number uses 1-based counting." },
 		range { 1, buffer_reference::k_max_channels }
 	};
