@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 3,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -38,6 +38,20 @@
 		"subpatcher_template" : "tap.template",
 		"boxes" : [ 			{
 				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 165.0, 35.0, 101.0, 23.0 ],
+					"style" : "",
+					"text" : "loadmess set 100"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-2",
 					"margins" : [ 1.0, 0.0, 1.0, 0.0 ],
 					"maxclass" : "plot~",
@@ -46,7 +60,6 @@
 					"numpoints" : 441,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 415.0, 595.0, 483.0, 205.0 ],
-					"presentation_rect" : [ 415.0, 593.0, 0.0, 0.0 ],
 					"subplots" : [ 						{
 							"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 							"thickness" : 1.2,
@@ -81,7 +94,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 345.0, 465.0, 50.0, 23.0 ],
-					"presentation_rect" : [ 345.0, 463.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -182,12 +194,12 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
-							"parameter_shortname" : "live.gain~",
-							"parameter_type" : 0,
-							"parameter_mmin" : -70.0,
-							"parameter_mmax" : 6.0,
 							"parameter_initial" : [ 0.0 ],
-							"parameter_unitstyle" : 4
+							"parameter_mmax" : 6.0,
+							"parameter_shortname" : "live.gain~",
+							"parameter_unitstyle" : 4,
+							"parameter_type" : 0,
+							"parameter_mmin" : -70.0
 						}
 
 					}
@@ -244,6 +256,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-11", 0 ]
 				}
 
 			}

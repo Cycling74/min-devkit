@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 3,
-			"revision" : 0,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -38,6 +38,45 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 87.0, 279.5, 265.0, 20.0 ],
+					"presentation_rect" : [ 90.0, 280.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "(handy for standalone app builders)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 77.0, 257.5, 265.0, 20.0 ],
+					"presentation_rect" : [ 77.0, 269.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "returns the path to the preferences folder"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 202.0, 77.5, 150.0, 47.0 ],
+					"style" : "",
+					"text" : "here to prove that internally the bang is deferred"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -55,7 +94,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 138.0, 64.0, 24.0, 24.0 ],
+					"patching_rect" : [ 148.0, 57.0, 24.0, 24.0 ],
 					"style" : ""
 				}
 
@@ -67,7 +106,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 129.0, 117.0, 49.0, 22.0 ],
+					"patching_rect" : [ 148.0, 90.0, 49.0, 22.0 ],
 					"style" : "",
 					"text" : "delay 0"
 				}
@@ -81,7 +120,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 60.0, 229.0, 496.0, 22.0 ],
-					"style" : ""
+					"style" : "",
+					"text" : "\"/Volumes/Macintosh HD/Users/tim/Library/Application Support/Cycling '74/Max 7\""
 				}
 
 			}
@@ -92,7 +132,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 60.0, 129.0, 24.0, 24.0 ],
+					"patching_rect" : [ 60.0, 90.0, 41.0, 41.0 ],
 					"style" : ""
 				}
 
@@ -114,8 +154,6 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -123,8 +161,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -132,8 +168,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-3", 0 ]
 				}
 
@@ -141,8 +175,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-6", 0 ]
 				}
 
@@ -150,8 +182,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-8", 0 ]
 				}
 
