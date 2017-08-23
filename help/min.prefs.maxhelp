@@ -43,7 +43,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 87.0, 279.5, 265.0, 20.0 ],
-					"presentation_rect" : [ 90.0, 280.5, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "(handy for standalone app builders)"
 				}
@@ -56,7 +55,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 77.0, 257.5, 265.0, 20.0 ],
-					"presentation_rect" : [ 77.0, 269.5, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "returns the path to the preferences folder"
 				}
@@ -82,8 +80,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 309.0, 164.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 309.0, 164.0, 29.5, 22.0 ],
+					"style" : "",
+					"text" : "set"
 				}
 
 			}
@@ -120,8 +119,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 60.0, 229.0, 496.0, 22.0 ],
-					"style" : "",
-					"text" : "\"/Volumes/Macintosh HD/Users/tim/Library/Application Support/Cycling '74/Max 7\""
+					"style" : ""
 				}
 
 			}
@@ -181,7 +179,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 1 ],
+					"destination" : [ "obj-5", 0 ],
 					"source" : [ "obj-8", 0 ]
 				}
 
