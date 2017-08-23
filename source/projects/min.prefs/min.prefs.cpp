@@ -5,7 +5,6 @@
 ///	@license	Usage of this file and its contents is governed by the MIT License
 
 #include "c74_min.h"
-#include <random>
 
 using namespace c74::min;
 
