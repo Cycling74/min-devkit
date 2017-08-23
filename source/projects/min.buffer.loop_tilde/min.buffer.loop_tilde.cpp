@@ -102,17 +102,17 @@ public:
 		auto			out = output.samples(0);
 		auto			sync = output.samples(1);
 		buffer_lock<>	b(buffer);
-		auto			chan = std::min<size_t>(channel-1, b.channelcount());
+		auto			chan = std::min<size_t>(channel-1, b.channel_count());
 		
 		if (b.valid()) {
 			number	speed = this->speed;
 			auto	position = m_playback_position;
-			auto	frames = b.framecount();
+			auto	frames = b.frame_count();
 			auto	length_in_seconds = b.length_in_seconds();
 			auto	frequency = (1.0 / length_in_seconds) * speed;
 			auto	stepsize = frequency * m_one_over_samplerate;
 
-			for (auto i=0; i<input.framecount(); ++i) {
+			for (auto i=0; i<input.frame_count(); ++i) {
 				// phasor
 				position += stepsize;
 				position = std::fmod(position, 1.0);
@@ -127,7 +127,7 @@ public:
 			if (bool(record)) {
 				auto record_position = m_record_position;
 
-				for (auto i=0; i<input.framecount(); ++i) {
+				for (auto i=0; i<input.frame_count(); ++i) {
 					if (record_position >= frames)
 						record_position = 0;
 					b.lookup(record_position, chan) = static_cast<float>(in[i]);

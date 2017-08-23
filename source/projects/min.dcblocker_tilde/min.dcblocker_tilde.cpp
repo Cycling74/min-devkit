@@ -59,14 +59,14 @@ public:
 
 	// Because our object defines a constructor (below) this argument definition is for
 	// documentation purposes only.
-	argument<int> channelcount_arg { this, "channel_count", "The number of channels to process." };
+	argument<int> channel_count_arg { this, "channel_count", "The number of channels to process." };
 
 
 	dcblocker(const atoms& args = {}) {
 		if (!args.empty())
-			m_channelcount = args[0];
+			m_channel_count = args[0];
 
-		for (auto i=0; i<m_channelcount; ++i) {
+		for (auto i=0; i<m_channel_count; ++i) {
 			m_inlets.push_back(	 std::make_unique<inlet<>>(this, "(signal) audio input") );
 			m_outlets.push_back( std::make_unique<outlet<>>(this, "(signal) audio output", "signal") );
 			m_filters.push_back( std::make_unique<lib::dcblocker>() );
@@ -94,12 +94,12 @@ public:
 		if (bypass)
 			output = input;
 		else {
-			for (auto channel=0; channel<m_channelcount; ++channel) {
+			for (auto channel=0; channel<m_channel_count; ++channel) {
 				auto	x = input.samples(channel);
 				auto	y = output.samples(channel);
 				auto&	f = *m_filters[channel];
 
-				for (auto i=0; i<input.framecount(); ++i) {
+				for (auto i=0; i<input.frame_count(); ++i) {
 					y[i] = f(x[i]);
 				}
 			}
@@ -114,7 +114,7 @@ public:
 
 
 private:
-	int										m_channelcount = 1;		///< number of channels
+	int										m_channel_count = 1;		///< number of channels
 	vector< unique_ptr<inlet<>> >			m_inlets;				///< this object's inlets
 	vector< unique_ptr<outlet<>> >			m_outlets;				///< this object's outlets
 	vector< unique_ptr<lib::dcblocker> >	m_filters;				///< dc-blocking filters for each channel

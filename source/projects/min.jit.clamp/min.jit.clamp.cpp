@@ -55,7 +55,7 @@ public:
 		double fmin = min;
 		double fmax = max;
 		
-		for (auto plane=0; plane<info.planecount(); ++plane) {
+		for (auto plane=0; plane<info.plane_count(); ++plane) {
 			auto dummy = input[plane];
 			output[plane] = c74::max::clamp<decltype(dummy)>(input[plane], static_cast<decltype(dummy)>(fmin), static_cast<decltype(dummy)>(fmax));
 		}
