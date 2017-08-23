@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class buffer_loop : public object<buffer_loop>, public vector_operator {
+class buffer_loop : public object<buffer_loop>, public vector_operator<> {
 public:
 	
 	MIN_DESCRIPTION { "Read from a buffer~." };
@@ -92,9 +92,7 @@ public:
 
 
 	message<> dspsetup { this, "dspsetup", MIN_FUNCTION {
-		double samplerate = args[0];
-
-		m_one_over_samplerate = 1.0 / samplerate;
+		m_one_over_samplerate = 1.0 / samplerate();
 		return {};
 	}};
 

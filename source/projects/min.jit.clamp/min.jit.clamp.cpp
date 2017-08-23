@@ -8,7 +8,7 @@
 
 using namespace c74::min;
 
-class jit_clamp : public object<jit_clamp>, public matrix_operator {
+class jit_clamp : public object<jit_clamp>, public matrix_operator<> {
 public:
 	
 	MIN_DESCRIPTION { "Limit matrix values to a range. The range is specified the object's min and max attributes." };
