@@ -3,9 +3,6 @@
 // Usage of this file and its contents is governed by the MIT License
 
 #include "c74_min_unittest.h"	// required unit test header
-
-#ifndef WIN_VERSION // The mock-kernel's clock throws an exception on windows. see https://github.com/Cycling74/min-api/issues/6.
-
 #include "min.beat.random.cpp"	// need the source of our object so that we can access it
 
 // Unit tests are written using the Catch framework as described at
@@ -63,5 +60,3 @@ SCENARIO( "object produces correct output" ) {
 		REQUIRE( output.size() > 0 );
 	}
 }
-
-#endif // #ifndef WIN_VERSION
