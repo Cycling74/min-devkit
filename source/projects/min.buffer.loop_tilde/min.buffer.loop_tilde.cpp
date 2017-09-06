@@ -44,32 +44,38 @@ public:
 
 	attribute<int> channel { this, "channel", 1,
 		description { "Channel to read from the buffer~." },
-		setter { MIN_FUNCTION {
-			int n = args[0];
-			if (n < 1)
-				n = 1;
-			return {n};
-		}}
+		setter {
+			MIN_FUNCTION {
+				int n = args[0];
+				if (n < 1)
+					n = 1;
+				return {n};
+			}
+		}
 	};
 
 
 	attribute<number> length { this, "length", 1000.0,
 		title { "Length (ms)"},
 		description { "Length of the buffer~ in milliseconds." },
-		setter { MIN_FUNCTION {
-			number new_length = args[0];
-			if (new_length <= 0.0)
-				new_length = 1.0;
+		setter {
+			MIN_FUNCTION {
+				number new_length = args[0];
+				if (new_length <= 0.0)
+					new_length = 1.0;
 
-			buffer_lock<false> b { buffer };
-			b.resize(new_length);
+				buffer_lock<false> b { buffer };
+				b.resize(new_length);
 
-			return {new_length};
-		}},
-		getter { MIN_GETTER_FUNCTION {
-			buffer_lock<false> b { buffer };
-			return { b.length_in_seconds() * 1000.0 };
-		}}
+				return {new_length};
+			}
+		},
+		getter {
+			MIN_GETTER_FUNCTION {
+				buffer_lock<false> b { buffer };
+				return { b.length_in_seconds() * 1000.0 };
+			}
+		}
 	};
 
 
@@ -91,10 +97,12 @@ public:
 	};
 
 
-	message<> dspsetup { this, "dspsetup", MIN_FUNCTION {
-		m_one_over_samplerate = 1.0 / samplerate();
-		return {};
-	}};
+	message<> dspsetup { this, "dspsetup",
+		MIN_FUNCTION {
+			m_one_over_samplerate = 1.0 / samplerate();
+			return {};
+		}
+	};
 
 
 	void operator()(audio_bundle input, audio_bundle output) {

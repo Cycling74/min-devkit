@@ -22,27 +22,35 @@ public:
 
 	attribute<number> min { this, "min", 0.0,
 		description { "The minimum value below which clipping occurs." },
-		setter { MIN_FUNCTION {
-			double in = args[0];
-			cmin = static_cast<uchar>(c74::max::clamp(255.0 * in, 0.0, 255.0));
-			return args;
-		}},
-		getter { MIN_GETTER_FUNCTION {
-			return { cmin / 255.0 };
-		}}
+		setter {
+			MIN_FUNCTION {
+				double in = args[0];
+				cmin = static_cast<uchar>(c74::max::clamp(255.0 * in, 0.0, 255.0));
+				return args;
+			}
+		},
+		getter {
+			MIN_GETTER_FUNCTION {
+				return { cmin / 255.0 };
+			}
+		}
 	};
 	
 	
 	attribute<number> max { this, "max", 1.0,
 		description { "The maximum value above which clipping occurs." },
-		setter { MIN_FUNCTION {
-			double in = args[0];
-			cmax = static_cast<uchar>(c74::max::clamp(255.0 * in, 0.0, 255.0));
-			return args;
-		}},
-		getter { MIN_GETTER_FUNCTION {
-			return { cmax / 255.0 };
-		}}
+		setter {
+			MIN_FUNCTION {
+				double in = args[0];
+				cmax = static_cast<uchar>(c74::max::clamp(255.0 * in, 0.0, 255.0));
+				return args;
+			}
+		},
+		getter {
+			MIN_GETTER_FUNCTION {
+				return { cmax / 255.0 };
+			}
+		}
 	};
 
 
