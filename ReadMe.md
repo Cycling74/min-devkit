@@ -112,6 +112,7 @@ To setup your own page:
 * [How to Create a New Object](./HowTo-NewObject.md)
 * [How to Contribute to Min](./HowTo-Contribute.md)
 * [Guide To Writing Objects](https://github.com/Cycling74/min-api/blob/master/doc/GuideToWritingObjects.md)
+* [Min Wiki](https://github.com/Cycling74/min-devkit/wiki) For additional topics, advanced configuration, and user submissions
 
 
 
