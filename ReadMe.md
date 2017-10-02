@@ -19,7 +19,7 @@ There are two layers of material included in the Min-DevKit package.
 
 To build the externals in this package you will need some form of compiler support on your system. 
 
-* On the Mac this means **Xcode 7 or 8** (you can get from the App Store for free). 
+* On the Mac this means **Xcode 7 or later** (you can get from the App Store for free). 
 * On Windows this means **Visual Studio 2015 or 2017** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do. **Visual Studio 2017 is recommended and is required if you are writing Graphical User Interface objects**.
 
 You will also need to install a recent version of [CMake](https://cmake.org/download/).
@@ -27,25 +27,21 @@ You will also need to install a recent version of [CMake](https://cmake.org/down
 
 ## Building
 
-0. Clone the code from Github, or download a zip and unpack it into a folder.
-1. In the Terminal or Console app of your choice, change directories (cd) into the folder you created in step 0.
+0. Clone the *Min-DevKit* from Github (or download from inside of Max using the Package Manager). If you clone it from Github, **you should clone it into Max's Packages folder**. If you clone it elsewhere you will need to make an alias to it in your Packages folder.
+1. In the Terminal or Console app of your choice, change directories (cd) into the Min-Devkit folder you cloned/installed in step 0.
 2. `mkdir build` to create a folder with your various build files
 3. `cd build` to put yourself into that folder
 4. Now you can generate the projects for your choosen build environment:
 
 ### Mac 
 
-You can build on the command line using Makefiles, or you can generate an Xcode project and use the GUI to build.
-
-* Xcode: Run `cmake -G Xcode ..` and then run `cmake --build .` or open the Xcode project from this "build" folder and use the GUI.
-* Make: Run `cmake ..` and then run `cmake --build .` or `make`.  Note that the Xcode project is preferrable because it is able substitute values for e.g. the Info.plist files in your builds.
+Run `cmake -G Xcode ..` and then run `cmake --build .` or open the Xcode project from this "build" folder and use the GUI.
 
 Note: you can add the `-j4` option where "4" is the number of cores to use.  This can help to speed up your builds, though sometimes the error output is interleaved in such a way as to make troubleshooting more difficult.
 
-
 ### Windows
 
-If you are using Visual Studio, You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2017, the commands to generate the projects will look like this:
+You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2017, the commands to generate the projects will look like this:
 
 * 32 bit: `cmake -G "Visual Studio 15 2017" ..`
 * 64 bit: `cmake -G "Visual Studio 15 2017 Win64" ..`
@@ -76,7 +72,7 @@ Or run them your IDE's debugger.
 
 Continuous Integration (CI) is...
 
-The Min-DevKit project models CI using two different services, both of which are free and very easy to set up if your project is hosted publically on Github.
+The Min-DevKit project models CI using two different services, both of which are free and very easy to set up if your project is hosted publicly on Github.
 
 * **Mac**: go to http://travis-ci.org and sign up.  If your repository follows the same model as Min-DevKit, you can copy `.travis.yml` directly with no changes.  Now every push to your repository will trigger an automatic build for the Mac with Travis CI.
 * **Windows**: go to http://appveyor.com and sign up.  If your repository follows the same model as Min-DevKit, you can copy `appveyor.yml` directly with no changes.  Now every push to your repository will trigger automatic builds for both 32 and 64-bit Windows with Appveyor.
@@ -112,8 +108,8 @@ To setup your own page:
 
 ## Additional Documentation
 
-* [How to Create a New Object](./HowTo-NewObject.md)
 * [How to Create a New Package](./HowTo-NewPackage.md)
+* [How to Create a New Object](./HowTo-NewObject.md)
 * [How to Contribute to Min](./HowTo-Contribute.md)
 * [Guide To Writing Objects](https://github.com/Cycling74/min-api/blob/master/doc/GuideToWritingObjects.md)
 
