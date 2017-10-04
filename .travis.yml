@@ -11,17 +11,17 @@ os: osx
 matrix:
   include:
     - osx_image: xcode7.3
-      env: CONFIG=debug
+      env: CONFIG=Debug
     - osx_image: xcode7.3
-      env: CONFIG=release
+      env: CONFIG=Release
     - osx_image: xcode8.3
-      env: CONFIG=debug
+      env: CONFIG=Debug
     - osx_image: xcode8.3
-      env: CONFIG=release
+      env: CONFIG=Release
     - osx_image: xcode9
-      env: CONFIG=debug
+      env: CONFIG=Debug
     - osx_image: xcode9
-      env: CONFIG=release
+      env: CONFIG=Release
 
 script:
 - mkdir build
@@ -52,7 +52,8 @@ script:
 - if [ -d patchers ]; then cp -r patchers $PACKAGE_NAME; fi
 - if [ -e $PACKAGE_NAME/ReadMe-Public.md ]; then rm -f $PACKAGE_NAME/ReadMe.md; mv $PACKAGE_NAME/ReadMe-Public.md $PACKAGE_NAME/ReadMe.md; fi
 - mkdir dist
-- zip -r dist/$PACKAGE_NAME-$PACKAGE_REV-mac-${CONFIG}.zip $PACKAGE_NAME
+- CONFIG_LOWERCASE=`echo $CONFIG | tr '[A-Z]' '[a-z]'`
+- zip -r dist/$PACKAGE_NAME-mac-$PACKAGE_REV-$CONFIG_LOWERCASE.zip $PACKAGE_NAME
 
 deploy:
   provider: s3
