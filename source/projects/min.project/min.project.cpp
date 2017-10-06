@@ -91,11 +91,26 @@ public:
 			cout << "RESULT " << result << endl;
 //			cout << std::ifstream("~/Documents/Max/min-cmake-log.txt").rdbuf() << endl;
 			if (result == 0) {
-				std::stringstream open_command;
-				open_command << "cd " << devkit_path<<build_path << " && " << "open " << devkit_path<<build_path << "/Min-DevKit.xcodeproj";
-				cout << open_command.str() << endl;
-				result = std::system(open_command.str().c_str());
+				#ifdef MAC_VERSION
+					std::stringstream open_command;
+					open_command << "cd " << devkit_path<<build_path << " && " << "open " << devkit_path<<build_path << "/Min-DevKit.xcodeproj";
+					cout << open_command.str() << endl;
+					result = std::system(open_command.str().c_str());
+				#else // WIN_VERSION
+					std::stringstream vs_sln_path;
+					vs_sln_path << "\"" << devkit_path << build_path << "/Min-DevKit.sln\"";
+					ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+
+				#endif
+
 			}
+
+
+
+
+
+
+
 			output.send(result);
 
 			return {};
