@@ -70,17 +70,24 @@ public:
 			string build_path	{ "/build" };
 			string log_path		{ "/tmp/min-cmake-log.txt" };
 
+
+			std::stringstream mkdir_command; 
+			mkdir_command << "mkdir \"" << devkit_path<<"\\tmp\"";
+			cout << mkdir_command.str() << endl;
+			auto result = std::system(mkdir_command.str().c_str());
+			cout << "MKDIR RESULT " << result << endl;
+
 			std::stringstream cmake_command;
-			cmake_command << "cd " << devkit_path<<build_path << " && " << devkit_path<<cmake_path;
+			cmake_command << "cd \"" << devkit_path<<build_path << "\" && \"" << devkit_path<<cmake_path;
 			#ifdef MAC_VERSION
-				cmake_command << " -G Xcode .. > " << devkit_path<<log_path << " 2>&1";
+				cmake_command << "\" -G Xcode .. > " << devkit_path<<log_path << " 2>&1";
 			#else // WIN_VERSION
-				cmake_command << " -G \"Visual Studio 15 2017 Win64\" .. > " << devkit_path << log_path << " 2>&1";
+				cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << devkit_path<<log_path << "\" 2>&1";
 			#endif
 
-			cout << cmake_command << endl;
+			cout << cmake_command.str() << endl;
 
-			auto result = std::system(cmake_command.str().c_str());
+			result = std::system(cmake_command.str().c_str());
 			cout << "RESULT " << result << endl;
 //			cout << std::ifstream("~/Documents/Max/min-cmake-log.txt").rdbuf() << endl;
 			if (result == 0) {
