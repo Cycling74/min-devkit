@@ -8,6 +8,39 @@
 
 using namespace c74::min;
 
+
+
+std::string min_devkit_path() {
+#ifdef WIN_VERSION
+	char	path[4096];
+	HMODULE	hm = nullptr;
+
+	if (!GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, (LPCSTR)&min_devkit_path, &hm)) {
+		int ret = GetLastError();
+		fprintf(stderr, "GetModuleHandle() returned %d\n", ret);
+	}
+	GetModuleFileNameA(hm, path, sizeof(path));
+
+	// path now is the path to this external's binary, including the binary filename.
+	auto filename = strrchr(path, '\\');
+	if (filename)
+		*filename = 0;
+	auto externals = strrchr(path, '\\');
+	if (externals)
+		*externals = 0;
+
+	// TODO: chop off the /externals/min.project.mxe64
+	// TODO: which direction are the slashes?
+
+	return path;
+#endif // WIN_VERSION
+
+	// TODO: Mac version
+
+}
+
+
+
 class project : public object<project> {
 public:
 
@@ -26,20 +59,33 @@ public:
 
 	message<>	bang	{this, "bang", "Generate IDE projects for the Min-DevKit and open them in the IDE (Xcode or Visual Studio.",
 		MIN_FUNCTION {
+			auto devkit_path { min_devkit_path() };
+			cout << devkit_path << endl;
 
-
-			string cmake_path	{ "~/Documents/Max/\"Max 8\"/Packages/Min-DevKit/script/cmake.app/Contents/bin/cmake" };
-			string build_path	{ "~/Documents/Max/\"Max 8\"/Packages/Min-DevKit/build" };
-			string log_path		{ "~/Documents/Max/min-cmake-log.txt" };
+			#ifdef MAC_VERSION
+				string cmake_path	{ "/script/cmake.app/Contents/bin/cmake" };
+			#else // WIN_VERSION
+				string cmake_path{ "/script/CMake/bin/cmake.exe" };
+			#endif
+			string build_path	{ "/build" };
+			string log_path		{ "/tmp/min-cmake-log.txt" };
 
 			std::stringstream cmake_command;
-			cmake_command << "cd " << build_path << " && " << cmake_path << " -G Xcode .. > " << log_path << " 2>&1";
+			cmake_command << "cd " << devkit_path<<build_path << " && " << devkit_path<<cmake_path;
+			#ifdef MAC_VERSION
+				cmake_command << " -G Xcode .. > " << devkit_path<<log_path << " 2>&1";
+			#else // WIN_VERSION
+				cmake_command << " -G \"Visual Studio 15 2017 Win64\" .. > " << devkit_path << log_path << " 2>&1";
+			#endif
+
+			cout << cmake_command << endl;
 
 			auto result = std::system(cmake_command.str().c_str());
-			cout << std::ifstream("~/Documents/Max/min-cmake-log.txt").rdbuf() << endl;
+			cout << "RESULT " << result << endl;
+//			cout << std::ifstream("~/Documents/Max/min-cmake-log.txt").rdbuf() << endl;
 			if (result == 0) {
 				std::stringstream open_command;
-				open_command << "cd " << build_path << " && " << "open " << build_path << "/Min-DevKit.xcodeproj";
+				open_command << "cd " << devkit_path<<build_path << " && " << "open " << devkit_path<<build_path << "/Min-DevKit.xcodeproj";
 				cout << open_command.str() << endl;
 				result = std::system(open_command.str().c_str());
 			}
@@ -48,6 +94,7 @@ public:
 			return {};
 		}
 	};
+
 };
 
 MIN_EXTERNAL(project);
