@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 100.0, 100.0, 791.0, 527.0 ],
+		"rect" : [ 52.0, 135.0, 791.0, 527.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -148,7 +148,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 100.0, 126.0, 791.0, 501.0 ],
+						"rect" : [ 52.0, 161.0, 791.0, 501.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -178,14 +178,69 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-6",
+									"id" : "obj-7",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 146.0, 137.0, 122.0, 24.0 ],
+									"presentation_rect" : [ 125.0, 132.0, 0.0, 0.0 ],
+									"style" : "",
+									"text" : "test min.hello-world"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 108.0, 98.0, 128.0, 24.0 ],
+									"presentation_rect" : [ 118.0, 110.0, 0.0, 0.0 ],
+									"style" : "",
+									"text" : "build min.hello-world"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 358.0, 175.5, 117.0, 38.0 ],
+									"patching_rect" : [ 237.0, 45.5, 216.0, 38.0 ],
+									"presentation_rect" : [ 358.0, 105.5, 0.0, 0.0 ],
 									"style" : "",
-									"text" : "Generate Projects and open the IDE"
+									"text" : "Generate Projects and open the IDE focused on the Hello World project"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 79.0, 56.0, 150.0, 24.0 ],
+									"style" : "",
+									"text" : "generate min.hello-world"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 374.0, 222.0, 226.0, 53.0 ],
+									"style" : "",
+									"text" : "Generate Projects and open the IDE with the container project to build all objects for the entire package"
 								}
 
 							}
@@ -196,7 +251,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 292.0, 165.0, 59.0, 59.0 ],
+									"patching_rect" : [ 309.0, 222.0, 59.0, 59.0 ],
 									"style" : ""
 								}
 
@@ -209,7 +264,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 292.0, 234.0, 75.0, 24.0 ],
+									"patching_rect" : [ 237.0, 325.0, 75.0, 24.0 ],
 									"style" : "",
 									"text" : "min.project"
 								}
@@ -220,6 +275,27 @@
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-3", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"source" : [ "obj-7", 0 ]
 								}
 
 							}
