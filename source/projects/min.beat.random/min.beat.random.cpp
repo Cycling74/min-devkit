@@ -34,27 +34,31 @@ public:
 	};
 
 
-	timer metro { this, MIN_FUNCTION {
-		auto interval = lib::math::random(min, max);
-		
-		interval_out.send(interval);
-		bang_out.send("bang");
-		
-		metro.delay(interval);
-		return {};
-	}};
+	timer metro { this,
+		MIN_FUNCTION {
+			auto interval = lib::math::random(min, max);
+
+			interval_out.send(interval);
+			bang_out.send("bang");
+
+			metro.delay(interval);
+			return {};
+		}
+	};
 
 
 	attribute<number> min { this, "min", 250.0,
 		title { "Minimum Interval" },
 		description { "Lower-bound of generated random interval." },
-		setter { MIN_FUNCTION {
-			double value = args[0];
-			
-			if (value < 1.0)
-				value = 1.0;
-			return {value};
-		}},
+		setter {
+			MIN_FUNCTION {
+				double value = args[0];
+
+				if (value < 1.0)
+					value = 1.0;
+				return {value};
+			}
+		},
 		category { "Range" },
 		order { 1 }
 	};
@@ -63,13 +67,15 @@ public:
 	attribute<number> max { this, "max", 1500.0,
 		title { "Maximum Interval" },
 		description { "Upper-bound of generated random interval." },
-		setter { MIN_FUNCTION {
-			double value = args[0];
-			
-			if (value < 1.0)
-				value = 1.0;
-			return {value};
-		}},
+		setter {
+			MIN_FUNCTION {
+				double value = args[0];
+
+				if (value < 1.0)
+					value = 1.0;
+				return {value};
+			}
+		},
 		category { "Range" },
 		order { 2 }
 	};
@@ -78,13 +84,15 @@ public:
 	attribute<bool> on { this, "on", false,
 		title { "On/Off" },
 		description { "Activate the timer." },
-		setter { MIN_FUNCTION {
-			if (args[0] == true)
-				metro.delay(0.0);	// fire the first one straight-away
-			else
-				metro.stop();
-			return args;
-		}}
+		setter {
+			MIN_FUNCTION {
+				if (args[0] == true)
+					metro.delay(0.0);	// fire the first one straight-away
+				else
+					metro.stop();
+				return args;
+			}
+		}
 	};
 
 

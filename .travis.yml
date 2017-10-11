@@ -31,7 +31,7 @@ script:
 - ctest -C ${CONFIG} . -V
 - cd ..
 - PACKAGE_NAME=`echo $TRAVIS_REPO_SLUG | sed 's/.*\///g'`
-- PACKAGE_REV=`echo $TRAVIS_COMMIT | sed -e 's/^[[:alnum:]]\{6\}/&-/g' | sed 's/-.*//'`
+- PACKAGE_REV=`echo $TRAVIS_COMMIT | sed -e 's/^[[:alnum:]]\{7\}/&-/g' | sed 's/-.*//'`
 - mkdir $PACKAGE_NAME
 - if [ -e package-info.json ]; then cp package-info.json $PACKAGE_NAME; fi
 - for f in *.md; do [ -e "$f" ] && cp "$f" $PACKAGE_NAME ; done
@@ -52,7 +52,8 @@ script:
 - if [ -d patchers ]; then cp -r patchers $PACKAGE_NAME; fi
 - if [ -e $PACKAGE_NAME/ReadMe-Public.md ]; then rm -f $PACKAGE_NAME/ReadMe.md; mv $PACKAGE_NAME/ReadMe-Public.md $PACKAGE_NAME/ReadMe.md; fi
 - mkdir dist
-- zip -r dist/$PACKAGE_NAME-$PACKAGE_REV-${CONFIG}.zip $PACKAGE_NAME
+- CONFIG_LOWERCASE=`echo $CONFIG | tr '[A-Z]' '[a-z]'`
+- zip -r dist/$PACKAGE_NAME-mac-$PACKAGE_REV-$CONFIG_LOWERCASE.zip $PACKAGE_NAME
 
 deploy:
   provider: s3

@@ -47,8 +47,8 @@ build_script:
   - cp License.md %APPVEYOR_PROJECT_NAME%
   - cp package-info.json %APPVEYOR_PROJECT_NAME%
   - cp ReadMe.md %APPVEYOR_PROJECT_NAME%
-  - set SHORT_COMMIT=%APPVEYOR_REPO_COMMIT:~0,6%
-  - 7z a %APPVEYOR_PROJECT_NAME%-win-%platform%-%SHORT_COMMIT%.zip %APPVEYOR_PROJECT_NAME% > %APPVEYOR_BUILD_FOLDER%\archive.log
+  - set SHORT_COMMIT=%APPVEYOR_REPO_COMMIT:~0,7%
+  - 7z a %APPVEYOR_PROJECT_NAME%-win-%platform%-%SHORT_COMMIT%-%CONFIGURATION%.zip %APPVEYOR_PROJECT_NAME% > %APPVEYOR_BUILD_FOLDER%\archive.log
 
 test_script:
   - cd build

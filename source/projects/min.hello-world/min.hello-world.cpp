@@ -21,7 +21,7 @@ public:
 
 
 	// define an optional argument for setting the message
-	argument<number> greeting_arg	{ this, "greeting", "Initial value for the greeting attribute.",
+	argument<symbol> greeting_arg	{ this, "greeting", "Initial value for the greeting attribute.",
 		MIN_ARGUMENT_FUNCTION {
 			greeting = arg;
 		}

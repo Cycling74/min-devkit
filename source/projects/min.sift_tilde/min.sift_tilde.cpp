@@ -46,18 +46,24 @@ public:
 		m_last = x;
 	}
 
-	timer deliverer { this, MIN_FUNCTION {
-		if (high_priority)
-			drain_the_fifo();
-		else
-			deferrer.set();
-		return {};
-	}};
 
-	queue deferrer { this, MIN_FUNCTION {
-		drain_the_fifo();
-		return {};
-	}};
+	timer deliverer { this,
+		MIN_FUNCTION {
+			if (high_priority)
+				drain_the_fifo();
+			else
+				deferrer.set();
+			return {};
+		}
+	};
+
+
+	queue deferrer { this,
+		MIN_FUNCTION {
+			drain_the_fifo();
+			return {};
+		}
+	};
 
 private:
 	sample			m_last { 0.0 }; ///< last value output

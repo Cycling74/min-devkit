@@ -104,12 +104,14 @@ public:
 		this,
 		"shape",
 		shapes::equal_power,
-		setter { MIN_FUNCTION {
-			table = g_tables.get(args[0]);
-			if (attributes_initialized)
-				std::tie(weight1, weight2) = calculate_weights(mode, position);
-			return args;
-		}},
+		setter {
+			MIN_FUNCTION {
+				table = g_tables.get(args[0]);
+				if (attributes_initialized)
+					std::tie(weight1, weight2) = calculate_weights(mode, position);
+				return args;
+			}
+		},
 		title {"Shape of Crossfade Function"},
 		description {"Shape of function. Transition across the position using one of several shapes: 'linear', 'equal_power', or 'square_root'."},
 		range {shapes::linear, shapes::equal_power, shapes::square_root}
@@ -120,11 +122,13 @@ public:
 		this,
 		"mode",
 		"fast",
-		setter { MIN_FUNCTION {
-			if (attributes_initialized)
-				std::tie(weight1, weight2) = calculate_weights(args[0], position);
-			return args;
-		}},
+		setter {
+			MIN_FUNCTION {
+				if (attributes_initialized)
+					std::tie(weight1, weight2) = calculate_weights(args[0], position);
+				return args;
+			}
+		},
 		title {"Calculation Modality"},
 		description {"Calculation Modality. Choose whether to perform calculations on-the-fly for greater accuracy or use a lookup table for greater speed."},
 		range {"fast", "precision"}
@@ -135,14 +139,16 @@ public:
 		this,
 		"position",
 		0.5,
-		setter { MIN_FUNCTION {
-			auto n = MIN_CLAMP(double(args[0]), 0.0, 1.0);
-			// don't need to check that our class is initialized because the two dependencies this calls has
-			// come first in the initialization order (unlike the two attributes above)
-			std::tie(weight1, weight2) = calculate_weights(mode, n);
-			attributes_initialized = true; // this is the last attribute to be allocated and initialized
-			return {n};
-		}},
+		setter {
+			MIN_FUNCTION {
+				auto n = MIN_CLAMP(double(args[0]), 0.0, 1.0);
+				// don't need to check that our class is initialized because the two dependencies this calls has
+				// come first in the initialization order (unlike the two attributes above)
+				std::tie(weight1, weight2) = calculate_weights(mode, n);
+				attributes_initialized = true; // this is the last attribute to be allocated and initialized
+				return {n};
+			}
+		},
 		title {"Normalized Position"},
 		description {"Normalized position. This is the position within the function defined by the 'shape' attribute."},
 		range { 0.0, 1.0}

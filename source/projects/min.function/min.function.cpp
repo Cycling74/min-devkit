@@ -13,6 +13,7 @@ using std::to_string;
 
 
 /// The mini object executes functions with double input and double output
+
 using mini_function = double(double);
 
 
@@ -20,6 +21,7 @@ using mini_function = double(double);
 /// to represent a single mini_function.
 /// This class holds the source code for the mini_function and compiles and
 /// executes it when called upon.
+
 class mini_function_wrapper {
 public:
 	friend class mini;
@@ -79,10 +81,12 @@ private:
 
 
 /// An associate array mapping function names to a mini_function_wrapper
+
 using function_map = std::unordered_map<string, std::unique_ptr<mini_function_wrapper>>;
 
 
 /// A Max class that creates and executes mini_functions
+
 class mini : public object<mini> {
 public:
 
@@ -165,25 +169,29 @@ public:
 	
 	
 	/// Open the editor window.
-	message<> dblclick { this, "dblclick", MIN_FUNCTION {
-		auto f = functions["anonymous"].get();
-		if (f)
-			editor.open(f->m_code);
-		return {};
-	}};
+	message<> dblclick { this, "dblclick",
+		MIN_FUNCTION {
+			auto f = functions["anonymous"].get();
+			if (f)
+				editor.open(f->m_code);
+			return {};
+		}
+	};
 	
 	
 	/// Save the state of the editor window with the patcher.
-	message<> savestate { this, "savestate", MIN_FUNCTION {
-		if (embed) {
-			auto f = functions["anonymous"].get();
-			if (f) {
-				dict d { args[0] };
-				d["code"] = f->m_code;
+	message<> savestate { this, "savestate",
+		MIN_FUNCTION {
+			if (embed) {
+				auto f = functions["anonymous"].get();
+				if (f) {
+					dict d { args[0] };
+					d["code"] = f->m_code;
+				}
 			}
+			return {};
 		}
-		return {};
-	}};
+	};
 	
 	
 private:
@@ -191,10 +199,12 @@ private:
 	bool			embed { true };	// save contents in the patcher file
 	function_map	functions;		// map names to their corresponding mini_function_wrapper
 	
-	texteditor editor { this, [this](const char* text) {
-		atoms as = { "anonymous", text };
-		define(as);
-	}};
+	texteditor editor { this,
+		[this](const char* text) {
+			atoms as = { "anonymous", text };
+			define(as);
+		}
+	};
 	
 };
 

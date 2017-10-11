@@ -25,25 +25,29 @@ public:
 
 	attribute<int> x { this, "x", 0,
 		description { "The horizontal distance from each incoming cell to the source cells used for averaging." },
-		setter { MIN_FUNCTION {
-			double value = args[0];
-			
-			if (value < 0)
-				value = 0;
-			return {value};
-		}}
+		setter {
+			MIN_FUNCTION {
+				double value = args[0];
+
+				if (value < 0)
+					value = 0;
+				return {value};
+			}
+		}
 	};
 	
 	
 	attribute<int> y { this, "y", 0,
 		description { "The vertical distance from each incoming cell to the source cells used for averaging." },
-		setter { MIN_FUNCTION {
-			double value = args[0];
-			
-			if (value < 0)
-				value = 0;
-			return {value};
-		}}
+		setter {
+			MIN_FUNCTION {
+				double value = args[0];
+				
+				if (value < 0)
+					value = 0;
+				return {value};
+			}
+		}
 	};
 
 	
