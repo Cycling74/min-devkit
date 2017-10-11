@@ -67,3 +67,4 @@ deploy:
   acl: public_read
   on:
     repo: Cycling74/min-devkit
+    all_branches: true

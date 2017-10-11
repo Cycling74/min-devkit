@@ -7,6 +7,7 @@
 `mkdir "#{@this_dir}/../min-devkit-deploy"`
 Dir.chdir("#{@this_dir}/../min-devkit-deploy")
 @temp_dir = Dir.pwd
+@deploy_dir = "#{@temp_dir}/Min-DevKit"
 Dir.chdir @this_dir
 
 
@@ -31,10 +32,10 @@ puts
 
 puts
 
-puts @url_mac
-`curl #{@url_mac} -o #{@temp_dir}/mac.zip`
-`unzip #{@temp_dir}/mac.zip -d #{@temp_dir}/mac`
-puts
+#puts @url_mac
+#`curl #{@url_mac} -o #{@temp_dir}/mac.zip`
+#`unzip #{@temp_dir}/mac.zip -d #{@temp_dir}/mac`
+#puts
 
 
 # brew update
@@ -45,6 +46,8 @@ puts
 # also, curl seems to corrupt the zips from Appveyor (but Travis is okay)
 # brew install wget
 
+`mkdir #{@temp_dir}/mac`
+`cd #{@temp_dir}/mac && wget #{@url_mac} && 7z x *.zip`
 
 `mkdir #{@temp_dir}/win32`
 `cd #{@temp_dir}/win32 && wget #{@url_win32} && 7z x *.zip`
@@ -53,9 +56,11 @@ puts
 `cd #{@temp_dir}/win64 && wget #{@url_win64} && 7z x *.zip`
 
 
-`cp -r #{@temp_dir}/mac/min-devkit/externals/* #{@temp_dir}/Min-DevKit/externals/`
-`cp -r #{@temp_dir}/win32/min-devkit/externals/* #{@temp_dir}/Min-DevKit/externals/`
-`cp -r #{@temp_dir}/win64/min-devkit/externals/* #{@temp_dir}/Min-DevKit/externals/`
+`cp #{@temp_dir}/mac/min-devkit/package-info.json #{@deploy_dir}/`
+`mkdir #{@deploy_dir}/externals`
+`cp -r #{@temp_dir}/mac/min-devkit/externals/* #{@deploy_dir}/externals/`
+`cp -r #{@temp_dir}/win32/min-devkit/externals/* #{@deploy_dir}/externals/`
+`cp -r #{@temp_dir}/win64/min-devkit/externals/* #{@deploy_dir}/externals/`
 
 
 # copy CMake
@@ -63,8 +68,38 @@ puts
 # assumes that you have copied CMake.app into the script folder for the Mac version
 
 
-`cp -r /script/CMake.app #{@temp_dir}/Min-DevKit/script/`
-`cp -r /script/CMake #{@temp_dir}/Min-DevKit/script/`
-`mkdir #{@temp_dir}/Min-DevKit/build/`
+`cp -r script/CMake.app #{@deploy_dir}/script/`
+`cp -r script/CMake #{@deploy_dir}/script/`
+`mkdir #{@deploy_dir}/build/`
 
+
+
+# Cleanup
+
+`rm #{@deploy_dir}/.git`
+`rm #{@deploy_dir}/.gitignore`
+`rm #{@deploy_dir}/.gitmodules`
+`rm #{@deploy_dir}/.travis.yml`
+`rm #{@deploy_dir}/appveyor.yml`
+`rm #{@deploy_dir}/package-info.json.in`
+`rm #{@deploy_dir}/script/deploy.rb`
+
+`rm #{@deploy_dir}/source/min-api/.git`
+`rm #{@deploy_dir}/source/min-api/.gitignore`
+`rm #{@deploy_dir}/source/min-api/.gitmodules`
+
+`rm #{@deploy_dir}/source/min-lib/.git`
+`rm #{@deploy_dir}/source/min-lib/.gitignore`
+`rm #{@deploy_dir}/source/min-lib/.gitmodules`
+
+`rm #{@deploy_dir}/source/min-api/max-api/.git`
+`rm #{@deploy_dir}/source/min-api/max-api/.gitignore`
+
+`rm #{@deploy_dir}/source/min-api/test/catch/.git`
+`rm #{@deploy_dir}/source/min-api/test/catch/.gitignore`
+`rm #{@deploy_dir}/source/min-api/test/catch/.gitattributes`
+`rm -rf #{@deploy_dir}/source/min-api/test/catch/.github`
+
+`rm #{@deploy_dir}/source/min-api/include/readerwriterqueue/.git`
+`rm #{@deploy_dir}/source/min-api/include/readerwriterqueue/.gitignore`
 
