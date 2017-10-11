@@ -16,3 +16,6 @@ tmp
 .DS_Store
 
 package-info.json
+
+script/CMake
+script/CMake.app
