@@ -38,7 +38,10 @@ std::string min_devkit_path() {
 	CFBundleRef this_bundle = CFBundleGetBundleWithIdentifier( CFSTR("com.cycling74.min-project") );
 	CFURLRef	this_url = CFBundleCopyExecutableURL(this_bundle);
 	CFStringRef	this_path = CFURLCopyPath(this_url);
-	string		this_path_str = CFStringGetCStringPtr(this_path, kCFStringEncodingUTF8);
+	char 		this_path_cstr[4096];
+
+	CFStringGetCString(this_path, this_path_cstr, 4096, kCFStringEncodingUTF8);
+	string		this_path_str { this_path_cstr };
 
 	CFRelease(this_path);
 	CFRelease(this_url);
