@@ -26,7 +26,7 @@ puts
 
 
 
-`cd #{@temp_dir} && git clone git@github.com:Cycling74/min-devkit.git --recurse-submodules --separate-git-dir=gitdir Min-DevKit && git checkout #{@git_rev} && git submodule update --recursive`
+puts `cd #{@temp_dir} && git clone git@github.com:Cycling74/min-devkit.git --recurse-submodules --separate-git-dir=gitdir Min-DevKit && cd Min-DevKit && git checkout #{@git_rev} && git submodule update --recursive`
 #  --depth 1 only works if we want the tip, not the specified commit like we want here
 # using --shallow-submodules above seems to cause some problems
 
@@ -62,6 +62,9 @@ puts
 `cp -r #{@temp_dir}/win32/min-devkit/externals/* #{@deploy_dir}/externals/`
 `cp -r #{@temp_dir}/win64/min-devkit/externals/* #{@deploy_dir}/externals/`
 
+`mkdir -p #{@deploy_dir}/docs`
+`cp -r #{@temp_dir}/mac/min-devkit/docs/* #{@deploy_dir}/docs/`
+
 
 # copy CMake
 # assumes that you have copied the folder "CMake" into the script folder for the Windows version
@@ -72,6 +75,9 @@ puts
 `cp -r script/CMake #{@deploy_dir}/script/`
 `mkdir #{@deploy_dir}/build/`
 
+
+`rm #{@deploy_dir}/ReadMe.md`
+`mv #{@deploy_dir}/ReadMe-Public.md #{@deploy_dir}/ReadMe.md`
 
 
 # Cleanup
