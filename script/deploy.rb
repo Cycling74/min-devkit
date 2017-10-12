@@ -62,14 +62,8 @@ puts
 `cp -r #{@temp_dir}/win32/min-devkit/externals/* #{@deploy_dir}/externals/`
 `cp -r #{@temp_dir}/win64/min-devkit/externals/* #{@deploy_dir}/externals/`
 
-`mkdir -p #{@deploy_dir}/docs`
-`cp -r #{@temp_dir}/mac/min-devkit/docs/* #{@deploy_dir}/docs/`
 
-
-# copy CMake
-# assumes that you have copied the folder "CMake" into the script folder for the Windows version
-# assumes that you have copied CMake.app into the script folder for the Mac version
-
+# copy scripts (including cmake)
 
 `cp -r script/CMake.app #{@deploy_dir}/script/`
 `cp -r script/CMake #{@deploy_dir}/script/`

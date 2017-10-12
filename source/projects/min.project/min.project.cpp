@@ -74,10 +74,10 @@ public:
 			auto devkit_path { min_devkit_path() };
 
 #ifdef MAC_VERSION
-			string	cmake_path{ "/script/cmake.app/Contents/bin/cmake" };
+			string	cmake_path{ "/script/cmake-mac/bin/cmake" };
 			char 	separator { '/' };
 #else // WIN_VERSION
-			string	cmake_path{ "/script/CMake/bin/cmake.exe" };
+			string	cmake_path{ "/script/cmake-win/bin/cmake.exe" };
 			char 	separator { '\\' };
 #endif
 			string build_path	{ "/build" };
