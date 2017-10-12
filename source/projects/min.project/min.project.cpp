@@ -114,10 +114,17 @@ public:
 					result = std::system(open_command.str().c_str());
 				}
 #else // WIN_VERSION
-				std::stringstream vs_sln_path;
-				vs_sln_path << "\"" << devkit_path << build_path << "/Min-DevKit.sln\"";
-				ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
-
+				if (args.empty()) {
+					std::stringstream vs_sln_path;
+					vs_sln_path << "\"" << devkit_path << build_path << "/Min-DevKit.sln\"";
+					ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+				}
+				else {
+					string project_name = args[0];
+					std::stringstream vs_sln_path;
+					vs_sln_path << "\"" << devkit_path << build_path << "/source/projects/" << project_name << separator << project_name << "_test.sln\"";
+					ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+				}
 #endif
 			}
 

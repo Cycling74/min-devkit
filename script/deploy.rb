@@ -65,8 +65,6 @@ puts
 
 # copy scripts (including cmake)
 
-`cp -r script/CMake.app #{@deploy_dir}/script/`
-`cp -r script/CMake #{@deploy_dir}/script/`
 `mkdir #{@deploy_dir}/build/`
 
 
@@ -102,4 +100,18 @@ puts
 
 `rm #{@deploy_dir}/source/min-api/include/readerwriterqueue/.git`
 `rm #{@deploy_dir}/source/min-api/include/readerwriterqueue/.gitignore`
+
+
+# Don't ship internal unit tests for the Package Manager release
+
+Dir.foreach("#{@deploy_dir}/source/min-lib/test/") do |item|
+  next if item == '.' or item == '..' or item == 'min-lib-unittest.cmake'
+  `rm -rf #{@deploy_dir}/source/min-lib/test/#{item}`
+end
+
+Dir.foreach("#{@deploy_dir}/source/min-api/test/") do |item|
+  next if item == '.' or item == '..' or item == 'min-api-unittest.cmake' or item == 'min-object-unittest.cmake' or item == 'catch' or item == 'mock'
+  `rm -rf #{@deploy_dir}/source/min-api/test/#{item}`
+end
+
 
