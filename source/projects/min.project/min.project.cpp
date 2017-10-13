@@ -37,13 +37,12 @@ std::string min_devkit_path() {
 #ifdef MAC_VERSION
 	CFBundleRef this_bundle = CFBundleGetBundleWithIdentifier( CFSTR("com.cycling74.min-project") );
 	CFURLRef	this_url = CFBundleCopyExecutableURL(this_bundle);
-	CFStringRef	this_path = CFURLCopyPath(this_url);
-	char 		this_path_cstr[4096];
+	char 		this_path[4096];
 
-	CFStringGetCString(this_path, this_path_cstr, 4096, kCFStringEncodingUTF8);
-	string		this_path_str { this_path_cstr };
+	CFURLGetFileSystemRepresentation(this_url, true, reinterpret_cast<UInt8*>(this_path), 4096);
 
-	CFRelease(this_path);
+	string		this_path_str { this_path };
+
 	CFRelease(this_url);
 	// remember: we don't want to release the bundle because Max is still using it!
 
@@ -93,10 +92,12 @@ public:
 			std::stringstream cmake_command;
 			cmake_command << "cd \"" << devkit_path<<build_path << "\" && \"" << devkit_path<<cmake_path;
 #ifdef MAC_VERSION
-			cmake_command << "\" -G Xcode .. > " << devkit_path<<log_path << " 2>&1";
+			cmake_command << "\" -G Xcode .. > \"" << devkit_path<<log_path << "\" 2>&1";
 #else // WIN_VERSION
 			cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << devkit_path<<log_path << "\" 2>&1";
 #endif
+
+			std::cout << cmake_command.str() << std::endl;
 
 			auto result = std::system(cmake_command.str().c_str());
 			//			cout << "RESULT " << result << endl;
@@ -105,14 +106,14 @@ public:
 #ifdef MAC_VERSION
 				if (args.empty()) {
 					std::stringstream open_command;
-					open_command << "cd " << devkit_path<<build_path << " && " << "open " << devkit_path<<build_path << "/Min-DevKit.xcodeproj";
+					open_command << "cd \"" << devkit_path<<build_path << "\" && " << "open \"" << devkit_path<<build_path << "/Min-DevKit.xcodeproj\"";
 					//cout << open_command.str() << endl;
 					result = std::system(open_command.str().c_str());
 				}
 				else {
 					string project_name = args[0];
 					std::stringstream open_command;
-					open_command << "cd " << devkit_path<<build_path << " && " << "open " << devkit_path << build_path << "/source/projects/" << project_name << separator << project_name << "_test.xcodeproj";
+					open_command << "cd \"" << devkit_path<<build_path << "\" && " << "open \"" << devkit_path << build_path << "/source/projects/" << project_name << separator << project_name << "_test.xcodeproj\"";
 					//cout << open_command.str() << endl;
 					result = std::system(open_command.str().c_str());
 				}
