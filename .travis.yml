@@ -50,6 +50,7 @@ script:
 - if [ -d media ]; then cp -r media $PACKAGE_NAME; fi
 - if [ -d misc ]; then cp -r misc $PACKAGE_NAME; fi
 - if [ -d patchers ]; then cp -r patchers $PACKAGE_NAME; fi
+- if [ -d support ]; then cp -r support $PACKAGE_NAME; fi
 - if [ -e $PACKAGE_NAME/ReadMe-Public.md ]; then rm -f $PACKAGE_NAME/ReadMe.md; mv $PACKAGE_NAME/ReadMe-Public.md $PACKAGE_NAME/ReadMe.md; fi
 - mkdir dist
 - CONFIG_LOWERCASE=`echo $CONFIG | tr '[A-Z]' '[a-z]'`
