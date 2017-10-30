@@ -23,7 +23,7 @@ You can use the objects provided in this package as-is.
 To code your own objects, or to re-compile existing objects, you will need a compiler:
 
 * On the Mac this means **Xcode 7 or later** (you can get from the App Store for free). 
-* On Windows this means **Visual Studio 2015 or 2017** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
+* On Windows this means **Visual Studio 2015 or 2017** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do. **Visual Studio 2017 is recommended and is required if you are writing Graphical User Interface objects**.
 
 
 
