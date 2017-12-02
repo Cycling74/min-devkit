@@ -45,6 +45,7 @@ var sustain = 1.0;
 var end = 0.0;
 var attack = 0.0; // ms
 var attack_slope = 0.0; // %
+var attack_exp = 1.0;
 var decay = 600.0; // ms
 var decay_slope = 100.0; // %
 var release = 50.0 // ms
@@ -52,9 +53,7 @@ var release_slope = 100.0; // %
 
 
 function bang() {
-//	draw();
 	refresh();
-//	outlet(0,val);
 }
 
 
@@ -69,8 +68,15 @@ function msg_float(v) {
         end = v;
     else if (inlet == 4)
         attack = v;
-    else if (inlet == 5)
-        attack_slope = v;
+    else if (inlet == 5) {
+        attack_slope = v / 100.0;
+        if (attack_slope > 0)
+            attack_exp = 1.0 + (attack_slope) * 4.0;
+        else if (attack_slope < 0)
+            attack_exp = 1.0 + (-attack_slope) * 4.0;
+        else
+            attack_exp = 1.0;
+    }
     else if (inlet == 6)
         decay = v;
     else if (inlet == 7)
@@ -173,13 +179,60 @@ function paint() {
         set_source_rgb(line_color);
         set_line_width(1.5);
         
-        move_to(initial_x, initial_y);
-        line_to(peak_x, peak_y);
-        stroke();
         
-        move_to(peak_x, peak_y);
-        line_to(sustain_x, sustain_y);
-        stroke();
+        
+        move_to(initial_x, initial_y);
+        
+//        line_to(peak_x, peak_y);
+//        stroke();
+
+        var steps = peak_x - initial_x;
+ /*       for (var i=0; i<=steps; ++i) {
+            var x = initial_x+i;
+            var y = ((peak_y-initial_y)/steps)*(i) + bottom;
+            post("X ", x, "    Y ", y);
+            post();
+            line_to(x, y);
+            stroke();
+            move_to(x, y);
+        }
+  */
+     
+        for (var i=0; i<=steps; ++i) {
+            var x = initial_x+i;
+            var y;
+            
+            if (attack_slope > 0.0) {
+                y = 1.0 - Math.pow(Math.abs((i/steps) - 1.0), attack_exp);
+                y = (peak_y-initial_y)*y + bottom;
+            }
+            else {
+                y = Math.pow(i/steps, attack_exp);
+                y = (peak_y-initial_y)*y + bottom;
+            }
+
+            line_to(x, y);
+            stroke();
+            move_to(x, y);
+        }
+
+
+
+        
+//        move_to(peak_x, peak_y);
+//        line_to(sustain_x, sustain_y);
+//        stroke();
+        steps = decay_x - peak_x;
+        for (var i=0; i<=steps; ++i) {
+            var x = peak_x+i;
+            var y = ((decay_y-peak_y)/steps)*(i) + top;
+  //          post("dX ", x, "    dY ", y);
+            post();
+            line_to(x, y);
+            stroke();
+            move_to(x, y);
+        }
+
         
         move_to(decay_x, decay_y);
         line_to(release_x, release_y);
