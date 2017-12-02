@@ -48,12 +48,29 @@ var attack_slope = 0.0; // %
 var attack_exp = 1.0;
 var decay = 600.0; // ms
 var decay_slope = 100.0; // %
+var decay_exp = 1.0;
 var release = 50.0 // ms
 var release_slope = 100.0; // %
+var release_exp = 1.0;
 
 
 function bang() {
 	refresh();
+}
+
+
+function calc_slope(v) {
+    var slope = v / 100.0;
+    var exp;
+    
+    if (slope > 0)
+        exp = 1.0 + slope * 5.0;
+    else if (slope < 0)
+        exp = 1.0 + (-slope) * 5.0;
+    else
+        exp = 1.0;
+    
+    return exp;
 }
 
 
@@ -70,21 +87,20 @@ function msg_float(v) {
         attack = v;
     else if (inlet == 5) {
         attack_slope = v / 100.0;
-        if (attack_slope > 0)
-            attack_exp = 1.0 + (attack_slope) * 4.0;
-        else if (attack_slope < 0)
-            attack_exp = 1.0 + (-attack_slope) * 4.0;
-        else
-            attack_exp = 1.0;
+        attack_exp = calc_slope(v);
     }
     else if (inlet == 6)
         decay = v;
-    else if (inlet == 7)
-        decay_slope = v;
+    else if (inlet == 7) {
+        decay_slope = v / 100.0;
+        decay_exp = calc_slope(v);
+    }
     else if (inlet == 8)
         release = v;
-    else if (inlet == 9)
-        release_slope = v;
+    else if (inlet == 9) {
+        release_slope = v / 100.0;
+        release_exp = calc_slope(v);
+    }
 	bang();
 }
 
@@ -183,21 +199,8 @@ function paint() {
         
         move_to(initial_x, initial_y);
         
-//        line_to(peak_x, peak_y);
-//        stroke();
 
-        var steps = peak_x - initial_x;
- /*       for (var i=0; i<=steps; ++i) {
-            var x = initial_x+i;
-            var y = ((peak_y-initial_y)/steps)*(i) + bottom;
-            post("X ", x, "    Y ", y);
-            post();
-            line_to(x, y);
-            stroke();
-            move_to(x, y);
-        }
-  */
-     
+        var steps = peak_x - initial_x;     
         for (var i=0; i<=steps; ++i) {
             var x = initial_x+i;
             var y;
@@ -218,16 +221,20 @@ function paint() {
 
 
 
-        
-//        move_to(peak_x, peak_y);
-//        line_to(sustain_x, sustain_y);
-//        stroke();
         steps = decay_x - peak_x;
         for (var i=0; i<=steps; ++i) {
             var x = peak_x+i;
-            var y = ((decay_y-peak_y)/steps)*(i) + top;
-  //          post("dX ", x, "    dY ", y);
-            post();
+            var y;
+        
+            if (decay_slope > 0.0) {
+                y = 1.0 - Math.pow(Math.abs((i/steps) - 1.0), decay_exp);
+                y = (decay_y-peak_y)*y + top;
+            }
+            else {
+                y = Math.pow(i/steps, decay_exp);
+                y = (decay_y-peak_y)*y + top;
+            }
+            
             line_to(x, y);
             stroke();
             move_to(x, y);
@@ -241,10 +248,27 @@ function paint() {
         move_to(sustain_x, sustain_y);
         line_to(release_x, release_y);
         stroke();
+
         
         move_to(release_x, release_y);
-        line_to(end_x, end_y);
-        stroke();
+        steps = end_x - release_x;
+        for (var i=0; i<=steps; ++i) {
+            var x = release_x+i;
+            var y;
+
+            if (release_slope > 0.0) {
+                y = 1.0 - Math.pow(Math.abs((i/steps) - 1.0), release_exp);
+                y = (end_y-release_y)*y + sustain_y;
+            }
+            else {
+                y = Math.pow(i/steps, release_exp);
+                y = (end_y-release_y)*y + sustain_y;
+            }
+   
+            line_to(x, y);
+            stroke();
+            move_to(x, y);
+        }
         
         
         set_source_rgb(box_color);
