@@ -112,6 +112,7 @@ mgraphics.autofill = 0;			// we want to fill the paths ourself
 
 var background_color = [ 0.12, 0.12, 0.12];
 var box_color = [ 1.0, 0.66, 0.08];
+var diamond_color = [0.897483, 0.462425, 0.452459];
 var line_color = [ 0.35, 0.8, 1.0 ];
 var margin_top = 8; // margins for the points at the ends of the lines
 var margin_right = 7;
@@ -286,6 +287,57 @@ function paint() {
         set_source_rgb(box_color);
         rectangle(end_x-3, end_y-3, 5, 5);
         stroke();
+        
+        
+        
+        set_source_rgb(diamond_color);
+        var attack_curve_handle_x = (initial_x+peak_x)/2.0;        
+        var attack_curve_handle_y;
+        var temp = (attack_curve_handle_x - initial_x) / (peak_x - initial_x);
+        var temp2;
+        if (attack_slope > 0.0)
+            temp2 = 1.0 - Math.pow(temp, attack_exp);
+        else
+             temp2 = Math.pow(temp, attack_exp);
+        attack_curve_handle_y = temp2 * (peak_y - initial_y) + initial_y;
+        ellipse(attack_curve_handle_x - 1.5, attack_curve_handle_y - 1.5, 3, 3);
+        stroke();
+        
+        
+        
+        
+        set_source_rgb(diamond_color);
+        var decay_curve_handle_x = (peak_x+decay_x)/2.0;
+//        var decay_curve_handle_y = (peak_y+decay_y)/2.0;
+        var decay_curve_handle_y;
+        var temp = (decay_curve_handle_x - peak_x) / (decay_x - peak_x);
+        var temp2;
+        if (decay_slope > 0.0)
+            temp2 = 1.0 - Math.pow(temp, decay_exp);
+        else
+            temp2 = Math.pow(temp, decay_exp);
+        decay_curve_handle_y = temp2 * (sustain_y - peak_y) + peak_y;
+        ellipse(decay_curve_handle_x - 1.5, decay_curve_handle_y - 1.5, 3, 3);
+        stroke();
+
+
+
+
+        set_source_rgb(diamond_color);
+        var release_curve_handle_x = (release_x+end_x)/2.0;
+//       var release_curve_handle_y = (release_y+end_y)/2.0;
+        var release_curve_handle_y;
+        var temp = (release_curve_handle_x - release_x) / (end_x - release_x);
+        var temp2;
+        if (release_slope > 0.0)
+            temp2 = 1.0 - Math.pow(temp, release_exp);
+        else
+             temp2 = Math.pow(temp, release_exp);
+        release_curve_handle_y = temp2 * (end_y - release_y) + sustain_y;
+        ellipse(release_curve_handle_x - 1.5, release_curve_handle_y - 1.5, 3, 3);
+        stroke();
+        
+        
         
         
     }
