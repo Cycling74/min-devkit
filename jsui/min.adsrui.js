@@ -141,66 +141,41 @@ function paint() {
 		rectangle(0, 0, bg_width, bg_height);
 		fill();
         
-        
-        
         // INITIAL
         
         var initial_x = left + 0.5;
         var initial_y = height + (initial * -height) + top + 0.5;
-        post ("initial ", initial_x, initial_y);
-        post();
-        
         
         // PEAK
          
         var peak_x = initial_x + (Math.pow(attack / 20000, 0.125) * segment_width);
         var peak_y = height + (peak * -height) + top + 0.5;
-        post ("peak ", peak_x, peak_y);
-        post();
-        
         
         // DECAY
         
         var decay_x = peak_x + (Math.pow((decay-1.0) / 59999, 0.125) * segment_width);
         var decay_y = height + (sustain * -height) + top + 0.5;
-        post ("decay ", decay_x, decay_y);
-        post();
-  
   
         // SUSTAIN
         
         var sustain_x = decay_x;
         var sustain_y = decay_y;
-        post ("sustain ", sustain_x, sustain_y);
-        post();
-        
         
         // RELEASE
         
         var release_x = right-segment_width + 0.5;
-        var release_y = sustain_y;
-        post ("release ", release_x, release_y);
-        post();
-        
+        var release_y = sustain_y;        
   
         // END
         
         var end_x = (right - segment_width) + (Math.pow((release-1.0) / 59999, 0.125) * segment_width) + 0.5;
-        var end_y = height + (end * -height) + top + 0.5;
-        post ("end ", end_x, end_y);
-        post();
-        
-        
-        
+        var end_y = height + (end * -height) + top + 0.5;        
         
         set_source_rgb(line_color);
         set_line_width(1.5);
         
-        
-        
         move_to(initial_x, initial_y);
         
-
         var steps = peak_x - initial_x;     
         for (var i=0; i<=steps; ++i) {
             var x = initial_x+i;
@@ -221,30 +196,32 @@ function paint() {
         }
 
 
-
         steps = decay_x - peak_x;
         for (var i=0; i<=steps; ++i) {
             var x = peak_x+i;
             var y;
-        
+                 
             if (decay_slope > 0.0) {
-                y = 1.0 - Math.pow(Math.abs((i/steps) - 1.0), decay_exp);
-                y = (decay_y-peak_y)*y + top;
+                if (i == 0)
+                    y = 0.0;
+                else
+                    y = 1.0 - Math.pow(Math.abs((i/steps) - 1.0), decay_exp);
+                y = (decay_y-peak_y)*y + top + 0.5;
             }
             else {
-                y = Math.pow(i/steps, decay_exp);
-                y = (decay_y-peak_y)*y + top;
+                if (i == 0)
+                    y = 0.0;
+                else
+                    y = Math.pow(i/steps, decay_exp);
+                y = (decay_y-peak_y)*y + top + 0.5;
             }
             
             line_to(x, y);
             stroke();
             move_to(x, y);
         }
-
+        line_to(decay_x, decay_y);
         
-        move_to(decay_x, decay_y);
-        line_to(release_x, release_y);
-        stroke();
 
         move_to(sustain_x, sustain_y);
         line_to(release_x, release_y);
@@ -289,7 +266,6 @@ function paint() {
         stroke();
         
         
-        
         set_source_rgb(diamond_color);
         var attack_curve_handle_x = (initial_x+peak_x)/2.0;        
         var attack_curve_handle_y;
@@ -303,15 +279,16 @@ function paint() {
         ellipse(attack_curve_handle_x - 1.5, attack_curve_handle_y - 1.5, 3, 3);
         stroke();
         
-        
-        
-        
+ 
         set_source_rgb(diamond_color);
         var decay_curve_handle_x = (peak_x+decay_x)/2.0;
-//        var decay_curve_handle_y = (peak_y+decay_y)/2.0;
         var decay_curve_handle_y;
         var temp = (decay_curve_handle_x - peak_x) / (decay_x - peak_x);
         var temp2;
+        
+        if ((decay_x - peak_x) == 0.0) {
+            temp = 0.5;
+        }
         if (decay_slope > 0.0)
             temp2 = 1.0 - Math.pow(temp, decay_exp);
         else
@@ -321,11 +298,8 @@ function paint() {
         stroke();
 
 
-
-
         set_source_rgb(diamond_color);
         var release_curve_handle_x = (release_x+end_x)/2.0;
-//       var release_curve_handle_y = (release_y+end_y)/2.0;
         var release_curve_handle_y;
         var temp = (release_curve_handle_x - release_x) / (end_x - release_x);
         var temp2;
@@ -336,10 +310,6 @@ function paint() {
         release_curve_handle_y = temp2 * (end_y - release_y) + sustain_y;
         ellipse(release_curve_handle_x - 1.5, release_curve_handle_y - 1.5, 3, 3);
         stroke();
-        
-        
-        
-        
     }
 }
 
