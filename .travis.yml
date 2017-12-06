@@ -47,6 +47,7 @@ script:
 - if [ -d java-classes ]; then cp -r java-classes $PACKAGE_NAME; fi
 - if [ -d java-doc ]; then cp -r java-doc $PACKAGE_NAME; fi
 - if [ -d javascript ]; then cp -r javascript $PACKAGE_NAME; fi
+- if [ -d jsui ]; then cp -r jsui $PACKAGE_NAME; fi
 - if [ -d media ]; then cp -r media $PACKAGE_NAME; fi
 - if [ -d misc ]; then cp -r misc $PACKAGE_NAME; fi
 - if [ -d patchers ]; then cp -r patchers $PACKAGE_NAME; fi

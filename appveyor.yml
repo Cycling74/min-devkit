@@ -42,6 +42,7 @@ build_script:
   - if exist init cp -r init %APPVEYOR_PROJECT_NAME%
   - if exist java-classes cp -r java-classes %APPVEYOR_PROJECT_NAME%
   - if exist java-doc cp -r java-doc %APPVEYOR_PROJECT_NAME%
+  - if exist jsui cp -r jsui %APPVEYOR_PROJECT_NAME%
   - if exist patchers cp -r patchers %APPVEYOR_PROJECT_NAME%
   - cp icon.png %APPVEYOR_PROJECT_NAME%
   - cp License.md %APPVEYOR_PROJECT_NAME%
