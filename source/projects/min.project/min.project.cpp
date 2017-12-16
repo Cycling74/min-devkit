@@ -69,8 +69,35 @@ public:
 	outlet<>	output	{ this, "(number) progress in percent" };
 
 
-	// only open the project for hello-world, not the big container...
-	//message<>	hello_world {};
+	message<> create_package { this, "create_package", "Create a Min-based package.",
+		MIN_FUNCTION {
+			if (args.size() < 1) {
+				cerr << "Missing required argument -- path to new package" << endl;
+				return {};
+			}
+
+			auto devkit_path { min_devkit_path() };
+			auto new_package_path { static_cast<string>(args[0]) };
+			std::stringstream command;
+
+			command << "cd " << devkit_path;
+			command << " && ruby script/create_package.rb " << new_package_path;
+
+			std::cout << command.str() << std::endl;
+
+			auto result = std::system(command.str().c_str());
+			if (result == 0) {
+				std::cout << "YAY" << std::endl;
+			}
+			else {
+				std::cout << "BOO" << std::endl;
+			}
+
+			return {};
+		}
+	};
+
+
 	message<> generate { this, "generate", "Generate IDE projects and then open the specified project only.",
 		MIN_FUNCTION {
 			auto devkit_path { min_devkit_path() };

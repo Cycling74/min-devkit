@@ -6,8 +6,8 @@
 
 <c74object name='min.beat.pattern' category='time'>
 
-	<digest>Bang at random intervals</digest>
-	<description>Bang at random intervals. </description>
+	<digest>Bang at intervals in a repeating pattern</digest>
+	<description>Bang at intervals in a repeating pattern. </description>
 
 
 	<!--METADATA-->

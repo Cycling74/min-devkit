@@ -12,11 +12,11 @@ class tap_sift_tilde : public object<tap_sift_tilde>, public sample_operator<1,0
 public:
 
 	MIN_DESCRIPTION { "Remove a specific sample value and convert to float output. "
-					  "[tap.sift~] removes a specified sample value (typically zero) as well as repeated sample values from an input signal. "
+					  "[min.sift~] removes a specified sample value (typically zero) as well as repeated sample values from an input signal. "
 					  "It then converts the remaining samples to floating-point output at control rate." };
 	MIN_TAGS		{ "analysis" };
 	MIN_AUTHOR		{ "Timothy Place" };
-	MIN_RELATED		{ "edge~, snapshot~, ==~" };
+	MIN_RELATED		{ "min.edge~, min.edgelow~, edge~, snapshot~, ==~" };
 	
 	inlet<>		input	{ this, "(signal) to be sifted" };
 	outlet<>	output	{ this, "(numbers) remaining values after the sift" };

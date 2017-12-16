@@ -11,7 +11,7 @@ using namespace c74::min;
 class prefs : public object<prefs> {
 public:
 
-	MIN_DESCRIPTION { "Get the path to Max's preferences folder." };
+	MIN_DESCRIPTION { "Get the path to Max's preferences folder. Useful for standalone app makers." };
 	MIN_TAGS		{ "files" };
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "conformpath" };
