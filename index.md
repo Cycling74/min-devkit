@@ -1,5 +1,4 @@
 ---
 layout: home
 ---
-
-A Site Starter Materialize Templates for Jekyll.
+Code for Max using Modern C++

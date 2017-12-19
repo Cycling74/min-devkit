@@ -1,11 +1,19 @@
-title: Min
+title: Min Documentation
 author: Cycling '74
 email: support@cycling74.com
 description: > # this means to ignore newlines until "baseurl:"
-  Code objects for Max in modern C++
+  Code for Max using Modern C++
 
 twitter_username: cycling74
 github_username:  cycling74
 
 sass:
     style: compressed
+
+collections:
+    posts:
+        output: true
+    guides:
+        output: true
+    api:
+        output: true

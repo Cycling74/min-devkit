@@ -4,17 +4,10 @@ layout: default
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">{{ site.title }}</h1>
-      <div class="row center">
+      <h1 class="header center maroon-text">{{ site.title }}</h1>
+      <div class="center">
         <h5 class="header col s12 light">{{ content }}</h5>
       </div>
-        
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div>
-      <br><br>
-
     </div>
   </div>
 
@@ -25,28 +18,44 @@ layout: default
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            <h2 class="center cyan-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Guides</h5>            
+            <ul class="center">
+                {% for guide in site.guides %}
+                    <li>
+                        <span class="title"><a class="post-link" href="{{ guide.url | relative_url }}">{{ guide.title | escape }}</a></span>
+                    </li>
+                {% endfor %}
+            </ul>     
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+            <h2 class="center cyan-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">API Reference</h5>
+            <ul class="center">
+                {% for ref in site.api %}
+                    <li>
+                        <span class="title"><a class="post-link" href="{{ ref.url | relative_url }}">{{ ref.title | escape }}</a></span>
+                    </li>
+                {% endfor %}
+            </ul>  
+            
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+            <h2 class="center cyan-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">Resources</h5>
+            <ul class="center">
+                <li><span class="title"><a class="post-link" href="">Video Tutorials</a></span></li>
+                <li><span class="title"><a class="post-link" href="http://github.com/Cycling74/Min-DevKit">Min-DevKit on Github</a></span></li>
+                <li><span class="title"><a class="post-link" href="https://github.com/Cycling74/min-devkit/blob/master/ReadMe.md">Getting Started</a></span></li>
+                <li><span class="title"><a class="post-link" href="https://github.com/Cycling74/min-devkit/blob/master/HowTo-Contribute.md">Contributing</a></span></li>
+            </ul>  
+            
           </div>
         </div>
       </div>
@@ -54,25 +63,5 @@ layout: default
     </div>
       
     </div>
-    <div style="background: #ddd">
-    <div class="container last-post">
-    <section>
-        <h5>Latest Post</h5>
-        <ul class="collection">
-        {% for post in site.posts %}
-        <li class="collection-item avatar">
-          {% assign date_format = site.minima.date_format | default: "%m/%d" %}
-          <div class="date-post">{{ post.date | date: date_format }}</div>
-          <span class="title"><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></span>
-          <p>
-             {{ post.content | truncatewords: 10 }}
-          </p>
-          <a href="{{ post.url | relative_url }}" class="secondary-content"><i class="material-icons">navigate_next</i></a>
-        </li>
-        {% endfor %}
-        </ul>  
-    </section>
-    </div>
-</div>
 
   </div>

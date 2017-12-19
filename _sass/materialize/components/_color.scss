@@ -37,6 +37,23 @@ $red: (
   "accent-4":    #D50000
 );
 
+$maroon: (
+  "base":       #6C0031,
+  "lighten-5":  #6C0031,
+  "lighten-4":  #6C0031,
+  "lighten-3":  #6C0031,
+  "lighten-2":  #6C0031,
+  "lighten-1":  #6C0031,
+  "darken-1":   #6C0031,
+  "darken-2":   #6C0031,
+  "darken-3":   #6C0031,
+  "darken-4":   #6C0031,
+  "accent-1":    #6C0031,
+  "accent-2":    #6C0031,
+  "accent-3":    #6C0031,
+  "accent-4":    #6C0031
+);
+
 $pink: (
   "base":       #e91e63,
   "lighten-5":  #fce4ec,
@@ -140,20 +157,20 @@ $light-blue: (
 );
 
 $cyan: (
-  "base":       #00bcd4,
-  "lighten-5":  #e0f7fa,
-  "lighten-4":  #b2ebf2,
-  "lighten-3":  #80deea,
-  "lighten-2":  #4dd0e1,
-  "lighten-1":  #26c6da,
-  "darken-1":   #00acc1,
-  "darken-2":   #0097a7,
-  "darken-3":   #00838f,
-  "darken-4":   #006064,
-  "accent-1":    #84ffff,
-  "accent-2":    #18ffff,
-  "accent-3":    #00e5ff,
-  "accent-4":    #00b8d4
+  "base":       #709392,
+  "lighten-5":  #709392,
+  "lighten-4":  #709392,
+  "lighten-3":  #709392,
+  "lighten-2":  #709392,
+  "lighten-1":  #709392,
+  "darken-1":   #709392,
+  "darken-2":   #709392,
+  "darken-3":   #709392,
+  "darken-4":   #709392,
+  "accent-1":    #709392,
+  "accent-2":    #709392,
+  "accent-3":    #709392,
+  "accent-4":    #709392
 );
 
 $teal: (
@@ -340,6 +357,7 @@ $shades: (
 $colors: (
   "materialize-red": $materialize-red,
   "red": $red,
+  "maroon": $maroon,
   "pink": $pink,
   "purple": $purple,
   "deep-purple": $deep-purple,

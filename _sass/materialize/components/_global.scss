@@ -10,10 +10,14 @@ html {
 body {
   // display: flex;
   // min-height: 100vh;
+  // min-height: 100%;
+  //flex-shrink: 0;
   // flex-direction: column;
+  background-color: #f5f5f5;
 }
 
 main {
+
   // flex: 1 0 auto;
 }
 
@@ -337,7 +341,9 @@ ul.staggered-list li {
 
 // Footer
 .page-footer {
-  padding-top: 20px;
+    
+  padding-top: 5px;
+  border-top: 1px solid #ddd;
   color: $footer-font-color;
   background-color: $footer-bg-color;
 

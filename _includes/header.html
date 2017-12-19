@@ -1,10 +1,13 @@
-<nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" href="{{ "/" | relative_url }}">Logo</a>
+<nav class="maroon" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" href="{{ "/" | relative_url }}"><img src="/assets/icon.png" width="64px" height="64px" /></a>
     {% assign default_paths = site.pages | map: "path" %}
     {% assign page_paths = site.header_pages | default: default_paths %}
 
           <ul class="right hide-on-med-and-down">
-            <li><a href="{{ "/" | relative_url }}">Home </a></li>
+            <li><a href="{{ "/" | relative_url }}">Docs </a></li>
+            <li><a href="http://cycling74.com">Max</a></li>
+            <li><a href="http://github.com/Cycling74/Min-DevKit">Github</a></li>
+            
             {% if page_paths %}
                 {% for path in page_paths %}
                     {% assign my_page = site.pages | where: "path", path | first %}
@@ -17,6 +20,8 @@
 
           <ul id="nav-mobile" class="side-nav">
             <li><a href="#">Home</a></li>
+            <li><a href="http://cycling74.com">Max</a></li>
+            <li><a href="http://github.com/Cycling74/Min-DevKit">Github</a></li>
                             {% if page_paths %}
                 {% for path in page_paths %}
                     {% assign my_page = site.pages | where: "path", path | first %}
