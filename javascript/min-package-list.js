@@ -36,9 +36,6 @@ function path(package_name) {
 		outlet(0, paths);
 	else {
 		for (var i=0; i<paths.length; ++i) {
-post("LOOKING ", package_name);
-post("At      ", paths[i]);
-post();
             if ( paths[i].indexOf(package_name) !== -1 ) {
                 outlet(0, paths[i]);
             }

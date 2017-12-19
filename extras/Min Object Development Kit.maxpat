@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 36.0, 79.0, 1094.0, 606.0 ],
+		"rect" : [ 98.0, 141.0, 1094.0, 606.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -39,6 +39,167 @@
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 13.0,
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 0,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 16.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Lato Light",
+						"gridonopen" : 1,
+						"gridsize" : [ 4.0, 4.0 ],
+						"gridsnaponopen" : 2,
+						"objectsnaponopen" : 0,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"showontab" : 1,
+						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-18",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 912.0, 204.0, 100.0, 100.0 ],
+									"presentation_rect" : [ 912.0, 204.0, 100.0, 100.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-14",
+									"maxclass" : "jweb",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 0.0, 0.0, 852.0, 580.0 ],
+									"presentation_rect" : [ 0.0, 0.0, 852.0, 580.0 ],
+									"rendermode" : 0,
+									"url" : "http://cycling74.github.io/min-devkit/"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-13",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 888.0, 136.0, 150.0, 64.0 ],
+									"presentation_rect" : [ 888.0, 136.0, 150.0, 64.0 ],
+									"style" : "",
+									"text" : "Open the documentation site in your web browser"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"linecount" : 4,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 868.0, 352.0, 188.0, 85.0 ],
+									"presentation_linecount" : 4,
+									"presentation_rect" : [ 868.0, 352.0, 188.0, 85.0 ],
+									"style" : "",
+									"text" : ";\rmax launchbrowser http://cycling74.github.io/min-devkit/"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"border" : 0,
+									"fontface" : 0,
+									"fontname" : "Lato Light",
+									"fontsize" : 16.0,
+									"id" : "obj-9",
+									"ignoreclick" : 1,
+									"justification" : 2,
+									"linkbold" : 1,
+									"linkcolor" : [ 0.501961, 0.0, 0.25098, 1.0 ],
+									"linkunderline" : 0,
+									"maxclass" : "markup",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
+									"presentation_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
+									"text" : "<a>Min</a><br/> Create packages and code objects for Max using C++"
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-18", 0 ]
+								}
+
+							}
+ ],
+						"bgfillcolor_type" : "gradient",
+						"bgfillcolor_color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
+						"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"bgfillcolor_angle" : 270.0,
+						"bgfillcolor_proportion" : 0.39
+					}
+,
+					"patching_rect" : [ 86.0, 231.0, 107.0, 23.0 ],
+					"presentation_rect" : [ 86.0, 231.0, 107.0, 23.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"fontname" : "Lato Light",
+						"fontsize" : 16.0,
+						"globalpatchername" : "",
+						"style" : "",
+						"tags" : ""
+					}
+,
+					"style" : "",
+					"text" : "p Documentation",
+					"varname" : "basic_tab[6]"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
@@ -211,9 +372,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 260.0, 323.0, 177.0, 38.0 ],
+									"patching_rect" : [ 260.0, 323.0, 177.0, 47.0 ],
 									"presentation_linecount" : 2,
-									"presentation_rect" : [ 260.0, 323.0, 177.0, 38.0 ],
+									"presentation_rect" : [ 260.0, 323.0, 177.0, 47.0 ],
 									"style" : "",
 									"text" : ";\rmax launchbrowser $1"
 								}
@@ -256,8 +417,8 @@
 						"bgfillcolor_proportion" : 0.39
 					}
 ,
-					"patching_rect" : [ 90.0, 230.0, 114.0, 23.0 ],
-					"presentation_rect" : [ 90.0, 230.0, 114.0, 23.0 ],
+					"patching_rect" : [ 148.0, 310.0, 114.0, 23.0 ],
+					"presentation_rect" : [ 148.0, 310.0, 114.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -321,6 +482,23 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"border" : 0,
+									"fontface" : 0,
+									"fontname" : "Lato Light",
+									"fontsize" : 16.0,
+									"id" : "obj-1",
+									"maxclass" : "markup",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 488.0, 416.0, 240.0, 40.0 ],
+									"presentation_rect" : [ 488.0, 416.0, 240.0, 40.0 ],
+									"text" : "Once you've created your object, <b>you'll need to compile it</b>.\n\n"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"border" : 0,
 									"fontface" : 0,
@@ -930,7 +1108,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 36.0, 105.0, 1094.0, 580.0 ],
+						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -1269,7 +1447,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"items" : [ "synth", ",", "min-devkit", ",", "sensel", ",", "sampler", ",", "TapTools", ",", "filter" ],
+									"items" : [ "synth", ",", "TapTools", ",", "filter", ",", "sampler", ",", "min-devkit", ",", "sensel" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -1660,7 +1838,7 @@
 								"box" : 								{
 									"autopopulate" : 1,
 									"id" : "obj-14",
-									"items" : [ "min.beat.pattern", ",", "min.beat.random", ",", "min.buffer.index_tilde", ",", "min.buffer.loop_tilde", ",", "min.convolve", ",", "min.dcblocker_tilde", ",", "min.dict.join", ",", "min.edge_tilde", ",", "min.edgelow_tilde", ",", "min.function", ",", "min.hello-world", ",", "min.jit.clamp", ",", "min.jit.gl.simple", ",", "min.jit.stencil", ",", "min.label", ",", "min.later", ",", "min.list.process", ",", "min.note.make", ",", "min.panner_tilde", ",", "min.phasor_tilde", ",", "min.pi", ",", "min.prefs", ",", "min.project", ",", "min.sift_tilde", ",", "min.stress_tilde", ",", "min.threadcheck", ",", "min.xfade_tilde", ",", "shared" ],
+									"items" : [ "min.beat.pattern", ",", "min.beat.random", ",", "min.buffer.index_tilde", ",", "min.buffer.loop_tilde", ",", "min.convolve", ",", "min.dcblocker_tilde", ",", "min.dict.join", ",", "min.edge_tilde", ",", "min.edgelow_tilde", ",", "min.function", ",", "min.hello-world", ",", "min.jit.clamp", ",", "min.jit.gl.simple", ",", "min.jit.stencil", ",", "min.label", ",", "min.later", ",", "min.list.process", ",", "min.markdown", ",", "min.note.make", ",", "min.panner_tilde", ",", "min.phasor_tilde", ",", "min.pi", ",", "min.prefs", ",", "min.project", ",", "min.sift_tilde", ",", "min.stress_tilde", ",", "min.threadcheck", ",", "min.xfade_tilde", ",", "shared" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -1869,7 +2047,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
+						"rect" : [ 98.0, 167.0, 1094.0, 580.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -2117,9 +2295,9 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 875.0, 450.0, 175.0, 35.0 ],
+									"patching_rect" : [ 875.0, 450.0, 177.0, 35.0 ],
 									"presentation_linecount" : 2,
-									"presentation_rect" : [ 875.0, 450.0, 175.0, 35.0 ],
+									"presentation_rect" : [ 875.0, 450.0, 177.0, 35.0 ],
 									"style" : "",
 									"text" : "pan and crossfade audio signals, sharing a common code base"
 								}
