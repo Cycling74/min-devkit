@@ -1,9 +1,8 @@
 ---
+title: Threading
+permalink: /guide/threading
 layout: guide
-title: Min Guide to Threading
-permalink: /guides/threading/
 ---
-
 # Min Guide to Threading in Max
 
 Min objects are external objects for Max written in C++ using a high-level declarative application programming interface.  To get started refer to [Writing Min Objects](GuideToWritingObjects.md).

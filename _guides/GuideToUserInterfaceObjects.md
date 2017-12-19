@@ -1,9 +1,8 @@
 ---
+title: UserInterfaceObjects
+permalink: /guide/userinterfaceobjects
 layout: guide
-title: Min Guide to User Interface Objects
-permalink: /guides/ui/
 ---
-
 # Writing User Interface (UI) Objects with Min
 
 This documentation extends the [Min Guide to Writing Objects](./GuideToWritingObjects) by adding information specific to user interface objects.

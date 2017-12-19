@@ -1,7 +1,7 @@
 ---
+title: WhereToLook
+permalink: /guide/wheretolook
 layout: guide
-title: Where To Look...
-permalink: /guides/where/
 ---
 # Where To Look...
 

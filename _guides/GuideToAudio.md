@@ -1,9 +1,8 @@
 ---
+title: Audio
+permalink: /guide/audio
 layout: guide
-title: Min Guide to Audio
-permalink: /guides/audio/
 ---
-
 # Writing Audio Objects with Min
 
 This documentation extends the [Min Guide to Writing Objects](./GuideToWritingObjects.md) by adding information specific to objects for processing audio.

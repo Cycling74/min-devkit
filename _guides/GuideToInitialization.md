@@ -1,9 +1,8 @@
 ---
+title: Initialization
+permalink: /guide/initialization
 layout: guide
-title: Min Guide to Initialization
-permalink: /guides/initialization/
 ---
-
 # Initialization
 
 Min objects are external objects for Max written in C++ using a high-level declarative application programming interface.  To get started refer to [Writing Min Objects](GuideToWritingObjects.md).

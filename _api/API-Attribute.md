@@ -1,7 +1,7 @@
 ---
-layout: api
 title: Attribute
-permalink: /api/attribute/
+permalink: /api/attribute
+layout: api
 ---
 # Module <!-- group --> `attributes`
 

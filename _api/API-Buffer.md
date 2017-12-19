@@ -1,7 +1,7 @@
 ---
-layout: api
 title: Buffer
-permalink: /api/buffer/
+permalink: /api/buffer
+layout: api
 ---
 # Module <!-- group --> `buffers`
 

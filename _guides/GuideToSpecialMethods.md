@@ -1,7 +1,7 @@
 ---
+title: SpecialMethods
+permalink: /guide/specialmethods
 layout: guide
-title: Special Messages
-permalink: /guides/special/
 ---
 # Special Methods
 

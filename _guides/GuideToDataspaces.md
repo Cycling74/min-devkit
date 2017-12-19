@@ -1,9 +1,8 @@
 ---
+title: Dataspaces
+permalink: /guide/dataspaces
 layout: guide
-title: Min Guide to Dataspaces
-permalink: /guides/dataspaces/
 ---
-
 # Dataspaces and Units of Measurement
 
 Dataspaces for attributes are an out-growth from the Jamoma project and the paper at NIME or ICMC or somewhere...
