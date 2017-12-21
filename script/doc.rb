@@ -56,6 +56,8 @@ Dir.foreach("#{@temp_dir}/_api") do |doc|
   f.close
 end
 
+
+Dir.chdir @temp_dir
 `git add .`
 `git commit -m"doc update performed by doc.rb script."`
 `git push origin HEAD`
