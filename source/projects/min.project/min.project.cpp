@@ -89,6 +89,7 @@ public:
 				path devkit_helpfile		{ static_cast<string>(devkit_help_path) + "/min.hello-world.maxhelp" };
 				path devkit_api_path		{ static_cast<string>(devkit_source_path) + "/min-api" };
 				path devkit_lib_path		{ static_cast<string>(devkit_source_path) + "/min-lib" };
+				path devkit_tests_path		{ devkit_path_str + "/tests" };
 
 				path package_path			{ static_cast<string>(args[0]), path::filetype::folder, true };
 				path package_build_path		{ static_cast<string>(package_path) + "/build", path::filetype::folder, true };
@@ -114,8 +115,8 @@ public:
 				}
 
 				devkit_api_path.copy(package_source_path, "min-api");
-
 				devkit_lib_path.copy(package_source_path, "min-lib");
+				devkit_tests_path.copy(package_path, "tests");
 
 				devkit_helpfile.copy(package_help_path, package_path.name() + ".hello-world.maxhelp");
 				string help_path_str { static_cast<string>(package_help_path) + "/" + package_path.name() + ".hello-world.maxhelp" };
@@ -175,88 +176,184 @@ public:
 
 	message<> generate { this, "generate", "Generate IDE projects and then open the specified project only.",
 		MIN_FUNCTION {
+			try {
+				auto 	devkit_path_str	{ min_devkit_path() };
+				string	project_path_str;
+
+				try {
+					path p { static_cast<string>(args[0]) };
+					project_path_str = static_cast<string>(p);
+				}
+				catch (...) {
+					project_path_str = static_cast<string>(args[0]);
+				}
+
+				project_path_str.resize(project_path_str.find_last_of('/'));
+				project_path_str.resize(project_path_str.find_last_of('/'));
+				project_path_str.resize(project_path_str.find_last_of('/'));
+
+#ifdef MAC_VERSION
+				string	cmake_path{ "/script/cmake-mac/bin/cmake" };
+				char 	separator { '/' };
+
+				// On the Mac our path starts with the drive, e.g. /Volumes/Macintosh HD
+				// which we need to prune because it confuses CMake
+
+				project_path_str.erase(0, project_path_str.find_first_of('/')+1);
+				project_path_str.erase(0, project_path_str.find_first_of('/')+1);
+				project_path_str.erase(0, project_path_str.find_first_of('/'));
+
+#else // WIN_VERSION
+				string	cmake_path{ "/script/cmake-win/bin/cmake.exe" };
+				char 	separator { '\\' };
+#endif
+				string build_path	{ "/build" };
+				string log_path		{ "/tmp/min-cmake-log.txt" };
+
+				std::stringstream mkdir_command;
+				mkdir_command << "mkdir \"" << project_path_str << separator << "tmp\"";
+				std::system(mkdir_command.str().c_str());
+
+				std::stringstream cmake_command;
+				cmake_command << "cd \"" << project_path_str<<build_path << "\" && \"" << devkit_path_str<<cmake_path;
+#ifdef MAC_VERSION
+				cmake_command << "\" -G Xcode .. > \"" << project_path_str<<log_path << "\" 2>&1";
+#else // WIN_VERSION
+				cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path_str<<log_path << "\" 2>&1";
+#endif
+
+				std::cout << cmake_command.str() << std::endl;
+
+				auto result = std::system(cmake_command.str().c_str());
+				//			cout << "RESULT " << result << endl;
+				//			cout << std::ifstream("~/Documents/Max/min-cmake-log.txt").rdbuf() << endl;
+				if (result == 0) {
+#ifdef MAC_VERSION
+					if (args.size() > 1) {
+						std::stringstream open_command;
+						open_command << "cd \"" << project_path_str<<build_path << "\" && " << "open \"" << project_path_str<<build_path << strrchr(project_path_str.c_str(), '/') << ".xcodeproj\"";
+						//cout << open_command.str() << endl;
+						result = std::system(open_command.str().c_str());
+					}
+					else {
+						path project_path { args };
+						std::stringstream open_command;
+						open_command << "cd \"" << project_path_str<<build_path << "\" && " << "open \"" << project_path_str << build_path << "/source/projects/" << project_path.name() << separator << project_path.name() << "_test.xcodeproj\"";
+						//cout << open_command.str() << endl;
+						result = std::system(open_command.str().c_str());
+					}
+#else // WIN_VERSION
+					if (args.size() > 1) {
+						std::stringstream vs_sln_path;
+						vs_sln_path << "\"" << project_path_str << build_path << "/Min-DevKit.sln\"";
+						ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+					}
+					else {
+						path project_path { args };
+						std::stringstream vs_sln_path;
+						vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_name << separator << project_name << "_test.sln\"";
+						ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+					}
+#endif
+				}
+				output.send(result);
+			}
+			catch (...) {
+				cerr << "Could not generate project(s) with that specification." << endl;
+			}
+			return {};
+		}
+	};
+
+
+	message<> create_object { this, "create_object", "Add a new object to a package.",
+		MIN_FUNCTION {
 			auto devkit_path_str	{ min_devkit_path() };
-			path project_path		{ args };
-			auto project_path_str	{ static_cast<string>(project_path) };
+			auto package_path_str	{ static_cast<string>(args[0]) };
+			const char* package_name { strrchr(&package_path_str[0], '/') + 1 };
+			auto object_name		{ static_cast<string>(args[1]) };
 
-			project_path_str.resize(project_path_str.find_last_of('/'));
-			project_path_str.resize(project_path_str.find_last_of('/'));
-			project_path_str.resize(project_path_str.find_last_of('/'));
-
-#ifdef MAC_VERSION
-			string	cmake_path{ "/script/cmake-mac/bin/cmake" };
-			char 	separator { '/' };
-
-			// On the Mac our path starts with the drive, e.g. /Volumes/Macintosh HD
-			// which we need to prune because it confuses CMake
-
-			project_path_str.erase(0, project_path_str.find_first_of('/')+1);
-			project_path_str.erase(0, project_path_str.find_first_of('/')+1);
-			project_path_str.erase(0, project_path_str.find_first_of('/'));
-
-#else // WIN_VERSION
-			string	cmake_path{ "/script/cmake-win/bin/cmake.exe" };
-			char 	separator { '\\' };
-#endif
-			string build_path	{ "/build" };
-			string log_path		{ "/tmp/min-cmake-log.txt" };
-
-			std::stringstream mkdir_command;
-			mkdir_command << "mkdir \"" << project_path_str << separator << "tmp\"";
-			std::system(mkdir_command.str().c_str());
-
-			std::stringstream cmake_command;
-			cmake_command << "cd \"" << project_path_str<<build_path << "\" && \"" << devkit_path_str<<cmake_path;
-#ifdef MAC_VERSION
-			cmake_command << "\" -G Xcode .. > \"" << project_path_str<<log_path << "\" 2>&1";
-#else // WIN_VERSION
-			cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path_str<<log_path << "\" 2>&1";
-#endif
-
-			std::cout << cmake_command.str() << std::endl;
-
-			auto result = std::system(cmake_command.str().c_str());
-			//			cout << "RESULT " << result << endl;
-			//			cout << std::ifstream("~/Documents/Max/min-cmake-log.txt").rdbuf() << endl;
-			if (result == 0) {
-#ifdef MAC_VERSION
-				if (args.empty()) {
-					std::stringstream open_command;
-					open_command << "cd \"" << project_path_str<<build_path << "\" && " << "open \"" << project_path_str<<build_path << "/*.xcodeproj\"";
-					//cout << open_command.str() << endl;
-					result = std::system(open_command.str().c_str());
-				}
-				else {
-					string project_name = args[0];
-					std::stringstream open_command;
-					open_command << "cd \"" << project_path_str<<build_path << "\" && " << "open \"" << project_path_str << build_path << "/source/projects/" << project_path.name() << separator << project_path.name() << "_test.xcodeproj\"";
-					//cout << open_command.str() << endl;
-					result = std::system(open_command.str().c_str());
-				}
-#else // WIN_VERSION
-				if (args.empty()) {
-					std::stringstream vs_sln_path;
-					vs_sln_path << "\"" << project_path_str << build_path << "/Min-DevKit.sln\"";
-					ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
-				}
-				else {
-					string project_name = args[0];
-					std::stringstream vs_sln_path;
-					vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_name << separator << project_name << "_test.sln\"";
-					ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
-				}
-#endif
+			if (object_name.find(package_name) == std::string::npos) {
+				object_name.insert(0, ".");
+				object_name.insert(0, package_name);
 			}
 
-			output.send(result);
+			string object_user_name { object_name };
+
+			if (object_name[object_name.size()-1] == '~') {
+				object_name.resize(object_name.size()-1);
+				object_name += "_tilde";
+			}
+
+			string object_identifier { std::regex_replace(object_name, std::regex{ "\\." }, "_") };
+
+			path devkit_source_path		{ devkit_path_str + "/source" };
+			path devkit_helloworld_path	{ static_cast<string>(devkit_source_path) + "/projects/min.hello-world" };
+			path devkit_hellocmake_path	{ static_cast<string>(devkit_helloworld_path) + "/CMakeLists.txt" };
+			path devkit_hellosrc_path	{ static_cast<string>(devkit_helloworld_path) + "/min.hello-world.cpp" };
+			path devkit_hellotest_path	{ static_cast<string>(devkit_helloworld_path) + "/min.hello-world_test.cpp" };
+			path devkit_help_path		{ devkit_path_str + "/help" };
+			path devkit_helpfile		{ static_cast<string>(devkit_help_path) + "/min.hello-world.maxhelp" };
+
+			path package_help_path		{ package_path_str + "/help" };
+			path package_source_path	{ package_path_str + "/source" };
+			path package_projects_path	{ static_cast<string>(package_source_path) + "/projects" };
+			path package_helloworld_path{ static_cast<string>(package_projects_path) + "/" + object_name, path::filetype::folder, true };
+
+			devkit_hellocmake_path.copy(package_helloworld_path, "CMakeLists.txt");
+
+			devkit_hellosrc_path.copy(package_helloworld_path, object_name + ".cpp");
+			string src_path_str { static_cast<string>(package_helloworld_path) + "/" + object_name + ".cpp" };
+			string src_content;
+			{
+				std::ifstream	in	{ src_path_str };
+				src_content = string { std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>() };
+				src_content = std::regex_replace(src_content, std::regex { "hello_world" }, object_identifier);
+			}
+			{
+				std::ofstream out { src_path_str };
+				out << src_content;
+			}
+
+			devkit_hellotest_path.copy(package_helloworld_path, object_name + "_test.cpp");
+			string test_path_str { static_cast<string>(package_helloworld_path) + "/" + object_name + "_test.cpp" };
+			string test_content;
+			{
+				std::ifstream	in	{ test_path_str };
+				test_content = string { std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>() };
+				test_content = std::regex_replace(test_content, std::regex { "min.hello-world" }, object_name);
+				test_content = std::regex_replace(test_content, std::regex { "hello_world" }, object_identifier);
+			}
+			{
+				std::ofstream out { test_path_str };
+				out << test_content;
+			}
+
+			devkit_helpfile.copy(package_help_path, object_user_name + ".maxhelp");
+			string help_path_str { static_cast<string>(package_help_path) + "/" + object_user_name + ".maxhelp" };
+			string help_content;
+			{
+				std::ifstream	in	{ help_path_str };
+				help_content = string { std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>() };
+				help_content = std::regex_replace(help_content, std::regex { "min.hello-world" }, object_user_name);
+			}
+			{
+				std::ofstream out { help_path_str };
+				out << help_content;
+			}
+
+			generate( {{ static_cast<string>(package_helloworld_path) }} );
 			return {};
 		}
 	};
 
 	
-	message<> bang {this, "bang", "Generate IDE projects for the Min-DevKit and open them in the IDE (Xcode or Visual Studio.",
+	message<> anything {this, "anything", "Generate IDE projects for the package whose name is passed.",
 		MIN_FUNCTION {
-			return generate();
+			path project_path { static_cast<string>(args[0]) };
+			string project_path_str = static_cast<string>(project_path);
+			project_path_str += "/source/project/placeholder";
+			return generate({ project_path_str, 1 });
 		}
 	};
 
