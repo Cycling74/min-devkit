@@ -15,24 +15,25 @@ using namespace c74::min;
 
 std::string min_devkit_path() {
 #ifdef WIN_VERSION
-	char	path[4096];
+	char	pathstr[4096];
 	HMODULE	hm = nullptr;
 
 	if (!GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, (LPCSTR)&min_devkit_path, &hm)) {
 		int ret = GetLastError();
 		fprintf(stderr, "GetModuleHandle() returned %d\n", ret);
 	}
-	GetModuleFileNameA(hm, path, sizeof(path));
+	GetModuleFileNameA(hm, pathstr, sizeof(pathstr));
 
 	// path now is the path to this external's binary, including the binary filename.
-	auto filename = strrchr(path, '\\');
+	auto filename = strrchr(pathstr, '\\');
 	if (filename)
 		*filename = 0;
-	auto externals = strrchr(path, '\\');
+	auto externals = strrchr(pathstr, '\\');
 	if (externals)
 		*externals = 0;
 
-	return path;
+	path p { pathstr }; // convert to Max path
+	return p;
 #endif // WIN_VERSION
 
 #ifdef MAC_VERSION
@@ -245,13 +246,13 @@ public:
 #else // WIN_VERSION
 					if (args.size() > 1) {
 						std::stringstream vs_sln_path;
-						vs_sln_path << "\"" << project_path_str << build_path << "/Min-DevKit.sln\"";
+						vs_sln_path << "\"" << project_path_str << build_path << strrchr(project_path_str.c_str(), '/') << ".sln\"";
 						ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
 					}
 					else {
 						path project_path { args };
 						std::stringstream vs_sln_path;
-						vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_name << separator << project_name << "_test.sln\"";
+						vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_path.name() << separator << project_path.name() << "_test.sln\"";
 						ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
 					}
 #endif
