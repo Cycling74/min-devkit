@@ -29,14 +29,9 @@
 
 	<methodlist>
 
-		<method name='anything'>
-			<digest>Generate IDE projects for the package whose name is passed</digest>
-			<description>Generate IDE projects for the package whose name is passed. </description>
-		</method>
-
-		<method name='create_object'>
-			<digest>Add a new object to a package</digest>
-			<description>Add a new object to a package. </description>
+		<method name='create_package'>
+			<digest>Create a Min-based package</digest>
+			<description>Create a Min-based package. </description>
 		</method>
 
 		<method name='generate'>
@@ -44,9 +39,14 @@
 			<description>Generate IDE projects and then open the specified project only. </description>
 		</method>
 
-		<method name='create_package'>
-			<digest>Create a Min-based package</digest>
-			<description>Create a Min-based package. </description>
+		<method name='create_object'>
+			<digest>Add a new object to a package</digest>
+			<description>Add a new object to a package. </description>
+		</method>
+
+		<method name='anything'>
+			<digest>Generate IDE projects for the package whose name is passed</digest>
+			<description>Generate IDE projects for the package whose name is passed. </description>
 		</method>
 
 	</methodlist>

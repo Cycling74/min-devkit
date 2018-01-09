@@ -29,14 +29,14 @@
 
 	<methodlist>
 
-		<method name='dictionary'>
-			<digest>Use a dictionary to define the pattern of bangs produced</digest>
-			<description>Use a dictionary to define the pattern of bangs produced. </description>
-		</method>
-
 		<method name='int'>
 			<digest>Turn on/off the internal timer</digest>
 			<description>Turn on/off the internal timer. </description>
+		</method>
+
+		<method name='dictionary'>
+			<digest>Use a dictionary to define the pattern of bangs produced</digest>
+			<description>Use a dictionary to define the pattern of bangs produced. </description>
 		</method>
 
 	</methodlist>

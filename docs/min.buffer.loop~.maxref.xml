@@ -40,14 +40,14 @@
 
 	<methodlist>
 
-		<method name='float'>
-			<digest>Toggle the recording attribute</digest>
-			<description>Toggle the recording attribute. </description>
-		</method>
-
 		<method name='set'>
 			<digest>Choose a named buffer~ from which to read</digest>
 			<description>Choose a named buffer~ from which to read. </description>
+		</method>
+
+		<method name='float'>
+			<digest>Toggle the recording attribute</digest>
+			<description>Toggle the recording attribute. </description>
 		</method>
 
 	</methodlist>
@@ -62,9 +62,9 @@
 			<description>Record into the loop </description>
 		</attribute>
 
-		<attribute name='speed' get='1' set='1' type='float64' size='1' >
-			<digest>Playback speed of the loop </digest>
-			<description>Playback speed of the loop </description>
+		<attribute name='channel' get='1' set='1' type='long' size='1' >
+			<digest>Channel to read from the buffer~</digest>
+			<description>Channel to read from the buffer~. </description>
 		</attribute>
 
 		<attribute name='length' get='1' set='1' type='float64' size='1' >
@@ -72,9 +72,9 @@
 			<description>Length of the buffer~ in milliseconds. </description>
 		</attribute>
 
-		<attribute name='channel' get='1' set='1' type='long' size='1' >
-			<digest>Channel to read from the buffer~</digest>
-			<description>Channel to read from the buffer~. </description>
+		<attribute name='speed' get='1' set='1' type='float64' size='1' >
+			<digest>Playback speed of the loop </digest>
+			<description>Playback speed of the loop </description>
 		</attribute>
 
 	</attributelist>

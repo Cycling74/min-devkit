@@ -42,6 +42,11 @@
 
 	<attributelist>
 
+		<attribute name='shape' get='1' set='1' type='symbol' size='1' >
+			<digest>Shape of function</digest>
+			<description>Shape of function. Transition across the position using one of several shapes: 'linear', 'equal_power', or 'square_root'. </description>
+		</attribute>
+
 		<attribute name='position' get='1' set='1' type='float64' size='1' >
 			<digest>Normalized position</digest>
 			<description>Normalized position. This is the position within the function defined by the 'shape' attribute. </description>
@@ -50,11 +55,6 @@
 		<attribute name='mode' get='1' set='1' type='symbol' size='1' >
 			<digest>Calculation Modality</digest>
 			<description>Calculation Modality. Choose whether to perform calculations on-the-fly for greater accuracy or use a lookup table for greater speed. </description>
-		</attribute>
-
-		<attribute name='shape' get='1' set='1' type='symbol' size='1' >
-			<digest>Shape of function</digest>
-			<description>Shape of function. Transition across the position using one of several shapes: 'linear', 'equal_power', or 'square_root'. </description>
 		</attribute>
 
 	</attributelist>

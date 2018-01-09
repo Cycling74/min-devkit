@@ -29,14 +29,9 @@
 
 	<methodlist>
 
-		<method name='bang'>
-			<digest>Send out the collected list</digest>
-			<description>Send out the collected list. Only applicable if using the 'collect' operation. </description>
-		</method>
-
-		<method name='float'>
-			<digest>Add content to the collection</digest>
-			<description>Add content to the collection. Only applicable if using the 'collect' operation. </description>
+		<method name='list'>
+			<digest>Operate on the list</digest>
+			<description>Operate on the list. Either add it to the collection or calculate the mean. </description>
 		</method>
 
 		<method name='anything'>
@@ -44,9 +39,14 @@
 			<description>Add content to the collection. Only applicable if using the 'collect' operation. </description>
 		</method>
 
-		<method name='list'>
-			<digest>Operate on the list</digest>
-			<description>Operate on the list. Either add it to the collection or calculate the mean. </description>
+		<method name='float'>
+			<digest>Add content to the collection</digest>
+			<description>Add content to the collection. Only applicable if using the 'collect' operation. </description>
+		</method>
+
+		<method name='bang'>
+			<digest>Send out the collected list</digest>
+			<description>Send out the collected list. Only applicable if using the 'collect' operation. </description>
 		</method>
 
 	</methodlist>
