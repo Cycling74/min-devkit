@@ -2,14 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 0,
-			"revision" : 0,
+			"major" : 7,
+			"minor" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 117.0, 103.0, 1094.0, 606.0 ],
+		"rect" : [ 150.0, 236.0, 1094.0, 606.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -49,9 +49,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -99,7 +99,7 @@
 									"presentation_linecount" : 2,
 									"presentation_rect" : [ 360.0, 476.0, 177.0, 47.0 ],
 									"style" : "",
-									"text" : ";\rmax launchbrowser $1"
+									"text" : ";\r\nmax launchbrowser $1"
 								}
 
 							}
@@ -184,104 +184,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
-					"id" : "obj-1",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patcher" : 					{
-						"fileversion" : 1,
-						"appversion" : 						{
-							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
-							"architecture" : "x64",
-							"modernui" : 1
-						}
-,
-						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
-						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
-						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 16.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Lato Light",
-						"gridonopen" : 1,
-						"gridsize" : [ 4.0, 4.0 ],
-						"gridsnaponopen" : 2,
-						"objectsnaponopen" : 0,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "",
-						"showontab" : 1,
-						"boxes" : [ 							{
-								"box" : 								{
-									"border" : 0,
-									"fontface" : 0,
-									"fontname" : "Lato Light",
-									"fontsize" : 16.0,
-									"id" : "obj-9",
-									"ignoreclick" : 1,
-									"justification" : 2,
-									"linkbold" : 1,
-									"linkcolor" : [ 0.501961, 0.0, 0.25098, 1.0 ],
-									"linkunderline" : 0,
-									"maxclass" : "markup",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
-									"presentation_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
-									"text" : "<a>Min</a><br/> Create packages and code objects for Max using C++"
-								}
-
-							}
- ],
-						"lines" : [  ],
-						"bgfillcolor_type" : "gradient",
-						"bgfillcolor_color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
-						"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_angle" : 270.0,
-						"bgfillcolor_proportion" : 0.39
-					}
-,
-					"patching_rect" : [ 118.0, 268.0, 68.0, 23.0 ],
-					"presentation_rect" : [ 118.0, 268.0, 68.0, 23.0 ],
-					"saved_object_attributes" : 					{
-						"description" : "",
-						"digest" : "",
-						"fontname" : "Lato Light",
-						"fontsize" : 16.0,
-						"globalpatchername" : "",
-						"style" : "",
-						"tags" : ""
-					}
-,
-					"style" : "",
-					"text" : "p Tutorials",
-					"varname" : "basic_tab[5]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 13.0,
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -289,9 +191,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -361,7 +263,7 @@
 									"presentation_linecount" : 2,
 									"presentation_rect" : [ 260.0, 387.0, 177.0, 47.0 ],
 									"style" : "",
-									"text" : ";\rmax launchbrowser $1"
+									"text" : ";\r\nmax launchbrowser $1"
 								}
 
 							}
@@ -431,9 +333,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -572,70 +474,30 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 16,
+										"count" : 6,
 										"data" : [ 											{
 												"key" : 0,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/zillo" ]
-											}
-, 											{
-												"key" : "zillo",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/zillo" ]
-											}
-, 											{
-												"key" : 1,
-												"value" : [ "/Users/tim/Materials/sampler" ]
-											}
-, 											{
-												"key" : "sampler",
-												"value" : [ "/Users/tim/Materials/sampler" ]
-											}
-, 											{
-												"key" : 2,
-												"value" : [ "/Users/tim/Materials/sensel" ]
-											}
-, 											{
-												"key" : "sensel",
-												"value" : [ "/Users/tim/Materials/sensel" ]
-											}
-, 											{
-												"key" : 3,
-												"value" : [ "/Users/tim/Materials/synth" ]
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
 											}
 , 											{
 												"key" : "synth",
-												"value" : [ "/Users/tim/Materials/synth" ]
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
 											}
 , 											{
-												"key" : 4,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/ziggy" ]
-											}
-, 											{
-												"key" : "ziggy",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/ziggy" ]
-											}
-, 											{
-												"key" : 5,
-												"value" : [ "/Users/tim/Materials/filter" ]
-											}
-, 											{
-												"key" : "filter",
-												"value" : [ "/Users/tim/Materials/filter" ]
-											}
-, 											{
-												"key" : 6,
-												"value" : [ "/Users/tim/Materials/TapTools" ]
-											}
-, 											{
-												"key" : "TapTools",
-												"value" : [ "/Users/tim/Materials/TapTools" ]
-											}
-, 											{
-												"key" : 7,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+												"key" : 1,
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
 											}
 , 											{
 												"key" : "min-devkit",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : 2,
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+											}
+, 											{
+												"key" : "zoo",
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
 											}
  ]
 									}
@@ -822,14 +684,14 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 0,
-											"revision" : 0,
+											"major" : 7,
+											"minor" : 3,
+											"revision" : 4,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
-										"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
+										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -857,6 +719,19 @@
 										"style" : "",
 										"subpatcher_template" : "",
 										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-22",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 5,
+													"outlettype" : [ "", "", "", "", "" ],
+													"patching_rect" : [ 143.0, 264.0, 141.0, 22.0 ],
+													"style" : "",
+													"text" : "regexp .:\\\\/ @substitute /"
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"id" : "obj-16",
 													"maxclass" : "newobj",
@@ -971,70 +846,30 @@
 , 											{
 												"box" : 												{
 													"coll_data" : 													{
-														"count" : 16,
+														"count" : 6,
 														"data" : [ 															{
 																"key" : 0,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/zillo" ]
-															}
-, 															{
-																"key" : "zillo",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/zillo" ]
-															}
-, 															{
-																"key" : 1,
-																"value" : [ "/Users/tim/Materials/sampler" ]
-															}
-, 															{
-																"key" : "sampler",
-																"value" : [ "/Users/tim/Materials/sampler" ]
-															}
-, 															{
-																"key" : 2,
-																"value" : [ "/Users/tim/Materials/sensel" ]
-															}
-, 															{
-																"key" : "sensel",
-																"value" : [ "/Users/tim/Materials/sensel" ]
-															}
-, 															{
-																"key" : 3,
-																"value" : [ "/Users/tim/Materials/synth" ]
+																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
 															}
 , 															{
 																"key" : "synth",
-																"value" : [ "/Users/tim/Materials/synth" ]
+																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
 															}
 , 															{
-																"key" : 4,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/ziggy" ]
-															}
-, 															{
-																"key" : "ziggy",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/ziggy" ]
-															}
-, 															{
-																"key" : 5,
-																"value" : [ "/Users/tim/Materials/filter" ]
-															}
-, 															{
-																"key" : "filter",
-																"value" : [ "/Users/tim/Materials/filter" ]
-															}
-, 															{
-																"key" : 6,
-																"value" : [ "/Users/tim/Materials/TapTools" ]
-															}
-, 															{
-																"key" : "TapTools",
-																"value" : [ "/Users/tim/Materials/TapTools" ]
-															}
-, 															{
-																"key" : 7,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+																"key" : 1,
+																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
 															}
 , 															{
 																"key" : "min-devkit",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+															}
+, 															{
+																"key" : 2,
+																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+															}
+, 															{
+																"key" : "zoo",
+																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
 															}
  ]
 													}
@@ -1134,7 +969,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
-													"patching_rect" : [ 143.0, 264.0, 151.0, 22.0 ],
+													"patching_rect" : [ 143.0, 293.0, 151.0, 22.0 ],
 													"presentation_rect" : [ 143.0, 264.0, 151.0, 22.0 ],
 													"style" : "",
 													"text" : "regexp /.*/ @substitute %0"
@@ -1176,7 +1011,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 163.5, 306.0, 96.0, 22.0 ],
+													"patching_rect" : [ 163.5, 320.0, 96.0, 22.0 ],
 													"presentation_rect" : [ 163.5, 306.0, 96.0, 22.0 ],
 													"style" : "",
 													"text" : "prepend append"
@@ -1241,7 +1076,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-5", 0 ],
+													"destination" : [ "obj-22", 0 ],
 													"order" : 1,
 													"source" : [ "obj-1", 0 ]
 												}
@@ -1337,6 +1172,13 @@
 													"destination" : [ "obj-3", 1 ],
 													"order" : 1,
 													"source" : [ "obj-21", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-5", 0 ],
+													"source" : [ "obj-22", 0 ]
 												}
 
 											}
@@ -1450,7 +1292,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"items" : [ "zillo", ",", "sampler", ",", "sensel", ",", "synth", ",", "ziggy", ",", "filter", ",", "TapTools", ",", "min-devkit" ],
+									"items" : [ "synth", ",", "min-devkit", ",", "zoo" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -1807,9 +1649,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1996,14 +1838,14 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 0,
-											"revision" : 0,
+											"major" : 7,
+											"minor" : 3,
+											"revision" : 4,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
-										"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
+										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -2485,9 +2327,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2555,70 +2397,30 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 16,
+										"count" : 6,
 										"data" : [ 											{
 												"key" : 0,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/zillo" ]
-											}
-, 											{
-												"key" : "zillo",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/zillo" ]
-											}
-, 											{
-												"key" : 1,
-												"value" : [ "/Users/tim/Materials/sampler" ]
-											}
-, 											{
-												"key" : "sampler",
-												"value" : [ "/Users/tim/Materials/sampler" ]
-											}
-, 											{
-												"key" : 2,
-												"value" : [ "/Users/tim/Materials/sensel" ]
-											}
-, 											{
-												"key" : "sensel",
-												"value" : [ "/Users/tim/Materials/sensel" ]
-											}
-, 											{
-												"key" : 3,
-												"value" : [ "/Users/tim/Materials/synth" ]
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
 											}
 , 											{
 												"key" : "synth",
-												"value" : [ "/Users/tim/Materials/synth" ]
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
 											}
 , 											{
-												"key" : 4,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/ziggy" ]
-											}
-, 											{
-												"key" : "ziggy",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/ziggy" ]
-											}
-, 											{
-												"key" : 5,
-												"value" : [ "/Users/tim/Materials/filter" ]
-											}
-, 											{
-												"key" : "filter",
-												"value" : [ "/Users/tim/Materials/filter" ]
-											}
-, 											{
-												"key" : 6,
-												"value" : [ "/Users/tim/Materials/TapTools" ]
-											}
-, 											{
-												"key" : "TapTools",
-												"value" : [ "/Users/tim/Materials/TapTools" ]
-											}
-, 											{
-												"key" : 7,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+												"key" : 1,
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
 											}
 , 											{
 												"key" : "min-devkit",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : 2,
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+											}
+, 											{
+												"key" : "zoo",
+												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
 											}
  ]
 									}
@@ -2714,7 +2516,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 704.0, 28.0, 157.0, 23.0 ],
+									"patching_rect" : [ 704.0, 28.0, 159.0, 23.0 ],
+									"presentation_linecount" : 2,
 									"presentation_rect" : [ 704.0, 28.0, 157.0, 23.0 ],
 									"style" : "",
 									"text" : "r min-launcher-compile-code"
@@ -2762,14 +2565,14 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 0,
-											"revision" : 0,
+											"major" : 7,
+											"minor" : 3,
+											"revision" : 4,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
-										"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
+										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -2797,6 +2600,19 @@
 										"style" : "",
 										"subpatcher_template" : "",
 										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-22",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 5,
+													"outlettype" : [ "", "", "", "", "" ],
+													"patching_rect" : [ 143.0, 270.0, 141.0, 22.0 ],
+													"style" : "",
+													"text" : "regexp .:\\\\/ @substitute /"
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"id" : "obj-3",
 													"maxclass" : "newobj",
@@ -2917,7 +2733,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
-													"patching_rect" : [ 143.0, 264.0, 151.0, 22.0 ],
+													"patching_rect" : [ 143.0, 302.0, 151.0, 22.0 ],
 													"presentation_rect" : [ 143.0, 264.0, 151.0, 22.0 ],
 													"style" : "",
 													"text" : "regexp /.*/ @substitute %0"
@@ -2959,7 +2775,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 163.5, 306.0, 96.0, 22.0 ],
+													"patching_rect" : [ 163.5, 344.0, 96.0, 22.0 ],
 													"presentation_rect" : [ 163.5, 306.0, 96.0, 22.0 ],
 													"style" : "",
 													"text" : "prepend append"
@@ -3002,7 +2818,7 @@
  ],
 										"lines" : [ 											{
 												"patchline" : 												{
-													"destination" : [ "obj-5", 0 ],
+													"destination" : [ "obj-22", 0 ],
 													"source" : [ "obj-1", 0 ]
 												}
 
@@ -3039,6 +2855,13 @@
 												"patchline" : 												{
 													"destination" : [ "obj-9", 0 ],
 													"source" : [ "obj-2", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-5", 0 ],
+													"source" : [ "obj-22", 0 ]
 												}
 
 											}
@@ -3119,7 +2942,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"items" : [ "zillo", ",", "sampler", ",", "sensel", ",", "synth", ",", "ziggy", ",", "filter", ",", "TapTools", ",", "min-devkit" ],
+									"items" : [ "synth", ",", "min-devkit", ",", "zoo" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -3230,14 +3053,14 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 0,
-											"revision" : 0,
+											"major" : 7,
+											"minor" : 3,
+											"revision" : 4,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
-										"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
+										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -3361,7 +3184,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 205.0, 330.0, 109.0, 28.0 ],
+													"patching_rect" : [ 205.0, 330.0, 109.0, 22.0 ],
 													"presentation_rect" : [ 205.0, 330.0, 109.0, 28.0 ],
 													"style" : "",
 													"text" : "prepend prefix"
@@ -3484,14 +3307,14 @@
 								"box" : 								{
 									"autopopulate" : 1,
 									"id" : "obj-14",
-									"items" : [ "min.beat.pattern", ",", "min.beat.random", ",", "min.buffer.index_tilde", ",", "min.buffer.loop_tilde", ",", "min.convolve", ",", "min.dcblocker_tilde", ",", "min.dict.join", ",", "min.edge_tilde", ",", "min.edgelow_tilde", ",", "min.function", ",", "min.hello-world", ",", "min.jit.clamp", ",", "min.jit.gl.simple", ",", "min.jit.stencil", ",", "min.label", ",", "min.later", ",", "min.list.process", ",", "min.markdown", ",", "min.note.make", ",", "min.panner_tilde", ",", "min.phasor_tilde", ",", "min.pi", ",", "min.prefs", ",", "min.project", ",", "min.sift_tilde", ",", "min.stress_tilde", ",", "min.threadcheck", ",", "min.xfade_tilde", ",", "shared" ],
+									"items" : [ "zoo.bra", ",", "zoo.hello-world" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 108.0, 360.0, 192.0, 28.0 ],
-									"prefix" : "Macintosh HD:/Users/tim/Documents/Max 8/Packages/min-devkit/source/projects/",
+									"prefix" : "C:/Users/tim/Documents/Max 7/Packages/zoo/source/projects/",
 									"presentation_rect" : [ 108.0, 360.0, 192.0, 28.0 ],
 									"style" : "",
 									"types" : "fold"
@@ -3780,14 +3603,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 117.0, 129.0, 1094.0, 580.0 ],
+						"rect" : [ 150.0, 262.0, 1094.0, 580.0 ],
 						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
@@ -4661,94 +4484,94 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "min-package-list.js",
-				"bootpath" : "~/Documents/Max 8/Packages/min-devkit/javascript",
+				"bootpath" : "~/Documents/Max 7/Packages/min-devkit/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "min.beat.pattern.mxo",
-				"type" : "iLaX"
+				"name" : "min.beat.pattern.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.beat.random.mxo",
-				"type" : "iLaX"
+				"name" : "min.beat.random.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.buffer.index~.mxo",
-				"type" : "iLaX"
+				"name" : "min.buffer.index~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.buffer.loop~.mxo",
-				"type" : "iLaX"
+				"name" : "min.buffer.loop~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.convolve.mxo",
-				"type" : "iLaX"
+				"name" : "min.convolve.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.dcblocker~.mxo",
-				"type" : "iLaX"
+				"name" : "min.dcblocker~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.dict.join.mxo",
-				"type" : "iLaX"
+				"name" : "min.dict.join.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.edge~.mxo",
-				"type" : "iLaX"
+				"name" : "min.edge~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.edgelow~.mxo",
-				"type" : "iLaX"
+				"name" : "min.edgelow~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.function.mxo",
-				"type" : "iLaX"
+				"name" : "min.function.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.hello-world.mxo",
-				"type" : "iLaX"
+				"name" : "min.hello-world.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.list.process.mxo",
-				"type" : "iLaX"
+				"name" : "min.list.process.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.note.make.mxo",
-				"type" : "iLaX"
+				"name" : "min.note.make.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.panner~.mxo",
-				"type" : "iLaX"
+				"name" : "min.panner~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.xfade~.mxo",
-				"type" : "iLaX"
+				"name" : "min.xfade~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.phasor~.mxo",
-				"type" : "iLaX"
+				"name" : "min.phasor~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.pi.mxo",
-				"type" : "iLaX"
+				"name" : "min.pi.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.prefs.mxo",
-				"type" : "iLaX"
+				"name" : "min.prefs.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.stress~.mxo",
-				"type" : "iLaX"
+				"name" : "min.stress~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.threadcheck.mxo",
-				"type" : "iLaX"
+				"name" : "min.threadcheck.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.project.mxo",
-				"type" : "iLaX"
+				"name" : "min.project.mxe64",
+				"type" : "mx64"
 			}
  ],
 		"autosave" : 0
