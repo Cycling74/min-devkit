@@ -75,7 +75,7 @@ puts
 # Cleanup
 
 `rm #{@deploy_dir}/.git`
-`rm #{@deploy_dir}/.gitignore`
+#`rm #{@deploy_dir}/.gitignore` -- LEAVE THIS IN, REQUIRED BY MIN.PROJECT
 `rm #{@deploy_dir}/.gitmodules`
 `rm #{@deploy_dir}/.travis.yml`
 `rm #{@deploy_dir}/appveyor.yml`
