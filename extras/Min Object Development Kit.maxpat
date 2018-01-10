@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 150.0, 236.0, 1094.0, 606.0 ],
+		"rect" : [ 117.0, 79.0, 1094.0, 606.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -99,7 +99,7 @@
 									"presentation_linecount" : 2,
 									"presentation_rect" : [ 360.0, 476.0, 177.0, 47.0 ],
 									"style" : "",
-									"text" : ";\r\nmax launchbrowser $1"
+									"text" : ";\rmax launchbrowser $1"
 								}
 
 							}
@@ -263,7 +263,7 @@
 									"presentation_linecount" : 2,
 									"presentation_rect" : [ 260.0, 387.0, 177.0, 47.0 ],
 									"style" : "",
-									"text" : ";\r\nmax launchbrowser $1"
+									"text" : ";\rmax launchbrowser $1"
 								}
 
 							}
@@ -474,30 +474,94 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 6,
+										"count" : 22,
 										"data" : [ 											{
 												"key" : 0,
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
+												"value" : [ "/Users/tim/Materials/filter" ]
 											}
 , 											{
-												"key" : "synth",
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
+												"key" : "filter",
+												"value" : [ "/Users/tim/Materials/filter" ]
 											}
 , 											{
 												"key" : 1,
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+												"value" : [ "/Users/tim/Materials/zero" ]
 											}
 , 											{
-												"key" : "min-devkit",
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+												"key" : "zero",
+												"value" : [ "/Users/tim/Materials/zero" ]
 											}
 , 											{
 												"key" : 2,
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+												"value" : [ "/Users/tim/Materials/jit.mo" ]
 											}
 , 											{
-												"key" : "zoo",
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+												"key" : "jit.mo",
+												"value" : [ "/Users/tim/Materials/jit.mo" ]
+											}
+, 											{
+												"key" : 3,
+												"value" : [ "/Users/tim/Materials/link" ]
+											}
+, 											{
+												"key" : "link",
+												"value" : [ "/Users/tim/Materials/link" ]
+											}
+, 											{
+												"key" : 4,
+												"value" : [ "/Users/tim/Materials/radial" ]
+											}
+, 											{
+												"key" : "radial",
+												"value" : [ "/Users/tim/Materials/radial" ]
+											}
+, 											{
+												"key" : 5,
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : "min-devkit",
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : 6,
+												"value" : [ "/Users/tim/Materials/min-playground" ]
+											}
+, 											{
+												"key" : "min-playground",
+												"value" : [ "/Users/tim/Materials/min-playground" ]
+											}
+, 											{
+												"key" : 7,
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+											}
+, 											{
+												"key" : "zoinks",
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+											}
+, 											{
+												"key" : 8,
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+											}
+, 											{
+												"key" : "yesplease",
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+											}
+, 											{
+												"key" : 9,
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+											}
+, 											{
+												"key" : "zuber",
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+											}
+, 											{
+												"key" : 10,
+												"value" : [ "/Users/tim/Materials/ease" ]
+											}
+, 											{
+												"key" : "ease",
+												"value" : [ "/Users/tim/Materials/ease" ]
 											}
  ]
 									}
@@ -846,30 +910,94 @@
 , 											{
 												"box" : 												{
 													"coll_data" : 													{
-														"count" : 6,
+														"count" : 22,
 														"data" : [ 															{
 																"key" : 0,
-																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
+																"value" : [ "/Users/tim/Materials/filter" ]
 															}
 , 															{
-																"key" : "synth",
-																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
+																"key" : "filter",
+																"value" : [ "/Users/tim/Materials/filter" ]
 															}
 , 															{
 																"key" : 1,
-																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+																"value" : [ "/Users/tim/Materials/zero" ]
 															}
 , 															{
-																"key" : "min-devkit",
-																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+																"key" : "zero",
+																"value" : [ "/Users/tim/Materials/zero" ]
 															}
 , 															{
 																"key" : 2,
-																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+																"value" : [ "/Users/tim/Materials/jit.mo" ]
 															}
 , 															{
-																"key" : "zoo",
-																"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+																"key" : "jit.mo",
+																"value" : [ "/Users/tim/Materials/jit.mo" ]
+															}
+, 															{
+																"key" : 3,
+																"value" : [ "/Users/tim/Materials/link" ]
+															}
+, 															{
+																"key" : "link",
+																"value" : [ "/Users/tim/Materials/link" ]
+															}
+, 															{
+																"key" : 4,
+																"value" : [ "/Users/tim/Materials/radial" ]
+															}
+, 															{
+																"key" : "radial",
+																"value" : [ "/Users/tim/Materials/radial" ]
+															}
+, 															{
+																"key" : 5,
+																"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+															}
+, 															{
+																"key" : "min-devkit",
+																"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+															}
+, 															{
+																"key" : 6,
+																"value" : [ "/Users/tim/Materials/min-playground" ]
+															}
+, 															{
+																"key" : "min-playground",
+																"value" : [ "/Users/tim/Materials/min-playground" ]
+															}
+, 															{
+																"key" : 7,
+																"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+															}
+, 															{
+																"key" : "zoinks",
+																"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+															}
+, 															{
+																"key" : 8,
+																"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+															}
+, 															{
+																"key" : "yesplease",
+																"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+															}
+, 															{
+																"key" : 9,
+																"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+															}
+, 															{
+																"key" : "zuber",
+																"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+															}
+, 															{
+																"key" : 10,
+																"value" : [ "/Users/tim/Materials/ease" ]
+															}
+, 															{
+																"key" : "ease",
+																"value" : [ "/Users/tim/Materials/ease" ]
 															}
  ]
 													}
@@ -1178,6 +1306,13 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-5", 0 ],
+													"source" : [ "obj-22", 3 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-5", 0 ],
 													"source" : [ "obj-22", 0 ]
 												}
 
@@ -1292,7 +1427,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"items" : [ "synth", ",", "min-devkit", ",", "zoo" ],
+									"items" : [ "filter", ",", "zero", ",", "jit.mo", ",", "link", ",", "radial", ",", "min-devkit", ",", "min-playground", ",", "zoinks", ",", "yesplease", ",", "zuber", ",", "ease" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -2334,7 +2469,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
+						"rect" : [ 117.0, 105.0, 1094.0, 580.0 ],
 						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
@@ -2397,30 +2532,94 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 6,
+										"count" : 22,
 										"data" : [ 											{
 												"key" : 0,
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
+												"value" : [ "/Users/tim/Materials/filter" ]
 											}
 , 											{
-												"key" : "synth",
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/synth" ]
+												"key" : "filter",
+												"value" : [ "/Users/tim/Materials/filter" ]
 											}
 , 											{
 												"key" : 1,
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+												"value" : [ "/Users/tim/Materials/zero" ]
 											}
 , 											{
-												"key" : "min-devkit",
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+												"key" : "zero",
+												"value" : [ "/Users/tim/Materials/zero" ]
 											}
 , 											{
 												"key" : 2,
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+												"value" : [ "/Users/tim/Materials/jit.mo" ]
 											}
 , 											{
-												"key" : "zoo",
-												"value" : [ "C:/Users/tim/Documents/Max 7/Packages/zoo" ]
+												"key" : "jit.mo",
+												"value" : [ "/Users/tim/Materials/jit.mo" ]
+											}
+, 											{
+												"key" : 3,
+												"value" : [ "/Users/tim/Materials/link" ]
+											}
+, 											{
+												"key" : "link",
+												"value" : [ "/Users/tim/Materials/link" ]
+											}
+, 											{
+												"key" : 4,
+												"value" : [ "/Users/tim/Materials/radial" ]
+											}
+, 											{
+												"key" : "radial",
+												"value" : [ "/Users/tim/Materials/radial" ]
+											}
+, 											{
+												"key" : 5,
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : "min-devkit",
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : 6,
+												"value" : [ "/Users/tim/Materials/min-playground" ]
+											}
+, 											{
+												"key" : "min-playground",
+												"value" : [ "/Users/tim/Materials/min-playground" ]
+											}
+, 											{
+												"key" : 7,
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+											}
+, 											{
+												"key" : "zoinks",
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+											}
+, 											{
+												"key" : 8,
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+											}
+, 											{
+												"key" : "yesplease",
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+											}
+, 											{
+												"key" : 9,
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+											}
+, 											{
+												"key" : "zuber",
+												"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+											}
+, 											{
+												"key" : 10,
+												"value" : [ "/Users/tim/Materials/ease" ]
+											}
+, 											{
+												"key" : "ease",
+												"value" : [ "/Users/tim/Materials/ease" ]
 											}
  ]
 									}
@@ -2517,7 +2716,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 704.0, 28.0, 159.0, 23.0 ],
-									"presentation_linecount" : 2,
 									"presentation_rect" : [ 704.0, 28.0, 157.0, 23.0 ],
 									"style" : "",
 									"text" : "r min-launcher-compile-code"
@@ -2861,6 +3059,13 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-5", 0 ],
+													"source" : [ "obj-22", 3 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-5", 0 ],
 													"source" : [ "obj-22", 0 ]
 												}
 
@@ -2942,7 +3147,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"items" : [ "synth", ",", "min-devkit", ",", "zoo" ],
+									"items" : [ "filter", ",", "zero", ",", "jit.mo", ",", "link", ",", "radial", ",", "min-devkit", ",", "min-playground", ",", "zoinks", ",", "yesplease", ",", "zuber", ",", "ease" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -3307,14 +3512,14 @@
 								"box" : 								{
 									"autopopulate" : 1,
 									"id" : "obj-14",
-									"items" : [ "zoo.bra", ",", "zoo.hello-world" ],
+									"items" : "yesplease.hello-world",
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 108.0, 360.0, 192.0, 28.0 ],
-									"prefix" : "C:/Users/tim/Documents/Max 7/Packages/zoo/source/projects/",
+									"prefix" : "Macintosh HD:/Users/tim/Documents/Max 7/Packages/yesplease/source/projects/",
 									"presentation_rect" : [ 108.0, 360.0, 192.0, 28.0 ],
 									"style" : "",
 									"types" : "fold"
@@ -3610,7 +3815,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 150.0, 262.0, 1094.0, 580.0 ],
+						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
 						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
@@ -4490,88 +4695,88 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "min.beat.pattern.mxe64",
-				"type" : "mx64"
+				"name" : "min.beat.pattern.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.beat.random.mxe64",
-				"type" : "mx64"
+				"name" : "min.beat.random.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.buffer.index~.mxe64",
-				"type" : "mx64"
+				"name" : "min.buffer.index~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.buffer.loop~.mxe64",
-				"type" : "mx64"
+				"name" : "min.buffer.loop~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.convolve.mxe64",
-				"type" : "mx64"
+				"name" : "min.convolve.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.dcblocker~.mxe64",
-				"type" : "mx64"
+				"name" : "min.dcblocker~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.dict.join.mxe64",
-				"type" : "mx64"
+				"name" : "min.dict.join.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.edge~.mxe64",
-				"type" : "mx64"
+				"name" : "min.edge~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.edgelow~.mxe64",
-				"type" : "mx64"
+				"name" : "min.edgelow~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.function.mxe64",
-				"type" : "mx64"
+				"name" : "min.function.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.hello-world.mxe64",
-				"type" : "mx64"
+				"name" : "min.hello-world.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.list.process.mxe64",
-				"type" : "mx64"
+				"name" : "min.list.process.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.note.make.mxe64",
-				"type" : "mx64"
+				"name" : "min.note.make.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.panner~.mxe64",
-				"type" : "mx64"
+				"name" : "min.panner~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.xfade~.mxe64",
-				"type" : "mx64"
+				"name" : "min.xfade~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.phasor~.mxe64",
-				"type" : "mx64"
+				"name" : "min.phasor~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.pi.mxe64",
-				"type" : "mx64"
+				"name" : "min.pi.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.prefs.mxe64",
-				"type" : "mx64"
+				"name" : "min.prefs.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.stress~.mxe64",
-				"type" : "mx64"
+				"name" : "min.stress~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.threadcheck.mxe64",
-				"type" : "mx64"
+				"name" : "min.threadcheck.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.project.mxe64",
-				"type" : "mx64"
+				"name" : "min.project.mxo",
+				"type" : "iLaX"
 			}
  ],
 		"autosave" : 0
