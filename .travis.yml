@@ -36,6 +36,7 @@ script:
 - if [ -e package-info.json ]; then cp package-info.json $PACKAGE_NAME; fi
 - for f in *.md; do [ -e "$f" ] && cp "$f" $PACKAGE_NAME ; done
 - if [ -e icon.png ]; then cp icon.png $PACKAGE_NAME; fi
+- if [ -e CMakeLists.txt ]; then cp CMakeLists.txt $PACKAGE_NAME; fi
 - if [ -d code ]; then cp -r code $PACKAGE_NAME; fi
 - if [ -d docs ]; then cp -r docs $PACKAGE_NAME; fi
 - if [ -d examples ]; then cp -r examples $PACKAGE_NAME; fi
@@ -52,6 +53,7 @@ script:
 - if [ -d misc ]; then cp -r misc $PACKAGE_NAME; fi
 - if [ -d patchers ]; then cp -r patchers $PACKAGE_NAME; fi
 - if [ -d support ]; then cp -r support $PACKAGE_NAME; fi
+- if [ -d source ]; then cp -r source $PACKAGE_NAME; fi
 - if [ -d tests ]; then cp -r tests $PACKAGE_NAME; fi
 - if [ -e $PACKAGE_NAME/ReadMe-Public.md ]; then rm -f $PACKAGE_NAME/ReadMe.md; mv $PACKAGE_NAME/ReadMe-Public.md $PACKAGE_NAME/ReadMe.md; fi
 - mkdir dist
