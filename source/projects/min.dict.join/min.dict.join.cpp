@@ -14,7 +14,7 @@ public:
 	MIN_DESCRIPTION { "Merge the content of two dictionaries." };
 	MIN_TAGS		{ "dictionary" };
 	MIN_AUTHOR		{ "Cycling '74" };
-	MIN_RELATED		{ "pedro, dict.join" };
+	MIN_RELATED		{ "min.beat.pattern, dict.join" };
 
 	inlet<>		left	{ this, "dictionary to combined with dictionary at right inlet",	"" };
 	inlet<>		right	{ this, "dictionary to combined with dictionary at left inlet",	"dictionary" };

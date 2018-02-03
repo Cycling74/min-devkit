@@ -35,9 +35,9 @@
 
 	<methodlist>
 
-		<method name='anything'>
-			<digest>Execute a named method</digest>
-			<description>Execute a named method. The first arg is the name of the method. The second arg is passed to the method as the variable 'x'. </description>
+		<method name='define'>
+			<digest>Define a new method, mapping it to a name</digest>
+			<description>Define a new method, mapping it to a name. </description>
 		</method>
 
 		<method name='float'>
@@ -45,9 +45,9 @@
 			<description>Execute the 'anonymous' method. The number is passed in as the variable 'x'. </description>
 		</method>
 
-		<method name='define'>
-			<digest>Define a new method, mapping it to a name</digest>
-			<description>Define a new method, mapping it to a name. </description>
+		<method name='anything'>
+			<digest>Execute a named method</digest>
+			<description>Execute a named method. The first arg is the name of the method. The second arg is passed to the method as the variable 'x'. </description>
 		</method>
 
 	</methodlist>

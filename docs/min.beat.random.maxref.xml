@@ -51,6 +51,11 @@
 
 	<attributelist>
 
+		<attribute name='min' get='1' set='1' type='float64' size='1' >
+			<digest>Lower-bound of generated random interval</digest>
+			<description>Lower-bound of generated random interval. </description>
+		</attribute>
+
 		<attribute name='max' get='1' set='1' type='float64' size='1' >
 			<digest>Upper-bound of generated random interval</digest>
 			<description>Upper-bound of generated random interval. </description>
@@ -59,11 +64,6 @@
 		<attribute name='on' get='1' set='1' type='long' size='1' >
 			<digest>Activate the timer</digest>
 			<description>Activate the timer. </description>
-		</attribute>
-
-		<attribute name='min' get='1' set='1' type='float64' size='1' >
-			<digest>Lower-bound of generated random interval</digest>
-			<description>Lower-bound of generated random interval. </description>
 		</attribute>
 
 	</attributelist>

@@ -12,7 +12,7 @@ using namespace c74::min;
 class beat_pattern : public object<beat_pattern> {
 public:
 	
-	MIN_DESCRIPTION { "Bang at random intervals." };
+	MIN_DESCRIPTION { "Bang at intervals in a repeating pattern." };
 	MIN_TAGS		{ "time" };
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "min.beat.random, link.beat, metro, tempo, drunk" };

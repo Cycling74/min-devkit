@@ -28,6 +28,7 @@ You will also need to install a recent version of [CMake](https://cmake.org/down
 ## Building
 
 0. Clone the *Min-DevKit* from Github (or download from inside of Max using the Package Manager). If you clone it from Github, **you should clone it into Max's Packages folder**. If you clone it elsewhere you will need to make an alias to it in your Packages folder.
+   The *Packages* folder can be found inside of your *Max 7* or *Max 8* folder that inside of your user's *Documents* folder.
 1. In the Terminal or Console app of your choice, change directories (cd) into the Min-Devkit folder you cloned/installed in step 0.
 2. `mkdir build` to create a folder with your various build files
 3. `cd build` to put yourself into that folder

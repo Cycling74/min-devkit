@@ -62,6 +62,11 @@ puts
 `cp -r #{@temp_dir}/win32/min-devkit/externals/* #{@deploy_dir}/externals/`
 `cp -r #{@temp_dir}/win64/min-devkit/externals/* #{@deploy_dir}/externals/`
 
+`mkdir #{@deploy_dir}/tests`
+`cp -r #{@temp_dir}/mac/min-devkit/tests/* #{@deploy_dir}/tests/`
+`cp -r #{@temp_dir}/win32/min-devkit/tests/* #{@deploy_dir}/tests/`
+`cp -r #{@temp_dir}/win64/min-devkit/tests/* #{@deploy_dir}/tests/`
+
 
 # copy scripts (including cmake)
 
@@ -75,7 +80,7 @@ puts
 # Cleanup
 
 `rm #{@deploy_dir}/.git`
-`rm #{@deploy_dir}/.gitignore`
+#`rm #{@deploy_dir}/.gitignore` -- LEAVE THIS IN, REQUIRED BY MIN.PROJECT
 `rm #{@deploy_dir}/.gitmodules`
 `rm #{@deploy_dir}/.travis.yml`
 `rm #{@deploy_dir}/appveyor.yml`
@@ -102,16 +107,16 @@ puts
 `rm #{@deploy_dir}/source/min-api/include/readerwriterqueue/.gitignore`
 
 
-# Don't ship internal unit tests for the Package Manager release
-
-Dir.foreach("#{@deploy_dir}/source/min-lib/test/") do |item|
-  next if item == '.' or item == '..' or item == 'min-lib-unittest.cmake'
-  `rm -rf #{@deploy_dir}/source/min-lib/test/#{item}`
-end
-
-Dir.foreach("#{@deploy_dir}/source/min-api/test/") do |item|
-  next if item == '.' or item == '..' or item == 'min-api-unittest.cmake' or item == 'min-object-unittest.cmake' or item == 'catch' or item == 'mock'
-  `rm -rf #{@deploy_dir}/source/min-api/test/#{item}`
-end
-
+# Do ship unit tests for the Package Manager release -- min.project requires them!
+# 
+# Dir.foreach("#{@deploy_dir}/source/min-lib/test/") do |item|
+#   next if item == '.' or item == '..' or item == 'min-lib-unittest.cmake'
+#   `rm -rf #{@deploy_dir}/source/min-lib/test/#{item}`
+# end
+# 
+# Dir.foreach("#{@deploy_dir}/source/min-api/test/") do |item|
+#   next if item == '.' or item == '..' or item == 'min-api-unittest.cmake' or item == 'min-object-unittest.cmake' or item == 'catch' or item == 'mock'
+#   `rm -rf #{@deploy_dir}/source/min-api/test/#{item}`
+# end
+# 
 

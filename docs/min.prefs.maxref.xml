@@ -7,7 +7,7 @@
 <c74object name='min.prefs' category='files'>
 
 	<digest>Get the path to Max's preferences folder</digest>
-	<description>Get the path to Max's preferences folder. </description>
+	<description>Get the path to Max's preferences folder. Useful for standalone app makers. </description>
 
 
 	<!--METADATA-->

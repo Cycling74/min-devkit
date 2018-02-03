@@ -22,7 +22,7 @@
 
 	<objarglist>
 
-		<objarg name='greeting' optional='1' type='number'>
+		<objarg name='greeting' optional='1' type='symbol'>
 			<digest>Initial value for the greeting attribute</digest>
 			<description>Initial value for the greeting attribute. </description>
 		</objarg>

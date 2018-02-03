@@ -29,12 +29,7 @@
 
 	<methodlist>
 
-		<method name='bang'>
-			<digest>Message to check</digest>
-			<description>Message to check. </description>
-		</method>
-
-		<method name='float'>
+		<method name='list'>
 			<digest>Message to check</digest>
 			<description>Message to check. </description>
 		</method>
@@ -44,7 +39,12 @@
 			<description>Message to check. </description>
 		</method>
 
-		<method name='list'>
+		<method name='float'>
+			<digest>Message to check</digest>
+			<description>Message to check. </description>
+		</method>
+
+		<method name='bang'>
 			<digest>Message to check</digest>
 			<description>Message to check. </description>
 		</method>

@@ -34,14 +34,14 @@
 
 	<methodlist>
 
-		<method name='dictionary'>
-			<digest>Dictionary from the second inlet is combined with the dictionary from the first inlet and a new dictionary is sent </digest>
-			<description>Dictionary from the second inlet is combined with the dictionary from the first inlet and a new dictionary is sent </description>
-		</method>
-
 		<method name='bang'>
 			<digest>Resend the most recently combined dictionary </digest>
 			<description>Resend the most recently combined dictionary </description>
+		</method>
+
+		<method name='dictionary'>
+			<digest>Dictionary from the second inlet is combined with the dictionary from the first inlet and a new dictionary is sent </digest>
+			<description>Dictionary from the second inlet is combined with the dictionary from the first inlet and a new dictionary is sent </description>
 		</method>
 
 	</methodlist>
@@ -57,7 +57,7 @@
 	<!--RELATED-->
 
 	<seealsolist>
-		<seealso name='pedro' />
+		<seealso name='min.beat.pattern' />
 		<seealso name='dict.join' />
 	</seealsolist>
 
