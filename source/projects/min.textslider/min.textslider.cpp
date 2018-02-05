@@ -111,9 +111,6 @@ public:
 	};
 
 
-//	attribute<color>	m_bgcolor		{ this, "bgcolor", "rect_fill"};
-//	attribute<color>	m_elementcolor	{ this, "elementcolor", "side_arch"};
-//	attribute<color>	m_knobcolor		{ this, "knobcolor", "side_arch"};
 	attribute<color>	m_bgcolor		{ this, "bgcolor", color::black, title {"Background Color"} };
 	attribute<color>	m_elementcolor	{ this, "elementcolor", color::white };
 	attribute<color>	m_knobcolor		{ this, "knobcolor", color::gray, title {"Knob Color"} };
@@ -231,6 +228,20 @@ public:
 
 			target t { args };
 
+
+			// ALL STYLE-AWARE ATTRS MUST BE UPDATED HERE
+			// TODO: BAKE THIS INTO THE WRAPPER OF THE PAINT METHOD!
+			c74::max::t_jrgba elemcolor {};
+			c74::max::object_attr_getjrgba(*this, symbol("elementcolor"), &elemcolor);
+
+			long ac {};
+			c74::max::t_atom* av {};
+			c74::max::object_attr_getvalueof(*this, symbol("elementcolor"), &ac, &av);
+			// TODO: need to free av?
+			atoms a {av+0,av+1,av+2,av+3};
+			m_elementcolor.set (a);
+			
+
 			auto value = (m_value - m_range[0]) / (m_range[1] - m_range[0]);
 			auto pos =  ((t.width()-3) * value) + 1;	// one pixel for each border and -1 for counting to N-1
 
@@ -299,6 +310,16 @@ private:
 		}
 		redraw();
 	}
+
+
+	// post to max window == but only when the class is loaded the first time
+	message<> maxclass_setup { this, "maxclass_setup",
+		MIN_FUNCTION {
+			c74::max::t_class *c = args[0];
+			c74::max::class_attr_setstyle(c, "elementcolor");
+			return {};
+		}
+	};
 };
 
 

@@ -29,7 +29,7 @@
 
 	<methodlist>
 
-		<method name='paint'>
+		<method name='bang'>
 			<digest></digest>
 			<description></description>
 		</method>
@@ -39,7 +39,7 @@
 			<description></description>
 		</method>
 
-		<method name='bang'>
+		<method name='paint'>
 			<digest></digest>
 			<description></description>
 		</method>
