@@ -229,6 +229,8 @@ public:
 			target t { args };
 
 
+
+
 			// ALL STYLE-AWARE ATTRS MUST BE UPDATED HERE
 			// TODO: BAKE THIS INTO THE WRAPPER OF THE PAINT METHOD!
 			c74::max::t_jrgba elemcolor {};
@@ -240,6 +242,16 @@ public:
 			// TODO: need to free av?
 			atoms a {av+0,av+1,av+2,av+3};
 			m_elementcolor.set (a);
+
+			c74::max::object_attr_getvalueof(*this, symbol("bgcolor"), &ac, &av);
+			// TODO: need to free av?
+			a = {av+0,av+1,av+2,av+3};
+			m_bgcolor.set (a);
+
+
+
+
+
 			
 
 			auto value = (m_value - m_range[0]) / (m_range[1] - m_range[0]);
@@ -310,16 +322,6 @@ private:
 		}
 		redraw();
 	}
-
-
-	// post to max window == but only when the class is loaded the first time
-	message<> maxclass_setup { this, "maxclass_setup",
-		MIN_FUNCTION {
-			c74::max::t_class *c = args[0];
-			c74::max::class_attr_setstyle(c, "elementcolor");
-			return {};
-		}
-	};
 };
 
 
