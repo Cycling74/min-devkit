@@ -87,7 +87,7 @@ public:
 
 	message<threadsafe::yes> ints { this, "int", "MIDI note information",
 		MIN_FUNCTION {
-			switch (current_inlet()) {
+			switch (inlet) {
 				case 0:
 					m_pitch = args[0];
 					start();
