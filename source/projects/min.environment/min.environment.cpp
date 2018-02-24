@@ -257,10 +257,10 @@ using namespace c74::min;
 class environment : public object<environment> {
 public:
 
-	MIN_DESCRIPTION { "Get the approximate value of pi." };
+	MIN_DESCRIPTION { "Get info about the current max environment." };
 	MIN_TAGS		{ "math" };
 	MIN_AUTHOR		{ "Cycling '74" };
-	MIN_RELATED		{ "sin, cos, atan~, jit.op, gen~" };
+	MIN_RELATED		{ "gestalt" };
 
 	inlet<>		in				{ this, "(bang) get info about the current max environment" };
 	outlet<>	out_platform	{ this, "(symbol) platform" };
