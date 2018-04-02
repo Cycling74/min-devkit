@@ -2,9 +2,9 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -49,9 +49,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -191,9 +191,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -333,9 +333,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -748,9 +748,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 7,
-											"minor" : 3,
-											"revision" : 4,
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -790,6 +790,7 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 264.0, 141.0, 22.0 ],
+													"presentation_rect" : [ 143.0, 264.0, 141.0, 22.0 ],
 													"style" : "",
 													"text" : "regexp .:\\\\/ @substitute /"
 												}
@@ -1098,7 +1099,7 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 293.0, 151.0, 22.0 ],
-													"presentation_rect" : [ 143.0, 264.0, 151.0, 22.0 ],
+													"presentation_rect" : [ 143.0, 293.0, 151.0, 22.0 ],
 													"style" : "",
 													"text" : "regexp /.*/ @substitute %0"
 												}
@@ -1140,7 +1141,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 163.5, 320.0, 96.0, 22.0 ],
-													"presentation_rect" : [ 163.5, 306.0, 96.0, 22.0 ],
+													"presentation_rect" : [ 163.5, 320.0, 96.0, 22.0 ],
 													"style" : "",
 													"text" : "prepend append"
 												}
@@ -1784,9 +1785,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1973,9 +1974,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 7,
-											"minor" : 3,
-											"revision" : 4,
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2462,14 +2463,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 117.0, 105.0, 1094.0, 580.0 ],
+						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
 						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
@@ -2716,7 +2717,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 704.0, 28.0, 159.0, 23.0 ],
-									"presentation_rect" : [ 704.0, 28.0, 157.0, 23.0 ],
+									"presentation_rect" : [ 704.0, 28.0, 159.0, 23.0 ],
 									"style" : "",
 									"text" : "r min-launcher-compile-code"
 								}
@@ -2763,9 +2764,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 7,
-											"minor" : 3,
-											"revision" : 4,
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2805,6 +2806,7 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 270.0, 141.0, 22.0 ],
+													"presentation_rect" : [ 143.0, 270.0, 141.0, 22.0 ],
 													"style" : "",
 													"text" : "regexp .:\\\\/ @substitute /"
 												}
@@ -2932,7 +2934,7 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 302.0, 151.0, 22.0 ],
-													"presentation_rect" : [ 143.0, 264.0, 151.0, 22.0 ],
+													"presentation_rect" : [ 143.0, 302.0, 151.0, 22.0 ],
 													"style" : "",
 													"text" : "regexp /.*/ @substitute %0"
 												}
@@ -2974,7 +2976,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 163.5, 344.0, 96.0, 22.0 ],
-													"presentation_rect" : [ 163.5, 306.0, 96.0, 22.0 ],
+													"presentation_rect" : [ 163.5, 344.0, 96.0, 22.0 ],
 													"style" : "",
 													"text" : "prepend append"
 												}
@@ -3258,9 +3260,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 7,
-											"minor" : 3,
-											"revision" : 4,
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3390,7 +3392,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 205.0, 330.0, 109.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 330.0, 109.0, 28.0 ],
+													"presentation_rect" : [ 205.0, 330.0, 109.0, 22.0 ],
 													"style" : "",
 													"text" : "prepend prefix"
 												}
@@ -3808,14 +3810,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
+						"rect" : [ 117.0, 105.0, 1094.0, 580.0 ],
 						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
@@ -4054,8 +4056,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 500.0, 465.0, 167.0, 21.0 ],
-									"presentation_rect" : [ 500.0, 465.0, 167.0, 21.0 ],
+									"patching_rect" : [ 500.0, 441.0, 167.0, 21.0 ],
+									"presentation_rect" : [ 500.0, 441.0, 167.0, 21.0 ],
 									"style" : "",
 									"text" : "return the value of pi"
 								}
@@ -4069,8 +4071,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 390.0, 465.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 390.0, 465.0, 110.0, 23.0 ],
+									"patching_rect" : [ 388.0, 441.0, 110.0, 23.0 ],
+									"presentation_rect" : [ 388.0, 441.0, 110.0, 23.0 ],
 									"style" : "",
 									"text" : "min.pi"
 								}
@@ -4187,8 +4189,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 500.0, 440.0, 167.0, 21.0 ],
-									"presentation_rect" : [ 500.0, 440.0, 167.0, 21.0 ],
+									"patching_rect" : [ 500.0, 416.0, 167.0, 21.0 ],
+									"presentation_rect" : [ 500.0, 416.0, 167.0, 21.0 ],
 									"style" : "",
 									"text" : "process lists in various ways"
 								}
@@ -4202,8 +4204,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 390.0, 440.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 390.0, 440.0, 110.0, 23.0 ],
+									"patching_rect" : [ 388.0, 416.0, 110.0, 23.0 ],
+									"presentation_rect" : [ 388.0, 416.0, 110.0, 23.0 ],
 									"style" : "",
 									"text" : "min.list.process"
 								}
@@ -4235,35 +4237,6 @@
 									"presentation_rect" : [ 30.0, 345.0, 110.0, 23.0 ],
 									"style" : "",
 									"text" : "min.hello-world"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-8",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 500.0, 415.0, 240.0, 21.0 ],
-									"presentation_rect" : [ 500.0, 415.0, 240.0, 21.0 ],
-									"style" : "",
-									"text" : "arbitrary calculations using C++ expressions"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 390.0, 415.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 390.0, 415.0, 110.0, 23.0 ],
-									"style" : "",
-									"text" : "min.function"
 								}
 
 							}
@@ -4393,8 +4366,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 390.0, 390.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 390.0, 390.0, 110.0, 23.0 ],
+									"patching_rect" : [ 388.0, 391.0, 110.0, 23.0 ],
+									"presentation_rect" : [ 388.0, 391.0, 110.0, 23.0 ],
 									"style" : "",
 									"text" : "min.convolve"
 								}
@@ -4689,7 +4662,7 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "min-package-list.js",
-				"bootpath" : "~/Documents/Max 7/Packages/min-devkit/javascript",
+				"bootpath" : "~/Materials/min-devkit/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -4728,10 +4701,6 @@
 			}
 , 			{
 				"name" : "min.edgelow~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "min.function.mxo",
 				"type" : "iLaX"
 			}
 , 			{
