@@ -33,7 +33,7 @@ public:
 	};
 
 
-	timer metro { this,
+	timer<> metro { this,
 		MIN_FUNCTION {
 			auto interval = lib::math::random(min, max);
 

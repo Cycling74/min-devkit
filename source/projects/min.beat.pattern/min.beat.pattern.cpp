@@ -21,7 +21,7 @@ public:
 	outlet<>	interval_out	{ this, "(float) the interval for the current bang" };
 
 	
-	timer metro { this,
+	timer<>		metro { this,
 		MIN_FUNCTION {
 			double interval = sequence[index];
 
