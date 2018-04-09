@@ -1,8 +1,7 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 
@@ -14,7 +13,7 @@ public:
 	MIN_DESCRIPTION { "Merge the content of two dictionaries." };
 	MIN_TAGS		{ "dictionary" };
 	MIN_AUTHOR		{ "Cycling '74" };
-	MIN_RELATED		{ "pedro, dict.join" };
+	MIN_RELATED		{ "min.beat.pattern, dict.join" };
 
 	inlet<>		left	{ this, "dictionary to combined with dictionary at right inlet",	"" };
 	inlet<>		right	{ this, "dictionary to combined with dictionary at left inlet",	"dictionary" };
@@ -48,7 +47,7 @@ public:
 			try {
 				dict d = { args[0] };
 				
-				if (current_inlet() == 0) {
+				if (inlet == 0) {
 					dict_merged = dict_right;	// start with our stored dict contents
 					dict_merged.copyunique(d);	// now merge in any keys that are not duplicated in the incoming dict
 					bang();						// send the dictionary name out the outlet

@@ -1,12 +1,12 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 
 using namespace c74::min;
+using namespace c74::min::lib;
 
 
 // one could easily imagine calling the number message with a metro/counter but then

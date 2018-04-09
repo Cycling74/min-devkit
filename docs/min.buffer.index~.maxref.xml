@@ -54,7 +54,7 @@
 
 		<attribute name='channel' get='1' set='1' type='long' size='1' >
 			<digest>Channel to read from the buffer~</digest>
-			<description>Channel to read from the buffer~. </description>
+			<description>Channel to read from the buffer~. The channel number uses 1-based counting. </description>
 		</attribute>
 
 	</attributelist>

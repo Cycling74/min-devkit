@@ -1,8 +1,7 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 #include <queue>
@@ -34,7 +33,7 @@ private:
 	note_make*			m_owner;	// we need to know who our owner is for the timer setup and the outlet calls
 	pitch				m_pitch;	// pitch we keep for the noteoff, we don't need velocity
 	c74::min::function	m_off_fn;	// note-off function callback for the timer
-	timer				m_timer;	// each note has its own timer to trigger the noteoff
+	timer<>				m_timer;	// each note has its own timer to trigger the noteoff
 	long				m_id;		// unique serial number for each note
 
 	static long s_counter;
@@ -87,7 +86,7 @@ public:
 
 	message<threadsafe::yes> ints { this, "int", "MIDI note information",
 		MIN_FUNCTION {
-			switch (current_inlet()) {
+			switch (inlet) {
 				case 0:
 					m_pitch = args[0];
 					start();

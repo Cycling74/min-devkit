@@ -1,14 +1,13 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 
 using namespace c74::min;
 
-class jit_clamp : public object<jit_clamp>, matrix_operator {
+class jit_clamp : public object<jit_clamp>, public matrix_operator<> {
 public:
 	
 	MIN_DESCRIPTION { "Limit matrix values to a range. The range is specified the object's min and max attributes." };
@@ -22,27 +21,35 @@ public:
 
 	attribute<number> min { this, "min", 0.0,
 		description { "The minimum value below which clipping occurs." },
-		setter { MIN_FUNCTION {
-			double in = args[0];
-			cmin = static_cast<uchar>(c74::max::clamp(255.0 * in, 0.0, 255.0));
-			return args;
-		}},
-		getter { MIN_GETTER_FUNCTION {
-			return { cmin / 255.0 };
-		}}
+		setter {
+			MIN_FUNCTION {
+				double in = args[0];
+				cmin = static_cast<uchar>(clamp(255.0 * in, 0.0, 255.0));
+				return args;
+			}
+		},
+		getter {
+			MIN_GETTER_FUNCTION {
+				return { cmin / 255.0 };
+			}
+		}
 	};
 	
 	
 	attribute<number> max { this, "max", 1.0,
 		description { "The maximum value above which clipping occurs." },
-		setter { MIN_FUNCTION {
-			double in = args[0];
-			cmax = static_cast<uchar>(c74::max::clamp(255.0 * in, 0.0, 255.0));
-			return args;
-		}},
-		getter { MIN_GETTER_FUNCTION {
-			return { cmax / 255.0 };
-		}}
+		setter {
+			MIN_FUNCTION {
+				double in = args[0];
+				cmax = static_cast<uchar>(clamp(255.0 * in, 0.0, 255.0));
+				return args;
+			}
+		},
+		getter {
+			MIN_GETTER_FUNCTION {
+				return { cmax / 255.0 };
+			}
+		}
 	};
 
 
@@ -55,9 +62,9 @@ public:
 		double fmin = min;
 		double fmax = max;
 		
-		for (auto plane=0; plane<info.planecount(); ++plane) {
+		for (auto plane=0; plane<info.plane_count(); ++plane) {
 			auto dummy = input[plane];
-			output[plane] = c74::max::clamp<decltype(dummy)>(input[plane], fmin, fmax);
+			output[plane] = clamp<decltype(dummy)>(input[plane], static_cast<decltype(dummy)>(fmin), static_cast<decltype(dummy)>(fmax));
 		}
 		return output;
 	}
@@ -68,10 +75,10 @@ public:
 	pixel calc_cell(pixel input, const matrix_info& info, matrix_coord& position) {
 		pixel output;
 		
-		output[alpha]	= c74::max::clamp(input[alpha], cmin, cmax);
-		output[red]		= c74::max::clamp(input[red], cmin, cmax);
-		output[green]	= c74::max::clamp(input[green], cmin, cmax);
-		output[blue]	= c74::max::clamp(input[blue], cmin, cmax);
+		output[alpha]	= clamp(input[alpha], cmin, cmax);
+		output[red]		= clamp(input[red], cmin, cmax);
+		output[green]	= clamp(input[green], cmin, cmax);
+		output[blue]	= clamp(input[blue], cmin, cmax);
 		
 		return output;
 	}

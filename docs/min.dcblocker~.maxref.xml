@@ -13,7 +13,7 @@
 	<!--METADATA-->
 
 	<metadatalist>
-		<metadata name='author'>Cycling '74</metadata>
+		<metadata name='author'>Cycling '74 </metadata>
 		<metadata name='tag'>audio</metadata>
 		<metadata name='tag'>filters</metadata>
 	</metadatalist>
@@ -22,6 +22,11 @@
 	<!--ARGUMENTS-->
 
 	<objarglist>
+
+		<objarg name='channel_count' optional='1' type='int'>
+			<digest>The number of channels to process</digest>
+			<description>The number of channels to process. </description>
+		</objarg>
 
 	</objarglist>
 

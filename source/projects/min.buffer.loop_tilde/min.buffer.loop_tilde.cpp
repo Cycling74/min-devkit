@@ -1,14 +1,13 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 
 using namespace c74::min;
 
-class buffer_loop : public object<buffer_loop>, perform_operator {
+class buffer_loop : public object<buffer_loop>, public vector_operator<> {
 public:
 	
 	MIN_DESCRIPTION { "Read from a buffer~." };
@@ -44,32 +43,38 @@ public:
 
 	attribute<int> channel { this, "channel", 1,
 		description { "Channel to read from the buffer~." },
-		setter { MIN_FUNCTION {
-			int n = args[0];
-			if (n < 1)
-				n = 1;
-			return {n};
-		}}
+		setter {
+			MIN_FUNCTION {
+				int n = args[0];
+				if (n < 1)
+					n = 1;
+				return {n};
+			}
+		}
 	};
 
 
 	attribute<number> length { this, "length", 1000.0,
 		title { "Length (ms)"},
 		description { "Length of the buffer~ in milliseconds." },
-		setter { MIN_FUNCTION {
-			number new_length = args[0];
-			if (new_length <= 0.0)
-				new_length = 1.0;
+		setter {
+			MIN_FUNCTION {
+				number new_length = args[0];
+				if (new_length <= 0.0)
+					new_length = 1.0;
 
-			buffer_lock<false> b { buffer };
-			b.resize(new_length);
+				buffer_lock<false> b { buffer };
+				b.resize(new_length);
 
-			return {new_length};
-		}},
-		getter { MIN_GETTER_FUNCTION {
-			buffer_lock<false> b { buffer };
-			return { b.length_in_seconds() * 1000.0 };
-		}}
+				return {new_length};
+			}
+		},
+		getter {
+			MIN_GETTER_FUNCTION {
+				buffer_lock<false> b { buffer };
+				return { b.length_in_seconds() * 1000.0 };
+			}
+		}
 	};
 
 
@@ -91,30 +96,30 @@ public:
 	};
 
 
-	message<> dspsetup { this, "dspsetup", MIN_FUNCTION {
-		double samplerate = args[0];
+	message<> dspsetup { this, "dspsetup",
+		MIN_FUNCTION {
+			m_one_over_samplerate = 1.0 / samplerate();
+			return {};
+		}
+	};
 
-		m_one_over_samplerate = 1.0 / samplerate;
-		return {};
-	}};
 
-
-	void perform(audio_bundle input, audio_bundle output) {
+	void operator()(audio_bundle input, audio_bundle output) {
 		auto			in = input.samples(0);
 		auto			out = output.samples(0);
 		auto			sync = output.samples(1);
 		buffer_lock<>	b(buffer);
-		auto			chan = std::min<int>(channel-1, b.channelcount());
+		auto			chan = std::min<size_t>(channel-1, b.channel_count());
 		
 		if (b.valid()) {
 			number	speed = this->speed;
 			auto	position = m_playback_position;
-			auto	frames = b.framecount();
+			auto	frames = b.frame_count();
 			auto	length_in_seconds = b.length_in_seconds();
 			auto	frequency = (1.0 / length_in_seconds) * speed;
 			auto	stepsize = frequency * m_one_over_samplerate;
 
-			for (auto i=0; i<input.framecount(); ++i) {
+			for (auto i=0; i<input.frame_count(); ++i) {
 				// phasor
 				position += stepsize;
 				position = std::fmod(position, 1.0);
@@ -122,17 +127,17 @@ public:
 
 				// buffer playback
 				auto frame = position * frames;
-				out[i] = b.lookup(frame, chan);
+				out[i] = b.lookup(static_cast<size_t>(frame), chan);
 			}
 			m_playback_position = position;
 
 			if (bool(record)) {
 				auto record_position = m_record_position;
 
-				for (auto i=0; i<input.framecount(); ++i) {
+				for (auto i=0; i<input.frame_count(); ++i) {
 					if (record_position >= frames)
 						record_position = 0;
-					b.lookup(record_position, chan) = in[i];
+					b.lookup(record_position, chan) = static_cast<float>(in[i]);
 					++record_position;
 				}
 				m_record_position = record_position;
@@ -141,8 +146,7 @@ public:
 
 		}
 		else {
-			for (auto i=0; i<input.framecount(); ++i)
-				out[i] = 0.0;
+			output.clear();
 		}
 	}
 

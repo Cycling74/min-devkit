@@ -1,14 +1,13 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 
 using namespace c74::min;
 
-class dcblocker : public object<dcblocker>, sample_operator<1,1> {
+class dcblocker : public object<dcblocker>, public vector_operator<> {
 public:
 
 	MIN_DESCRIPTION {	"Filter out DC offset. "
@@ -56,14 +55,29 @@ public:
 	MIN_AUTHOR		{	"Cycling '74"			};
 	MIN_RELATED		{	"biquad~, filterdesign"	};
 
-	inlet<>			input	{ this, "(signal) Input" };
-	outlet<>		output	{ this, "(signal) Output", "signal" };
+
+	// Because our object defines a constructor (below) this argument definition is for
+	// documentation purposes only.
+	argument<int> channel_count_arg { this, "channel_count", "The number of channels to process." };
 
 
-	message<> clear { this,
-		"clear", "Reset the DC-Blocking filter. Because this is an IIR filter it has the potential to blow-up, requiring a reset.",
+	dcblocker(const atoms& args = {}) {
+		if (!args.empty())
+			m_channel_count = args[0];
+
+		for (auto i=0; i<m_channel_count; ++i) {
+			m_inlets.push_back(	 std::make_unique<inlet<>>(this, "(signal) audio input") );
+			m_outlets.push_back( std::make_unique<outlet<>>(this, "(signal) audio output", "signal") );
+			m_filters.push_back( std::make_unique<lib::dcblocker>() );
+		}
+	}
+
+
+	message<> clear { this, "clear",
+		"Reset the DC-Blocking filter. Because this is an IIR filter it has the potential to blow-up, requiring a reset.",
 		MIN_FUNCTION {
-			x_1 = y_1 = 0.0;
+			for (auto& filter : m_filters)
+				filter->clear();
 			return {};
 		}
 	};
@@ -72,23 +86,37 @@ public:
 	attribute<bool>	bypass { this, "bypass" , false, description{"Pass the input straight-through."} };
 
 
-	/// Process one sample
+	/// Process N channels of audio
 	/// Max takes care of squashing denormal for us by setting the FTZ bit on the CPU.
 
-	sample operator()(sample x) {
+	void operator()(audio_bundle input, audio_bundle output) {
 		if (bypass)
-			return x;
+			output = input;
 		else {
-			auto y = x - x_1 + y_1 * 0.9997;
-			y_1 = y;
-			x_1 = x;
-			return y;
+			for (auto channel=0; channel<m_channel_count; ++channel) {
+				auto	x = input.samples(channel);
+				auto	y = output.samples(channel);
+				auto&	f = *m_filters[channel];
+
+				for (auto i=0; i<input.frame_count(); ++i) {
+					y[i] = f(x[i]);
+				}
+			}
 		}
 	}
 
+
+	// Inherit the a sample_operator-style call for processing audio through the vector_operator above
+	// This can helpful (and is in this case) for writing cleaner unit tests
+
+	using vector_operator::operator();
+
+
 private:
-	sample	x_1 { 0.0 };	///< Input history
-	sample	y_1 { 0.0 };	///< Output history
+	int										m_channel_count = 1;		///< number of channels
+	vector< unique_ptr<inlet<>> >			m_inlets;				///< this object's inlets
+	vector< unique_ptr<outlet<>> >			m_outlets;				///< this object's outlets
+	vector< unique_ptr<lib::dcblocker> >	m_filters;				///< dc-blocking filters for each channel
 };
 
 MIN_EXTERNAL(dcblocker);

@@ -1,18 +1,17 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Andrew Pask, Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
-#include <random>
+//#include <random>
 
 using namespace c74::min;
 
 class beat_pattern : public object<beat_pattern> {
 public:
 	
-	MIN_DESCRIPTION { "Bang at random intervals." };
+	MIN_DESCRIPTION { "Bang at intervals in a repeating pattern." };
 	MIN_TAGS		{ "time" };
 	MIN_AUTHOR		{ "Cycling '74" };
 	MIN_RELATED		{ "min.beat.random, link.beat, metro, tempo, drunk" };
@@ -22,31 +21,35 @@ public:
 	outlet<>	interval_out	{ this, "(float) the interval for the current bang" };
 
 	
-	timer	metro			{this, MIN_FUNCTION {
-		double interval = sequence[index];
-		
-        interval_out.send(interval);
-		bang_out.send("bang");
-		
-		metro.delay(interval);
-        
-        index += 1;
-    
-        if (index == sequence.size())
-            index = 0;
-		return {};
-	}};
+	timer<>		metro { this,
+		MIN_FUNCTION {
+			double interval = sequence[index];
+
+			interval_out.send(interval);
+			bang_out.send("bang");
+
+			metro.delay(interval);
+
+			index += 1;
+
+			if (index == sequence.size())
+				index = 0;
+			return {};
+		}
+	};
 
 
 	attribute<bool> on { this, "on", false,
 		description { "Turn on/off the internal timer." },
-		setter { MIN_FUNCTION {
-			if (args[0] == true)
-				metro.delay(0.0);	// fire the first one straight-away
-			else
-				metro.stop();
-			return args;
-		}}
+		setter {
+			MIN_FUNCTION {
+				if (args[0] == true)
+					metro.delay(0.0);	// fire the first one straight-away
+				else
+					metro.stop();
+				return args;
+			}
+		}
 	};
 	
 	

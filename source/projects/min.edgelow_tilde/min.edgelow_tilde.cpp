@@ -1,15 +1,19 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 
 using namespace c74::min;
 
-class edgelow : public object<edgelow>, sample_operator<1,0> {
+class edgelow : public object<edgelow>, public sample_operator<1,0> {
 public:
+
+	MIN_DESCRIPTION { "Detect logical signal transitions. Output at low priority." };
+	MIN_TAGS		{ "audio" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "min.edge~, min.sift~, edge~" };
 
 	inlet<>											input			{ this, "(signal) input" };
 	outlet<thread_check::main, thread_action::fifo>	output_true		{ this, "(bang) input is non-zero" };

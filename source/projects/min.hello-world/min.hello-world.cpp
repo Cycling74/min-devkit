@@ -1,8 +1,7 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 
@@ -21,7 +20,7 @@ public:
 
 
 	// define an optional argument for setting the message
-	argument<number> greeting_arg	{ this, "greeting", "Initial value for the greeting attribute.",
+	argument<symbol> greeting_arg	{ this, "greeting", "Initial value for the greeting attribute.",
 		MIN_ARGUMENT_FUNCTION {
 			greeting = arg;
 		}

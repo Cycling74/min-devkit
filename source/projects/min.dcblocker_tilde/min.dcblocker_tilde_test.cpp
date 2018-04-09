@@ -1,6 +1,7 @@
-// Copyright (c) 2016, Cycling '74
-// Timothy Place
-// Usage of this file and its contents is governed by the MIT License
+/// @file
+///	@ingroup 	minexamples
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min_unittest.h"		// required unit test header
 #include "min.dcblocker_tilde.cpp"	// need the source of our object so that we can access it
@@ -32,7 +33,7 @@ TEST_CASE( "produces valid impulse response" ) {
 	}
 	
 	// get a reference impulse response to compare against
-	auto reference = filters::generate_impulse_response({1.0,-1.0}, {1.0,-0.9997}, buffersize);
+	auto reference = lib::filters::generate_impulse_response({1.0,-1.0}, {1.0,-0.9997}, buffersize);
 	
 	// check it
 	REQUIRE( output == reference );
@@ -45,7 +46,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 	const int		buffersize = 1024;
 	sample_vector	input(buffersize);
 	
-	std::generate(input.begin(), input.end(), math::cosine<sample>(buffersize, 10));
+	std::generate(input.begin(), input.end(), lib::generator::cosine<sample>(buffersize, 10));
 	
 	GIVEN( "An instance of dcblocker~" ) {
 		dcblocker	my_object;
@@ -69,11 +70,11 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 			
 			double mean_x;
 			double stdev_x;
-			std::tie(mean_x, stdev_x) = math::mean(input);
+			std::tie(mean_x, stdev_x) = lib::math::mean(input);
 
 			double mean_y;
 			double stdev_y;
-			std::tie(mean_y, stdev_y) = math::mean(output);
+			std::tie(mean_y, stdev_y) = lib::math::mean(output);
 			
 			THEN( "the input has a mean of 1.5" ) {
 				REQUIRE( mean_x == Approx(1.5) );
@@ -111,8 +112,7 @@ SCENARIO( "responds appropriately to messages and attrs" ) {
 		WHEN( "the input goes silent" ) {
 			// dirty the history first
 			for (auto x : input) {
-				auto y = my_object(x);
-				//output.push_back(y);
+				my_object(x);
 			}
 
 			// then zero and process

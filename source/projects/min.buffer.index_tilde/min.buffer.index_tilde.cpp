@@ -1,14 +1,13 @@
-/// @file	
+/// @file
 ///	@ingroup 	minexamples
-///	@copyright	Copyright (c) 2016, Cycling '74
-/// @author		Timothy Place
-///	@license	Usage of this file and its contents is governed by the MIT License
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
 
 using namespace c74::min;
 
-class buffer_index : public object<buffer_index>, perform_operator {
+class buffer_index : public object<buffer_index>, public vector_operator<> {
 public:
 	
 	MIN_DESCRIPTION { "Read from a buffer~." };
@@ -43,32 +42,26 @@ public:
 	};
 
 
-	attribute<int> channel { this, "channel", 1,
-		description { "Channel to read from the buffer~." },
-		setter { MIN_FUNCTION {
-			int n = args[0];
-			if (n < 1)
-				n = 1;
-			return {n};
-		}}
+	attribute<int, threadsafe::no, limit::clamp> channel { this, "channel", 1,
+		description { "Channel to read from the buffer~. The channel number uses 1-based counting." },
+		range { 1, buffer_reference::k_max_channels }
 	};
 
 
-	void perform(audio_bundle input, audio_bundle output) {
-		auto			in = input.samples(0);
-		auto			out = output.samples(0);
-		buffer_lock<>	b(buffer);
-		auto			chan = std::min<int>(channel-1, b.channelcount());
-		
+	void operator()(audio_bundle input, audio_bundle output) {
+		auto			in = input.samples(0);								// get vector for channel 0 (first channel)
+		auto			out = output.samples(0);							// get vector for channel 0 (first channel)
+		buffer_lock<>	b(buffer);											// gain access to the buffer~ content
+		auto			chan = std::min<size_t>(channel - 1, b.channel_count());	// convert from 1-based indexing to 0-based
+
 		if (b.valid()) {
-			for (auto i=0; i<input.framecount(); ++i) {
+			for (auto i=0; i<input.frame_count(); ++i) {
 				auto frame = size_t(in[i] + 0.5);
 				out[i] = b.lookup(frame, chan);
 			}
 		}
 		else {
-			for (auto i=0; i<input.framecount(); ++i)
-				out[i] = 0.0;
+			output.clear();
 		}
 	}
 	

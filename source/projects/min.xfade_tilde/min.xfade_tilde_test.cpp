@@ -1,6 +1,7 @@
-// Copyright (c) 2016, Cycling '74
-// Timothy Place
-// Usage of this file and its contents is governed by the MIT License
+/// @file
+///	@ingroup 	minexamples
+///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min_unittest.h"	// required unit test header
 #include "min.xfade_tilde.cpp"	// need the source of our object so that we can access it
