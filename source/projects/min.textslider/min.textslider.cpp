@@ -150,7 +150,7 @@ public:
 				auto delta = MIN_CLAMP((x - 1.0), 0.0, t.width() - 3.0);		// substract for borders
 				delta = delta / (t.width() - 2.0) * m_range_delta + m_range[0];
 				if (modifiers & c74::max::eCommandKey)
-					m_number(static_cast<long>(delta));							//when command-key pressed, jump to the nearest integer-value
+					m_number(static_cast<int>(delta));							//when command-key pressed, jump to the nearest integer-value
 				else
 					m_number(delta);											// otherwise jump to a float value
 			}
@@ -204,7 +204,7 @@ public:
 			m_anchor = MIN_CLAMP(m_anchor, m_range[0], m_range[1]);
 
 			if (modifiers & c74::max::eCommandKey)
-				m_number(static_cast<long>(m_anchor)); //a change in integer-steps
+				m_number(static_cast<int>(m_anchor)); //a change in integer-steps
 			else
 				m_number(m_anchor);
 
