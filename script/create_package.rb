@@ -17,14 +17,14 @@ end
 
 # 1. Find our current directory
 if $0.downcase != "create_package.rb".downcase
-  script_dir = `pwd`.chomp + "/" + $0.gsub(/((\/|\\)create_package).*$/i, "")
+  script_dir = Dir.getwd.chomp + "/" + $0.gsub(/((\/|\\)create_package).*$/i, "")
 else
   script_dir = "."
 end
 
 olddir = Dir.getwd
 Dir.chdir "#{script_dir}/.."        # change to libdir so that requires work
-source_dir = `pwd`.chomp
+source_dir = Dir.getwd.chomp
 Dir.chdir olddir
 
 
@@ -35,7 +35,7 @@ require 'fileutils'
 FileUtils::mkdir_p "#{target_dir}"
 olddir = Dir.getwd
 Dir.chdir "#{target_dir}"        # change to libdir so that requires work
-target_dir = `pwd`.chomp
+target_dir = Dir.getwd.chomp
 package_name = File.basename(target_dir)
 Dir.chdir olddir
 

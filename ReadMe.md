@@ -2,8 +2,9 @@
 [![Build Status](https://travis-ci.com/Cycling74/min-devkit.svg?token=GAmnsUEo9aYasSF5pz8q&branch=master)](https://travis-ci.com/Cycling74/min-devkit)
 [![Build status](https://ci.appveyor.com/api/projects/status/0koqc3l3qyfu0l8b/branch/master?svg=true)](https://ci.appveyor.com/project/c74/min-devkit/branch/master)
 
-
 Tools, documentation, and reference implementation of a Max Package built using the Min-API.
+
+**This package is EXPERIMENTAL. Changes, including changes that break existing code, can happen at any time as we undertake continued development. USE AT YOUR OWN RISK.**
 
 
 ## Structure
@@ -19,7 +20,7 @@ There are two layers of material included in the Min-DevKit package.
 
 To build the externals in this package you will need some form of compiler support on your system. 
 
-* On the Mac this means **Xcode 7 or later** (you can get from the App Store for free). 
+* On the Mac this means **Xcode 7, 8, or 9** (you can get from the App Store for free). 
 * On Windows this means **Visual Studio 2015 or 2017** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do. **Visual Studio 2017 is recommended and is required if you are writing Graphical User Interface objects**.
 
 You will also need to install a recent version of [CMake](https://cmake.org/download/).
@@ -36,7 +37,9 @@ You will also need to install a recent version of [CMake](https://cmake.org/down
 
 ### Mac 
 
-Run `cmake -G Xcode ..` and then run `cmake --build .` or open the Xcode project from this "build" folder and use the GUI.
+Run `cmake -G Xcode ...`
+
+Next run `cmake --build .` or open the Xcode project from this "build" folder and use the GUI.
 
 Note: you can add the `-j4` option where "4" is the number of cores to use.  This can help to speed up your builds, though sometimes the error output is interleaved in such a way as to make troubleshooting more difficult.
 
@@ -66,26 +69,17 @@ Or you can run an individual test, which is simply a command line program:
 * mac example: `./test_dcblocker_tilde -s`
 * win example: `test_dcblocker_tilde.exe -s`
 
-Or run them your IDE's debugger.
+Or you can run them your IDE's debugger by selecting the "RUN_TESTS" target.
 
 
 ## Continuous Integration
 
-Continuous Integration (CI) is...
+Continuous Integration (CI) is a process by which each code check-in is verified by an automated build and automated tests to allow developers to detect problems early and distribute software easily.
 
 The Min-DevKit project models CI using two different services, both of which are free and very easy to set up if your project is hosted publicly on Github.
 
 * **Mac**: go to http://travis-ci.org and sign up.  If your repository follows the same model as Min-DevKit, you can copy `.travis.yml` directly with no changes.  Now every push to your repository will trigger an automatic build for the Mac with Travis CI.
 * **Windows**: go to http://appveyor.com and sign up.  If your repository follows the same model as Min-DevKit, you can copy `appveyor.yml` directly with no changes.  Now every push to your repository will trigger automatic builds for both 32 and 64-bit Windows with Appveyor.
-
-#### Private Dependencies
-
-At this time the Min API is a private Github repository. As such there are additional challenges (authentication) that will not be present after the API is released. There are (at least) two paths to authentication for the private repositories:
-
-* If you are creating a C74-owned package, ask Tim to add the `github_rsa_ci` private key to the relevant Travis project.
-* If you are anyone else, generate an SSH key. Upload it to a Github account that has access to the Min-API. Then add the private key to the Travis project.
-
-Yes, this is a pain, but you only have to do it once...
 
 ### Fetching your builds
 
