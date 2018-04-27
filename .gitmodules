@@ -1,6 +1,6 @@
 [submodule "source/min-api"]
 	path = source/min-api
-	url = git@github.com:Cycling74/min-api.git
+	url = https://github.com/Cycling74/min-api.git
 [submodule "source/min-lib"]
 	path = source/min-lib
-	url = git@github.com:Cycling74/min-lib.git
+	url = https://github.com/Cycling74/min-lib.git
