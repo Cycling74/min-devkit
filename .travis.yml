@@ -68,8 +68,8 @@ deploy:
   bucket: cycling74-ci-public
   skip_cleanup: true
   local-dir: dist
-  upload-dir: min-devkit
+  upload-dir: $PACKAGE_NAME
   acl: public_read
   on:
-    repo: Cycling74/min-devkit
+    repo: Cycling74/$PACKAGE_NAME
     all_branches: true
