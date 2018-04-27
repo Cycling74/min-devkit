@@ -88,7 +88,7 @@ The Min-DevKit project models CI using two different services, both of which are
 
 #### S3 Integration
 
-The builds from Travis for this package can be found on [this S3-hosted page](https://s3-us-west-2.amazonaws.com/cycling74-ci/index.html?prefix=min-devkit/).
+The builds from Travis for this package can be found on [this S3-hosted page](https://s3-us-west-1.amazonaws.com/cycling74-ci-public/index.html?prefix=min-devkit/).
 
 To setup your own page:
 
