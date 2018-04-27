@@ -66,6 +66,6 @@ deploy:
     secure: 8v5xXOB5BONI4CoU5t08nkRyDMbV2TQKDvKBNrfFhHFVwHxa2v8l3FeoeWequCeT
   bucket: cycling74-ci-public
   folder: $(APPVEYOR_PROJECT_NAME)
-  region: us-west-2
+  region: us-west-1
   set_public: true
   artifact: "$(APPVEYOR_PROJECT_NAME)-win-$(platform)-$(SHORT_COMMIT)-$(CONFIGURATION).zip"
