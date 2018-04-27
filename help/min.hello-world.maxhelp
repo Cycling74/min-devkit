@@ -2,10 +2,10 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 2,
-			"revision" : 5,
-			"architecture" : "x86",
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 0,
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
@@ -38,12 +38,60 @@
 		"subpatcher_template" : "tap.template",
 		"boxes" : [ 			{
 				"box" : 				{
+					"clickedimage" : 1,
+					"id" : "obj-16",
+					"maxclass" : "pictctrl",
+					"name" : "min.edit-button.png",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 297.0, 144.0, 16.0, 16.0 ],
+					"presentation_rect" : [ 297.0, 144.0, 16.0, 16.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-15",
+					"linecount" : 2,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 180.0, 265.0, 291.0, 37.0 ],
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 180.0, 265.0, 291.0, 37.0 ],
+					"style" : "",
+					"text" : "generate \"Macintosh HD:/Users/tim/Documents/Max 8/Packages/afts/source/projects/afts.demo\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 180.0, 305.0, 67.0, 23.0 ],
+					"presentation_rect" : [ 180.0, 305.0, 67.0, 23.0 ],
+					"style" : "",
+					"text" : "min.project"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 110.0, 200.0, 145.0, 23.0 ],
+					"presentation_rect" : [ 110.0, 200.0, 145.0, 23.0 ],
 					"style" : ""
 				}
 
@@ -56,18 +104,22 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 155.0, 90.0, 24.0, 24.0 ],
+					"presentation_rect" : [ 155.0, 90.0, 24.0, 24.0 ],
 					"style" : ""
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 155.0, 140.0, 122.0, 23.0 ],
+					"patching_rect" : [ 155.0, 140.0, 160.0, 24.0 ],
+					"presentation_rect" : [ 155.0, 140.0, 160.0, 24.0 ],
 					"style" : "",
 					"text" : "min.hello-world aloha"
 				}
@@ -76,9 +128,23 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-6", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -86,15 +152,24 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-4", 0 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "min.edit-button.png",
+				"bootpath" : "~/Documents/Max 8/Packages/min-devkit/help",
+				"patcherrelativepath" : ".",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "min.hello-world.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "min.project.mxo",
 				"type" : "iLaX"
 			}
  ],

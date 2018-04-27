@@ -4,9 +4,9 @@
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
-//#include <random>
 
 using namespace c74::min;
+
 
 class beat_pattern : public object<beat_pattern> {
 public:
@@ -23,17 +23,17 @@ public:
 	
 	timer<>		metro { this,
 		MIN_FUNCTION {
-			double interval = sequence[index];
+			double interval = m_sequence[m_index];
 
 			interval_out.send(interval);
 			bang_out.send("bang");
 
 			metro.delay(interval);
 
-			index += 1;
+			m_index += 1;
 
-			if (index == sequence.size())
-				index = 0;
+			if (m_index == m_sequence.size())
+				m_index = 0;
 			return {};
 		}
 	};
@@ -65,15 +65,15 @@ public:
 		MIN_FUNCTION {
 			dict d{ args[0] };
 
-			sequence = d["pattern"];
+			m_sequence = d["pattern"];
 			return {};
 		}
 	};
 
 
 private:
-	int		index { 0 };
-	atoms	sequence { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
+	int		m_index { 0 };
+	atoms	m_sequence { 250.0, 250.0, 250.0, 250.0, 500.0, 500.0, 500.0, 500.0 };
 };
 
 MIN_EXTERNAL(beat_pattern);
