@@ -9,7 +9,7 @@
 using namespace c74::min;
 
 
-using pitch = int;
+using pitch    = int;
 using velocity = int;
 using duration = int;
 
@@ -27,14 +27,16 @@ class note {
 public:
 	note(note_make* owner, pitch, duration);
 
-	long id() { return m_id; }
+	long id() {
+		return m_id;
+	}
 
 private:
-	note_make*			m_owner;	// we need to know who our owner is for the timer setup and the outlet calls
-	pitch				m_pitch;	// pitch we keep for the noteoff, we don't need velocity
-	c74::min::function	m_off_fn;	// note-off function callback for the timer
-	timer<>				m_timer;	// each note has its own timer to trigger the noteoff
-	long				m_id;		// unique serial number for each note
+	note_make*         m_owner;    // we need to know who our owner is for the timer setup and the outlet calls
+	pitch              m_pitch;    // pitch we keep for the noteoff, we don't need velocity
+	c74::min::function m_off_fn;    // note-off function callback for the timer
+	timer<>            m_timer;    // each note has its own timer to trigger the noteoff
+	long               m_id;    // unique serial number for each note
 
 	static long s_counter;
 };
@@ -46,7 +48,7 @@ private:
 // Instead of keeping copies of the notes we use references, actually we use unique_ptr...
 // We do this (avoid copies) because the note contains a timer and we cannot make copies of timers.
 
-using notes = std::list< std::unique_ptr<note> >;
+using notes = std::list<std::unique_ptr<note>>;
 
 
 // Finally, our Max class ...
@@ -55,36 +57,30 @@ class note_make : public object<note_make> {
 public:
 	friend class note;
 
-	MIN_DESCRIPTION { "Generate a note-on/note-off pair. Just like the makenote object." };
-	MIN_TAGS		{ "midi, time" };
-	MIN_AUTHOR		{ "Cycling '74" };
-	MIN_RELATED		{ "makenote" };
-	
-	inlet<>		pitch_in		{ this, "(int) pitch" };
-	inlet<>		velocity_in		{ this, "(int) velocity" };
-	inlet<>		duration_in		{ this, "(int) duration" };
+	MIN_DESCRIPTION {"Generate a note-on/note-off pair. Just like the makenote object."};
+	MIN_TAGS {"midi, time"};
+	MIN_AUTHOR {"Cycling '74"};
+	MIN_RELATED {"makenote"};
 
-	outlet<>	pitch_out		{ this, "(int) pitch" };
-	outlet<>	velocity_out	{ this, "(int) velocity" };
+	inlet<> pitch_in {this, "(int) pitch"};
+	inlet<> velocity_in {this, "(int) velocity"};
+	inlet<> duration_in {this, "(int) duration"};
 
-	argument<number> velocity_arg	{ this, "velocity", "Initial MIDI velocity.",
-		MIN_ARGUMENT_FUNCTION {
-			m_velocity = arg;
-		}
-	};
+	outlet<> pitch_out {this, "(int) pitch"};
+	outlet<> velocity_out {this, "(int) velocity"};
 
-	argument<number> duration_arg	{ this, "duration", "Initial duration in milliseconds.",
-		MIN_ARGUMENT_FUNCTION {
-			m_duration = arg;
-		}
-	};
+	argument<number> velocity_arg {this, "velocity", "Initial MIDI velocity.",
+		MIN_ARGUMENT_FUNCTION { m_velocity = arg; }};
+
+	argument<number> duration_arg {this, "duration", "Initial duration in milliseconds.",
+		MIN_ARGUMENT_FUNCTION { m_duration = arg; }};
 
 	// the truth is that this only sort-of threadsafe
 	// when receiving some bits of info from the scheduler and some from the main thread
 	// it won't crash or do anything catastrophic
 	// however, the wrong velocities might be paired with the wrong pitches, etc.
 
-	message<threadsafe::yes> ints { this, "int", "MIDI note information",
+	message<threadsafe::yes> ints {this, "int", "MIDI note information",
 		MIN_FUNCTION {
 			switch (inlet) {
 				case 0:
@@ -101,19 +97,18 @@ public:
 					assert(false);
 			}
 			return {};
-		}
-	};
+		}};
 
 private:
-	notes		m_notes;
-	pitch		m_pitch;
-	velocity	m_velocity;
-	duration	m_duration;
+	notes    m_notes;
+	pitch    m_pitch;
+	velocity m_velocity;
+	duration m_duration;
 
 	void start() {
 		velocity_out.send(m_velocity);
 		pitch_out.send(m_pitch);
-		m_notes.push_back( std::make_unique<note>(this, m_pitch, m_duration) );
+		m_notes.push_back(std::make_unique<note>(this, m_pitch, m_duration));
 	}
 
 	void remove(long note_id) {
@@ -128,7 +123,7 @@ private:
 				break;
 			}
 		}
-		assert(note_removed); // post-condition: if a note wasn't removed we have serious problems.
+		assert(note_removed);    // post-condition: if a note wasn't removed we have serious problems.
 	}
 };
 
@@ -137,17 +132,16 @@ private:
 // The order of initialization is critical
 
 note::note(note_make* owner, pitch a_pitch, duration a_duration)
-: m_owner { owner }
-, m_pitch { a_pitch }
-, m_off_fn { MIN_FUNCTION {
-	m_owner->velocity_out.send(0);
-	m_owner->pitch_out.send(m_pitch);
-	m_owner->remove(m_id);
-	return {};}
-  }
-, m_timer { m_owner, m_off_fn }
-, m_id { ++s_counter }
-{
+	: m_owner {owner}
+	, m_pitch {a_pitch}
+	, m_off_fn { MIN_FUNCTION {
+		m_owner->velocity_out.send(0);
+		m_owner->pitch_out.send(m_pitch);
+		m_owner->remove(m_id);
+		return {};
+	}}
+	, m_timer {m_owner, m_off_fn}
+	, m_id {++s_counter} {
 	m_timer.delay(a_duration);
 }
 
