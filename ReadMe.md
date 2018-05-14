@@ -37,7 +37,7 @@ You will also need to install a recent version of [CMake](https://cmake.org/down
 
 ### Mac 
 
-Run `cmake -G Xcode ...`
+Run `cmake -G Xcode ..`
 
 Next run `cmake --build .` or open the Xcode project from this "build" folder and use the GUI.
 
