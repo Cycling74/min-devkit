@@ -3,8 +3,8 @@
 ///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
-#include "../shared/signal_routing_objects.h"
 #include "c74_min.h"
+#include "../shared/signal_routing_objects.h"
 
 // The xfade~ object inherits all of it's attributes and messages from the signal_routing_base class.
 // The panner~ object does exactly the same, allowing us to share the code between the two similar but opposite classes.
