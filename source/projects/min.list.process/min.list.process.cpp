@@ -27,13 +27,13 @@ public:
 	// For enum attributes you first define your enum class.
 	// The indices must start at zero and increase sequentially.
 
-	enum class operations : int { collect, average, enum_count };
+	enum class operations : int { collect, average, product, enum_count };
 
 	// You then define the symbols to associate with your enum values.
 	// These will be indexed starting at zero.
 	// You must have one for each item in the actual enum.
 
-	enum_map operations_range = {"collect", "average"};
+	enum_map operations_range = {"collect", "average", "product"};
 
 	// Finally, you create the attribute...
 	// specialized with the type of the enum and with the range passed as one of the optional args.
@@ -61,21 +61,27 @@ public:
 				out1.send(y.first, y.second);
 				break;
 			}
+			case operations::product: {
+				lock lock {m_mutex};
+				auto x = from_atoms<std::vector<double>>(args);
+				auto y = std::accumulate(std::begin(x), std::end(x), 1.0, std::multiplies<double>());
+				lock.unlock();
+				out1.send(y);
+				break;
+			}
 			case operations::enum_count:
 				break;
 		}
 		return {};
 	};
 
-	message<threadsafe::yes> list {
-		this, "list", "Operate on the list. Either add it to the collection or calculate the mean.", process};
+	message<threadsafe::yes> list {this, "list", "Operate on the list. Either add it to the collection or calculate the mean.", process};
 	message<threadsafe::yes> anything {
 		this, "anything", "Add content to the collection. Only applicable if using the 'collect' operation.", process};
 	message<threadsafe::yes> number {
 		this, "number", "Add content to the collection. Only applicable if using the 'collect' operation.", process};
 
-	message<threadsafe::yes> bang {this, "bang",
-		"Send out the collected list. Only applicable if using the 'collect' operation.",
+	message<threadsafe::yes> bang {this, "bang", "Send out the collected list. Only applicable if using the 'collect' operation.",
 		MIN_FUNCTION {
 			lock  lock {m_mutex};
 			atoms data_copy = m_data;
