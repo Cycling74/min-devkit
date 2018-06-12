@@ -17,8 +17,8 @@ std::string min_devkit_path() {
 	char    pathstr[4096];
 	HMODULE hm = nullptr;
 
-	if (!GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
-			(LPCSTR)&min_devkit_path, &hm)) {
+	if (!GetModuleHandleExA(
+			GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, (LPCSTR)&min_devkit_path, &hm)) {
 		int ret = GetLastError();
 		fprintf(stderr, "GetModuleHandle() returned %d\n", ret);
 	}
@@ -95,17 +95,14 @@ public:
 				path package_build_path {static_cast<string>(package_path) + "/build", path::filetype::folder, true};
 				path package_help_path {static_cast<string>(package_path) + "/help", path::filetype::folder, true};
 				path package_source_path {static_cast<string>(package_path) + "/source", path::filetype::folder, true};
-				path package_projects_path {
-					static_cast<string>(package_source_path) + "/projects", path::filetype::folder, true};
+				path package_projects_path {static_cast<string>(package_source_path) + "/projects", path::filetype::folder, true};
 				path package_helloworld_path {
-					static_cast<string>(package_projects_path) + "/" + package_path.name() + ".hello-world",
-					path::filetype::folder, true};
+					static_cast<string>(package_projects_path) + "/" + package_path.name() + ".hello-world", path::filetype::folder, true};
 
 				devkit_hellocmake_path.copy(package_helloworld_path, "CMakeLists.txt");
 				devkit_hellosrc_path.copy(package_helloworld_path, package_path.name() + ".hello-world.cpp");
 				devkit_hellotest_path.copy(package_helloworld_path, package_path.name() + ".hello-world_test.cpp");
-				string test_path_str {
-					static_cast<string>(package_helloworld_path) + "/" + package_path.name() + ".hello-world_test.cpp"};
+				string test_path_str {static_cast<string>(package_helloworld_path) + "/" + package_path.name() + ".hello-world_test.cpp"};
 				string test_content;
 				{
 					std::ifstream in {test_path_str};
@@ -123,8 +120,7 @@ public:
 				devkit_tests_path.copy(package_path, "tests");
 
 				devkit_helpfile.copy(package_help_path, package_path.name() + ".hello-world.maxhelp");
-				string help_path_str {
-					static_cast<string>(package_help_path) + "/" + package_path.name() + ".hello-world.maxhelp"};
+				string help_path_str {static_cast<string>(package_help_path) + "/" + package_path.name() + ".hello-world.maxhelp"};
 				string help_content;
 				{
 					std::ifstream in {help_path_str};
@@ -208,8 +204,8 @@ public:
 				project_path_str.erase(0, project_path_str.find_first_of('/'));
 
 #else    // WIN_VERSION
-				string	cmake_path { "/script/cmake-win/bin/cmake.exe" };
-				char 	separator { '\\' };
+string cmake_path {"/script/cmake-win/bin/cmake.exe"};
+char   separator {'\\'};
 #endif
 				string build_path {"/build"};
 				string log_path {"/tmp/min-cmake-log.txt"};
@@ -219,12 +215,11 @@ public:
 				std::system(mkdir_command.str().c_str());
 
 				std::stringstream cmake_command;
-				cmake_command << "cd \"" << project_path_str << build_path << "\" && \"" << devkit_path_str
-							  << cmake_path;
+				cmake_command << "cd \"" << project_path_str << build_path << "\" && \"" << devkit_path_str << cmake_path;
 #ifdef MAC_VERSION
 				cmake_command << "\" -G Xcode .. > \"" << project_path_str << log_path << "\" 2>&1";
 #else    // WIN_VERSION
-				cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path_str<<log_path << "\" 2>&1";
+cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path_str << log_path << "\" 2>&1";
 #endif
 
 				std::cout << cmake_command.str() << std::endl;
@@ -237,8 +232,8 @@ public:
 					if (args.size() > 1) {
 						std::stringstream open_command;
 						open_command << "cd \"" << project_path_str << build_path << "\" && "
-									 << "open \"" << project_path_str << build_path
-									 << strrchr(project_path_str.c_str(), '/') << ".xcodeproj\"";
+									 << "open \"" << project_path_str << build_path << strrchr(project_path_str.c_str(), '/')
+									 << ".xcodeproj\"";
 						// cout << open_command.str() << endl;
 						result = std::system(open_command.str().c_str());
 					}
@@ -246,23 +241,26 @@ public:
 						path              project_path {args};
 						std::stringstream open_command;
 						open_command << "cd \"" << project_path_str << build_path << "\" && "
-									 << "open \"" << project_path_str << build_path << "/source/projects/"
-									 << project_path.name() << separator << project_path.name() << "_test.xcodeproj\"";
+									 << "open \"" << project_path_str << build_path << "/source/projects/" << project_path.name()
+									 << separator << project_path.name() << "_test.xcodeproj\"";
 						// cout << open_command.str() << endl;
 						result = std::system(open_command.str().c_str());
 					}
 #else    // WIN_VERSION
-					if (args.size() > 1) {
-						std::stringstream vs_sln_path;
-						vs_sln_path << "\"" << project_path_str << build_path << strrchr(project_path_str.c_str(), '/') << ".sln\"";
-						ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
-					}
-					else {
-						path project_path { args };
-						std::stringstream vs_sln_path;
-						vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_path.name() << separator << project_path.name() << "_test.sln\"";
-						ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe", vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
-					}
+	if (args.size() > 1) {
+		std::stringstream vs_sln_path;
+		vs_sln_path << "\"" << project_path_str << build_path << strrchr(project_path_str.c_str(), '/') << ".sln\"";
+		ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe",
+			vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+	}
+	else {
+		path              project_path {args};
+		std::stringstream vs_sln_path;
+		vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_path.name() << separator
+					<< project_path.name() << "_test.sln\"";
+		ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe",
+			vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+	}
 #endif
 				}
 				output.send(result);
@@ -306,8 +304,7 @@ public:
 			path package_help_path {package_path_str + "/help"};
 			path package_source_path {package_path_str + "/source"};
 			path package_projects_path {static_cast<string>(package_source_path) + "/projects"};
-			path package_helloworld_path {
-				static_cast<string>(package_projects_path) + "/" + object_name, path::filetype::folder, true};
+			path package_helloworld_path {static_cast<string>(package_projects_path) + "/" + object_name, path::filetype::folder, true};
 
 			devkit_hellocmake_path.copy(package_helloworld_path, "CMakeLists.txt");
 

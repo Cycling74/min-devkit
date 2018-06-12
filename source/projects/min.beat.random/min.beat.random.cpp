@@ -26,20 +26,18 @@ public:
 		MIN_ARGUMENT_FUNCTION { max = arg; }};
 
 
-	timer<> metro {this,
-		MIN_FUNCTION {
-			auto interval = lib::math::random(min, max);
+	timer<> metro {this, MIN_FUNCTION {
+					  auto interval = lib::math::random(min, max);
 
-			interval_out.send(interval);
-			bang_out.send("bang");
+					  interval_out.send(interval);
+					  bang_out.send("bang");
 
-			metro.delay(interval);
-			return {};
-		}};
+					  metro.delay(interval);
+					  return {};
+				  }};
 
 
-	attribute<number> min {this, "min", 250.0, title {"Minimum Interval"},
-		description {"Lower-bound of generated random interval."},
+	attribute<number> min {this, "min", 250.0, title {"Minimum Interval"}, description {"Lower-bound of generated random interval."},
 		setter { MIN_FUNCTION {
 			double value = args[0];
 
@@ -50,8 +48,7 @@ public:
 		category {"Range"}, order {1}};
 
 
-	attribute<number> max {this, "max", 1500.0, title {"Maximum Interval"},
-		description {"Upper-bound of generated random interval."},
+	attribute<number> max {this, "max", 1500.0, title {"Maximum Interval"}, description {"Upper-bound of generated random interval."},
 		setter { MIN_FUNCTION {
 			double value = args[0];
 
@@ -72,8 +69,8 @@ public:
 		}}};
 
 
-	message<> toggle {this, "int", "Toggle the state of the timer.",
-		MIN_FUNCTION {
+	message<> toggle {
+		this, "int", "Toggle the state of the timer.", MIN_FUNCTION {
 			on = args[0];
 			return {};
 		}};

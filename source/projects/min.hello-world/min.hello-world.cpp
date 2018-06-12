@@ -39,17 +39,16 @@ public:
 			symbol the_greeting = greeting;    // fetch the symbol itself from the attribute named greeting
 
 			cout << the_greeting << endl;    // post to the max console
-			output.send(the_greeting);    // send out our outlet
+			output.send(the_greeting);       // send out our outlet
 			return {};
 		}};
 
 
 	// post to max window == but only when the class is loaded the first time
-	message<> maxclass_setup {this, "maxclass_setup",
-		MIN_FUNCTION {
-			cout << "hello world" << endl;
-			return {};
-		}};
+	message<> maxclass_setup {this, "maxclass_setup", MIN_FUNCTION {
+								 cout << "hello world" << endl;
+								 return {};
+							 }};
 };
 
 

@@ -20,21 +20,20 @@ public:
 	outlet<> interval_out {this, "(float) the interval for the current bang"};
 
 
-	timer<> metro {this,
-		MIN_FUNCTION {
-			double interval = m_sequence[m_index];
+	timer<> metro {this, MIN_FUNCTION {
+					  double interval = m_sequence[m_index];
 
-			interval_out.send(interval);
-			bang_out.send("bang");
+					  interval_out.send(interval);
+					  bang_out.send("bang");
 
-			metro.delay(interval);
+					  metro.delay(interval);
 
-			m_index += 1;
+					  m_index += 1;
 
-			if (m_index == m_sequence.size())
-				m_index = 0;
-			return {};
-		}};
+					  if (m_index == m_sequence.size())
+						  m_index = 0;
+					  return {};
+				  }};
 
 
 	attribute<bool> on {this, "on", false, description {"Turn on/off the internal timer."},
@@ -47,8 +46,8 @@ public:
 		}}};
 
 
-	message<> toggle {this, "int", "Turn on/off the internal timer.",
-		MIN_FUNCTION {
+	message<> toggle {
+		this, "int", "Turn on/off the internal timer.", MIN_FUNCTION {
 			on = args[0];
 			return {};
 		}};

@@ -3,7 +3,7 @@
 ///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
-#include "c74_min_unittest.h"    // required unit test header
+#include "c74_min_unittest.h"      // required unit test header
 #include "min.panner_tilde.cpp"    // need the source of our object so that we can access it
 
 // Unit tests are written using the Catch framework as described at
@@ -21,8 +21,7 @@ SCENARIO("object produces correct output") {
 
 		REQUIRE((my_object.shape == symbol("equal_power")));    // note: symbols can be compared with strings
 		REQUIRE((my_object.mode == symbol("fast")));
-		REQUIRE(
-			(my_object.position == Approx(0.5)));    // note: floating-point values may be subject to rounding errors
+		REQUIRE((my_object.position == Approx(0.5)));    // note: floating-point values may be subject to rounding errors
 
 		// now proceed to testing various sequences of events
 
@@ -73,8 +72,7 @@ SCENARIO("object produces correct output") {
 		}
 
 		AND_WHEN("The shape is set to 'linear'") {
-			THEN(
-				"we produce a roughly -6db downpoint in the middle of the fade for both 'fast' and 'precision' modes") {
+			THEN("we produce a roughly -6db downpoint in the middle of the fade for both 'fast' and 'precision' modes") {
 
 				panner a_new_panner_object;    // make a fresh object so we don't rely on some messy state from above
 

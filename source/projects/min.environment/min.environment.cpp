@@ -139,8 +139,7 @@ BOOL GetOSDisplayString(LPTSTR pszOS) {
 				StringCchCat(pszOS, BUFSIZE, TEXT("Windows Storage Server 2003"));
 			else if (osvi.wSuiteMask & VER_SUITE_WH_SERVER)
 				StringCchCat(pszOS, BUFSIZE, TEXT("Windows Home Server"));
-			else if (osvi.wProductType == VER_NT_WORKSTATION
-				&& si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64) {
+			else if (osvi.wProductType == VER_NT_WORKSTATION && si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64) {
 				StringCchCat(pszOS, BUFSIZE, TEXT("Windows XP Professional x64 Edition"));
 			}
 			else
@@ -258,8 +257,8 @@ public:
 		Gestalt(gestaltSystemVersionMajor, &versionMajor);
 		Gestalt(gestaltSystemVersionMinor, &versionMinor);
 		Gestalt(gestaltSystemVersionBugFix, &versionBugFix);
-		snprintf(version, sizeof(version), "Mac OS X Version %i.%i.%i %s", (int)versionMajor, (int)versionMinor,
-			(int)versionBugFix, un.machine);
+		snprintf(
+			version, sizeof(version), "Mac OS X Version %i.%i.%i %s", (int)versionMajor, (int)versionMinor, (int)versionBugFix, un.machine);
 #endif
 #ifdef WIN_VERSION
 		if (!GetOSDisplayString(version)) {
@@ -278,13 +277,13 @@ public:
 #ifdef C74_X64
 			out_arch.send("x86_64");
 #else    // 32-bit
-				out_arch.send("i386");
+	out_arch.send("i386");
 #endif
 
 #ifdef MAC_VERSION
 			out_platform.send("mac");
 #else    // WIN_VERSION
-				out_platform.send("win");
+	out_platform.send("win");
 #endif
 			return {};
 		}};

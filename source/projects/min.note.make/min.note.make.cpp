@@ -32,11 +32,11 @@ public:
 	}
 
 private:
-	note_make*         m_owner;    // we need to know who our owner is for the timer setup and the outlet calls
-	pitch              m_pitch;    // pitch we keep for the noteoff, we don't need velocity
+	note_make*         m_owner;     // we need to know who our owner is for the timer setup and the outlet calls
+	pitch              m_pitch;     // pitch we keep for the noteoff, we don't need velocity
 	c74::min::function m_off_fn;    // note-off function callback for the timer
-	timer<>            m_timer;    // each note has its own timer to trigger the noteoff
-	long               m_id;    // unique serial number for each note
+	timer<>            m_timer;     // each note has its own timer to trigger the noteoff
+	long               m_id;        // unique serial number for each note
 
 	static long s_counter;
 };
@@ -69,8 +69,8 @@ public:
 	outlet<> pitch_out {this, "(int) pitch"};
 	outlet<> velocity_out {this, "(int) velocity"};
 
-	argument<number> velocity_arg {this, "velocity", "Initial MIDI velocity.",
-		MIN_ARGUMENT_FUNCTION { m_velocity = arg; }};
+	argument<number> velocity_arg {
+		this, "velocity", "Initial MIDI velocity.", MIN_ARGUMENT_FUNCTION { m_velocity = arg; }};
 
 	argument<number> duration_arg {this, "duration", "Initial duration in milliseconds.",
 		MIN_ARGUMENT_FUNCTION { m_duration = arg; }};
@@ -80,8 +80,8 @@ public:
 	// it won't crash or do anything catastrophic
 	// however, the wrong velocities might be paired with the wrong pitches, etc.
 
-	message<threadsafe::yes> ints {this, "int", "MIDI note information",
-		MIN_FUNCTION {
+	message<threadsafe::yes> ints {
+		this, "int", "MIDI note information", MIN_FUNCTION {
 			switch (inlet) {
 				case 0:
 					m_pitch = args[0];
@@ -132,16 +132,16 @@ private:
 // The order of initialization is critical
 
 note::note(note_make* owner, pitch a_pitch, duration a_duration)
-	: m_owner {owner}
-	, m_pitch {a_pitch}
-	, m_off_fn { MIN_FUNCTION {
-		m_owner->velocity_out.send(0);
-		m_owner->pitch_out.send(m_pitch);
-		m_owner->remove(m_id);
-		return {};
-	}}
-	, m_timer {m_owner, m_off_fn}
-	, m_id {++s_counter} {
+: m_owner {owner}
+, m_pitch {a_pitch}
+, m_off_fn { MIN_FUNCTION {
+	m_owner->velocity_out.send(0);
+	m_owner->pitch_out.send(m_pitch);
+	m_owner->remove(m_id);
+	return {};
+}}
+, m_timer {m_owner, m_off_fn}
+, m_id {++s_counter} {
 	m_timer.delay(a_duration);
 }
 

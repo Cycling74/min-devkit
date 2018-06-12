@@ -1,5 +1,6 @@
 BasedOnStyle: WebKit
-ColumnLimit: 120
+SortIncludes: false
+ColumnLimit: 140
 UseTab: ForContinuationAndIndentation
 TabWidth: 4
 
@@ -9,6 +10,7 @@ Cpp11BracedListStyle: true
 AllowShortFunctionsOnASingleLine: Empty
 AlwaysBreakTemplateDeclarations: true
 SpaceAfterTemplateKeyword: false
+ConstructorInitializerIndentWidth: 0
 
 NamespaceIndentation: All
 CompactNamespaces: true
@@ -36,6 +38,8 @@ BraceWrapping:
 
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: true
+AlignEscapedNewlines: Right
+AlignTrailingComments: true
 
 IndentCaseLabels: true
 MaxEmptyLinesToKeep: 2

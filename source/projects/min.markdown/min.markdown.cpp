@@ -21,8 +21,8 @@ public:
 	inlet<>  input {this, "(bang) get the approximate value of pi"};
 	outlet<> output {this, "(number) approximate value of pi"};
 
-	message<> read {this, "read", "Markdown file to read",
-		MIN_FUNCTION {
+	message<> read {
+		this, "read", "Markdown file to read", MIN_FUNCTION {
 			try {
 				path              p {args};
 				std::ifstream     in {p};
@@ -32,8 +32,7 @@ public:
 
 				static const std::size_t nesting_depth = 16;
 				int                      extensions    = HOEDOWN_EXT_FENCED_CODE;
-				auto                     document
-					= hoedown_document_new(renderer, static_cast<hoedown_extensions>(extensions), nesting_depth);
+				auto document = hoedown_document_new(renderer, static_cast<hoedown_extensions>(extensions), nesting_depth);
 
 				hoedown_document_render(document, buffer, reinterpret_cast<const uint8_t*>(&s[0]), s.size());
 

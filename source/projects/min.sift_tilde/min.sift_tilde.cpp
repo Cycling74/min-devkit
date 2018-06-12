@@ -23,8 +23,7 @@ public:
 	argument<number> value_arg {this, "value", "Initial value to sift out from the incoming signal.",
 		MIN_ARGUMENT_FUNCTION { value = arg; }};
 
-	attribute<number, threadsafe::yes> value {
-		this, "value", 0.0, description {"Value to sift out of the incoming signal."}};
+	attribute<number, threadsafe::yes> value {this, "value", 0.0, description {"Value to sift out of the incoming signal."}};
 
 	attribute<bool, threadsafe::yes> high_priority {this, "high_priority", true,
 		description {"Deliver results in the high-priority scheduler thread. "
@@ -39,21 +38,19 @@ public:
 	}
 
 
-	timer<> deliverer {this,
-		MIN_FUNCTION {
-			if (high_priority)
-				drain_the_fifo();
-			else
-				deferrer.set();
-			return {};
-		}};
+	timer<> deliverer {this, MIN_FUNCTION {
+						  if (high_priority)
+							  drain_the_fifo();
+						  else
+							  deferrer.set();
+						  return {};
+					  }};
 
 
-	queue<> deferrer {this,
-		MIN_FUNCTION {
-			drain_the_fifo();
-			return {};
-		}};
+	queue<> deferrer {this, MIN_FUNCTION {
+						 drain_the_fifo();
+						 return {};
+					 }};
 
 private:
 	sample       m_last {0.0};    ///< last value output

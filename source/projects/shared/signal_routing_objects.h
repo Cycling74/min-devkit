@@ -86,8 +86,7 @@ extern lookup_tables g_tables;
 template<class derived_min_class_type>
 class signal_routing_base : public object<derived_min_class_type> {
 private:
-	bool attributes_initialized
-		= false;    // must be initialized first, thus coming first in the class order (see below).
+	bool attributes_initialized = false;    // must be initialized first, thus coming first in the class order (see below).
 
 public:
 	// attributes are initialized in the order in which they are defined
@@ -112,12 +111,11 @@ public:
 		range {shapes::linear, shapes::equal_power, shapes::square_root}};
 
 
-	attribute<symbol> mode {this, "mode", "fast",
-		setter { MIN_FUNCTION {
-			if (attributes_initialized)
-				std::tie(weight1, weight2) = calculate_weights(args[0], position);
-			return args;
-		}},
+	attribute<symbol> mode {this, "mode", "fast", setter { MIN_FUNCTION {
+							   if (attributes_initialized)
+								   std::tie(weight1, weight2) = calculate_weights(args[0], position);
+							   return args;
+						   }},
 		title {"Calculation Modality"},
 		description {"Calculation Modality. Choose whether to perform calculations on-the-fly for greater accuracy or "
 					"use a lookup table for greater speed."},
@@ -134,8 +132,7 @@ public:
 			return {n};
 		}},
 		title {"Normalized Position"},
-		description {"Normalized position. This is the position within the function defined by the 'shape' attribute."},
-		range {0.0, 1.0}};
+		description {"Normalized position. This is the position within the function defined by the 'shape' attribute."}, range {0.0, 1.0}};
 
 
 	message<threadsafe::yes> number {this, "number", "Set the normalized position in the function.",
@@ -150,9 +147,8 @@ protected:
 	double        weight2;
 
 	std::pair<double, double> calculate_weights(symbol mode, double position) {
-		if (position < 0.0
-			|| position > 1.0)    // if position is out of range then we must not have initialized position yet
-			return std::make_pair(0.0, 0.0);    // so we bail...
+		if (position < 0.0 || position > 1.0)    // if position is out of range then we must not have initialized position yet
+			return std::make_pair(0.0, 0.0);     // so we bail...
 
 		double weight1;
 		double weight2;

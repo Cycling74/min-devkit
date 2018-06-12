@@ -24,8 +24,8 @@ public:
 
 
 	message<> list {this, "list", "Input to the convolution function.",
-		MIN_FUNCTION {
-			// here we make a local *copy* of the kernel for thread-safety
+		MIN_FUNCTION {    // here we make a local *copy* of the kernel
+																								// for thread-safety
 			// it looks great because we do one operation and then require locks on the shared data
 			// but this is *wrong*
 			// std::vector is not trivially copyable...

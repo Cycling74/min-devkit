@@ -25,12 +25,12 @@ public:
 	outlet<> out1 {this, "(signal) ramp wave", "signal"};
 
 
-	argument<number> frequency_arg {this, "frequency", "Initial frequency in hertz.",
-		MIN_ARGUMENT_FUNCTION { frequency = arg; }};
+	argument<number> frequency_arg {
+		this, "frequency", "Initial frequency in hertz.", MIN_ARGUMENT_FUNCTION { frequency = arg; }};
 
 
-	message<> m_number {this, "number", "Set the frequency in Hz.",
-		MIN_FUNCTION {
+	message<> m_number {
+		this, "number", "Set the frequency in Hz.", MIN_FUNCTION {
 			frequency = args;
 			return {};
 		}};

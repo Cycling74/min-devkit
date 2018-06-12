@@ -24,9 +24,7 @@ public:
 			cmin      = static_cast<uchar>(clamp(255.0 * in, 0.0, 255.0));
 			return args;
 		}},
-		getter { MIN_GETTER_FUNCTION {
-			return {cmin / 255.0};
-		}}};
+		getter { MIN_GETTER_FUNCTION { return {cmin / 255.0}; }}};
 
 
 	attribute<number> max {this, "max", 1.0, description {"The maximum value above which clipping occurs."},
@@ -35,9 +33,7 @@ public:
 			cmax      = static_cast<uchar>(clamp(255.0 * in, 0.0, 255.0));
 			return args;
 		}},
-		getter { MIN_GETTER_FUNCTION {
-			return {cmax / 255.0};
-		}}};
+		getter { MIN_GETTER_FUNCTION { return {cmax / 255.0}; }}};
 
 
 	// This object process each cell independently
@@ -51,8 +47,7 @@ public:
 
 		for (auto plane = 0; plane < info.plane_count(); ++plane) {
 			auto dummy    = input[plane];
-			output[plane] = clamp<decltype(dummy)>(
-				input[plane], static_cast<decltype(dummy)>(fmin), static_cast<decltype(dummy)>(fmax));
+			output[plane] = clamp<decltype(dummy)>(input[plane], static_cast<decltype(dummy)>(fmin), static_cast<decltype(dummy)>(fmax));
 		}
 		return output;
 	}

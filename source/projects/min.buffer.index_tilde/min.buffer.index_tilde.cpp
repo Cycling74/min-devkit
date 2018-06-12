@@ -20,8 +20,8 @@ public:
 	outlet<> changed {this, "(symbol) Notification that the content of the buffer~ changed."};
 
 	buffer_reference buffer {this,
-		MIN_FUNCTION {
-			// will receive a symbol arg indicating 'binding', 'unbinding', or 'modified'
+		MIN_FUNCTION {    // will receive a symbol arg indicating
+																								// 'binding', 'unbinding', or 'modified'
 			changed.send(args);
 			return {};
 		}};
@@ -40,10 +40,10 @@ public:
 
 
 	void operator()(audio_bundle input, audio_bundle output) {
-		auto          in  = input.samples(0);    // get vector for channel 0 (first channel)
-		auto          out = output.samples(0);    // get vector for channel 0 (first channel)
-		buffer_lock<> b(buffer);    // gain access to the buffer~ content
-		auto chan = std::min<size_t>(channel - 1, b.channel_count());    // convert from 1-based indexing to 0-based
+		auto          in  = input.samples(0);                                     // get vector for channel 0 (first channel)
+		auto          out = output.samples(0);                                    // get vector for channel 0 (first channel)
+		buffer_lock<> b(buffer);                                                  // gain access to the buffer~ content
+		auto          chan = std::min<size_t>(channel - 1, b.channel_count());    // convert from 1-based indexing to 0-based
 
 		if (b.valid()) {
 			for (auto i = 0; i < input.frame_count(); ++i) {
