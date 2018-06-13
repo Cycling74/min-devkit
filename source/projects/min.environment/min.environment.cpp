@@ -150,6 +150,8 @@ static kern_return_t GetMACAddress(io_iterator_t intfIterator, UInt8* MACAddress
 #include <tchar.h>
 //#pragma comment(lib, "User32.lib")
 
+#include <iphlpapi.h>
+
 #define BUFSIZE 256
 
 typedef void(WINAPI* PGNSI)(LPSYSTEM_INFO);
@@ -427,7 +429,15 @@ public:
 		IOObjectRelease(intfIterator);    // Release the iterator.
 #endif
 #ifdef WIN_VERSION
-
+		IP_ADAPTER_INFO AdapterInfo[16];
+		DWORD dwBufLen = sizeof(AdapterInfo);
+	
+		if (GetAdaptersInfo(AdapterInfo, &dwBufLen) == ERROR_SUCCESS) {
+			snprintf(macaddrstr, 64, "%02x:%02x:%02x:%02x:%02x:%02x", AdapterInfo->Address[0], AdapterInfo->Address[1], AdapterInfo->Address[2], AdapterInfo->Address[3],
+				AdapterInfo->Address[4], AdapterInfo->Address[5]);
+		}
+		else
+			macaddrstr[0] = 0;
 #endif
 		return macaddrstr;
 	}

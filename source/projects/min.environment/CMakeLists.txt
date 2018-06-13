@@ -35,8 +35,11 @@ if (APPLE)
 
 	find_library(IOKIT_LIBRARY "IOKit")
 	target_link_libraries(${PROJECT_NAME} PUBLIC ${IOKIT_LIBRARY})
-endif ()
-
+else()
+	#find_library(IPHLPAPI_LIBRARY "IPHLPAPI.lib")
+	set(IPHLPAPI_LIBRARY IPHLPAPI.lib)
+	target_link_libraries(${PROJECT_NAME} PUBLIC ${IPHLPAPI_LIBRARY})
+endif()
 
 include(${C74_MIN_API_DIR}/script/min-posttarget.cmake)
 

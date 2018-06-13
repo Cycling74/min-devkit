@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 100.0, 100.0, 781.0, 433.0 ],
+		"rect" : [ 150.0, 100.0, 781.0, 433.0 ],
 		"bgcolor" : [ 0.898039, 0.898039, 0.898039, 1 ],
 		"editing_bgcolor" : [ 0.898039, 0.898039, 0.898039, 1 ],
 		"bglocked" : 0,
@@ -47,8 +47,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 570.0, 285.0, 150.0, 23.0 ],
 					"presentation_rect" : [ 570.0, 285.0, 150.0, 23.0 ],
-					"style" : "",
-					"text" : "60:03:08:92:28:ce"
+					"style" : ""
 				}
 
 			}
@@ -68,16 +67,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-8",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 415.0, 285.0, 150.0, 37.0 ],
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 415.0, 285.0, 150.0, 37.0 ],
-					"style" : "",
-					"text" : "\"Mac OS X Version 10.13.4 x86_64\""
+					"patching_rect" : [ 415.0, 285.0, 153.0, 23.0 ],
+					"presentation_rect" : [ 415.0, 285.0, 153.0, 23.0 ],
+					"style" : ""
 				}
 
 			}
@@ -90,8 +86,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 255.0, 285.0, 150.0, 23.0 ],
 					"presentation_rect" : [ 255.0, 285.0, 150.0, 23.0 ],
-					"style" : "",
-					"text" : "x86_64"
+					"style" : ""
 				}
 
 			}
@@ -104,8 +99,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 100.0, 285.0, 150.0, 23.0 ],
 					"presentation_rect" : [ 100.0, 285.0, 150.0, 23.0 ],
-					"style" : "",
-					"text" : "mac"
+					"style" : ""
 				}
 
 			}
@@ -161,8 +155,8 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "min.environment.mxo",
-				"type" : "iLaX"
+				"name" : "min.environment.mxe64",
+				"type" : "mx64"
 			}
  ],
 		"autosave" : 0,
