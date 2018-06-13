@@ -32,7 +32,9 @@ add_library(
 if (APPLE)
     find_library(CARBON_LIBRARY "Carbon")
     target_link_libraries(${PROJECT_NAME} PUBLIC ${CARBON_LIBRARY})
-#    target_link_libraries(${PROJECT_NAME} "-framework ${CARBON_LIBRARY}")
+
+	find_library(IOKIT_LIBRARY "IOKit")
+	target_link_libraries(${PROJECT_NAME} PUBLIC ${IOKIT_LIBRARY})
 endif ()
 
 
