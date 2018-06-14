@@ -194,31 +194,9 @@ public:
 
 	message<> paint {this, "paint",
 		MIN_FUNCTION {
-			using namespace ui;
-
 			target t {args};
-
-
-			// ALL STYLE-AWARE ATTRS MUST BE UPDATED HERE
-			// TODO: BAKE THIS INTO THE WRAPPER OF THE PAINT METHOD!
-			c74::max::t_jrgba elemcolor {};
-			c74::max::object_attr_getjrgba(*this, symbol("elementcolor"), &elemcolor);
-
-			long              ac {};
-			c74::max::t_atom* av {};
-			c74::max::object_attr_getvalueof(*this, symbol("elementcolor"), &ac, &av);
-			// TODO: need to free av?
-			atoms a {av + 0, av + 1, av + 2, av + 3};
-			m_elementcolor.set(a);
-
-			c74::max::object_attr_getvalueof(*this, symbol("bgcolor"), &ac, &av);
-			// TODO: need to free av?
-			a = {av + 0, av + 1, av + 2, av + 3};
-			m_bgcolor.set(a);
-
-
-			auto value = (m_value - m_range[0]) / (m_range[1] - m_range[0]);
-			auto pos   = ((t.width() - 3) * value) + 1;    // one pixel for each border and -1 for counting to N-1
+			auto   value = (m_value - m_range[0]) / (m_range[1] - m_range[0]);
+			auto   pos   = ((t.width() - 3) * value) + 1;    // one pixel for each border and -1 for counting to N-1
 
 			rect<fill> {// background
 				t, color {m_bgcolor}};
