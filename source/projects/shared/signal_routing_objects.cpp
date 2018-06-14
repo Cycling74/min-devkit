@@ -13,13 +13,13 @@ lookup_tables::lookup_tables() {
 	linear.resize(size);
 	equal_power.resize(size);
 	sqrt.resize(size);
-	
-	for (auto i=0; i<size; ++i) {
-		double normalized_index = static_cast<double>(i) / (size-1);
-		
-		linear[i]		= normalized_index;
-		equal_power[i]	= std::sin(normalized_index * M_PI_2);
-		sqrt[i]			= std::sqrt(normalized_index);
+
+	for (auto i = 0; i < size; ++i) {
+		double normalized_index = static_cast<double>(i) / (size - 1);
+
+		linear[i]      = normalized_index;
+		equal_power[i] = std::sin(normalized_index * M_PI_2);
+		sqrt[i]        = std::sqrt(normalized_index);
 	}
 }
 

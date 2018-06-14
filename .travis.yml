@@ -18,9 +18,9 @@ matrix:
       env: CONFIG=Debug
     - osx_image: xcode8.3
       env: CONFIG=Release
-    - osx_image: xcode9
+    - osx_image: xcode9.3
       env: CONFIG=Debug
-    - osx_image: xcode9
+    - osx_image: xcode9.3
       env: CONFIG=Release
 
 script:
@@ -66,10 +66,11 @@ deploy:
   secret_access_key:
     secure: "qjpFRGnUoivaWGQWZBYrgoG92N+qYL/SjNwQIfatMGFzKsso7TS33lqljIrVTh9WSOoLBRV5p9m+480ezrC/JvDtVGB9D6WDcG9QMfTEhLbZ4l6ege2C0waYSABhNChOgl7VgbmVX8V+J3r4THxGLBWmnjX4c8bUIwaY4iL8q+8EaMzswx+1ONkTfzMb1DFSP3dAUA3MkAYhLuh9kxZY0vW8FecoA5MlT/9iIfbmsBPbqsxx+HywtA0ktapTVb3DBUyo110QcaGgDyQ48LURp09n1jlo6nVO4f5VfO0durEsQ2Sv2QewtRvcGH7le3R8NwdvYmsEIi/s/hXYHmDB1dz+XPSG286ZOW3QjVts5fbrxzNhXvpr5g7d+J9aUP0MBbbNKjScFJacpRiL8QYZjtYexL7MiksQlJkURY/u6TYLPTcoDJxN2xY2rQp04aQioX/pYzcDlyAV2vItjyKmelkscrwZBuWaurX08iCvGGJKXd7Tx7hmQp46vmQbM8wxx+BUK/+if6eb7c2rMXlTUtTiRndgX6AzW7dQtX31qX+hfjINhgZ+NGJ2kM3gIgyyJEDDQZYjCkAW6Kh/smCen+t+FZehk/jquXPlubw82DVTJNHMY27yI3gpWnKLCwZoBPwjX23q1S0CtZKXP6BEZsKeYHwLkJJtpj4SWFEVUcA="
   bucket: cycling74-ci-public
+  region: us-west-1
   skip_cleanup: true
   local-dir: dist
-  upload-dir: min-devkit
+  upload-dir: $PACKAGE_NAME
   acl: public_read
   on:
-    repo: Cycling74/min-devkit
+    repo: Cycling74/$PACKAGE_NAME
     all_branches: true
