@@ -23,17 +23,6 @@ public:
 		m_timer.delay(40);
 	}
 
-	message<> m_notify {this, "notify",
-		MIN_FUNCTION {
-			symbol s      = args[1];
-			symbol msg    = args[2];
-			void*  sender = args[3];
-			void*  data   = args[4];
-
-			// TODO: the following should be baked-in for ui operators
-			return {c74::max::jbox_notify((c74::max::t_jbox*)maxobj(), s, msg, sender, data)};
-		}};
-
 	attribute<numbers> m_range {this, "range", { {0.0, 1.0}}};
 	attribute<numbers> m_offset {this, "offset", { {10.0, 10.0}}};
 	attribute<symbol>  m_label {this, "label", ""};

@@ -54,18 +54,14 @@ public:
 
 	message<> m_notify {this, "notify",
 		MIN_FUNCTION {
-			symbol s      = args[1];
 			symbol msg    = args[2];
 			void*  sender = args[3];
-			void*  data   = args[4];
 
 			if (sender == maxobj() && msg == "attr_modified") {
 				update_text();
 				redraw();
 			}
-
-			// TODO: the following should be baked-in for ui operators
-			return {c74::max::jbox_notify((c74::max::t_jbox*)maxobj(), s, msg, sender, data)};
+			return {};
 		}};
 
 
