@@ -18,9 +18,9 @@ matrix:
       env: CONFIG=Debug
     - osx_image: xcode8.3
       env: CONFIG=Release
-    - osx_image: xcode9
+    - osx_image: xcode9.3
       env: CONFIG=Debug
-    - osx_image: xcode9
+    - osx_image: xcode9.3
       env: CONFIG=Release
 
 script:
