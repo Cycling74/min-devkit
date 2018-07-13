@@ -382,6 +382,7 @@ public:
 	outlet<> out_arch {this, "(symbol) architecture"};
 	outlet<> out_os {this, "(symbol) operating system version"};
 	outlet<> out_macaddr {this, "(symbol) primary MAC address"};
+	outlet<> out_id {this, "(symbol) unique identifier"};
 
 
 	const char* osversionstring() {
@@ -430,11 +431,11 @@ public:
 #endif
 #ifdef WIN_VERSION
 		IP_ADAPTER_INFO AdapterInfo[16];
-		DWORD dwBufLen = sizeof(AdapterInfo);
-	
+		DWORD           dwBufLen = sizeof(AdapterInfo);
+
 		if (GetAdaptersInfo(AdapterInfo, &dwBufLen) == ERROR_SUCCESS) {
-			snprintf(macaddrstr, 64, "%02x:%02x:%02x:%02x:%02x:%02x", AdapterInfo->Address[0], AdapterInfo->Address[1], AdapterInfo->Address[2], AdapterInfo->Address[3],
-				AdapterInfo->Address[4], AdapterInfo->Address[5]);
+			snprintf(macaddrstr, 64, "%02x:%02x:%02x:%02x:%02x:%02x", AdapterInfo->Address[0], AdapterInfo->Address[1],
+				AdapterInfo->Address[2], AdapterInfo->Address[3], AdapterInfo->Address[4], AdapterInfo->Address[5]);
 		}
 		else
 			macaddrstr[0] = 0;
@@ -443,8 +444,38 @@ public:
 	}
 
 
+	string uniqueid() {
+#ifdef MAC_VERSION
+		string s;
+		auto   entry = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"));
+		if (entry) {
+			auto t             = IORegistryEntryCreateCFProperty(entry, CFSTR(kIOPlatformSerialNumberKey), kCFAllocatorDefault, 0);
+			auto serial_number = (CFStringRef)t;
+			if (serial_number) {
+				s = CFStringGetCStringPtr(serial_number, kCFStringEncodingMacRoman);
+				CFRelease(serial_number);
+			}
+			IOObjectRelease(entry);
+		}
+		if (!s.empty())
+			return s;
+#endif
+#ifdef WIN_VERSION
+			// https://stackoverflow.com/questions/1397591/getting-motherboard-unique-id-number-thru-vc-programming
+			// alternatively:
+			// https://github.com/denisbrodbeck/machineid
+			// https://msdn.microsoft.com/en-us/library/windows/desktop/dd391657(v=vs.85).aspx
+			// https://www.nextofwindows.com/the-best-way-to-uniquely-identify-a-windows-machine
+			// https://github.com/Tarik02/machineid/blob/master/src/machineid/machineid.cpp
+			// https://stackoverflow.com/questions/43473262/getting-the-motherboards-serial-number
+#endif
+		return "";
+	}
+
+
 	message<> bang {this, "bang", "Get info about the current max environment.",
 		MIN_FUNCTION {
+			out_id.send(uniqueid());
 			out_macaddr.send(macaddr());
 			out_os.send(osversionstring());
 

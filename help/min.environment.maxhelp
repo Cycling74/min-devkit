@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 150.0, 100.0, 781.0, 433.0 ],
+		"rect" : [ 100.0, 100.0, 981.0, 433.0 ],
 		"bgcolor" : [ 0.898039, 0.898039, 0.898039, 1 ],
 		"editing_bgcolor" : [ 0.898039, 0.898039, 0.898039, 1 ],
 		"bglocked" : 0,
@@ -40,14 +40,29 @@
 		"subpatcher_template" : "tap.template",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 655.0, 290.0, 165.0, 23.0 ],
+					"presentation_rect" : [ 655.0, 290.0, 165.0, 23.0 ],
+					"style" : "",
+					"text" : "IOPlatformSerialNumber"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-1",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 570.0, 285.0, 150.0, 23.0 ],
-					"presentation_rect" : [ 570.0, 285.0, 150.0, 23.0 ],
-					"style" : ""
+					"patching_rect" : [ 495.0, 290.0, 150.0, 23.0 ],
+					"presentation_rect" : [ 495.0, 290.0, 150.0, 23.0 ],
+					"style" : "",
+					"text" : "60:03:08:92:28:ce"
 				}
 
 			}
@@ -58,6 +73,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
 					"patching_rect" : [ 110.0, 120.0, 24.0, 24.0 ],
 					"presentation_rect" : [ 110.0, 120.0, 24.0, 24.0 ],
 					"style" : ""
@@ -67,13 +83,16 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-8",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 415.0, 285.0, 153.0, 23.0 ],
-					"presentation_rect" : [ 415.0, 285.0, 153.0, 23.0 ],
-					"style" : ""
+					"patching_rect" : [ 340.0, 290.0, 153.0, 37.0 ],
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 340.0, 290.0, 153.0, 37.0 ],
+					"style" : "",
+					"text" : "\"Mac OS X Version 10.13.4 x86_64\""
 				}
 
 			}
@@ -84,9 +103,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 255.0, 285.0, 150.0, 23.0 ],
-					"presentation_rect" : [ 255.0, 285.0, 150.0, 23.0 ],
-					"style" : ""
+					"patching_rect" : [ 180.0, 290.0, 150.0, 23.0 ],
+					"presentation_rect" : [ 180.0, 290.0, 150.0, 23.0 ],
+					"style" : "",
+					"text" : "x86_64"
 				}
 
 			}
@@ -97,9 +117,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 100.0, 285.0, 150.0, 23.0 ],
-					"presentation_rect" : [ 100.0, 285.0, 150.0, 23.0 ],
-					"style" : ""
+					"patching_rect" : [ 25.0, 290.0, 150.0, 23.0 ],
+					"presentation_rect" : [ 25.0, 290.0, 150.0, 23.0 ],
+					"style" : "",
+					"text" : "mac"
 				}
 
 			}
@@ -108,8 +129,8 @@
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "" ],
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
 					"patching_rect" : [ 145.0, 200.0, 95.0, 23.0 ],
 					"presentation_rect" : [ 145.0, 200.0, 95.0, 23.0 ],
 					"style" : "",
@@ -129,6 +150,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 1 ],
 					"source" : [ "obj-2", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 4 ]
 				}
 
 			}
@@ -155,8 +183,8 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "min.environment.mxe64",
-				"type" : "mx64"
+				"name" : "min.environment.mxo",
+				"type" : "iLaX"
 			}
  ],
 		"autosave" : 0,
