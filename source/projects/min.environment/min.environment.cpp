@@ -461,57 +461,19 @@ public:
 			return s;
 #endif
 #ifdef WIN_VERSION
-			// https://stackoverflow.com/questions/1397591/getting-motherboard-unique-id-number-thru-vc-programming
-			// alternatively:
-			// https://github.com/denisbrodbeck/machineid
-			// https://msdn.microsoft.com/en-us/library/windows/desktop/dd391657(v=vs.85).aspx
-			// https://www.nextofwindows.com/the-best-way-to-uniquely-identify-a-windows-machine
-			// https://github.com/Tarik02/machineid/blob/master/src/machineid/machineid.cpp
-			// https://stackoverflow.com/questions/43473262/getting-the-motherboards-serial-number
+		HKEY               hKey;
+		LONG               lRes         = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Cryptography", 0, KEY_READ, &hKey);
+		const std::string& strValueName = "MachineGuid";
+		std::string        strValue;
+		CHAR               szBuffer[512];
+		DWORD              dwBufferSize = sizeof(szBuffer);
+		ULONG              nError;
 
-//		const CString REG_SW_GROUP_I_WANT = _T("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography");
-	//	const CString REG_KEY_I_WANT = _T("MachineGuid");
-
-		//CRegKey regKey;
-	//	DWORD   dwValue = 0;
-
-		//if (ERROR_SUCCESS != regKey.Open(HKEY_LOCAL_MACHINE, REG_SW_GROUP_I_WANT)) {
-//			m_pobLogger->LogError(_T("CRegKey::Open failed in Method"));
-			//regKey.Close();
-//			goto Function_Exit;
-	//	}
-		//if (ERROR_SUCCESS != regKey.QueryValue(dwValue, REG_KEY_I_WANT)) {
-//			m_pobLogger->LogError(_T("CRegKey::QueryValue Failed in Method"));
-//			regKey.Close();
-	//		goto Function_Exit;
-		//}
-
-		// dwValue has the stuff now - use for further processing
-
-
-
-
-		HKEY hKey;
-		LONG lRes = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Cryptography", 0, KEY_READ, &hKey);
-		const std::string &strValueName = "MachineGuid";
-		std::string strValue;
-
-//		LONG GetStringRegKey(HKEY hKey, const std::wstring &strValueName, std::wstring &strValue, const std::wstring &strDefaultValue)
-//		{
-//			strValue = strDefaultValue;
-			CHAR szBuffer[512];
-			DWORD dwBufferSize = sizeof(szBuffer);
-			ULONG nError;
-
-			nError = RegQueryValueEx(hKey, strValueName.c_str(), 0, NULL, (LPBYTE)szBuffer, &dwBufferSize);
-			if (ERROR_SUCCESS == nError) {
-				strValue = szBuffer;
-			}
-			return strValue;
-//			return nError;
-//		}
-
-
+		nError = RegQueryValueEx(hKey, strValueName.c_str(), 0, NULL, (LPBYTE)szBuffer, &dwBufferSize);
+		if (ERROR_SUCCESS == nError) {
+			strValue = szBuffer;
+		}
+		return strValue;
 #endif
 		return "";
 	}
