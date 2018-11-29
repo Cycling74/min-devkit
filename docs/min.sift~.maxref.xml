@@ -7,7 +7,7 @@
 <c74object name='min.sift~' category='analysis'>
 
 	<digest>Remove a specific sample value and convert to float output</digest>
-	<description>Remove a specific sample value and convert to float output. <o>tap.sift~</o> removes a specified sample value (typically zero) as well as repeated sample values from an input signal. It then converts the remaining samples to floating-point output at control rate. </description>
+	<description>Remove a specific sample value and convert to float output. <o>min.sift~</o> removes a specified sample value (typically zero) as well as repeated sample values from an input signal. It then converts the remaining samples to floating-point output at control rate. </description>
 
 
 	<!--METADATA-->
@@ -57,6 +57,8 @@
 	<!--RELATED-->
 
 	<seealsolist>
+		<seealso name='min.edge~' />
+		<seealso name='min.edgelow~' />
 		<seealso name='edge~' />
 		<seealso name='snapshot~' />
 		<seealso name='==~' />

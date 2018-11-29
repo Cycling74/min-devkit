@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 63.0, 104.0, 1115.0, 852.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 63.0, 100.0, 1115.0, 852.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +39,40 @@
 		"subpatcher_template" : "tap.template",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-16",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 810.0, 60.0, 150.0, 21.0 ],
+					"text" : "uses the MC wrapper"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "scope~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 780.0, 225.0, 130.0, 130.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 780.0, 90.0, 266.0, 37.0 ],
+					"text" : "mc.min.phasor~ @chans 4 @values 55. 110. 220. 440."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-11",
 					"maxclass" : "newobj",
@@ -45,7 +80,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 165.0, 35.0, 101.0, 23.0 ],
-					"style" : "",
 					"text" : "loadmess set 100"
 				}
 
@@ -93,8 +127,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 345.0, 465.0, 50.0, 23.0 ],
-					"style" : ""
+					"patching_rect" : [ 345.0, 465.0, 50.0, 23.0 ]
 				}
 
 			}
@@ -106,7 +139,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 350.0, 535.0, 74.0, 23.0 ],
-					"style" : "",
 					"text" : "min.phasor~"
 				}
 
@@ -119,7 +151,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
 					"patching_rect" : [ 290.0, 105.0, 30.0, 23.0 ],
-					"style" : "",
 					"text" : "+ 1."
 				}
 
@@ -132,7 +163,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 275.0, 140.0, 101.0, 23.0 ],
-					"style" : "",
 					"text" : "min.phasor~ 101."
 				}
 
@@ -177,14 +207,14 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 135.0, 520.0, 45.0, 45.0 ],
-					"style" : ""
+					"patching_rect" : [ 135.0, 520.0, 45.0, 45.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-4",
+					"lastchannelcount" : 0,
 					"maxclass" : "live.gain~",
 					"numinlets" : 2,
 					"numoutlets" : 5,
@@ -193,13 +223,13 @@
 					"patching_rect" : [ 135.0, 330.0, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "live.gain~",
-							"parameter_initial" : [ 0.0 ],
-							"parameter_mmax" : 6.0,
-							"parameter_shortname" : "live.gain~",
 							"parameter_unitstyle" : 4,
-							"parameter_type" : 0,
-							"parameter_mmin" : -70.0
+							"parameter_mmin" : -70.0,
+							"parameter_longname" : "live.gain~",
+							"parameter_mmax" : 6.0,
+							"parameter_initial" : [ 0.0 ],
+							"parameter_shortname" : "live.gain~",
+							"parameter_type" : 0
 						}
 
 					}
@@ -217,8 +247,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 165.0, 70.0, 50.0, 23.0 ],
-					"style" : ""
+					"patching_rect" : [ 165.0, 70.0, 50.0, 23.0 ]
 				}
 
 			}
@@ -230,7 +259,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 170.0, 140.0, 101.0, 23.0 ],
-					"style" : "",
 					"text" : "min.phasor~ 100."
 				}
 
@@ -264,6 +292,13 @@
 					"destination" : [ "obj-3", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -320,7 +355,11 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-4" : [ "live.gain~", "live.gain~", 0 ]
+			"obj-4" : [ "live.gain~", "live.gain~", 0 ],
+			"parameterbanks" : 			{
+
+			}
+
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -338,13 +377,7 @@
 				"parentstyle" : "",
 				"multi" : 0
 			}
- ],
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+ ]
 	}
 
 }
