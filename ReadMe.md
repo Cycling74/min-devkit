@@ -20,8 +20,8 @@ There are two layers of material included in the Min-DevKit package.
 
 To build the externals in this package you will need some form of compiler support on your system. 
 
-* On the Mac this means **Xcode 7, 8, or 9** (you can get from the App Store for free). 
-* On Windows this means **Visual Studio 2015 or 2017** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do. **Visual Studio 2017 is recommended and is required if you are writing Graphical User Interface objects**.
+* On the Mac this means **Xcode 9 or later** (you can get from the App Store for free). 
+* On Windows this means **Visual Studio 2017** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
 
 You will also need to install a recent version of [CMake](https://cmake.org/download/).
 
@@ -29,7 +29,7 @@ You will also need to install a recent version of [CMake](https://cmake.org/down
 ## Building
 
 0. Clone the *Min-DevKit* from Github (or download from inside of Max using the Package Manager). If you clone it from Github, **you should clone it into Max's Packages folder**. If you clone it elsewhere you will need to make an alias to it in your Packages folder.
-   The *Packages* folder can be found inside of your *Max 7* or *Max 8* folder that inside of your user's *Documents* folder.
+   The *Packages* folder can be found inside of your *Max 8* folder which is inside of your user's *Documents* folder.
 1. In the Terminal or Console app of your choice, change directories (cd) into the Min-Devkit folder you cloned/installed in step 0.
 2. `mkdir build` to create a folder with your various build files
 3. `cd build` to put yourself into that folder
@@ -45,10 +45,9 @@ Note: you can add the `-j4` option where "4" is the number of cores to use.  Thi
 
 ### Windows
 
-You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2017, the commands to generate the projects will look like this:
+You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2017, the commands to generate the projects will look like this: 
 
-* 32 bit: `cmake -G "Visual Studio 15 2017" ..`
-* 64 bit: `cmake -G "Visual Studio 15 2017 Win64" ..`
+`cmake -G "Visual Studio 15 2017 Win64" ..`
 
 Having generated the projects, you can now build by opening the .sln file in the build folder with the Visual Studio app (just double-click the .sln file) or you can build on the command line like this:
 
