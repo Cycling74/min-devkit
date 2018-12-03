@@ -10,17 +10,17 @@ os: osx
 
 matrix:
   include:
-    - osx_image: xcode7.3
-      env: CONFIG=Debug
-    - osx_image: xcode7.3
-      env: CONFIG=Release
     - osx_image: xcode8.3
       env: CONFIG=Debug
     - osx_image: xcode8.3
       env: CONFIG=Release
-    - osx_image: xcode9.3
+    - osx_image: xcode9.4
       env: CONFIG=Debug
-    - osx_image: xcode9.3
+    - osx_image: xcode9.4
+      env: CONFIG=Release
+    - osx_image: xcode10.1
+      env: CONFIG=Debug
+    - osx_image: xcode10.1
       env: CONFIG=Release
 
 script:
