@@ -4,11 +4,12 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 0,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 117.0, 79.0, 1094.0, 606.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -51,14 +52,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 0,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
-						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
-						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -97,8 +97,6 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 360.0, 476.0, 177.0, 47.0 ],
 									"presentation_linecount" : 2,
-									"presentation_rect" : [ 360.0, 476.0, 177.0, 47.0 ],
-									"style" : "",
 									"text" : ";\rmax launchbrowser $1"
 								}
 
@@ -117,7 +115,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 224.0, 116.0, 504.0, 188.0 ],
-									"presentation_rect" : [ 224.0, 116.0, 504.0, 188.0 ],
 									"text" : "Guides and API Reference documentation are available online.\n<a href=\"http://cycling74.github.io/min-devkit/\">Get Started</a> now."
 								}
 
@@ -139,7 +136,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
-									"presentation_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
 									"text" : "<a>Min</a><br/> Create packages and code objects for Max using C++"
 								}
 
@@ -154,27 +150,26 @@
 
 							}
  ],
+						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bgfillcolor_type" : "gradient",
 						"bgfillcolor_color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
 						"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_angle" : 270.0,
-						"bgfillcolor_proportion" : 0.39
+						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ]
 					}
 ,
 					"patching_rect" : [ 86.0, 231.0, 107.0, 23.0 ],
-					"presentation_rect" : [ 86.0, 231.0, 107.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"fontname" : "Lato Light",
 						"fontsize" : 16.0,
 						"globalpatchername" : "",
-						"style" : "",
+						"locked_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p Documentation",
 					"varname" : "basic_tab[6]"
 				}
@@ -193,14 +188,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 0,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
-						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
-						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -245,7 +239,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
-									"presentation_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
 									"text" : "<a>Min</a><br/> Create packages and code objects for Max using C++"
 								}
 
@@ -261,8 +254,6 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 260.0, 387.0, 177.0, 47.0 ],
 									"presentation_linecount" : 2,
-									"presentation_rect" : [ 260.0, 387.0, 177.0, 47.0 ],
-									"style" : "",
 									"text" : ";\rmax launchbrowser $1"
 								}
 
@@ -281,7 +272,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 216.0, 112.0, 504.0, 188.0 ],
-									"presentation_rect" : [ 216.0, 112.0, 504.0, 188.0 ],
 									"text" : "Take control of the underlying technology stack yourself: <a href=\"https://github.com/Cycling74/min-devkit\">use Github</a> and the detailed instructions in the <b>ReadMe</b> there to get started."
 								}
 
@@ -296,27 +286,26 @@
 
 							}
  ],
+						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bgfillcolor_type" : "gradient",
 						"bgfillcolor_color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
 						"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_angle" : 270.0,
-						"bgfillcolor_proportion" : 0.39
+						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ]
 					}
 ,
 					"patching_rect" : [ 148.0, 310.0, 114.0, 23.0 ],
-					"presentation_rect" : [ 148.0, 310.0, 114.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"fontname" : "Lato Light",
 						"fontsize" : 16.0,
 						"globalpatchername" : "",
-						"style" : "",
+						"locked_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p \"Pro Workflows\"",
 					"varname" : "basic_tab[4]"
 				}
@@ -335,14 +324,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 0,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
-						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
-						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -385,7 +373,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 168.0, 52.0, 296.0, 128.0 ],
-									"presentation_rect" : [ 168.0, 52.0, 296.0, 128.0 ],
 									"text" : "Creating objects begins with creating a Package to house them. <a href=\"Create Package\">If you haven't yet created a package</a>, go back and do so now. Then come back to add objects to the package.\n\n"
 								}
 
@@ -400,9 +387,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 440.0, 224.0, 66.0, 23.0 ],
-									"presentation_rect" : [ 440.0, 224.0, 66.0, 23.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
-									"style" : "",
 									"text" : "thispatcher"
 								}
 
@@ -417,8 +402,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 264.0, 224.0, 171.0, 23.0 ],
-									"presentation_rect" : [ 264.0, 224.0, 171.0, 23.0 ],
-									"style" : "",
 									"text" : "setactivetab \"Create a Package\""
 								}
 
@@ -431,9 +414,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 236.0, 224.0, 24.0, 24.0 ],
-									"presentation_rect" : [ 236.0, 224.0, 24.0, 24.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 236.0, 224.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -448,8 +430,6 @@
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 572.0, 412.0, 52.0, 37.0 ],
 									"presentation_linecount" : 2,
-									"presentation_rect" : [ 572.0, 412.0, 52.0, 37.0 ],
-									"style" : "",
 									"text" : "route symbol"
 								}
 
@@ -465,8 +445,6 @@
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 500.0, 412.0, 52.0, 37.0 ],
 									"presentation_linecount" : 2,
-									"presentation_rect" : [ 500.0, 412.0, 52.0, 37.0 ],
-									"style" : "",
 									"text" : "route symbol"
 								}
 
@@ -474,94 +452,110 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 22,
+										"count" : 26,
 										"data" : [ 											{
 												"key" : 0,
-												"value" : [ "/Users/tim/Materials/filter" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
 											}
 , 											{
-												"key" : "filter",
-												"value" : [ "/Users/tim/Materials/filter" ]
+												"key" : "synth",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
 											}
 , 											{
 												"key" : 1,
-												"value" : [ "/Users/tim/Materials/zero" ]
-											}
-, 											{
-												"key" : "zero",
-												"value" : [ "/Users/tim/Materials/zero" ]
-											}
-, 											{
-												"key" : 2,
-												"value" : [ "/Users/tim/Materials/jit.mo" ]
-											}
-, 											{
-												"key" : "jit.mo",
-												"value" : [ "/Users/tim/Materials/jit.mo" ]
-											}
-, 											{
-												"key" : 3,
-												"value" : [ "/Users/tim/Materials/link" ]
-											}
-, 											{
-												"key" : "link",
-												"value" : [ "/Users/tim/Materials/link" ]
-											}
-, 											{
-												"key" : 4,
-												"value" : [ "/Users/tim/Materials/radial" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
 											}
 , 											{
 												"key" : "radial",
-												"value" : [ "/Users/tim/Materials/radial" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
 											}
 , 											{
-												"key" : 5,
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+												"key" : 2,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
+											}
+, 											{
+												"key" : "sensel",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
+											}
+, 											{
+												"key" : 3,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
+											}
+, 											{
+												"key" : "sampler",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
+											}
+, 											{
+												"key" : 4,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
 											}
 , 											{
 												"key" : "min-devkit",
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : 5,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+											}
+, 											{
+												"key" : "jit.mo",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
 											}
 , 											{
 												"key" : 6,
-												"value" : [ "/Users/tim/Materials/min-playground" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
 											}
 , 											{
-												"key" : "min-playground",
-												"value" : [ "/Users/tim/Materials/min-playground" ]
+												"key" : "taptools",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
 											}
 , 											{
 												"key" : 7,
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
 											}
 , 											{
-												"key" : "zoinks",
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+												"key" : "zero",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
 											}
 , 											{
 												"key" : 8,
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
 											}
 , 											{
-												"key" : "yesplease",
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+												"key" : "link",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
 											}
 , 											{
 												"key" : 9,
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
 											}
 , 											{
-												"key" : "zuber",
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+												"key" : "min-playground",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
 											}
 , 											{
 												"key" : 10,
-												"value" : [ "/Users/tim/Materials/ease" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
+											}
+, 											{
+												"key" : "mpearp",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
+											}
+, 											{
+												"key" : 11,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
+											}
+, 											{
+												"key" : "filter",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
+											}
+, 											{
+												"key" : 12,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
 											}
 , 											{
 												"key" : "ease",
-												"value" : [ "/Users/tim/Materials/ease" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
 											}
  ]
 									}
@@ -573,12 +567,10 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "" ],
 									"patching_rect" : [ 500.0, 200.0, 174.0, 23.0 ],
-									"presentation_rect" : [ 500.0, 200.0, 174.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 1
 									}
 ,
-									"style" : "",
 									"text" : "coll package-paths 1 @embed 1"
 								}
 
@@ -593,9 +585,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 264.0, 520.0, 66.0, 23.0 ],
-									"presentation_rect" : [ 264.0, 520.0, 66.0, 23.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
-									"style" : "",
 									"text" : "thispatcher"
 								}
 
@@ -610,8 +600,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 108.0, 520.0, 155.0, 23.0 ],
-									"presentation_rect" : [ 108.0, 520.0, 155.0, 23.0 ],
-									"style" : "",
 									"text" : "setactivetab \"Compile Code\""
 								}
 
@@ -628,7 +616,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 716.0, 280.0, 216.0, 72.0 ],
-									"presentation_rect" : [ 716.0, 280.0, 216.0, 72.0 ],
 									"text" : "<b>Name your object</b>."
 								}
 
@@ -645,7 +632,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 716.0, 156.0, 216.0, 72.0 ],
-									"presentation_rect" : [ 716.0, 156.0, 216.0, 72.0 ],
 									"text" : "<b>Select the package</b> to which your new object will be added."
 								}
 
@@ -659,8 +645,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 100.0, 5.0, 147.0, 383.0 ],
-									"presentation_rect" : [ 100.0, 5.0, 147.0, 383.0 ]
+									"patching_rect" : [ 100.0, 5.0, 147.0, 383.0 ]
 								}
 
 							}
@@ -673,8 +658,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 296.0, 4.0, 45.0, 51.0 ],
-									"presentation_rect" : [ 296.0, 4.0, 45.0, 51.0 ]
+									"patching_rect" : [ 296.0, 4.0, 45.0, 51.0 ]
 								}
 
 							}
@@ -686,9 +670,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 80.0, 520.0, 24.0, 24.0 ],
-									"presentation_rect" : [ 80.0, 520.0, 24.0, 24.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 80.0, 520.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -701,8 +684,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 500.0, 460.0, 91.0, 23.0 ],
-									"presentation_rect" : [ 500.0, 460.0, 91.0, 23.0 ],
-									"style" : "",
 									"text" : "join @triggers 1"
 								}
 
@@ -716,8 +697,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "bang", "" ],
 									"patching_rect" : [ 500.0, 100.0, 41.0, 28.0 ],
-									"presentation_rect" : [ 500.0, 100.0, 41.0, 28.0 ],
-									"style" : "",
 									"text" : "sel 1"
 								}
 
@@ -731,8 +710,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"patching_rect" : [ 500.0, 68.0, 49.0, 28.0 ],
-									"presentation_rect" : [ 500.0, 68.0, 49.0, 28.0 ],
-									"style" : "",
 									"text" : "active"
 								}
 
@@ -750,11 +727,12 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 0,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
+										"classnamespace" : "box",
 										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
@@ -790,8 +768,6 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 264.0, 141.0, 22.0 ],
-													"presentation_rect" : [ 143.0, 264.0, 141.0, 22.0 ],
-													"style" : "",
 													"text" : "regexp .:\\\\/ @substitute /"
 												}
 
@@ -804,8 +780,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 71.0, 69.0, 145.0, 22.0 ],
-													"presentation_rect" : [ 71.0, 69.0, 145.0, 22.0 ],
-													"style" : "",
 													"text" : "r min-launcher-menubuild"
 												}
 
@@ -818,8 +792,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 284.0, 373.0, 29.5, 22.0 ],
-													"presentation_rect" : [ 284.0, 373.0, 29.5, 22.0 ],
-													"style" : "",
 													"text" : "join"
 												}
 
@@ -832,8 +804,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 268.0, 406.0, 69.0, 22.0 ],
-													"presentation_rect" : [ 268.0, 406.0, 69.0, 22.0 ],
-													"style" : "",
 													"text" : "store $1 $2"
 												}
 
@@ -846,8 +816,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 350.0, 198.0, 57.0, 22.0 ],
-													"presentation_rect" : [ 350.0, 198.0, 57.0, 22.0 ],
-													"style" : "",
 													"text" : "tosymbol"
 												}
 
@@ -860,8 +828,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 425.0, 287.0, 29.5, 22.0 ],
-													"presentation_rect" : [ 425.0, 287.0, 29.5, 22.0 ],
-													"style" : "",
 													"text" : "join"
 												}
 
@@ -874,8 +840,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "bang" ],
 													"patching_rect" : [ 452.0, 234.0, 31.0, 22.0 ],
-													"presentation_rect" : [ 452.0, 234.0, 31.0, 22.0 ],
-													"style" : "",
 													"text" : "t s b"
 												}
 
@@ -888,8 +852,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "int" ],
 													"patching_rect" : [ 532.0, 209.0, 22.0, 22.0 ],
-													"presentation_rect" : [ 532.0, 209.0, 22.0, 22.0 ],
-													"style" : "",
 													"text" : "t 0"
 												}
 
@@ -902,8 +864,6 @@
 													"numoutlets" : 4,
 													"outlettype" : [ "int", "", "", "int" ],
 													"patching_rect" : [ 480.0, 279.0, 61.0, 22.0 ],
-													"presentation_rect" : [ 480.0, 279.0, 61.0, 22.0 ],
-													"style" : "",
 													"text" : "counter"
 												}
 
@@ -911,94 +871,110 @@
 , 											{
 												"box" : 												{
 													"coll_data" : 													{
-														"count" : 22,
+														"count" : 26,
 														"data" : [ 															{
 																"key" : 0,
-																"value" : [ "/Users/tim/Materials/filter" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
 															}
 , 															{
-																"key" : "filter",
-																"value" : [ "/Users/tim/Materials/filter" ]
+																"key" : "synth",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
 															}
 , 															{
 																"key" : 1,
-																"value" : [ "/Users/tim/Materials/zero" ]
-															}
-, 															{
-																"key" : "zero",
-																"value" : [ "/Users/tim/Materials/zero" ]
-															}
-, 															{
-																"key" : 2,
-																"value" : [ "/Users/tim/Materials/jit.mo" ]
-															}
-, 															{
-																"key" : "jit.mo",
-																"value" : [ "/Users/tim/Materials/jit.mo" ]
-															}
-, 															{
-																"key" : 3,
-																"value" : [ "/Users/tim/Materials/link" ]
-															}
-, 															{
-																"key" : "link",
-																"value" : [ "/Users/tim/Materials/link" ]
-															}
-, 															{
-																"key" : 4,
-																"value" : [ "/Users/tim/Materials/radial" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
 															}
 , 															{
 																"key" : "radial",
-																"value" : [ "/Users/tim/Materials/radial" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
 															}
 , 															{
-																"key" : 5,
-																"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+																"key" : 2,
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
+															}
+, 															{
+																"key" : "sensel",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
+															}
+, 															{
+																"key" : 3,
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
+															}
+, 															{
+																"key" : "sampler",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
+															}
+, 															{
+																"key" : 4,
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
 															}
 , 															{
 																"key" : "min-devkit",
-																"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+															}
+, 															{
+																"key" : 5,
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+															}
+, 															{
+																"key" : "jit.mo",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
 															}
 , 															{
 																"key" : 6,
-																"value" : [ "/Users/tim/Materials/min-playground" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
 															}
 , 															{
-																"key" : "min-playground",
-																"value" : [ "/Users/tim/Materials/min-playground" ]
+																"key" : "taptools",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
 															}
 , 															{
 																"key" : 7,
-																"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
 															}
 , 															{
-																"key" : "zoinks",
-																"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+																"key" : "zero",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
 															}
 , 															{
 																"key" : 8,
-																"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
 															}
 , 															{
-																"key" : "yesplease",
-																"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+																"key" : "link",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
 															}
 , 															{
 																"key" : 9,
-																"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
 															}
 , 															{
-																"key" : "zuber",
-																"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+																"key" : "min-playground",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
 															}
 , 															{
 																"key" : 10,
-																"value" : [ "/Users/tim/Materials/ease" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
+															}
+, 															{
+																"key" : "mpearp",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
+															}
+, 															{
+																"key" : 11,
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
+															}
+, 															{
+																"key" : "filter",
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
+															}
+, 															{
+																"key" : 12,
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
 															}
 , 															{
 																"key" : "ease",
-																"value" : [ "/Users/tim/Materials/ease" ]
+																"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
 															}
  ]
 													}
@@ -1009,12 +985,10 @@
 													"numoutlets" : 4,
 													"outlettype" : [ "", "", "", "" ],
 													"patching_rect" : [ 355.0, 365.0, 195.0, 22.0 ],
-													"presentation_rect" : [ 355.0, 365.0, 195.0, 22.0 ],
 													"saved_object_attributes" : 													{
 														"embed" : 1
 													}
 ,
-													"style" : "",
 													"text" : "coll package-paths 1 @embed 1"
 												}
 
@@ -1028,8 +1002,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 21.0, 365.0, 94.0, 22.0 ],
-													"presentation_rect" : [ 21.0, 365.0, 94.0, 22.0 ],
-													"style" : "",
 													"text" : "prepend symbol"
 												}
 
@@ -1043,8 +1015,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 21.0, 320.0, 129.0, 22.0 ],
-													"presentation_rect" : [ 21.0, 320.0, 129.0, 22.0 ],
-													"style" : "",
 													"text" : "v current-min-package"
 												}
 
@@ -1056,9 +1026,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 28.0, 98.0, 24.0, 24.0 ],
-													"presentation_rect" : [ 28.0, 98.0, 24.0, 24.0 ],
-													"style" : ""
+													"parameter_enable" : 0,
+													"patching_rect" : [ 28.0, 98.0, 24.0, 24.0 ]
 												}
 
 											}
@@ -1071,9 +1040,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 28.0, 61.0, 30.0, 30.0 ],
-													"presentation_rect" : [ 28.0, 61.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 28.0, 61.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -1085,8 +1052,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "int" ],
 													"patching_rect" : [ 147.5, 202.0, 128.0, 22.0 ],
-													"presentation_rect" : [ 147.5, 202.0, 128.0, 22.0 ],
-													"style" : "",
 													"text" : "conformpath max boot"
 												}
 
@@ -1099,8 +1064,6 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 293.0, 151.0, 22.0 ],
-													"presentation_rect" : [ 143.0, 293.0, 151.0, 22.0 ],
-													"style" : "",
 													"text" : "regexp /.*/ @substitute %0"
 												}
 
@@ -1113,8 +1076,6 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 234.0, 175.0, 22.0 ],
-													"presentation_rect" : [ 143.0, 234.0, 175.0, 22.0 ],
-													"style" : "",
 													"text" : "regexp /source @substitute %0"
 												}
 
@@ -1127,8 +1088,6 @@
 													"numoutlets" : 3,
 													"outlettype" : [ "bang", "bang", "clear" ],
 													"patching_rect" : [ 28.0, 132.0, 473.0, 22.0 ],
-													"presentation_rect" : [ 28.0, 132.0, 473.0, 22.0 ],
-													"style" : "",
 													"text" : "t b b clear"
 												}
 
@@ -1141,8 +1100,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 163.5, 320.0, 96.0, 22.0 ],
-													"presentation_rect" : [ 163.5, 320.0, 96.0, 22.0 ],
-													"style" : "",
 													"text" : "prepend append"
 												}
 
@@ -1155,13 +1112,11 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 147.5, 173.0, 120.0, 22.0 ],
-													"presentation_rect" : [ 147.5, 173.0, 120.0, 22.0 ],
 													"saved_object_attributes" : 													{
 														"filename" : "min-package-list.js",
 														"parameter_enable" : 0
 													}
 ,
-													"style" : "",
 													"text" : "js min-package-list.js"
 												}
 
@@ -1174,9 +1129,7 @@
 													"maxclass" : "outlet",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 196.5, 421.0, 30.0, 30.0 ],
-													"presentation_rect" : [ 196.5, 421.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 196.5, 421.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -1188,8 +1141,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 409.0, 320.0, 69.0, 22.0 ],
-													"presentation_rect" : [ 409.0, 320.0, 69.0, 22.0 ],
-													"style" : "",
 													"text" : "store $2 $1"
 												}
 
@@ -1411,16 +1362,13 @@
 									}
 ,
 									"patching_rect" : [ 500.0, 132.0, 28.0, 28.0 ],
-									"presentation_rect" : [ 500.0, 132.0, 28.0, 28.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
 										"globalpatchername" : "",
-										"style" : "",
 										"tags" : ""
 									}
 ,
-									"style" : "",
 									"text" : "p"
 								}
 
@@ -1428,15 +1376,13 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"items" : [ "filter", ",", "zero", ",", "jit.mo", ",", "link", ",", "radial", ",", "min-devkit", ",", "min-playground", ",", "zoinks", ",", "yesplease", ",", "zuber", ",", "ease" ],
+									"items" : [ "synth", ",", "radial", ",", "sensel", ",", "sampler", ",", "min-devkit", ",", "jit.mo", ",", "taptools", ",", "zero", ",", "link", ",", "min-playground", ",", "mpearp", ",", "filter", ",", "ease" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 500.0, 164.0, 184.0, 28.0 ],
-									"presentation_rect" : [ 500.0, 164.0, 184.0, 28.0 ],
-									"style" : ""
+									"patching_rect" : [ 500.0, 164.0, 184.0, 28.0 ]
 								}
 
 							}
@@ -1455,7 +1401,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 80.0, 396.0, 336.0, 116.0 ],
-									"presentation_rect" : [ 80.0, 396.0, 336.0, 116.0 ],
 									"text" : "Once you've created your object, the project will be generated and opened automatically in your IDE (Xcode or Visual Studio). \n<br/><br/>\nYou can always <a href=\"Compile Code\">regenerate or compile it again</a> in the future in the \"Compile Code\" tab.\n\n"
 								}
 
@@ -1469,8 +1414,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 500.0, 524.0, 66.0, 23.0 ],
-									"presentation_rect" : [ 500.0, 524.0, 66.0, 23.0 ],
-									"style" : "",
 									"text" : "min.project"
 								}
 
@@ -1484,8 +1427,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"patching_rect" : [ 572.0, 352.0, 138.0, 23.0 ],
-									"presentation_rect" : [ 572.0, 352.0, 138.0, 23.0 ],
-									"style" : "",
 									"text" : "dialog New Object Name"
 								}
 
@@ -1497,9 +1438,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 572.0, 248.0, 92.0, 92.0 ],
-									"presentation_rect" : [ 572.0, 248.0, 92.0, 92.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 572.0, 248.0, 92.0, 92.0 ]
 								}
 
 							}
@@ -1512,8 +1452,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 500.0, 492.0, 112.0, 23.0 ],
-									"presentation_rect" : [ 500.0, 492.0, 112.0, 23.0 ],
-									"style" : "",
 									"text" : "create_object $1 $2"
 								}
 
@@ -1535,7 +1473,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
-									"presentation_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
 									"text" : "<a>Min</a><br/> Create packages and code objects for Max using C++"
 								}
 
@@ -1552,9 +1489,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 148.0, 4.0, 332.0, 160.0 ],
-									"presentation_rect" : [ 148.0, 4.0, 332.0, 160.0 ],
-									"proportion" : 0.39,
-									"style" : ""
+									"proportion" : 0.39
 								}
 
 							}
@@ -1573,9 +1508,7 @@
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 688.0, 280.0, 20.0, 20.0 ],
-									"presentation_rect" : [ 688.0, 280.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "2",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -1596,9 +1529,7 @@
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 688.0, 168.0, 20.0, 20.0 ],
-									"presentation_rect" : [ 688.0, 168.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "1",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -1748,27 +1679,26 @@
 
 							}
  ],
+						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bgfillcolor_type" : "gradient",
 						"bgfillcolor_color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
 						"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_angle" : 270.0,
-						"bgfillcolor_proportion" : 0.39
+						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ]
 					}
 ,
 					"patching_rect" : [ 65.0, 191.0, 129.0, 23.0 ],
-					"presentation_rect" : [ 65.0, 191.0, 129.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"fontname" : "Lato Light",
 						"fontsize" : 16.0,
 						"globalpatchername" : "",
-						"style" : "",
+						"locked_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p \"Create an Object\"",
 					"varname" : "basic_tab[3]"
 				}
@@ -1787,14 +1717,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 0,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
-						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
-						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -1831,8 +1760,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 160.0, 472.0, 143.0, 23.0 ],
-									"presentation_rect" : [ 160.0, 472.0, 143.0, 23.0 ],
-									"style" : "",
 									"text" : "s min-launcher-menubuild"
 								}
 
@@ -1847,9 +1774,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 752.0, 456.0, 66.0, 23.0 ],
-									"presentation_rect" : [ 752.0, 456.0, 66.0, 23.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
-									"style" : "",
 									"text" : "thispatcher"
 								}
 
@@ -1864,8 +1789,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 580.0, 456.0, 170.0, 23.0 ],
-									"presentation_rect" : [ 580.0, 456.0, 170.0, 23.0 ],
-									"style" : "",
 									"text" : "setactivetab \"Create an Object\""
 								}
 
@@ -1878,9 +1801,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 552.0, 456.0, 24.0, 24.0 ],
-									"presentation_rect" : [ 552.0, 456.0, 24.0, 24.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 552.0, 456.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -1899,7 +1821,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 552.0, 360.0, 312.0, 72.0 ],
-									"presentation_rect" : [ 552.0, 360.0, 312.0, 72.0 ],
 									"text" : "Once you have created your package, <a href=\"New Object\">you can then add new objects to the package</a> which you will code in C++."
 								}
 
@@ -1913,8 +1834,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 192.0, 408.0, 76.0, 23.0 ],
-									"presentation_rect" : [ 192.0, 408.0, 76.0, 23.0 ],
-									"style" : "",
 									"text" : "route symbol"
 								}
 
@@ -1928,8 +1847,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 392.0, 8.0, 349.0, 347.0 ],
-									"presentation_rect" : [ 392.0, 8.0, 349.0, 347.0 ]
+									"patching_rect" : [ 392.0, 8.0, 349.0, 347.0 ]
 								}
 
 							}
@@ -1942,8 +1860,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 192.0, 440.0, 125.0, 23.0 ],
-									"presentation_rect" : [ 192.0, 440.0, 125.0, 23.0 ],
-									"style" : "",
 									"text" : "v current-min-package"
 								}
 
@@ -1957,8 +1873,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 80.0, 472.0, 66.0, 23.0 ],
-									"presentation_rect" : [ 80.0, 472.0, 66.0, 23.0 ],
-									"style" : "",
 									"text" : "min.project"
 								}
 
@@ -1976,11 +1890,12 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 0,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
+										"classnamespace" : "box",
 										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
@@ -2016,8 +1931,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 205.0, 316.0, 57.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 316.0, 57.0, 22.0 ],
-													"style" : "",
 													"text" : "tosymbol"
 												}
 
@@ -2030,8 +1943,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 500.0, 194.0, 77.0, 22.0 ],
-													"presentation_rect" : [ 500.0, 194.0, 77.0, 22.0 ],
-													"style" : "",
 													"text" : "route symbol"
 												}
 
@@ -2043,9 +1954,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 205.0, 124.0, 24.0, 24.0 ],
-													"presentation_rect" : [ 205.0, 124.0, 24.0, 24.0 ],
-													"style" : ""
+													"parameter_enable" : 0,
+													"patching_rect" : [ 205.0, 124.0, 24.0, 24.0 ]
 												}
 
 											}
@@ -2058,9 +1968,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 409.0, 47.0, 30.0, 30.0 ],
-													"presentation_rect" : [ 409.0, 47.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 409.0, 47.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -2072,8 +1980,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 205.0, 345.0, 173.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 345.0, 173.0, 22.0 ],
-													"style" : "",
 													"text" : "combine path / package_name"
 												}
 
@@ -2086,8 +1992,6 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 205.0, 288.0, 233.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 288.0, 233.0, 22.0 ],
-													"style" : "",
 													"text" : "regexp /min-devkit/extras/ @substitute %0"
 												}
 
@@ -2100,8 +2004,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "int" ],
 													"patching_rect" : [ 205.0, 230.0, 128.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 230.0, 128.0, 22.0 ],
-													"style" : "",
 													"text" : "conformpath max boot"
 												}
 
@@ -2114,8 +2016,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 205.0, 158.0, 32.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 158.0, 32.0, 22.0 ],
-													"style" : "",
 													"text" : "path"
 												}
 
@@ -2128,9 +2028,7 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 205.0, 194.0, 67.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 194.0, 67.0, 22.0 ],
 													"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
-													"style" : "",
 													"text" : "thispatcher"
 												}
 
@@ -2143,9 +2041,7 @@
 													"maxclass" : "outlet",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 50.0, 378.0, 30.0, 30.0 ],
-													"presentation_rect" : [ 50.0, 378.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 50.0, 378.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -2233,16 +2129,13 @@
 									}
 ,
 									"patching_rect" : [ 80.0, 408.0, 24.0, 23.0 ],
-									"presentation_rect" : [ 80.0, 408.0, 24.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
 										"globalpatchername" : "",
-										"style" : "",
 										"tags" : ""
 									}
 ,
-									"style" : "",
 									"text" : "p"
 								}
 
@@ -2256,8 +2149,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"patching_rect" : [ 80.0, 372.0, 145.0, 23.0 ],
-									"presentation_rect" : [ 80.0, 372.0, 145.0, 23.0 ],
-									"style" : "",
 									"text" : "dialog New Package Name"
 								}
 
@@ -2269,9 +2160,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 80.0, 192.0, 92.0, 92.0 ],
-									"presentation_rect" : [ 80.0, 192.0, 92.0, 92.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 80.0, 192.0, 92.0, 92.0 ]
 								}
 
 							}
@@ -2290,7 +2180,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 204.0, 172.0, 388.0, 160.0 ],
-									"presentation_rect" : [ 204.0, 172.0, 388.0, 160.0 ],
 									"text" : "Creating objects begins with creating a Package to house them. <a href=\"New Package\">Click the button to create a new Package</a>. Give it a name, and then press enter.\n<br/><br/>\nA new Package with that name will be created in your Packages folder. The folder will be opened for you when it is done being created.\n\n"
 								}
 
@@ -2312,7 +2201,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
-									"presentation_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
 									"text" : "<a>Min</a><br/> Create packages and code objects for Max using C++"
 								}
 
@@ -2326,8 +2214,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 80.0, 440.0, 106.0, 23.0 ],
-									"presentation_rect" : [ 80.0, 440.0, 106.0, 23.0 ],
-									"style" : "",
 									"text" : "create_package $1"
 								}
 
@@ -2426,27 +2312,26 @@
 
 							}
  ],
+						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bgfillcolor_type" : "gradient",
 						"bgfillcolor_color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
 						"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_angle" : 270.0,
-						"bgfillcolor_proportion" : 0.39
+						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ]
 					}
 ,
 					"patching_rect" : [ 38.0, 157.0, 135.0, 23.0 ],
-					"presentation_rect" : [ 38.0, 157.0, 135.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"fontname" : "Lato Light",
 						"fontsize" : 16.0,
 						"globalpatchername" : "",
-						"style" : "",
+						"locked_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p \"Create a Package\"",
 					"varname" : "basic_tab[2]"
 				}
@@ -2465,14 +2350,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 0,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 1094.0, 580.0 ],
-						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
-						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -2509,8 +2393,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 884.0, 488.0, 76.0, 23.0 ],
-									"presentation_rect" : [ 884.0, 488.0, 76.0, 23.0 ],
-									"style" : "",
 									"text" : "route symbol"
 								}
 
@@ -2524,8 +2406,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 120.0, 180.0, 143.0, 23.0 ],
-									"presentation_rect" : [ 120.0, 180.0, 143.0, 23.0 ],
-									"style" : "",
 									"text" : "s min-launcher-menubuild"
 								}
 
@@ -2533,94 +2413,110 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 22,
+										"count" : 26,
 										"data" : [ 											{
 												"key" : 0,
-												"value" : [ "/Users/tim/Materials/filter" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
 											}
 , 											{
-												"key" : "filter",
-												"value" : [ "/Users/tim/Materials/filter" ]
+												"key" : "synth",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
 											}
 , 											{
 												"key" : 1,
-												"value" : [ "/Users/tim/Materials/zero" ]
-											}
-, 											{
-												"key" : "zero",
-												"value" : [ "/Users/tim/Materials/zero" ]
-											}
-, 											{
-												"key" : 2,
-												"value" : [ "/Users/tim/Materials/jit.mo" ]
-											}
-, 											{
-												"key" : "jit.mo",
-												"value" : [ "/Users/tim/Materials/jit.mo" ]
-											}
-, 											{
-												"key" : 3,
-												"value" : [ "/Users/tim/Materials/link" ]
-											}
-, 											{
-												"key" : "link",
-												"value" : [ "/Users/tim/Materials/link" ]
-											}
-, 											{
-												"key" : 4,
-												"value" : [ "/Users/tim/Materials/radial" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
 											}
 , 											{
 												"key" : "radial",
-												"value" : [ "/Users/tim/Materials/radial" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
 											}
 , 											{
-												"key" : 5,
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+												"key" : 2,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
+											}
+, 											{
+												"key" : "sensel",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
+											}
+, 											{
+												"key" : 3,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
+											}
+, 											{
+												"key" : "sampler",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
+											}
+, 											{
+												"key" : 4,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
 											}
 , 											{
 												"key" : "min-devkit",
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/min-devkit" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : 5,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+											}
+, 											{
+												"key" : "jit.mo",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
 											}
 , 											{
 												"key" : 6,
-												"value" : [ "/Users/tim/Materials/min-playground" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
 											}
 , 											{
-												"key" : "min-playground",
-												"value" : [ "/Users/tim/Materials/min-playground" ]
+												"key" : "taptools",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
 											}
 , 											{
 												"key" : 7,
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
 											}
 , 											{
-												"key" : "zoinks",
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/zoinks" ]
+												"key" : "zero",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
 											}
 , 											{
 												"key" : 8,
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
 											}
 , 											{
-												"key" : "yesplease",
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/yesplease" ]
+												"key" : "link",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
 											}
 , 											{
 												"key" : 9,
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
 											}
 , 											{
-												"key" : "zuber",
-												"value" : [ "/Users/tim/Documents/Max 7/Packages/zuber" ]
+												"key" : "min-playground",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
 											}
 , 											{
 												"key" : 10,
-												"value" : [ "/Users/tim/Materials/ease" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
+											}
+, 											{
+												"key" : "mpearp",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
+											}
+, 											{
+												"key" : 11,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
+											}
+, 											{
+												"key" : "filter",
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
+											}
+, 											{
+												"key" : 12,
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
 											}
 , 											{
 												"key" : "ease",
-												"value" : [ "/Users/tim/Materials/ease" ]
+												"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
 											}
  ]
 									}
@@ -2632,12 +2528,10 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "" ],
 									"patching_rect" : [ 884.0, 464.0, 174.0, 23.0 ],
-									"presentation_rect" : [ 884.0, 464.0, 174.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 1
 									}
 ,
-									"style" : "",
 									"text" : "coll package-paths 1 @embed 1"
 								}
 
@@ -2651,8 +2545,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "bang", "" ],
 									"patching_rect" : [ 48.0, 64.0, 41.0, 28.0 ],
-									"presentation_rect" : [ 48.0, 64.0, 41.0, 28.0 ],
-									"style" : "",
 									"text" : "sel 1"
 								}
 
@@ -2666,8 +2558,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"patching_rect" : [ 48.0, 32.0, 49.0, 28.0 ],
-									"presentation_rect" : [ 48.0, 32.0, 49.0, 28.0 ],
-									"style" : "",
 									"text" : "active"
 								}
 
@@ -2682,9 +2572,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 704.0, 84.0, 66.0, 23.0 ],
-									"presentation_rect" : [ 704.0, 84.0, 66.0, 23.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
-									"style" : "",
 									"text" : "thispatcher"
 								}
 
@@ -2700,8 +2588,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "front" ],
 									"patching_rect" : [ 704.0, 56.0, 41.0, 23.0 ],
-									"presentation_rect" : [ 704.0, 56.0, 41.0, 23.0 ],
-									"style" : "",
 									"text" : "t front"
 								}
 
@@ -2717,8 +2603,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 704.0, 28.0, 159.0, 23.0 ],
-									"presentation_rect" : [ 704.0, 28.0, 159.0, 23.0 ],
-									"style" : "",
 									"text" : "r min-launcher-compile-code"
 								}
 
@@ -2732,8 +2616,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 884.0, 440.0, 125.0, 23.0 ],
-									"presentation_rect" : [ 884.0, 440.0, 125.0, 23.0 ],
-									"style" : "",
 									"text" : "v current-min-package"
 								}
 
@@ -2747,8 +2629,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 140.0, 156.0, 125.0, 23.0 ],
-									"presentation_rect" : [ 140.0, 156.0, 125.0, 23.0 ],
-									"style" : "",
 									"text" : "v current-min-package"
 								}
 
@@ -2766,11 +2646,12 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 0,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
+										"classnamespace" : "box",
 										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
@@ -2806,8 +2687,6 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 270.0, 141.0, 22.0 ],
-													"presentation_rect" : [ 143.0, 270.0, 141.0, 22.0 ],
-													"style" : "",
 													"text" : "regexp .:\\\\/ @substitute /"
 												}
 
@@ -2820,8 +2699,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 21.5, 276.0, 94.0, 22.0 ],
-													"presentation_rect" : [ 21.5, 276.0, 94.0, 22.0 ],
-													"style" : "",
 													"text" : "prepend symbol"
 												}
 
@@ -2834,8 +2711,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
 													"patching_rect" : [ 268.0, 30.0, 58.0, 22.0 ],
-													"presentation_rect" : [ 268.0, 30.0, 58.0, 22.0 ],
-													"style" : "",
 													"text" : "loadbang"
 												}
 
@@ -2849,8 +2724,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 268.0, 86.0, 129.0, 22.0 ],
-													"presentation_rect" : [ 268.0, 86.0, 129.0, 22.0 ],
-													"style" : "",
 													"text" : "v current-min-package"
 												}
 
@@ -2863,8 +2736,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 268.0, 58.0, 63.0, 22.0 ],
-													"presentation_rect" : [ 268.0, 58.0, 63.0, 22.0 ],
-													"style" : "",
 													"text" : "min-devkit"
 												}
 
@@ -2878,8 +2749,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 15.0, 173.0, 129.0, 22.0 ],
-													"presentation_rect" : [ 15.0, 173.0, 129.0, 22.0 ],
-													"style" : "",
 													"text" : "v current-min-package"
 												}
 
@@ -2893,9 +2762,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 28.0, 46.0, 30.0, 30.0 ],
-													"presentation_rect" : [ 28.0, 46.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 28.0, 46.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -2906,9 +2773,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 28.0, 93.0, 24.0, 24.0 ],
-													"presentation_rect" : [ 28.0, 93.0, 24.0, 24.0 ],
-													"style" : ""
+													"parameter_enable" : 0,
+													"patching_rect" : [ 28.0, 93.0, 24.0, 24.0 ]
 												}
 
 											}
@@ -2920,8 +2786,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "int" ],
 													"patching_rect" : [ 147.5, 202.0, 128.0, 22.0 ],
-													"presentation_rect" : [ 147.5, 202.0, 128.0, 22.0 ],
-													"style" : "",
 													"text" : "conformpath max boot"
 												}
 
@@ -2934,8 +2798,6 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 302.0, 151.0, 22.0 ],
-													"presentation_rect" : [ 143.0, 302.0, 151.0, 22.0 ],
-													"style" : "",
 													"text" : "regexp /.*/ @substitute %0"
 												}
 
@@ -2948,8 +2810,6 @@
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
 													"patching_rect" : [ 143.0, 234.0, 175.0, 22.0 ],
-													"presentation_rect" : [ 143.0, 234.0, 175.0, 22.0 ],
-													"style" : "",
 													"text" : "regexp /source @substitute %0"
 												}
 
@@ -2962,8 +2822,6 @@
 													"numoutlets" : 3,
 													"outlettype" : [ "bang", "bang", "clear" ],
 													"patching_rect" : [ 28.0, 132.0, 473.0, 22.0 ],
-													"presentation_rect" : [ 28.0, 132.0, 473.0, 22.0 ],
-													"style" : "",
 													"text" : "t b b clear"
 												}
 
@@ -2976,8 +2834,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 163.5, 344.0, 96.0, 22.0 ],
-													"presentation_rect" : [ 163.5, 344.0, 96.0, 22.0 ],
-													"style" : "",
 													"text" : "prepend append"
 												}
 
@@ -2990,13 +2846,11 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 147.5, 173.0, 120.0, 22.0 ],
-													"presentation_rect" : [ 147.5, 173.0, 120.0, 22.0 ],
 													"saved_object_attributes" : 													{
 														"filename" : "min-package-list.js",
 														"parameter_enable" : 0
 													}
 ,
-													"style" : "",
 													"text" : "js min-package-list.js"
 												}
 
@@ -3009,9 +2863,7 @@
 													"maxclass" : "outlet",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 196.5, 421.0, 30.0, 30.0 ],
-													"presentation_rect" : [ 196.5, 421.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 196.5, 421.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -3132,16 +2984,13 @@
 									}
 ,
 									"patching_rect" : [ 108.0, 56.0, 28.0, 28.0 ],
-									"presentation_rect" : [ 108.0, 56.0, 28.0, 28.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
 										"globalpatchername" : "",
-										"style" : "",
 										"tags" : ""
 									}
 ,
-									"style" : "",
 									"text" : "p"
 								}
 
@@ -3149,15 +2998,13 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"items" : [ "filter", ",", "zero", ",", "jit.mo", ",", "link", ",", "radial", ",", "min-devkit", ",", "min-playground", ",", "zoinks", ",", "yesplease", ",", "zuber", ",", "ease" ],
+									"items" : [ "synth", ",", "radial", ",", "sensel", ",", "sampler", ",", "min-devkit", ",", "jit.mo", ",", "taptools", ",", "zero", ",", "link", ",", "min-playground", ",", "mpearp", ",", "filter", ",", "ease" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 108.0, 88.0, 192.0, 28.0 ],
-									"presentation_rect" : [ 108.0, 88.0, 192.0, 28.0 ],
-									"style" : ""
+									"patching_rect" : [ 108.0, 88.0, 192.0, 28.0 ]
 								}
 
 							}
@@ -3173,7 +3020,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 352.0, 92.0, 328.0, 168.0 ],
-									"presentation_rect" : [ 352.0, 92.0, 328.0, 168.0 ],
 									"text" : "<b>First choose the Package</b> with which you are working. \n<br/><br/>\nBy default this is the Min-DevKit. However, <b>You may choose any Min-based package</b> that you have installed which includes source code. This includes your own self-created packages."
 								}
 
@@ -3184,8 +3030,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 76.0, 296.0, 628.0, 12.0 ],
-									"presentation_rect" : [ 76.0, 296.0, 628.0, 12.0 ]
+									"patching_rect" : [ 76.0, 296.0, 628.0, 12.0 ]
 								}
 
 							}
@@ -3196,9 +3041,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 76.0, 360.0, 28.0, 28.0 ],
-									"presentation_rect" : [ 76.0, 360.0, 28.0, 28.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 76.0, 360.0, 28.0, 28.0 ]
 								}
 
 							}
@@ -3211,8 +3055,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 884.0, 520.0, 75.0, 23.0 ],
-									"presentation_rect" : [ 884.0, 520.0, 75.0, 23.0 ],
-									"style" : "",
 									"text" : "min.project"
 								}
 
@@ -3229,7 +3071,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 804.0, 156.0, 244.0, 208.0 ],
-									"presentation_rect" : [ 804.0, 156.0, 244.0, 208.0 ],
 									"text" : "Alternatively, you may generate a meta-project that contains all of the projects in the Min-DevKit.\n<br/><br/>\nIt will take a few moments to generate a project for your IDE (Xcode or Visual Studio). Once again, your IDE will open automatically when it is ready."
 								}
 
@@ -3243,8 +3084,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 136.0, 448.0, 71.0, 23.0 ],
-									"presentation_rect" : [ 136.0, 448.0, 71.0, 23.0 ],
-									"style" : "",
 									"text" : "generate $1"
 								}
 
@@ -3262,11 +3101,12 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 0,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
+										"classnamespace" : "box",
 										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
@@ -3302,8 +3142,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 227.5, 217.0, 79.0, 22.0 ],
-													"presentation_rect" : [ 227.5, 217.0, 79.0, 22.0 ],
-													"style" : "",
 													"text" : "prepend path"
 												}
 
@@ -3316,13 +3154,11 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 227.5, 244.0, 120.0, 22.0 ],
-													"presentation_rect" : [ 227.5, 244.0, 120.0, 22.0 ],
 													"saved_object_attributes" : 													{
 														"filename" : "min-package-list.js",
 														"parameter_enable" : 0
 													}
 ,
-													"style" : "",
 													"text" : "js min-package-list.js"
 												}
 
@@ -3335,8 +3171,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "bang", "" ],
 													"patching_rect" : [ 50.0, 288.0, 98.0, 22.0 ],
-													"presentation_rect" : [ 50.0, 288.0, 98.0, 22.0 ],
-													"style" : "",
 													"text" : "select min-devkit"
 												}
 
@@ -3350,9 +3184,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 152.0, 63.0, 30.0, 30.0 ],
-													"presentation_rect" : [ 152.0, 63.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 152.0, 63.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -3364,8 +3196,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 50.0, 341.0, 109.0, 22.0 ],
-													"presentation_rect" : [ 50.0, 341.0, 109.0, 22.0 ],
-													"style" : "",
 													"text" : "set min.hello-world"
 												}
 
@@ -3378,8 +3208,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 50.0, 315.0, 31.0, 22.0 ],
-													"presentation_rect" : [ 50.0, 315.0, 31.0, 22.0 ],
-													"style" : "",
 													"text" : "qlim"
 												}
 
@@ -3392,8 +3220,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 205.0, 330.0, 109.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 330.0, 109.0, 22.0 ],
-													"style" : "",
 													"text" : "prepend prefix"
 												}
 
@@ -3406,8 +3232,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 205.0, 294.0, 129.0, 22.0 ],
-													"presentation_rect" : [ 205.0, 294.0, 129.0, 22.0 ],
-													"style" : "",
 													"text" : "combine path /projects"
 												}
 
@@ -3420,9 +3244,7 @@
 													"maxclass" : "outlet",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 50.0, 378.0, 30.0, 30.0 ],
-													"presentation_rect" : [ 50.0, 378.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 50.0, 378.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -3496,16 +3318,13 @@
 									}
 ,
 									"patching_rect" : [ 108.0, 328.0, 28.0, 28.0 ],
-									"presentation_rect" : [ 108.0, 328.0, 28.0, 28.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
 										"globalpatchername" : "",
-										"style" : "",
 										"tags" : ""
 									}
 ,
-									"style" : "",
 									"text" : "p"
 								}
 
@@ -3514,16 +3333,14 @@
 								"box" : 								{
 									"autopopulate" : 1,
 									"id" : "obj-14",
-									"items" : "yesplease.hello-world",
+									"items" : [ "ease", ",", "ease.xfade", ",", "ease.xfade_tilde", ",", "ease_tilde", ",", "jit.ease", ",", "list.ease" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 108.0, 360.0, 192.0, 28.0 ],
-									"prefix" : "Macintosh HD:/Users/tim/Documents/Max 7/Packages/yesplease/source/projects/",
-									"presentation_rect" : [ 108.0, 360.0, 192.0, 28.0 ],
-									"style" : "",
+									"prefix" : "Macintosh HD:/Users/tim/Documents/Max 8/Packages/ease/source/projects/",
 									"types" : "fold"
 								}
 
@@ -3535,9 +3352,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 884.0, 364.0, 59.0, 59.0 ],
-									"presentation_rect" : [ 884.0, 364.0, 59.0, 59.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 884.0, 364.0, 59.0, 59.0 ]
 								}
 
 							}
@@ -3550,8 +3366,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 136.0, 476.0, 75.0, 23.0 ],
-									"presentation_rect" : [ 136.0, 476.0, 75.0, 23.0 ],
-									"style" : "",
 									"text" : "min.project"
 								}
 
@@ -3568,7 +3382,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 352.0, 364.0, 312.0, 144.0 ],
-									"presentation_rect" : [ 352.0, 364.0, 312.0, 144.0 ],
 									"text" : "<b>Choose an object</b> you would like to build from its source code.<br/><br/>\nIt will take a few moments to generate a project for your IDE (Xcode or Visual Studio). Once a project is generated, <b>your IDE will open automatically</b>."
 								}
 
@@ -3590,7 +3403,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
-									"presentation_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
 									"text" : "<a>Min</a><br/> Create packages and code objects for Max using C++"
 								}
 
@@ -3610,9 +3422,7 @@
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 320.0, 364.0, 20.0, 20.0 ],
-									"presentation_rect" : [ 320.0, 364.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "2",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -3633,9 +3443,7 @@
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 320.0, 92.0, 20.0, 20.0 ],
-									"presentation_rect" : [ 320.0, 92.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "1",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -3773,27 +3581,26 @@
 
 							}
  ],
+						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bgfillcolor_type" : "gradient",
 						"bgfillcolor_color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
 						"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_angle" : 270.0,
-						"bgfillcolor_proportion" : 0.39
+						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ]
 					}
 ,
 					"patching_rect" : [ 23.0, 120.0, 117.0, 23.0 ],
-					"presentation_rect" : [ 23.0, 120.0, 117.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"fontname" : "Lato Light",
 						"fontsize" : 16.0,
 						"globalpatchername" : "",
-						"style" : "",
+						"locked_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p \"Compile Code\"",
 					"varname" : "basic_tab[1]"
 				}
@@ -3812,14 +3619,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 0,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 117.0, 105.0, 1094.0, 580.0 ],
-						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
-						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -3857,8 +3663,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 760.0, 280.0, 171.0, 23.0 ],
-									"presentation_rect" : [ 760.0, 280.0, 171.0, 23.0 ],
-									"style" : "",
 									"text" : "setactivetab \"Create a Package\""
 								}
 
@@ -3871,9 +3675,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 732.0, 280.0, 24.0, 24.0 ],
-									"presentation_rect" : [ 732.0, 280.0, 24.0, 24.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 732.0, 280.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -3887,9 +3690,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 604.0, 328.0, 66.0, 23.0 ],
-									"presentation_rect" : [ 604.0, 328.0, 66.0, 23.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
-									"style" : "",
 									"text" : "thispatcher"
 								}
 
@@ -3904,8 +3705,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 404.0, 280.0, 155.0, 23.0 ],
-									"presentation_rect" : [ 404.0, 280.0, 155.0, 23.0 ],
-									"style" : "",
 									"text" : "setactivetab \"Compile Code\""
 								}
 
@@ -3918,9 +3717,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 376.0, 280.0, 24.0, 24.0 ],
-									"presentation_rect" : [ 376.0, 280.0, 24.0, 24.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 376.0, 280.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -3933,8 +3731,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 264.0, 0.0, 604.0, 176.0 ],
-									"presentation_rect" : [ 264.0, 0.0, 604.0, 176.0 ]
+									"patching_rect" : [ 264.0, 0.0, 604.0, 176.0 ]
 								}
 
 							}
@@ -3947,8 +3744,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 136.0, 0.0, 388.0, 176.0 ],
-									"presentation_rect" : [ 136.0, 0.0, 388.0, 176.0 ]
+									"patching_rect" : [ 136.0, 0.0, 388.0, 176.0 ]
 								}
 
 							}
@@ -3958,8 +3754,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 85.0, 305.0, 905.0, 15.0 ],
-									"presentation_rect" : [ 85.0, 305.0, 905.0, 15.0 ]
+									"patching_rect" : [ 85.0, 305.0, 905.0, 15.0 ]
 								}
 
 							}
@@ -3972,8 +3767,6 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "" ],
 									"patching_rect" : [ 30.0, 395.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 30.0, 395.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.threadcheck"
 								}
 
@@ -3986,8 +3779,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.0, 395.0, 220.0, 21.0 ],
-									"presentation_rect" : [ 140.0, 395.0, 220.0, 21.0 ],
-									"style" : "",
 									"text" : "message thread detection for developers"
 								}
 
@@ -4000,8 +3791,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 370.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 30.0, 370.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.stress~"
 								}
 
@@ -4014,8 +3803,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.0, 370.0, 177.0, 21.0 ],
-									"presentation_rect" : [ 140.0, 370.0, 177.0, 21.0 ],
-									"style" : "",
 									"text" : "dsp stress testing for developers"
 								}
 
@@ -4028,8 +3815,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.0, 470.0, 210.0, 21.0 ],
-									"presentation_rect" : [ 140.0, 470.0, 210.0, 21.0 ],
-									"style" : "",
 									"text" : "get the path to the preferences folder"
 								}
 
@@ -4043,8 +3828,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 30.0, 470.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 30.0, 470.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.prefs"
 								}
 
@@ -4057,8 +3840,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 500.0, 441.0, 167.0, 21.0 ],
-									"presentation_rect" : [ 500.0, 441.0, 167.0, 21.0 ],
-									"style" : "",
 									"text" : "return the value of pi"
 								}
 
@@ -4072,8 +3853,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 388.0, 441.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 388.0, 441.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.pi"
 								}
 
@@ -4086,8 +3865,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 875.0, 420.0, 160.0, 21.0 ],
-									"presentation_rect" : [ 875.0, 420.0, 160.0, 21.0 ],
-									"style" : "",
 									"text" : "like the phasor~ object"
 								}
 
@@ -4101,55 +3878,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 765.0, 420.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 765.0, 420.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.phasor~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-35",
-									"maxclass" : "newobj",
-									"numinlets" : 3,
-									"numoutlets" : 1,
-									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 765.0, 470.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 765.0, 470.0, 110.0, 23.0 ],
-									"style" : "",
-									"text" : "min.xfade~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-36",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 875.0, 450.0, 177.0, 35.0 ],
-									"presentation_linecount" : 2,
-									"presentation_rect" : [ 875.0, 450.0, 177.0, 35.0 ],
-									"style" : "",
-									"text" : "pan and crossfade audio signals, sharing a common code base"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-37",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 2,
-									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 765.0, 445.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 765.0, 445.0, 110.0, 23.0 ],
-									"style" : "",
-									"text" : "min.panner~"
 								}
 
 							}
@@ -4161,8 +3890,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.0, 496.0, 140.0, 21.0 ],
-									"presentation_rect" : [ 140.0, 496.0, 140.0, 21.0 ],
-									"style" : "",
 									"text" : "like the makenote object."
 								}
 
@@ -4176,8 +3903,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 30.0, 495.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 30.0, 495.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.note.make"
 								}
 
@@ -4190,8 +3915,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 500.0, 416.0, 167.0, 21.0 ],
-									"presentation_rect" : [ 500.0, 416.0, 167.0, 21.0 ],
-									"style" : "",
 									"text" : "process lists in various ways"
 								}
 
@@ -4205,8 +3928,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 388.0, 416.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 388.0, 416.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.list.process"
 								}
 
@@ -4219,8 +3940,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.0, 345.0, 220.0, 21.0 ],
-									"presentation_rect" : [ 140.0, 345.0, 220.0, 21.0 ],
-									"style" : "",
 									"text" : "a simple object posting the Max console"
 								}
 
@@ -4234,8 +3953,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 30.0, 345.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 30.0, 345.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.hello-world"
 								}
 
@@ -4249,8 +3966,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 765.0, 370.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 765.0, 370.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.edgelow~"
 								}
 
@@ -4265,8 +3980,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 875.0, 350.0, 100.0, 35.0 ],
 									"presentation_linecount" : 2,
-									"presentation_rect" : [ 875.0, 350.0, 100.0, 35.0 ],
-									"style" : "",
 									"text" : "fancy versions of the edge~ object"
 								}
 
@@ -4280,8 +3993,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 765.0, 345.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 765.0, 345.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.edge~"
 								}
 
@@ -4294,8 +4005,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.0, 520.0, 125.0, 21.0 ],
-									"presentation_rect" : [ 140.0, 520.0, 125.0, 21.0 ],
-									"style" : "",
 									"text" : "the same as dict.join"
 								}
 
@@ -4309,38 +4018,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "dictionary" ],
 									"patching_rect" : [ 30.0, 520.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 30.0, 520.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.dict.join"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-1",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 875.0, 395.0, 160.0, 21.0 ],
-									"presentation_rect" : [ 875.0, 395.0, 160.0, 21.0 ],
-									"style" : "",
-									"text" : "n-channel audio filter"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-32",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 765.0, 395.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 765.0, 395.0, 110.0, 23.0 ],
-									"style" : "",
-									"text" : "min.dcblocker~"
 								}
 
 							}
@@ -4352,8 +4030,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 500.0, 390.0, 186.0, 21.0 ],
-									"presentation_rect" : [ 500.0, 390.0, 186.0, 21.0 ],
-									"style" : "",
 									"text" : "convolution calculations using lists"
 								}
 
@@ -4367,8 +4043,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 388.0, 391.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 388.0, 391.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.convolve"
 								}
 
@@ -4381,8 +4055,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 875.0, 520.0, 190.0, 21.0 ],
-									"presentation_rect" : [ 875.0, 520.0, 190.0, 21.0 ],
-									"style" : "",
 									"text" : "record and playback audio loops"
 								}
 
@@ -4396,8 +4068,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
 									"patching_rect" : [ 765.0, 520.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 765.0, 520.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.buffer.loop~"
 								}
 
@@ -4410,8 +4080,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 875.0, 495.0, 190.0, 21.0 ],
-									"presentation_rect" : [ 875.0, 495.0, 190.0, 21.0 ],
-									"style" : "",
 									"text" : "like the index~ object"
 								}
 
@@ -4425,8 +4093,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "" ],
 									"patching_rect" : [ 765.0, 495.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 765.0, 495.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.buffer.index~"
 								}
 
@@ -4439,8 +4105,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.0, 420.0, 190.0, 21.0 ],
-									"presentation_rect" : [ 140.0, 420.0, 190.0, 21.0 ],
-									"style" : "",
 									"text" : "like metro, but interval is a random"
 								}
 
@@ -4454,8 +4118,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 30.0, 420.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 30.0, 420.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.beat.random"
 								}
 
@@ -4468,8 +4130,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.0, 445.0, 210.0, 21.0 ],
-									"presentation_rect" : [ 140.0, 445.0, 210.0, 21.0 ],
-									"style" : "",
 									"text" : "like metro, but using a sequence"
 								}
 
@@ -4483,8 +4143,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 30.0, 445.0, 110.0, 23.0 ],
-									"presentation_rect" : [ 30.0, 445.0, 110.0, 23.0 ],
-									"style" : "",
 									"text" : "min.beat.pattern"
 								}
 
@@ -4504,7 +4162,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 732.0, 180.0, 306.0, 91.0 ],
-									"presentation_rect" : [ 732.0, 180.0, 306.0, 91.0 ],
 									"text" : "You can <b>create your own objects in C++</b> with the Min Development Kit.<br/><br/> To get started, <a href=\"Create Package\">Create a Package</a>."
 								}
 
@@ -4524,7 +4181,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 374.0, 179.0, 323.0, 121.0 ],
-									"presentation_rect" : [ 374.0, 179.0, 323.0, 121.0 ],
 									"text" : "You can <a href=\"Compile Code\">re-build the objects yourself</a> that are provided with the Min Development Kit.\n<br/><br/>\nStart here if you are curious about code but not ready to start your own project."
 								}
 
@@ -4541,7 +4197,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 42.0, 179.0, 293.0, 86.0 ],
-									"presentation_rect" : [ 42.0, 179.0, 293.0, 86.0 ],
 									"text" : "You can <b>explore the objects provided</b> with the Min Development Kit.<br/><br/> No coding required."
 								}
 
@@ -4563,7 +4218,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
-									"presentation_rect" : [ 880.0, 16.0, 186.0, 66.0 ],
 									"text" : "<a>Min</a><br/> Create packages and code objects for Max using C++"
 								}
 
@@ -4577,8 +4231,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 200.0, 228.0, 89.0, 77.0 ],
-									"presentation_rect" : [ 200.0, 228.0, 89.0, 77.0 ]
+									"patching_rect" : [ 200.0, 228.0, 89.0, 77.0 ]
 								}
 
 							}
@@ -4632,27 +4285,26 @@
 
 							}
  ],
+						"bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"bgfillcolor_type" : "gradient",
 						"bgfillcolor_color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
 						"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"bgfillcolor_angle" : 270.0,
-						"bgfillcolor_proportion" : 0.39
+						"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ]
 					}
 ,
 					"patching_rect" : [ 10.0, 85.0, 76.0, 23.0 ],
-					"presentation_rect" : [ 10.0, 85.0, 76.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"editing_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"fontname" : "Lato Light",
 						"fontsize" : 16.0,
 						"globalpatchername" : "",
-						"style" : "",
+						"locked_bgcolor" : [ 0.960784, 0.960784, 0.960784, 1.0 ],
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p Overview",
 					"varname" : "basic_tab"
 				}
@@ -4662,7 +4314,7 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "min-package-list.js",
-				"bootpath" : "~/Materials/min-devkit/javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/min-devkit/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -4688,10 +4340,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "min.dcblocker~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "min.dict.join.mxo",
 				"type" : "iLaX"
 			}
@@ -4713,14 +4361,6 @@
 			}
 , 			{
 				"name" : "min.note.make.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "min.panner~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "min.xfade~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

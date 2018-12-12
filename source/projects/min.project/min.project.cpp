@@ -242,7 +242,7 @@ cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path
 						std::stringstream open_command;
 						open_command << "cd \"" << project_path_str << build_path << "\" && "
 									 << "open \"" << project_path_str << build_path << "/source/projects/" << project_path.name()
-									 << separator << project_path.name() << "_test.xcodeproj\"";
+									 << separator << project_path.name() << ".xcodeproj\"";
 						// cout << open_command.str() << endl;
 						result = std::system(open_command.str().c_str());
 					}
@@ -257,7 +257,7 @@ cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path
 		path              project_path {args};
 		std::stringstream vs_sln_path;
 		vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_path.name() << separator
-					<< project_path.name() << "_test.sln\"";
+					<< project_path.name() << ".sln\"";
 		ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe",
 			vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
 	}
