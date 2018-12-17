@@ -26,7 +26,7 @@ puts
 
 
 
-puts `cd #{@temp_dir} && git clone git@github.com:Cycling74/min-devkit.git --recurse-submodules --separate-git-dir=gitdir Min-DevKit && cd Min-DevKit && git checkout #{@git_rev} && git submodule update --recursive`
+puts `cd "#{@temp_dir}" && git clone git@github.com:Cycling74/min-devkit.git --recurse-submodules --separate-git-dir=gitdir Min-DevKit && cd Min-DevKit && git checkout #{@git_rev} && git submodule update --recursive`
 #  --depth 1 only works if we want the tip, not the specified commit like we want here
 # using --shallow-submodules above seems to cause some problems
 
@@ -46,65 +46,65 @@ puts
 # also, curl seems to corrupt the zips from Appveyor (but Travis is okay)
 # brew install wget
 
-`mkdir #{@temp_dir}/mac`
-`cd #{@temp_dir}/mac && wget #{@url_mac} && 7z x *.zip`
+`mkdir "#{@temp_dir}"/mac`
+`cd "#{@temp_dir}"/mac && wget #{@url_mac} && 7z x *.zip`
 
-`mkdir #{@temp_dir}/win32`
-`cd #{@temp_dir}/win32 && wget #{@url_win32} && 7z x *.zip`
+`mkdir "#{@temp_dir}"/win32`
+`cd "#{@temp_dir}"/win32 && wget #{@url_win32} && 7z x *.zip`
 
-`mkdir #{@temp_dir}/win64`
-`cd #{@temp_dir}/win64 && wget #{@url_win64} && 7z x *.zip`
+`mkdir "#{@temp_dir}"/win64`
+`cd "#{@temp_dir}"/win64 && wget #{@url_win64} && 7z x *.zip`
 
 
-`cp #{@temp_dir}/mac/min-devkit/package-info.json #{@deploy_dir}/`
-`mkdir #{@deploy_dir}/externals`
-`cp -r #{@temp_dir}/mac/min-devkit/externals/* #{@deploy_dir}/externals/`
-`cp -r #{@temp_dir}/win32/min-devkit/externals/* #{@deploy_dir}/externals/`
-`cp -r #{@temp_dir}/win64/min-devkit/externals/* #{@deploy_dir}/externals/`
+`cp "#{@temp_dir}"/mac/min-devkit/package-info.json "#{@deploy_dir}"/`
+`mkdir "#{@deploy_dir}"/externals`
+`cp -r "#{@temp_dir}"/mac/min-devkit/externals/* "#{@deploy_dir}"/externals/`
+`cp -r "#{@temp_dir}"/win32/min-devkit/externals/* "#{@deploy_dir}"/externals/`
+`cp -r "#{@temp_dir}"/win64/min-devkit/externals/* "#{@deploy_dir}"/externals/`
 
-`mkdir #{@deploy_dir}/tests`
-`cp -r #{@temp_dir}/mac/min-devkit/tests/* #{@deploy_dir}/tests/`
-`cp -r #{@temp_dir}/win32/min-devkit/tests/* #{@deploy_dir}/tests/`
-`cp -r #{@temp_dir}/win64/min-devkit/tests/* #{@deploy_dir}/tests/`
+`mkdir "#{@deploy_dir}"/tests`
+`cp -r "#{@temp_dir}"/mac/min-devkit/tests/* "#{@deploy_dir}"/tests/`
+`cp -r "#{@temp_dir}"/win32/min-devkit/tests/* "#{@deploy_dir}"/tests/`
+`cp -r "#{@temp_dir}"/win64/min-devkit/tests/* "#{@deploy_dir}"/tests/`
 
 
 # copy scripts (including cmake)
 
-`mkdir #{@deploy_dir}/build/`
+`mkdir "#{@deploy_dir}"/build/`
 
 
-`rm #{@deploy_dir}/ReadMe.md`
-`mv #{@deploy_dir}/ReadMe-Public.md #{@deploy_dir}/ReadMe.md`
+`rm "#{@deploy_dir}"/ReadMe.md`
+`mv "#{@deploy_dir}"/ReadMe-Public.md "#{@deploy_dir}"/ReadMe.md`
 
 
 # Cleanup
 
-`rm #{@deploy_dir}/.git`
+`rm "#{@deploy_dir}"/.git`
 #`rm #{@deploy_dir}/.gitignore` -- LEAVE THIS IN, REQUIRED BY MIN.PROJECT
-`rm #{@deploy_dir}/.gitmodules`
-`rm #{@deploy_dir}/.travis.yml`
-`rm #{@deploy_dir}/appveyor.yml`
-`rm #{@deploy_dir}/package-info.json.in`
-`rm #{@deploy_dir}/script/deploy.rb`
+`rm "#{@deploy_dir}"/.gitmodules`
+`rm "#{@deploy_dir}"/.travis.yml`
+`rm "#{@deploy_dir}"/appveyor.yml`
+`rm "#{@deploy_dir}"/package-info.json.in`
+`rm "#{@deploy_dir}"/script/deploy.rb`
 
-`rm #{@deploy_dir}/source/min-api/.git`
-`rm #{@deploy_dir}/source/min-api/.gitignore`
-`rm #{@deploy_dir}/source/min-api/.gitmodules`
+`rm "#{@deploy_dir}"/source/min-api/.git`
+`rm "#{@deploy_dir}"/source/min-api/.gitignore`
+`rm "#{@deploy_dir}"/source/min-api/.gitmodules`
 
-`rm #{@deploy_dir}/source/min-lib/.git`
-`rm #{@deploy_dir}/source/min-lib/.gitignore`
-`rm #{@deploy_dir}/source/min-lib/.gitmodules`
+`rm "#{@deploy_dir}"/source/min-lib/.git`
+`rm "#{@deploy_dir}"/source/min-lib/.gitignore`
+`rm "#{@deploy_dir}"/source/min-lib/.gitmodules`
 
-`rm #{@deploy_dir}/source/min-api/max-api/.git`
-`rm #{@deploy_dir}/source/min-api/max-api/.gitignore`
+`rm "#{@deploy_dir}"/source/min-api/max-api/.git`
+`rm "#{@deploy_dir}"/source/min-api/max-api/.gitignore`
 
-`rm #{@deploy_dir}/source/min-api/test/catch/.git`
-`rm #{@deploy_dir}/source/min-api/test/catch/.gitignore`
-`rm #{@deploy_dir}/source/min-api/test/catch/.gitattributes`
-`rm -rf #{@deploy_dir}/source/min-api/test/catch/.github`
+`rm "#{@deploy_dir}"/source/min-api/test/catch/.git`
+`rm "#{@deploy_dir}"/source/min-api/test/catch/.gitignore`
+`rm "#{@deploy_dir}"/source/min-api/test/catch/.gitattributes`
+`rm -rf "#{@deploy_dir}"/source/min-api/test/catch/.github`
 
-`rm #{@deploy_dir}/source/min-api/include/readerwriterqueue/.git`
-`rm #{@deploy_dir}/source/min-api/include/readerwriterqueue/.gitignore`
+`rm "#{@deploy_dir}"/source/min-api/include/readerwriterqueue/.git`
+`rm "#{@deploy_dir}"/source/min-api/include/readerwriterqueue/.gitignore`
 
 
 # Do ship unit tests for the Package Manager release -- min.project requires them!
