@@ -19,9 +19,8 @@ puts
 
 
 
-@url_mac = "https://s3-us-west-2.amazonaws.com/cycling74-ci/min-devkit/min-devkit-mac-#{@git_rev}-release.zip"
-@url_win32 = "https://s3-us-west-2.amazonaws.com/cycling74-ci/min-devkit/min-devkit-win-x86-#{@git_rev}-Release.zip"
-@url_win64 = "https://s3-us-west-2.amazonaws.com/cycling74-ci/min-devkit/min-devkit-win-x64-#{@git_rev}-Release.zip"
+@url_mac = "https://s3-us-west-1.amazonaws.com/cycling74-ci-public/min-devkit/min-devkit-mac-#{@git_rev}-release.zip"
+@url_win64 = "https://s3-us-west-1.amazonaws.com/cycling74-ci-public/min-devkit/min-devkit-win-x64-#{@git_rev}-Release.zip"
 
 
 
@@ -49,9 +48,6 @@ puts
 `mkdir "#{@temp_dir}"/mac`
 `cd "#{@temp_dir}"/mac && wget #{@url_mac} && 7z x *.zip`
 
-`mkdir "#{@temp_dir}"/win32`
-`cd "#{@temp_dir}"/win32 && wget #{@url_win32} && 7z x *.zip`
-
 `mkdir "#{@temp_dir}"/win64`
 `cd "#{@temp_dir}"/win64 && wget #{@url_win64} && 7z x *.zip`
 
@@ -59,12 +55,10 @@ puts
 `cp "#{@temp_dir}"/mac/min-devkit/package-info.json "#{@deploy_dir}"/`
 `mkdir "#{@deploy_dir}"/externals`
 `cp -r "#{@temp_dir}"/mac/min-devkit/externals/* "#{@deploy_dir}"/externals/`
-`cp -r "#{@temp_dir}"/win32/min-devkit/externals/* "#{@deploy_dir}"/externals/`
 `cp -r "#{@temp_dir}"/win64/min-devkit/externals/* "#{@deploy_dir}"/externals/`
 
 `mkdir "#{@deploy_dir}"/tests`
 `cp -r "#{@temp_dir}"/mac/min-devkit/tests/* "#{@deploy_dir}"/tests/`
-`cp -r "#{@temp_dir}"/win32/min-devkit/tests/* "#{@deploy_dir}"/tests/`
 `cp -r "#{@temp_dir}"/win64/min-devkit/tests/* "#{@deploy_dir}"/tests/`
 
 
@@ -98,10 +92,8 @@ puts
 `rm "#{@deploy_dir}"/source/min-api/max-api/.git`
 `rm "#{@deploy_dir}"/source/min-api/max-api/.gitignore`
 
-`rm "#{@deploy_dir}"/source/min-api/test/catch/.git`
-`rm "#{@deploy_dir}"/source/min-api/test/catch/.gitignore`
-`rm "#{@deploy_dir}"/source/min-api/test/catch/.gitattributes`
-`rm -rf "#{@deploy_dir}"/source/min-api/test/catch/.github`
+`rm -f "#{@deploy_dir}"/source/min-api/test/mock/.git`
+`rm -f "#{@deploy_dir}"/source/min-api/test/mock/.gitignore`
 
 `rm "#{@deploy_dir}"/source/min-api/include/readerwriterqueue/.git`
 `rm "#{@deploy_dir}"/source/min-api/include/readerwriterqueue/.gitignore`
