@@ -80,6 +80,8 @@ puts
 `rm "#{@deploy_dir}"/appveyor.yml`
 `rm "#{@deploy_dir}"/package-info.json.in`
 `rm "#{@deploy_dir}"/script/deploy.rb`
+`rm "#{@deploy_dir}"/script/doc.rb`
+`rm "#{@deploy_dir}"/script/create_package.rb.rb`
 
 `rm "#{@deploy_dir}"/source/min-api/.git`
 `rm "#{@deploy_dir}"/source/min-api/.gitignore`
