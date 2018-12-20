@@ -7,7 +7,7 @@
 `mkdir "#{@this_dir}/../min-devkit-deploy"`
 Dir.chdir("#{@this_dir}/../min-devkit-deploy")
 @temp_dir = Dir.pwd
-@deploy_dir = "#{@temp_dir}/Min-DevKit"
+@deploy_dir = "#{@temp_dir}/min-devkit"
 Dir.chdir @this_dir
 
 
@@ -25,7 +25,7 @@ puts
 
 
 
-puts `cd "#{@temp_dir}" && git clone git@github.com:Cycling74/min-devkit.git --recurse-submodules --separate-git-dir=gitdir Min-DevKit && cd Min-DevKit && git checkout #{@git_rev} && git submodule update --recursive`
+puts `cd "#{@temp_dir}" && git clone git@github.com:Cycling74/min-devkit.git --recurse-submodules --separate-git-dir=gitdir min-devkit && cd min-devkit && git checkout #{@git_rev} && git submodule update --recursive`
 #  --depth 1 only works if we want the tip, not the specified commit like we want here
 # using --shallow-submodules above seems to cause some problems
 
