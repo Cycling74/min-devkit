@@ -32,6 +32,7 @@ The steps to follow are these:
 2. Rename the folder to the name you desire for your object.
 3. Rename the source file for the object to match the name of the folder.
 4. If creating a unit test for your object, rename the source file for the unit test to match the name of the folder but with "_test" added to the end.
+5. Open the source of the unit test and change the `#include` statement that pulls in the source of the object to be tested to the name of your object.
 
 
 ## 3. Use CMake to regenerate project files
