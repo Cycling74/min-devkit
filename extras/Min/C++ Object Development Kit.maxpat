@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 117.0, 79.0, 1094.0, 606.0 ],
+		"rect" : [ 340.0, 276.0, 1094.0, 606.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -96,8 +96,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 360.0, 476.0, 177.0, 47.0 ],
-									"presentation_linecount" : 2,
-									"text" : ";\rmax launchbrowser $1"
+									"text" : ";\r\nmax launchbrowser $1"
 								}
 
 							}
@@ -253,8 +252,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 260.0, 387.0, 177.0, 47.0 ],
-									"presentation_linecount" : 2,
-									"text" : ";\rmax launchbrowser $1"
+									"text" : ";\r\nmax launchbrowser $1"
 								}
 
 							}
@@ -429,7 +427,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 572.0, 412.0, 52.0, 37.0 ],
-									"presentation_linecount" : 2,
 									"text" : "route symbol"
 								}
 
@@ -444,7 +441,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 500.0, 412.0, 52.0, 37.0 ],
-									"presentation_linecount" : 2,
 									"text" : "route symbol"
 								}
 
@@ -452,110 +448,62 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 26,
+										"count" : 14,
 										"data" : [ 											{
 												"key" : 0,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/synth" ]
 											}
 , 											{
 												"key" : "synth",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/synth" ]
 											}
 , 											{
 												"key" : 1,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
-											}
-, 											{
-												"key" : "radial",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
-											}
-, 											{
-												"key" : 2,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
-											}
-, 											{
-												"key" : "sensel",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
-											}
-, 											{
-												"key" : 3,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
-											}
-, 											{
-												"key" : "sampler",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
-											}
-, 											{
-												"key" : 4,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
-											}
-, 											{
-												"key" : "min-devkit",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
-											}
-, 											{
-												"key" : 5,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
-											}
-, 											{
-												"key" : "jit.mo",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
-											}
-, 											{
-												"key" : 6,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
-											}
-, 											{
-												"key" : "taptools",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
-											}
-, 											{
-												"key" : 7,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
-											}
-, 											{
-												"key" : "zero",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
-											}
-, 											{
-												"key" : 8,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
-											}
-, 											{
-												"key" : "link",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
-											}
-, 											{
-												"key" : 9,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
-											}
-, 											{
-												"key" : "min-playground",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
-											}
-, 											{
-												"key" : 10,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
-											}
-, 											{
-												"key" : "mpearp",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
-											}
-, 											{
-												"key" : 11,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
-											}
-, 											{
-												"key" : "filter",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
-											}
-, 											{
-												"key" : 12,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/ease" ]
 											}
 , 											{
 												"key" : "ease",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/ease" ]
+											}
+, 											{
+												"key" : 2,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/max_cpg" ]
+											}
+, 											{
+												"key" : "max_cpg",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/max_cpg" ]
+											}
+, 											{
+												"key" : 3,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+											}
+, 											{
+												"key" : "jit.mo",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+											}
+, 											{
+												"key" : 4,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sampler" ]
+											}
+, 											{
+												"key" : "sampler",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sampler" ]
+											}
+, 											{
+												"key" : 5,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : "min-devkit",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : 6,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sensel" ]
+											}
+, 											{
+												"key" : "sensel",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sensel" ]
 											}
  ]
 									}
@@ -871,110 +819,62 @@
 , 											{
 												"box" : 												{
 													"coll_data" : 													{
-														"count" : 26,
+														"count" : 14,
 														"data" : [ 															{
 																"key" : 0,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/synth" ]
 															}
 , 															{
 																"key" : "synth",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/synth" ]
 															}
 , 															{
 																"key" : 1,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
-															}
-, 															{
-																"key" : "radial",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
-															}
-, 															{
-																"key" : 2,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
-															}
-, 															{
-																"key" : "sensel",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
-															}
-, 															{
-																"key" : 3,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
-															}
-, 															{
-																"key" : "sampler",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
-															}
-, 															{
-																"key" : 4,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
-															}
-, 															{
-																"key" : "min-devkit",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
-															}
-, 															{
-																"key" : 5,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
-															}
-, 															{
-																"key" : "jit.mo",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
-															}
-, 															{
-																"key" : 6,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
-															}
-, 															{
-																"key" : "taptools",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
-															}
-, 															{
-																"key" : 7,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
-															}
-, 															{
-																"key" : "zero",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
-															}
-, 															{
-																"key" : 8,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
-															}
-, 															{
-																"key" : "link",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
-															}
-, 															{
-																"key" : 9,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
-															}
-, 															{
-																"key" : "min-playground",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
-															}
-, 															{
-																"key" : 10,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
-															}
-, 															{
-																"key" : "mpearp",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
-															}
-, 															{
-																"key" : 11,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
-															}
-, 															{
-																"key" : "filter",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
-															}
-, 															{
-																"key" : 12,
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/ease" ]
 															}
 , 															{
 																"key" : "ease",
-																"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/ease" ]
+															}
+, 															{
+																"key" : 2,
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/max_cpg" ]
+															}
+, 															{
+																"key" : "max_cpg",
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/max_cpg" ]
+															}
+, 															{
+																"key" : 3,
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+															}
+, 															{
+																"key" : "jit.mo",
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+															}
+, 															{
+																"key" : 4,
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sampler" ]
+															}
+, 															{
+																"key" : "sampler",
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sampler" ]
+															}
+, 															{
+																"key" : 5,
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+															}
+, 															{
+																"key" : "min-devkit",
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+															}
+, 															{
+																"key" : 6,
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sensel" ]
+															}
+, 															{
+																"key" : "sensel",
+																"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sensel" ]
 															}
  ]
 													}
@@ -1376,7 +1276,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"items" : [ "synth", ",", "radial", ",", "sensel", ",", "sampler", ",", "min-devkit", ",", "jit.mo", ",", "taptools", ",", "zero", ",", "link", ",", "min-playground", ",", "mpearp", ",", "filter", ",", "ease" ],
+									"items" : [ "synth", ",", "ease", ",", "max_cpg", ",", "jit.mo", ",", "sampler", ",", "min-devkit", ",", "sensel" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -1896,7 +1796,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 114.0, 104.0, 640.0, 480.0 ],
+										"rect" : [ 184.0, 104.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -1991,8 +1891,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 5,
 													"outlettype" : [ "", "", "", "", "" ],
-													"patching_rect" : [ 205.0, 288.0, 233.0, 22.0 ],
-													"text" : "regexp /min-devkit/extras/ @substitute %0"
+													"patching_rect" : [ 205.0, 288.0, 256.0, 22.0 ],
+													"text" : "regexp /min-devkit/extras/Min/ @substitute %0"
 												}
 
 											}
@@ -2413,110 +2313,62 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 26,
+										"count" : 14,
 										"data" : [ 											{
 												"key" : 0,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/synth" ]
 											}
 , 											{
 												"key" : "synth",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/synth" ]
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/synth" ]
 											}
 , 											{
 												"key" : 1,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
-											}
-, 											{
-												"key" : "radial",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/radial" ]
-											}
-, 											{
-												"key" : 2,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
-											}
-, 											{
-												"key" : "sensel",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/sensel" ]
-											}
-, 											{
-												"key" : 3,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
-											}
-, 											{
-												"key" : "sampler",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/sampler" ]
-											}
-, 											{
-												"key" : 4,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
-											}
-, 											{
-												"key" : "min-devkit",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-devkit" ]
-											}
-, 											{
-												"key" : 5,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
-											}
-, 											{
-												"key" : "jit.mo",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/jit.mo" ]
-											}
-, 											{
-												"key" : 6,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
-											}
-, 											{
-												"key" : "taptools",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/taptools" ]
-											}
-, 											{
-												"key" : 7,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
-											}
-, 											{
-												"key" : "zero",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/zero" ]
-											}
-, 											{
-												"key" : 8,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
-											}
-, 											{
-												"key" : "link",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/link" ]
-											}
-, 											{
-												"key" : 9,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
-											}
-, 											{
-												"key" : "min-playground",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/min-playground" ]
-											}
-, 											{
-												"key" : 10,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
-											}
-, 											{
-												"key" : "mpearp",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/mpearp" ]
-											}
-, 											{
-												"key" : 11,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
-											}
-, 											{
-												"key" : "filter",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/filter" ]
-											}
-, 											{
-												"key" : 12,
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/ease" ]
 											}
 , 											{
 												"key" : "ease",
-												"value" : [ "/Users/tim/Documents/Max 8/Packages/ease" ]
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/ease" ]
+											}
+, 											{
+												"key" : 2,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/max_cpg" ]
+											}
+, 											{
+												"key" : "max_cpg",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/max_cpg" ]
+											}
+, 											{
+												"key" : 3,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+											}
+, 											{
+												"key" : "jit.mo",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/jit.mo" ]
+											}
+, 											{
+												"key" : 4,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sampler" ]
+											}
+, 											{
+												"key" : "sampler",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sampler" ]
+											}
+, 											{
+												"key" : 5,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : "min-devkit",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/min-devkit" ]
+											}
+, 											{
+												"key" : 6,
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sensel" ]
+											}
+, 											{
+												"key" : "sensel",
+												"value" : [ "C:/Users/tim/Documents/Max 8/Packages/sensel" ]
 											}
  ]
 									}
@@ -3625,7 +3477,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 117.0, 105.0, 1094.0, 580.0 ],
+						"rect" : [ 340.0, 302.0, 1094.0, 580.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 16.0,
@@ -3979,7 +3831,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 875.0, 350.0, 100.0, 35.0 ],
-									"presentation_linecount" : 2,
 									"text" : "fancy versions of the edge~ object"
 								}
 
@@ -4315,77 +4166,77 @@
 		"dependency_cache" : [ 			{
 				"name" : "min-package-list.js",
 				"bootpath" : "~/Documents/Max 8/Packages/min-devkit/javascript",
-				"patcherrelativepath" : "../javascript",
+				"patcherrelativepath" : "../../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "min.beat.pattern.mxo",
-				"type" : "iLaX"
+				"name" : "min.beat.pattern.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.beat.random.mxo",
-				"type" : "iLaX"
+				"name" : "min.beat.random.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.buffer.index~.mxo",
-				"type" : "iLaX"
+				"name" : "min.buffer.index~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.buffer.loop~.mxo",
-				"type" : "iLaX"
+				"name" : "min.buffer.loop~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.convolve.mxo",
-				"type" : "iLaX"
+				"name" : "min.convolve.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.dict.join.mxo",
-				"type" : "iLaX"
+				"name" : "min.dict.join.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.edge~.mxo",
-				"type" : "iLaX"
+				"name" : "min.edge~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.edgelow~.mxo",
-				"type" : "iLaX"
+				"name" : "min.edgelow~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.hello-world.mxo",
-				"type" : "iLaX"
+				"name" : "min.hello-world.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.list.process.mxo",
-				"type" : "iLaX"
+				"name" : "min.list.process.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.note.make.mxo",
-				"type" : "iLaX"
+				"name" : "min.note.make.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.phasor~.mxo",
-				"type" : "iLaX"
+				"name" : "min.phasor~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.pi.mxo",
-				"type" : "iLaX"
+				"name" : "min.pi.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.prefs.mxo",
-				"type" : "iLaX"
+				"name" : "min.prefs.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.stress~.mxo",
-				"type" : "iLaX"
+				"name" : "min.stress~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.threadcheck.mxo",
-				"type" : "iLaX"
+				"name" : "min.threadcheck.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "min.project.mxo",
-				"type" : "iLaX"
+				"name" : "min.project.mxe64",
+				"type" : "mx64"
 			}
  ],
 		"autosave" : 0
