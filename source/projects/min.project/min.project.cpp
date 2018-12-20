@@ -150,8 +150,19 @@ public:
 				path devkit_licensefile {devkit_path_str + "/License.md"};
 				devkit_licensefile.copy(package_path, "License.md");
 
-				path devkit_readmefile {devkit_path_str + "/ReadMe.md"};
+				path devkit_readmefile {devkit_path_str + "/script/ReadMe-Template.md"};
 				devkit_readmefile.copy(package_path, "ReadMe.md");
+				string readme_content;
+				{
+					std::ifstream in {static_cast<string>(package_path) + "/ReadMe.md"};
+					readme_content = string {std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>()};
+					std::regex rex {"My Package"};
+					readme_content = std::regex_replace(readme_content, rex, package_path.name());
+				}
+				{
+					std::ofstream out {static_cast<string>(package_path) + "/ReadMe.md"};
+					out << readme_content;
+				}
 
 				path devkit_iconfile {devkit_path_str + "/icon.png"};
 				devkit_iconfile.copy(package_path, "icon.png");

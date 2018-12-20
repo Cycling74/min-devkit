@@ -60,7 +60,7 @@ FileUtils::mkdir_p "#{target_dir}/source/projects/#{hello_world}"
 FileUtils::mkdir_p "#{target_dir}/help"
 
 FileUtils::cp "#{source_dir}/package-info.json.in", "#{target_dir}/package-info.json.in"
-FileUtils::cp "#{source_dir}/ReadMe.md", "#{target_dir}/ReadMe.md"
+FileUtils::cp "#{source_dir}/script/ReadMe-Template.md", "#{target_dir}/ReadMe.md"
 FileUtils::cp "#{source_dir}/License.md", "#{target_dir}/License.md"
 FileUtils::cp "#{source_dir}/icon.png", "#{target_dir}/icon.png"
 FileUtils::cp "#{source_dir}/CMakeLists.txt",  "#{target_dir}/CMakeLists.txt"
@@ -90,7 +90,7 @@ end
 
 substitute_strings_in_file "#{target_dir}/help/#{hello_world}.maxhelp", "min.hello-world", "#{hello_world}"
 substitute_strings_in_file "#{target_dir}/source/projects/#{hello_world}/#{hello_world}_test.cpp", "min.hello-world", "#{hello_world}"
-
+substitute_strings_in_file "#{target_dir}/ReadMe.md", "My Package", "#{package_name}"
 
 
 Dir.chdir "#{target_dir}"
