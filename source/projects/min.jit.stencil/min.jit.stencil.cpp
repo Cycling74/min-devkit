@@ -9,38 +9,37 @@ using namespace c74::min;
 
 class jit_stencil : public object<jit_stencil>, public matrix_operator<> {
 public:
-	MIN_DESCRIPTION {"Apply a 5-point stencil operation to a matrix. See "
-					"https://en.wikipedia.org/wiki/Five-point_stencil for more information."};
-	MIN_TAGS {"video, blur/sharpen"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"jit.avg4"};
+	MIN_DESCRIPTION	{ "Apply a 5-point stencil operation to a matrix. See https://en.wikipedia.org/wiki/Five-point_stencil for more information." };
+	MIN_TAGS		{ "video, blur/sharpen" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "jit.avg4" };
 
-	inlet<>  input {this, "(matrix) Input", "matrix"};
-	outlet<> output {this, "(matrix) Output", "matrix"};
-
+	inlet<>  input	{ this, "(matrix) Input", "matrix" };
+	outlet<> output	{ this, "(matrix) Output", "matrix" };
 
 	// TODO: mode attr for how to handle the edges
 
-
-	attribute<int> x {this, "x", 0, description {"The horizontal distance from each incoming cell to the source cells used for averaging."},
+	attribute<int> x {this, "x", 0,
+		description {"The horizontal distance from each incoming cell to the source cells used for averaging."},
 		setter { MIN_FUNCTION {
 			double value = args[0];
 
 			if (value < 0)
 				value = 0;
 			return {value};
-		}}};
+		}}
+	};
 
-
-	attribute<int> y {this, "y", 0, description {"The vertical distance from each incoming cell to the source cells used for averaging."},
+	attribute<int> y {this, "y", 0,
+		description {"The vertical distance from each incoming cell to the source cells used for averaging."},
 		setter { MIN_FUNCTION {
 			double value = args[0];
 
 			if (value < 0)
 				value = 0;
 			return {value};
-		}}};
-
+		}}
+	};
 
 	template<class matrix_type, size_t plane_count>
 	cell<matrix_type, plane_count> calc_cell(cell<matrix_type, plane_count> input, const matrix_info& info, matrix_coord& position) {

@@ -61,14 +61,13 @@ std::string min_devkit_path() {
 
 class project : public object<project> {
 public:
-	MIN_DESCRIPTION {"Get the approximate value of pi."};
-	MIN_TAGS {"math"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"sin, cos, atan~, jit.op, gen~"};
+	MIN_DESCRIPTION	{ "Get the approximate value of pi." };
+	MIN_TAGS		{ "math" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "sin, cos, atan~, jit.op, gen~" };
 
-	inlet<>  input {this, "(bang) get the approximate value of pi"};
-	outlet<> output {this, "(number) progress in percent"};
-
+	inlet<>  input	{ this, "(bang) get the approximate value of pi" };
+	outlet<> output	{ this, "(number) progress in percent" };
 
 	message<> create_package {this, "create_package", "Create a Min-based package.",
 		MIN_FUNCTION {
@@ -182,10 +181,11 @@ public:
 				cerr << "A problem occurred trying to create the new package" << endl;
 			}
 			return {};
-		}};
+		}
+	};
 
 
-	message<> generate {this, "generate", "Generate IDE projects and then open the specified project only.",
+	message<> generate { this, "generate", "Generate IDE projects and then open the specified project only.",
 		MIN_FUNCTION {
 			try {
 				auto   devkit_path_str {min_devkit_path()};
@@ -280,10 +280,11 @@ cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path
 				cerr << "Could not generate project(s) with that specification." << endl;
 			}
 			return {};
-		}};
+		}
+	};
 
 
-	message<> create_object {this, "create_object", "Add a new object to a package.",
+	message<> create_object { this, "create_object", "Add a new object to a package.",
 		MIN_FUNCTION {
 			auto        devkit_path_str {min_devkit_path()};
 			auto        package_path_str {static_cast<string>(args[0])};
@@ -361,16 +362,19 @@ cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path
 
 			generate( {{static_cast<string>(package_helloworld_path)}});
 			return {};
-		}};
+		}
+	};
 
 
-	message<> anything {this, "anything", "Generate IDE projects for the package whose name is passed.",
+	message<> anything { this, "anything", "Generate IDE projects for the package whose name is passed.",
 		MIN_FUNCTION {
 			path   project_path {static_cast<string>(args[0])};
 			string project_path_str = static_cast<string>(project_path);
 			project_path_str += "/source/project/placeholder";
 			return generate( {project_path_str, 1});
-		}};
+		}
+	};
+
 };
 
 MIN_EXTERNAL(project);

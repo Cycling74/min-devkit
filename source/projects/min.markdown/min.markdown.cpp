@@ -13,16 +13,16 @@ using namespace c74::min;
 
 class markdown : public object<markdown> {
 public:
-	MIN_DESCRIPTION {"Get the approximate value of pi."};
-	MIN_TAGS {"math"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"sin, cos, atan~, jit.op, gen~"};
+	MIN_DESCRIPTION	{ "Get the approximate value of pi." };
+	MIN_TAGS		{ "math" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "sin, cos, atan~, jit.op, gen~" };
 
-	inlet<>  input {this, "(bang) get the approximate value of pi"};
-	outlet<> output {this, "(number) approximate value of pi"};
+	inlet<>  input	{ this, "(bang) get the approximate value of pi" };
+	outlet<> output	{ this, "(number) approximate value of pi" };
 
-	message<> read {
-		this, "read", "Markdown file to read", MIN_FUNCTION {
+	message<> read { this, "read", "Markdown file to read",
+		MIN_FUNCTION {
 			try {
 				path              p {args};
 				std::ifstream     in {p};
@@ -61,7 +61,9 @@ public:
 			}
 
 			return {};
-		}};
+		}
+	};
+
 };
 
 MIN_EXTERNAL(markdown);

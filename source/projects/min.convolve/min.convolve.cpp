@@ -9,21 +9,21 @@ using namespace c74::min;
 
 class convolve : public object<convolve> {
 public:
-	MIN_DESCRIPTION {"Perform convolution on a list. For more details on convolution see "
-					"https://en.wikipedia.org/wiki/Convolution."};
-	MIN_TAGS {"math, lists, operators"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"buffir~, jit.convolve"};
+	MIN_DESCRIPTION	{ "Perform convolution on a list. For more details on convolution see "
+					  "https://en.wikipedia.org/wiki/Convolution." };
+	MIN_TAGS		{ "math, lists, operators" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "buffir~, jit.convolve" };
 
-	inlet<>  input {this, "(list) values to convolve"};
-	outlet<> output {this, "(list) result of convolution"};
+	inlet<>  input {this, "(list) values to convolve" };
+	outlet<> output {this, "(list) result of convolution" };
 
 
 	using fvec = vector<double>;
-	attribute<fvec> kernel {this, "kernel", {1.0, 0.0}, description {"The convolution kernel."}};
+	attribute<fvec> kernel { this, "kernel", {1.0, 0.0}, description {"The convolution kernel."} };
 
 
-	message<> list {this, "list", "Input to the convolution function.",
+	message<> list { this, "list", "Input to the convolution function.",
 		MIN_FUNCTION {    // here we make a local *copy* of the kernel
 																								// for thread-safety
 			// it looks great because we do one operation and then require locks on the shared data
@@ -58,7 +58,8 @@ public:
 
 			output.send(result);
 			return {};
-		}};
+		}
+	};
 };
 
 MIN_EXTERNAL(convolve);

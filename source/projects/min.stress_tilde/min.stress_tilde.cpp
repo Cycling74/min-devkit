@@ -7,14 +7,17 @@
 
 using namespace c74::min;
 
+
 class stress : public object<stress>, public vector_operator<> {
 public:
-	MIN_DESCRIPTION {"Eat up a specified percentage of processor time to stress the computer."};
-	MIN_TAGS {"benchmarking"};
-	MIN_AUTHOR {"Timothy Place, Rob Sussman"};
+	MIN_DESCRIPTION	{ "Eat up a specified percentage of processor time to stress the computer." };
+	MIN_TAGS		{ "benchmarking" };
+	MIN_AUTHOR		{ "Timothy Place, Rob Sussman" };
 
-	attribute<number, threadsafe::yes, limit::clamp> target {
-		this, "target", 0.0, range {0.0, 100.0}, description {"Percentage of the CPU to burn."}};
+	attribute<number, threadsafe::yes, limit::clamp> target { this, "target", 0.0,
+		range {0.0, 100.0},
+		description {"Percentage of the CPU to burn."}
+	};
 
 	void operator()(audio_bundle input, audio_bundle output) {
 		auto   svtime_ms {vector_size() / samplerate() * 1000.0};
@@ -26,6 +29,7 @@ public:
 		while (c74::max::systimer_gettime() < outtime)
 			++spincount;
 	}
+	
 };
 
 MIN_EXTERNAL(stress);

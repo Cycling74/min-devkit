@@ -9,33 +9,39 @@ using namespace c74::min;
 
 class jit_clamp : public object<jit_clamp>, public matrix_operator<> {
 public:
-	MIN_DESCRIPTION {"Limit matrix values to a range. The range is specified the object's min and max attributes."};
-	MIN_TAGS {"math"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"jit.clip"};
+	MIN_DESCRIPTION	{ "Limit matrix values to a range. The range is specified the object's min and max attributes." };
+	MIN_TAGS		{ "math" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "jit.clip" };
 
-	inlet<>  input {this, "(matrix) Input", "matrix"};
-	outlet<> output {this, "(matrix) Output", "matrix"};
+	inlet<>  input	{ this, "(matrix) Input", "matrix" };
+	outlet<> output	{ this, "(matrix) Output", "matrix" };
 
-
-	attribute<number> min {this, "min", 0.0, description {"The minimum value below which clipping occurs."},
+	attribute<number> min { this, "min", 0.0,
+		description {"The minimum value below which clipping occurs."},
 		setter { MIN_FUNCTION {
 			double in = args[0];
-			cmin      = static_cast<uchar>(clamp(255.0 * in, 0.0, 255.0));
+			cmin = static_cast<uchar>(clamp(255.0 * in, 0.0, 255.0));
 			return args;
 		}},
-		getter { MIN_GETTER_FUNCTION { return {cmin / 255.0}; }}};
+		getter { MIN_GETTER_FUNCTION {
+			return {cmin / 255.0};
+		}}
+	};
 
-
-	attribute<number> max {this, "max", 1.0, description {"The maximum value above which clipping occurs."},
+	attribute<number> max { this, "max", 1.0,
+		description {"The maximum value above which clipping occurs."},
 		setter { MIN_FUNCTION {
 			double in = args[0];
-			cmax      = static_cast<uchar>(clamp(255.0 * in, 0.0, 255.0));
+			cmax = static_cast<uchar>(clamp(255.0 * in, 0.0, 255.0));
 			return args;
 		}},
-		getter { MIN_GETTER_FUNCTION { return {cmax / 255.0}; }}};
+		getter { MIN_GETTER_FUNCTION {
+			return {cmax / 255.0};
+		}}
+	};
 
-
+	
 	// This object process each cell independently
 	// So we define "calc_cell" instead of "calc_matrix"
 

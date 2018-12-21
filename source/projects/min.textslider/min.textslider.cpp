@@ -10,28 +10,26 @@ using namespace c74::min::ui;
 
 class min_textslider : public object<min_textslider>, public ui_operator<140, 24> {
 public:
-	MIN_DESCRIPTION {"Display a text label"};
-	MIN_TAGS {"ui"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"comment, umenu, textbutton"};
+	MIN_DESCRIPTION	{ "Display a text label" };
+	MIN_TAGS		{ "ui" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "comment, umenu, textbutton" };
 
-	inlet<>  input {this, "(number) value to set"};
-	outlet<> output {this, "(number) value"};
-
+	inlet<>  input	{ this, "(number) value to set" };
+	outlet<> output	{ this, "(number) value" };
 
 	min_textslider(const atoms& args = {})
 	: ui_operator::ui_operator {this, args} {}
 
-
-	message<> m_number {this, "number",
+	message<> m_number { this, "number",
 		MIN_FUNCTION {
 			set(args);
 			bang();
 			return {};
-		}};
+		}
+	};
 
-
-	message<> set {this, "set",
+	message<> set  {this, "set",
 		MIN_FUNCTION {
 			m_unclipped_value = args[0];
 			m_value           = MIN_CLAMP(m_unclipped_value, m_range[0], m_range[1]);
@@ -42,17 +40,17 @@ public:
 			else
 				redraw();
 			return {};
-		}};
+		}
+	};
 
-
-	message<> bang {this, "bang",
+	message<> bang { this, "bang",
 		MIN_FUNCTION {
 			output.send(m_unclipped_value);
 			return {};
-		}};
+		}
+	};
 
-
-	message<> m_notify {this, "notify",
+	message<> m_notify { this, "notify",
 		MIN_FUNCTION {
 			symbol msg    = args[2];
 			void*  sender = args[3];
@@ -62,54 +60,62 @@ public:
 				redraw();
 			}
 			return {};
-		}};
+		}
+	};
 
-
-	attribute<number>  m_default {this, "defaultvalue", 0.0};
-	attribute<numbers> m_range {
-		this, "range", { {0.0, 1.0}}, setter { MIN_FUNCTION {
+	attribute<number>  m_default { this, "defaultvalue", 0.0};
+	attribute<numbers> m_range { this, "range", { {0.0, 1.0}},
+		setter { MIN_FUNCTION {
 			number low {args[0]};
 			number high {args[1]};
 			m_range_delta = high - low;
 			return args;
-		}}};
-	attribute<numbers> m_offset {this, "offset", { {10.0, 10.0}}};
-	attribute<symbol>  m_label {this, "label", ""};
-	attribute<symbol>  m_unit {this, "unit", ""};
-	attribute<symbol>  m_fontname {this, "fontname", "lato-light"};
-	attribute<number>  m_fontsize {this, "fontsize", 14.0};
-	attribute<bool>    m_showvalue {this, "showvalue", true};
-	attribute<bool>    m_clickjump {this, "clickjump", true};
+		}}
+	};
+	attribute<numbers> m_offset { this, "offset", { {10.0, 10.0}} };
+	attribute<symbol>  m_label { this, "label", "" };
+	attribute<symbol>  m_unit { this, "unit", "" };
+	attribute<symbol>  m_fontname { this, "fontname", "lato-light" };
+	attribute<number>  m_fontsize { this, "fontsize", 14.0 };
+	attribute<bool>    m_showvalue { this, "showvalue", true };
+	attribute<bool>    m_clickjump { this, "clickjump", true };
 
-	enum class tracking { horizontal, vertical, both, enum_count };
+	enum class tracking {
+		horizontal,
+		vertical,
+		both,
+		enum_count
+	};
+	enum_map tracking_info = {
+		"horizontal",
+		"vertical",
+		"both"
+	};
+	attribute<tracking> m_tracking { this, "tracking", tracking::horizontal, tracking_info, description {"Mouse tracking direction."} };
 
-	enum_map tracking_info = {"horizontal", "vertical", "both"};
+	attribute<color> m_bgcolor { this, "bgcolor", color::black, title {"Background Color"} };
+	attribute<color> m_elementcolor { this, "elementcolor", color::white};
+	attribute<color> m_knobcolor { this, "knobcolor", color::gray, title {"Knob Color"} };
 
-	attribute<tracking> m_tracking {this, "tracking", tracking::horizontal, tracking_info, description {"Mouse tracking direction."}};
-
-
-	attribute<color> m_bgcolor {this, "bgcolor", color::black, title {"Background Color"}};
-	attribute<color> m_elementcolor {this, "elementcolor", color::white};
-	attribute<color> m_knobcolor {this, "knobcolor", color::gray, title {"Knob Color"}};
-
-
-	message<> mouseenter {this, "mouseenter",
+	message<> mouseenter { this, "mouseenter",
 		MIN_FUNCTION {
 			m_mouseover = true;
 			if (m_showvalue)
 				update_text();
 			return {};
-		}};
+		}
+	};
 
-	message<> mouseleave {this, "mouseleave",
+	message<> mouseleave { this, "mouseleave",
 		MIN_FUNCTION {
 			m_mouseover = false;
 			if (m_showvalue)
 				update_text();
 			return {};
-		}};
+		}
+	};
 
-	message<> mousedown {this, "mousedown",
+	message<> mousedown { this, "mousedown",
 		MIN_FUNCTION {
 			ui::target t {args};
 			number     x {args[2]};
@@ -133,9 +139,10 @@ public:
 			m_anchor = m_value;
 			//			c74::max::jbox_set_mousedragdelta(maxobj(), 1);
 			return {};
-		}};
+		}
+	};
 
-	message<> mouseup {this, "mouseup",
+	message<> mouseup { this, "mouseup",
 		MIN_FUNCTION {
 			ui::target t {args};
 
@@ -144,9 +151,10 @@ public:
 				args[1], t.x() + ((m_value - m_range[0]) / m_range_delta) * (t.width() - 2.0) + 1.0, m_mouse_position[1]);
 			redraw();
 			return {};
-		}};
+		}
+	};
 
-	message<> mousedragdelta {this, "mousedragdelta",
+	message<> mousedragdelta { this, "mousedragdelta",
 		MIN_FUNCTION {
 			ui::target t {args};
 			number     x {args[2]};
@@ -181,50 +189,65 @@ public:
 				m_number(m_anchor);
 
 			return {};
-		}};
+		}
+	};
 
-	message<> mousedoubleclick {this, "mousedoubleclick",
+	message<> mousedoubleclick { this, "mousedoubleclick",
 		MIN_FUNCTION {
 			number val = m_default;
 			m_number(val);
 			m_anchor = val;
 			return {};
-		}};
+		}
+	};
 
-
-	message<> paint {this, "paint",
+	message<> paint { this, "paint",
 		MIN_FUNCTION {
 			target t {args};
 			auto   value = (m_value - m_range[0]) / (m_range[1] - m_range[0]);
 			auto   pos   = ((t.width() - 3) * value) + 1;    // one pixel for each border and -1 for counting to N-1
 
-			rect<fill> {// background
-				t, color {m_bgcolor}};
-
-			rect<> {// frame
-				t, color {{0.3, 0.3, 0.3, 1.0}}, line_width {3.0}};
-
-			rect<fill> {// active part of the slider
-				t, color {m_elementcolor}, position {1.0, 1.0}, size {pos, -2.0}};
-
-			rect<fill> {// slider knob
-				t, color {m_knobcolor}, position {pos, 1.0}, size {4.0, -2.0}};
-
-			text {// text display
-				t, color {color::white}, position {m_offset[0], m_offset[1] + m_fontsize * 0.5}, fontface {m_fontname}, fontsize {m_fontsize},
-				content {m_text}};
-
+			rect<fill> {	// background
+				t,
+				color {m_bgcolor}
+			};
+			rect<> {		// frame
+				t,
+				color {{0.3, 0.3, 0.3, 1.0}},
+				line_width {3.0}
+			};
+			rect<fill> {	// active part of the slider
+				t,
+				color {m_elementcolor},
+				position {1.0, 1.0},
+				size {pos, -2.0}
+			};
+			rect<fill> {	// slider knob
+				t,
+				color {m_knobcolor},
+				position {pos, 1.0},
+				size {4.0, -2.0}
+			};
+			text {			// text display
+				t,
+				color {color::white},
+				position {m_offset[0], m_offset[1] + m_fontsize * 0.5},
+				fontface {m_fontname},
+				fontsize {m_fontsize},
+				content {m_text}
+			};
 			return {};
-		}};
+		}
+	};
 
 private:
-	number m_unclipped_value {0.0};
+	number m_unclipped_value { 0.0 };
 	number m_value;
 	number m_anchor;
 	string m_text;
 	bool   m_mouseover {};
 	number m_mouse_position[2];
-	number m_range_delta {1.0};
+	number m_range_delta { 1.0 };
 
 	void update_text() {
 		if (m_mouseover && m_showvalue) {

@@ -22,6 +22,13 @@ set( SOURCE_FILES
 )
 
 
+if (APPLE)
+	set(SOURCE_FILES ${SOURCE_FILES} min.environment.mac.cpp)
+else ()
+	set(SOURCE_FILES ${SOURCE_FILES} min.environment.windows.cpp)
+endif ()
+
+
 add_library( 
 	${PROJECT_NAME} 
 	MODULE
