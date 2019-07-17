@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 2,
+			"revision" : 6,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -61,13 +61,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-13",
-					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 780.0, 90.0, 266.0, 37.0 ],
-					"text" : "mc.min.phasor~ @chans 4 @values 55. 110. 220. 440."
+					"patching_rect" : [ 780.0, 90.0, 290.0, 23.0 ],
+					"text" : "min.mc.phasor~ @chans 4 @values 55. 110. 220. 440."
 				}
 
 			}
@@ -223,13 +222,13 @@
 					"patching_rect" : [ 135.0, 330.0, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_unitstyle" : 4,
 							"parameter_mmin" : -70.0,
 							"parameter_longname" : "live.gain~",
 							"parameter_mmax" : 6.0,
 							"parameter_initial" : [ 0.0 ],
 							"parameter_shortname" : "live.gain~",
-							"parameter_type" : 0
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 4
 						}
 
 					}

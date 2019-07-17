@@ -1,1 +1,1 @@
-max objectfile mc.min.phasor~ mc.wrapper~ min.phasor~;
+max objectfile min.mc.phasor~ mc.wrapper~ min.phasor~;
