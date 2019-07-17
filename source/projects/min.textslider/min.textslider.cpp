@@ -9,6 +9,15 @@ using namespace c74::min;
 using namespace c74::min::ui;
 
 class min_textslider : public object<min_textslider>, public ui_operator<140, 24> {
+private:
+	bool	m_bang_on_change { true };
+	number	m_unclipped_value { 0.0 };
+	number	m_anchor;
+	string	m_text;
+	bool	m_mouseover {};
+	number	m_mouse_position[2];
+	number	m_range_delta { 1.0 };
+
 public:
 	MIN_DESCRIPTION	{ "Display a text label" };
 	MIN_TAGS		{ "ui" };
@@ -31,14 +40,9 @@ public:
 
 	message<> set  {this, "set",
 		MIN_FUNCTION {
-			m_unclipped_value = args[0];
-			m_value           = MIN_CLAMP(m_unclipped_value, m_range[0], m_range[1]);
-			bool showvalue    = m_showvalue;
-
-			if (showvalue && m_mouseover)
-				update_text();
-			else
-				redraw();
+			m_bang_on_change = false;
+			m_value = args[0];
+			m_bang_on_change = true;
 			return {};
 		}
 	};
@@ -50,19 +54,30 @@ public:
 		}
 	};
 
+	
 	message<> m_notify { this, "notify",
 		MIN_FUNCTION {
 			symbol msg    = args[2];
 			void*  sender = args[3];
-
+			
 			if (sender == maxobj() && msg == "attr_modified") {
+				if (m_bang_on_change) {
+					c74::max::t_object* data   = args[4];
+					void*               retval = c74::max::object_method(data, k_sym_getname);
+					symbol              name   = static_cast<c74::max::t_symbol*>(retval);
+					
+					if (name == k_sym_value)
+						bang();
+				}
+
 				update_text();
 				redraw();
 			}
 			return {};
 		}
 	};
-
+	
+		
 	attribute<number>  m_default { this, "defaultvalue", 0.0};
 	attribute<numbers> m_range { this, "range", { {0.0, 1.0}},
 		setter { MIN_FUNCTION {
@@ -96,6 +111,27 @@ public:
 	attribute<color> m_bgcolor { this, "bgcolor", color::black, title {"Background Color"} };
 	attribute<color> m_elementcolor { this, "elementcolor", color::white};
 	attribute<color> m_knobcolor { this, "knobcolor", color::gray, title {"Knob Color"} };
+
+	
+	// An attribute named "value" is treated as a special property of an object.
+	// This attribute will be seen by Max's preset, pattr, and parameter systems for saving and recalling object state.
+	
+	attribute<number> m_value { this, "value", m_default,
+		setter {
+			MIN_FUNCTION {
+				m_unclipped_value = args[0];
+				auto value = MIN_CLAMP(m_unclipped_value, m_range[0], m_range[1]);
+				bool showvalue = m_showvalue;
+				
+				if (showvalue && m_mouseover)
+					update_text();
+				else
+					redraw();
+
+				return { value };
+			}
+		}
+	};
 
 	message<> mouseenter { this, "mouseenter",
 		MIN_FUNCTION {
@@ -241,13 +277,6 @@ public:
 	};
 
 private:
-	number m_unclipped_value { 0.0 };
-	number m_value;
-	number m_anchor;
-	string m_text;
-	bool   m_mouseover {};
-	number m_mouse_position[2];
-	number m_range_delta { 1.0 };
 
 	void update_text() {
 		if (m_mouseover && m_showvalue) {

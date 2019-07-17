@@ -56,6 +56,11 @@
 
 	<attributelist>
 
+		<attribute name='value' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
 		<attribute name='knobcolor' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
