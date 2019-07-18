@@ -66,6 +66,24 @@ public:
 		}}
 	};
 
+	
+	attribute<number> frames {this, "frames", 44100, title {"Length (samples)"}, description {"Length of the buffer~ in samples."},
+		setter { MIN_FUNCTION {
+			int new_length = args[0];
+			if (new_length < 1)
+				new_length = 1;
+				
+			buffer_lock<false> b {buffer};
+			b.resize_in_samples(new_length);
+			
+			return {new_length};
+		}},
+		getter { MIN_GETTER_FUNCTION {
+			buffer_lock<false> b {buffer};
+			return { static_cast<int>(b.frame_count()) };
+		}}
+	};
+
 
 	attribute<number> speed {this, "speed", 1.0, description {"Playback speed of the loop"}};
 
