@@ -7,19 +7,19 @@
 
 using namespace c74::min;
 
+
 class dict_join : public object<dict_join> {
 public:
-	MIN_DESCRIPTION {"Merge the content of two dictionaries."};
-	MIN_TAGS {"dictionary"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"min.beat.pattern, dict.join"};
+	MIN_DESCRIPTION	{ "Merge the content of two dictionaries." };
+	MIN_TAGS		{ "dictionary" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "min.beat.pattern, dict.join" };
 
-	inlet<>  left {this, "dictionary to combined with dictionary at right inlet", ""};
-	inlet<>  right {this, "dictionary to combined with dictionary at left inlet", "dictionary"};
-	outlet<> output {this, "dictionary of entries combined from both inlets", "dictionary"};
+	inlet<>  left	{ this, "dictionary to combined with dictionary at right inlet", "" };
+	inlet<>  right	{ this, "dictionary to combined with dictionary at left inlet", "dictionary" };
+	outlet<> output	{ this, "dictionary of entries combined from both inlets", "dictionary" };
 
-
-	argument<anything> name_arg {this, "dictionary-syntax", "Define an initial dictionary for joining."};
+	argument<anything> name_arg { this, "dictionary-syntax", "Define an initial dictionary for joining." };
 
 	dict_join(const atoms& args = {}) {
 		if (!args.empty())
@@ -32,14 +32,15 @@ public:
 	}
 
 
-	message<> bang {this, "bang", "Resend the most recently combined dictionary",
+	message<> bang { this, "bang", "Resend the most recently combined dictionary",
 		MIN_FUNCTION {
 			output.send("dictionary", dict_merged.name());
 			return {};
-		}};
+		}
+	};
 
 
-	message<> dictionary {this, "dictionary",
+	message<> dictionary { this, "dictionary",
 		"Dictionary from the second inlet is combined with the dictionary from the first inlet and a new dictionary is "
 		"sent",
 		MIN_FUNCTION {
@@ -60,11 +61,12 @@ public:
 				cerr << e.what() << endl;
 			}
 			return {};
-		}};
+		}
+	};
 
 private:
-	dict dict_right {symbol(true)};
-	dict dict_merged {symbol(true)};
+	dict dict_right		{ symbol(true) };
+	dict dict_merged	{ symbol(true) };
 };
 
 MIN_EXTERNAL(dict_join);

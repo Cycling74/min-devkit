@@ -7,6 +7,7 @@
 
 using namespace c74::min;
 
+
 class mc_info_tilde : public object<mc_info_tilde>, public mc_operator<> {
 public:
 	MIN_DESCRIPTION		{ "Analyze a multi-channel signal. "

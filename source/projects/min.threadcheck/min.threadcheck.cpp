@@ -7,18 +7,19 @@
 
 using namespace c74::min;
 
+
 class threadcheck : public object<threadcheck> {
 public:
-	MIN_DESCRIPTION {"Report the thread of execution for a message."};
-	MIN_TAGS {"developer"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"dspstress~"};
+	MIN_DESCRIPTION	{ "Report the thread of execution for a message." };
+	MIN_TAGS		{ "developer" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "dspstress~" };
 
-	inlet<>  input {this, "(anything) message to check"};
-	outlet<> outlet_main {this, "(bang) message received on main thread"};
-	outlet<> outlet_sched {this, "(bang) message received on scheduler thread"};
-	outlet<> outlet_audio {this, "(bang) message received on audio thread"};
-	outlet<> outlet_other {this, "(bang) message received on unknown thread"};
+	inlet<>  input			{ this, "(anything) message to check" };
+	outlet<> outlet_main	{ this, "(bang) message received on main thread" };
+	outlet<> outlet_sched	{ this, "(bang) message received on scheduler thread" };
+	outlet<> outlet_audio	{ this, "(bang) message received on audio thread" };
+	outlet<> outlet_other	{ this, "(bang) message received on unknown thread" };
 
 	c74::min::function check = MIN_FUNCTION {
 		// check scheduler last because it might be running in main or audio threads depending on settings
@@ -33,10 +34,10 @@ public:
 		return {};
 	};
 
-	message<threadsafe::yes> list {this, "list", "Message to check.", check};
-	message<threadsafe::yes> anything {this, "anything", "Message to check.", check};
-	message<threadsafe::yes> number {this, "number", "Message to check.", check};
-	message<threadsafe::yes> bang {this, "bang", "Message to check.", check};
+	message<threadsafe::yes> list { this, "list", "Message to check.", check };
+	message<threadsafe::yes> anything { this, "anything", "Message to check.", check };
+	message<threadsafe::yes> number { this, "number", "Message to check.", check };
+	message<threadsafe::yes> bang { this, "bang", "Message to check.", check };
 };
 
 MIN_EXTERNAL(threadcheck);

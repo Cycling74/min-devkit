@@ -9,27 +9,34 @@ using namespace c74::min;
 
 class buffer_loop : public object<buffer_loop>, public vector_operator<> {
 public:
-	MIN_DESCRIPTION {"Read from a buffer~."};
-	MIN_TAGS {"audio, sampling"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"index~, buffer~, wave~"};
+	MIN_DESCRIPTION	{ "Read from a buffer~." };
+	MIN_TAGS		{ "audio, sampling" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "index~, buffer~, wave~" };
 
-	inlet<>  index_inlet {this, "(signal) Sample index"};
-	inlet<>  channel_inlet {this, "(float) Audio channel to use from buffer~"};
-	outlet<> output {this, "(signal) Sample value at index", "signal"};
-	outlet<> sync {this, "(signal) Sync", "signal"};
+	inlet<>		index_inlet		{ this, "(signal) Sample index" };
+	inlet<>		channel_inlet	{ this, "(float) Audio channel to use from buffer~" };
+	outlet<>	output			{ this, "(signal) Sample value at index", "signal" };
+	outlet<>	sync			{ this, "(signal) Sync", "signal" };
 
-	buffer_reference buffer {this, MIN_FUNCTION {
-								length.touch();
-								return {};
-							}};
-
+	buffer_reference buffer { this,
+		MIN_FUNCTION {
+			length.touch();
+			return {};
+		}
+	};
 
 	argument<symbol> name_arg {this, "buffer-name", "Initial buffer~ from which to read.",
-		MIN_ARGUMENT_FUNCTION { buffer.set(arg); }};
+		MIN_ARGUMENT_FUNCTION {
+			buffer.set(arg);
+		}
+	};
 
 	argument<int> channel_arg {this, "channel", "Initial channel to read from the buffer~.",
-		MIN_ARGUMENT_FUNCTION { channel = arg; }};
+		MIN_ARGUMENT_FUNCTION {
+			channel = arg;
+		}
+	};
 
 
 	attribute<int> channel {this, "channel", 1, description {"Channel to read from the buffer~."},
@@ -38,7 +45,8 @@ public:
 			if (n < 1)
 				n = 1;
 			return {n};
-		}}};
+		}}
+	};
 
 
 	attribute<number> length {this, "length", 1000.0, title {"Length (ms)"}, description {"Length of the buffer~ in milliseconds."},
@@ -55,7 +63,26 @@ public:
 		getter { MIN_GETTER_FUNCTION {
 			buffer_lock<false> b {buffer};
 			return {b.length_in_seconds() * 1000.0};
-		}}};
+		}}
+	};
+
+	
+	attribute<number> frames {this, "frames", 44100, title {"Length (samples)"}, description {"Length of the buffer~ in samples."},
+		setter { MIN_FUNCTION {
+			int new_length = args[0];
+			if (new_length < 1)
+				new_length = 1;
+				
+			buffer_lock<false> b {buffer};
+			b.resize_in_samples(new_length);
+			
+			return {new_length};
+		}},
+		getter { MIN_GETTER_FUNCTION {
+			buffer_lock<false> b {buffer};
+			return { static_cast<int>(b.frame_count()) };
+		}}
+	};
 
 
 	attribute<number> speed {this, "speed", 1.0, description {"Playback speed of the loop"}};
@@ -68,13 +95,16 @@ public:
 		MIN_FUNCTION {
 			record = args[0];
 			return {};
-		}};
+		}
+	};
 
 
-	message<> dspsetup {this, "dspsetup", MIN_FUNCTION {
-						   m_one_over_samplerate = 1.0 / samplerate();
-						   return {};
-					   }};
+	message<> dspsetup {this, "dspsetup",
+		MIN_FUNCTION {
+		   m_one_over_samplerate = 1.0 / samplerate();
+		   return {};
+	   }
+	};
 
 
 	void operator()(audio_bundle input, audio_bundle output) {
@@ -123,9 +153,9 @@ public:
 	}
 
 private:
-	double m_playback_position {0.0};    // normalized range
-	size_t m_record_position {0};        // native range
-	double m_one_over_samplerate {1.0};
+	double m_playback_position		{ 0.0 };	// normalized range
+	size_t m_record_position		{ 0 };		// native range
+	double m_one_over_samplerate	{ 1.0 };
 };
 
 

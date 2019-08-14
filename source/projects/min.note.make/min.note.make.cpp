@@ -57,23 +57,29 @@ class note_make : public object<note_make> {
 public:
 	friend class note;
 
-	MIN_DESCRIPTION {"Generate a note-on/note-off pair. Just like the makenote object."};
-	MIN_TAGS {"midi, time"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"makenote"};
+	MIN_DESCRIPTION	{ "Generate a note-on/note-off pair. Just like the makenote object." };
+	MIN_TAGS		{ "midi, time" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "makenote" };
 
-	inlet<> pitch_in {this, "(int) pitch"};
-	inlet<> velocity_in {this, "(int) velocity"};
-	inlet<> duration_in {this, "(int) duration"};
+	inlet<> pitch_in		{ this, "(int) pitch" };
+	inlet<> velocity_in		{ this, "(int) velocity" };
+	inlet<> duration_in		{ this, "(int) duration" };
 
-	outlet<> pitch_out {this, "(int) pitch"};
-	outlet<> velocity_out {this, "(int) velocity"};
+	outlet<> pitch_out		{ this, "(int) pitch" };
+	outlet<> velocity_out	{ this, "(int) velocity" };
 
-	argument<number> velocity_arg {
-		this, "velocity", "Initial MIDI velocity.", MIN_ARGUMENT_FUNCTION { m_velocity = arg; }};
+	argument<number> velocity_arg { this, "velocity", "Initial MIDI velocity.",
+		MIN_ARGUMENT_FUNCTION {
+			m_velocity = arg;
+		}
+	};
 
-	argument<number> duration_arg {this, "duration", "Initial duration in milliseconds.",
-		MIN_ARGUMENT_FUNCTION { m_duration = arg; }};
+	argument<number> duration_arg { this, "duration", "Initial duration in milliseconds.",
+		MIN_ARGUMENT_FUNCTION {
+			m_duration = arg;
+		}
+	};
 
 	// the truth is that this only sort-of threadsafe
 	// when receiving some bits of info from the scheduler and some from the main thread
@@ -97,7 +103,8 @@ public:
 					assert(false);
 			}
 			return {};
-		}};
+		}
+	};
 
 private:
 	notes    m_notes;

@@ -14,16 +14,16 @@ using namespace c74::min::lib;
 
 class list_process : public object<list_process> {
 public:
-	MIN_DESCRIPTION {"Process lists in various ways."};
-	MIN_TAGS {"lists"};
-	MIN_AUTHOR {"Cycling '74"};
-	MIN_RELATED {"zl"};
+	MIN_DESCRIPTION	{ "Process lists in various ways." };
+	MIN_TAGS		{ "lists" };
+	MIN_AUTHOR		{ "Cycling '74" };
+	MIN_RELATED		{ "zl" };
 
-	inlet<>  in {this, "(anything) input"};
-	outlet<> out1 {this, "(list) result"};
-	outlet<> out2 {this, "(list) result"};
+	inlet<>  in		{ this, "(anything) input" };
+	outlet<> out1	{ this, "(list) result" };
+	outlet<> out2	{ this, "(list) result" };
 
-
+	
 	// For enum attributes you first define your enum class.
 	// The indices must start at zero and increase sequentially.
 
@@ -38,7 +38,7 @@ public:
 	// Finally, you create the attribute...
 	// specialized with the type of the enum and with the range passed as one of the optional args.
 
-	attribute<operations> operation {this, "operation", operations::collect, operations_range,
+	attribute<operations> operation { this, "operation", operations::collect, operations_range,
 		description {"Choose the operation to perform with the input. Collect items into a list or calculate the mean "
 					"from a list."}};
 
@@ -75,13 +75,11 @@ public:
 		return {};
 	};
 
-	message<threadsafe::yes> list {this, "list", "Operate on the list. Either add it to the collection or calculate the mean.", process};
-	message<threadsafe::yes> anything {
-		this, "anything", "Add content to the collection. Only applicable if using the 'collect' operation.", process};
-	message<threadsafe::yes> number {
-		this, "number", "Add content to the collection. Only applicable if using the 'collect' operation.", process};
+	message<threadsafe::yes> list { this, "list", "Operate on the list. Either add it to the collection or calculate the mean.", process };
+	message<threadsafe::yes> anything { this, "anything", "Add content to the collection. Only applicable if using the 'collect' operation.", process };
+	message<threadsafe::yes> number { this, "number", "Add content to the collection. Only applicable if using the 'collect' operation.", process };
 
-	message<threadsafe::yes> bang {this, "bang", "Send out the collected list. Only applicable if using the 'collect' operation.",
+	message<threadsafe::yes> bang { this, "bang", "Send out the collected list. Only applicable if using the 'collect' operation.",
 		MIN_FUNCTION {
 			lock  lock {m_mutex};
 			atoms data_copy = m_data;
@@ -91,7 +89,8 @@ public:
 
 			out1.send(data_copy);
 			return {};
-		}};
+		}
+	};
 
 private:
 	atoms m_data;

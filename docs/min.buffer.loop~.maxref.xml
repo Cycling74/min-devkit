@@ -62,6 +62,11 @@
 			<description>Record into the loop </description>
 		</attribute>
 
+		<attribute name='frames' get='1' set='1' type='float64' size='1' >
+			<digest>Length of the buffer~ in samples</digest>
+			<description>Length of the buffer~ in samples. </description>
+		</attribute>
+
 		<attribute name='speed' get='1' set='1' type='float64' size='1' >
 			<digest>Playback speed of the loop </digest>
 			<description>Playback speed of the loop </description>
