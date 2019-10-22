@@ -18,6 +18,11 @@ matrix:
       env: CONFIG=Debug
     - osx_image: xcode10.1
       env: CONFIG=Release
+    - osx_image: xcode11.2
+      env: CONFIG=Debug
+    - osx_image: xcode11.2
+      env: CONFIG=Release
+
 
 script:
 - mkdir build
