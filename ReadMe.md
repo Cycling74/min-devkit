@@ -56,7 +56,7 @@ Having generated the projects, you can now build by opening the .sln file in the
 
 ## Unit Testing
 
-On the command like you can run all unit tests using Cmake:
+On the command line you can run all unit tests using Cmake:
 
 * on debug builds: `ctest -C Debug .`
 * on release builds: `ctest -C Release .`
@@ -68,7 +68,7 @@ Or you can run an individual test, which is simply a command line program:
 * mac example: `./test_dcblocker_tilde -s`
 * win example: `test_dcblocker_tilde.exe -s`
 
-Or you can run them your IDE's debugger by selecting the "RUN_TESTS" target.
+Or you can run them with your IDE's debugger by selecting the "RUN_TESTS" target.
 
 
 ## Continuous Integration
