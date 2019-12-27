@@ -10,11 +10,11 @@
 // https://github.com/philsquared/Catch/blob/master/docs/tutorial.md
 
 SCENARIO("object produces correct output") {
-	ext_main(nullptr);    // every unit test must call ext_main() once to configure the class
+    ext_main(nullptr);    // every unit test must call ext_main() once to configure the class
 
-	GIVEN("An instance of our object") {
+    GIVEN("An instance of our object") {
 
-		test_wrapper<note_make> an_instance;
-		note_make&              my_object = an_instance;
-	}
+        test_wrapper<note_make> an_instance;
+        note_make&              my_object = an_instance;
+    }
 }

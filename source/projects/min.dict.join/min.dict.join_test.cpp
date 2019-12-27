@@ -10,15 +10,15 @@
 // https://github.com/philsquared/Catch/blob/master/docs/tutorial.md
 
 SCENARIO("object produces correct output") {
-	ext_main(nullptr);    // every unit test must call ext_main() once to configure the class
+    ext_main(nullptr);    // every unit test must call ext_main() once to configure the class
 
-	GIVEN("An instance of dict_joiner") {
+    GIVEN("An instance of dict_joiner") {
 
-		test_wrapper<dict_join> an_instance;
-		dict_join&              my_object = an_instance;
+        test_wrapper<dict_join> an_instance;
+        dict_join&              my_object = an_instance;
 
-		// check that the object instantiated successfully
+        // check that the object instantiated successfully
 
-		REQUIRE(my_object.inlets().size() == 2);
-	}
+        REQUIRE(my_object.inlets().size() == 2);
+    }
 }
