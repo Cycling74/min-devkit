@@ -22,8 +22,8 @@ You can use the objects provided in this package as-is.
 
 To code your own objects, or to re-compile existing objects, you will need a compiler:
 
-* On the Mac this means **Xcode 9 or later** (you can get from the App Store for free). 
-* On Windows this means **Visual Studio 2017** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
+* On the Mac this means **Xcode 10 or 11** (you can get from the App Store for free). 
+* On Windows this means **Visual Studio 2017 or 2019** (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
 
 
 

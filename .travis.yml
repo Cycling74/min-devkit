@@ -10,10 +10,6 @@ os: osx
 
 matrix:
   include:
-    - osx_image: xcode9.4
-      env: CONFIG=Debug
-    - osx_image: xcode9.4
-      env: CONFIG=Release
     - osx_image: xcode10.1
       env: CONFIG=Debug
     - osx_image: xcode10.1
