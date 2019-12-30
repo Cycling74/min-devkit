@@ -28,6 +28,7 @@ TEST_CASE("produces valid impulse response") {
 
     // run the calculations
     for (auto x : impulse) {
+        UNUSED(x);
         auto y = my_object();
         output.push_back(y);
     }

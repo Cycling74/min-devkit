@@ -47,8 +47,9 @@ public:
     attribute<number> min { this, "min", 250.0, title {"Minimum Interval"},
         description {"Lower-bound of generated random interval."},
         setter { MIN_FUNCTION {
+            UNUSED(this);   // silences compiler warning since we don't access class members
+ 
             double value = args[0];
-
             if (value < 1.0)
                 value = 1.0;
             return {value};
@@ -60,8 +61,9 @@ public:
     attribute<number> max { this, "max", 1500.0, title {"Maximum Interval"},
         description {"Upper-bound of generated random interval."},
         setter { MIN_FUNCTION {
+            UNUSED(this);   // silences compiler warning since we don't access class members
+ 
             double value = args[0];
-
             if (value < 1.0)
                 value = 1.0;
             return {value};

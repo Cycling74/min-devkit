@@ -16,5 +16,7 @@ SCENARIO("object produces correct output") {
 
         test_wrapper<note_make> an_instance;
         note_make&              my_object = an_instance;
+        
+        UNUSED(my_object);
     }
 }

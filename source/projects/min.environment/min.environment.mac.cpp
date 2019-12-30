@@ -6,7 +6,6 @@
 #include "c74_min_api.h"
 #include <regex>
 
-
 #include <Carbon/Carbon.h>
 #include <sys/utsname.h>
 
