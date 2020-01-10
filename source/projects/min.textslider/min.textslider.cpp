@@ -57,19 +57,14 @@ public:
 
     message<> m_notify { this, "notify",
         MIN_FUNCTION {
-            symbol msg    = args[2];
-            void*  sender = args[3];
+            notification n { args };
+            symbol attr_name { n.attr_name() };
 
-            if (sender == maxobj() && msg == "attr_modified") {
+            if (attr_name != k_sym__empty) {
                 if (m_bang_on_change) {
-                    c74::max::t_object* data   = args[4];
-                    void*               retval = c74::max::object_method(data, k_sym_getname);
-                    symbol              name   = static_cast<c74::max::t_symbol*>(retval);
-
-                    if (name == k_sym_value)
+                    if (attr_name == k_sym_value)
                         bang();
                 }
-
                 update_text();
                 redraw();
             }
@@ -192,16 +187,15 @@ public:
 
     message<> mousedragdelta { this, "mousedragdelta",
         MIN_FUNCTION {
-            ui::target t {args};
-            number     x {args[2]};
-            number     y {args[3]};
-            int        modifiers {args[4]};
-            number     factor {t.width() - 2.0};    // how much precision (vs. immediacy) you have when dragging the knob
-            number     delta;
+            event   e { args };
+            auto    x { e.x() };
+            auto    y { e.y() };
+            number  factor { e.target().width() - 2.0 };    // how much precision (vs. immediacy) you have when dragging the knob
+            number  delta;
 
-            if (modifiers & c74::max::eCommandKey)
+            if (e.is_command_key_down())
                 factor = factor * 0.8;
-            else if (modifiers & c74::max::eShiftKey)
+            else if (e.is_shift_key_down())
                 factor = factor * 50.0;
             factor = factor / m_range_delta;
 
@@ -219,7 +213,7 @@ public:
             m_anchor += delta / factor;
             m_anchor = MIN_CLAMP(m_anchor, m_range[0], m_range[1]);
 
-            if (modifiers & c74::max::eCommandKey)
+            if (e.is_command_key_down())
                 m_number(static_cast<int>(m_anchor));    // a change in integer-steps
             else
                 m_number(m_anchor);
