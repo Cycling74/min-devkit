@@ -43,13 +43,18 @@ Note: you can add the `-j4` option where "4" is the number of cores to use.  Thi
 
 ### Windows
 
-You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2017, the commands to generate the projects will look like this: 
+You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2019, the commands to generate the projects will look like this: 
+
+`cmake -G "Visual Studio 16 2019" ..`
+
+Or using Visual Studio 2017 it will look like this:
 
 `cmake -G "Visual Studio 15 2017 Win64" ..`
 
 Having generated the projects, you can now build by opening the .sln file in the build folder with the Visual Studio app (just double-click the .sln file) or you can build on the command line like this:
 
 `cmake --build . --config Release`
+
 
 
 ## Unit Testing
