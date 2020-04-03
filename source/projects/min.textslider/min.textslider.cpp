@@ -20,7 +20,7 @@ private:
 
 public:
     MIN_DESCRIPTION	{ "Display a text label" };
-    MIN_TAGS		{ "ui" };
+    MIN_TAGS		{ "ui, multitouch" }; // if multitouch tag is defined then multitouch is supported but mousedragdelta is not supported
     MIN_AUTHOR		{ "Cycling '74" };
     MIN_RELATED		{ "comment, umenu, textbutton" };
 
