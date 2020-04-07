@@ -152,6 +152,7 @@ public:
             number     x {args[2]};
             number     y {args[3]};
             int        modifiers {args[4]};
+            event      e { args };
 
             // cache mouse position so we can restore it after we are done
             m_mouse_position[0] = t.x() + x;
