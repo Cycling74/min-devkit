@@ -28,9 +28,9 @@ public:
     attribute<symbol>  m_label			{ this, "label", "" };
     attribute<symbol>  m_fontname		{ this, "fontname", "lato-light" };
     attribute<number>  m_fontsize		{ this, "fontsize", 14.0 };
-    attribute<color>   m_bgcolor		{ this, "bgcolor", color::black, title {"Background Color"} };
-    attribute<color>   m_elementcolor	{ this, "elementcolor", color::white };
-    attribute<color>   m_knobcolor		{ this, "knobcolor", color::gray, title {"Knob Color"} };
+	attribute<color>   m_bgcolor {this, "bgcolor", color::predefined::black, title {"Background Color"}};
+	attribute<color>   m_elementcolor {this, "elementcolor", color::predefined::white};
+	attribute<color>   m_knobcolor {this, "knobcolor", color::predefined::gray, title {"Knob Color"}};
 
     message<> paint { this, "paint",
         MIN_FUNCTION {
@@ -60,8 +60,7 @@ public:
                 size {4.0, -2.0}
             };
             text {// text display
-                t,
-                color {color::white},
+                t, color {color::predefined::white},
                 position {m_offset[0], m_offset[1] + m_fontsize * 0.5},
                 fontface {m_fontname},
                 fontsize {m_fontsize},

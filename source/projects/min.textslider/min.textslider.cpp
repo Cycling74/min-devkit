@@ -4,7 +4,7 @@
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
-
+#pragma warning(disable : 26444)    // deprecation of GetVersionEx
 using namespace c74::min;
 using namespace c74::min::ui;
 
@@ -12,10 +12,10 @@ class min_textslider : public object<min_textslider>, public ui_operator<140, 24
 private:
     bool	m_bang_on_change { true };
     number	m_unclipped_value { 0.0 };
-    number	m_anchor;
+	number  m_anchor {};
     string	m_text;
     bool	m_mouseover {};
-    number	m_mouse_position[2];
+	number  m_mouse_position[2] {};
     number	m_range_delta { 1.0 };
 
 public:
@@ -103,9 +103,9 @@ public:
     };
     attribute<tracking> m_tracking { this, "tracking", tracking::horizontal, tracking_info, description {"Mouse tracking direction."} };
 
-    attribute<color> m_bgcolor { this, "bgcolor", color::black, title {"Background Color"} };
-    attribute<color> m_elementcolor { this, "elementcolor", color::white};
-    attribute<color> m_knobcolor { this, "knobcolor", color::gray, title {"Knob Color"} };
+    attribute<color> m_bgcolor {this, "bgcolor", color::predefined::black, title {"Background Color"}};
+	attribute<color> m_elementcolor {this, "elementcolor", color::predefined::white};
+	attribute<color> m_knobcolor {this, "knobcolor", color::predefined::gray, title {"Knob Color"}};
 
 
     // An attribute named "value" is treated as a special property of an object.
@@ -259,8 +259,7 @@ public:
                 size {4.0, -2.0}
             };
             text {			// text display
-                t,
-                color {color::white},
+                t, color {color::predefined::white},
                 position {m_offset[0], m_offset[1] + m_fontsize * 0.5},
                 fontface {m_fontname},
                 fontsize {m_fontsize},
