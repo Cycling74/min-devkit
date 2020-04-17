@@ -6,8 +6,9 @@
 #include "c74_min_api.h"
 #include <regex>
 #include <strsafe.h>
-#include <tchar.h>
 #include <iphlpapi.h>
+
+#pragma warning(disable : 4996) // deprecation of GetVersionEx
 
 #define BUFSIZE 256
 
@@ -198,8 +199,8 @@ BOOL GetOSDisplayString(LPTSTR pszOS) {
 
         // Include service pack (if any) and build number.
 
-        if (_tcslen(osvi.szCSDVersion) > 0) {
-            StringCchCat(pszOS, BUFSIZE, TEXT(" "));
+		if (strlen(osvi.szCSDVersion) > 0) {
+			StringCchCat(pszOS, BUFSIZE, TEXT(" "));
             StringCchCat(pszOS, BUFSIZE, osvi.szCSDVersion);
         }
 
