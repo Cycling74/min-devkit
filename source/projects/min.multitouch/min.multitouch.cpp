@@ -33,20 +33,20 @@ public:
     min_multitouch(const atoms& args = {})
     : ui_operator::ui_operator {this, args} {}
 
-    void send(symbol message_name, const event e&) {
+    void send(symbol message_name, const event& e) {
 
  //       m_outlet_index.send( e.index );
  //       m_outlet_extra.send(e->pressure, e->orientation, e->rotation, e->tiltX, e->tiltY);
 
         symbol event_type;
-        if (e.type == eMouseEvent)
-            event_type = gensym("mouse");
-        else if (e.type == eTouchEvent)
-            event_type = gensym("touch");
+        if (e.type() == event::input_type::mouse)
+            event_type = c74::max::gensym("mouse");
+		else if (e.type() == event::input_type::touch)
+            event_type = c74::max::gensym("touch");
         else
-            event_type = gensym("pen");
+            event_type = c74::max::gensym("pen");
 
-        m_outlet_main.send(message_name, event_type, e->position.x, e->position.y, e->modifiers);
+        m_outlet_main.send(message_name, event_type, e.x(), e.y(), e.is_command_key_down(), e.is_shift_key_down());
     }
 
 /*
@@ -70,34 +70,28 @@ public:
 
     message<> m_mouseenter { this, "mouseenter",
         MIN_FUNCTION {
-            send("mouseenter", args);
- //           m_mouseover = true;
- //           if (m_showvalue)
- //               update_text();
+            send("enter", args);
             return {};
         }
     };
 
     message<> m_mousemove { this, "mousemove",
         MIN_FUNCTION {
- //           m_mouseover = true;
- //           if (m_showvalue)
- //               update_text();
+            send("move", args);
             return {};
         }
     };
 
-    message<> m_mouseleave { this, "mouseleave",
+    message<> m_mouseleave { this, "mouseleave", 
         MIN_FUNCTION {
-  //          m_mouseover = false;
-   //         if (m_showvalue)
-    //            update_text();
+            send("leave", args);
             return {};
         }
     };
 
-    message<> m_mousedown { this, "mousedown",
-        MIN_FUNCTION {
+    message<> m_mousedown { this, "mousedown", MIN_FUNCTION {
+        send("down", args);
+            
   /*          event   e { args };
             auto    t { e.target() };
             auto    x { e.x() };
@@ -124,18 +118,14 @@ public:
 
     message<> m_mouseup { this, "mouseup",
         MIN_FUNCTION {
- /*           event   e { args };
-            auto    t { e.target() };
-
-            // restore mouse position
-            c74::max::jmouse_setposition_view(t.view(), t.x() + ((m_value - m_range[0]) / m_range_delta) * (t.width() - 2.0) + 1.0, m_mouse_position[1]);
-            redraw();
-   */         return {};
+            send("up", args);
+            return {};
         }
     };
 
     message<> m_mousedragdelta { this, "mousedrag",
         MIN_FUNCTION {
+            send("drag", args);
   /*          event   e { args };
             auto    x { e.x() };
             auto    y { e.y() };
