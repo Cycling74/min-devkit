@@ -20,7 +20,7 @@ private:
 
 public:
     MIN_DESCRIPTION	{ "Display a text label" };
-    MIN_TAGS		{ "ui" };
+    MIN_TAGS		{ "ui" }; // if multitouch tag is defined then multitouch is supported but mousedragdelta is not supported
     MIN_AUTHOR		{ "Cycling '74" };
     MIN_RELATED		{ "comment, umenu, textbutton" };
 
@@ -148,10 +148,10 @@ public:
 
     message<> mousedown { this, "mousedown",
         MIN_FUNCTION {
-            ui::target t {args};
-            number     x {args[2]};
-            number     y {args[3]};
-            int        modifiers {args[4]};
+            event   e { args };
+            auto    t { e.target() };
+            auto    x { e.x() };
+            auto    y { e.y() };
 
             // cache mouse position so we can restore it after we are done
             m_mouse_position[0] = t.x() + x;
@@ -161,25 +161,24 @@ public:
             if (m_clickjump) {
                 auto delta = MIN_CLAMP((x - 1.0), 0.0, t.width() - 3.0);    // substract for borders
                 delta      = delta / (t.width() - 2.0) * m_range_delta + m_range[0];
-                if (modifiers & c74::max::eCommandKey)
+                if (e.is_command_key_down())
                     m_number(static_cast<int>(delta));    // when command-key pressed, jump to the nearest integer-value
                 else
                     m_number(delta);    // otherwise jump to a float value
             }
 
             m_anchor = m_value;
-            //			c74::max::jbox_set_mousedragdelta(maxobj(), 1);
             return {};
         }
     };
 
     message<> mouseup { this, "mouseup",
         MIN_FUNCTION {
-            ui::target t {args};
+            event   e { args };
+            auto    t { e.target() };
 
             // restore mouse position
-            c74::max::jmouse_setposition_view(
-                args[1], t.x() + ((m_value - m_range[0]) / m_range_delta) * (t.width() - 2.0) + 1.0, m_mouse_position[1]);
+            c74::max::jmouse_setposition_view(t.view(), t.x() + ((m_value - m_range[0]) / m_range_delta) * (t.width() - 2.0) + 1.0, m_mouse_position[1]);
             redraw();
             return {};
         }
@@ -233,9 +232,9 @@ public:
 
     message<> paint { this, "paint",
         MIN_FUNCTION {
-            target t {args};
-            auto   value = (m_value - m_range[0]) / (m_range[1] - m_range[0]);
-            auto   pos   = ((t.width() - 3) * value) + 1;    // one pixel for each border and -1 for counting to N-1
+            target t        { args };
+            auto   value    { (m_value - m_range[0]) / (m_range[1] - m_range[0]) };
+            auto   pos      { ((t.width() - 3) * value) + 1 };    // one pixel for each border and -1 for counting to N-1
 
             rect<fill> {	// background
                 t,
