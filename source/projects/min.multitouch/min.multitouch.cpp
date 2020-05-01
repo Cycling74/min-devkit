@@ -10,14 +10,8 @@ using namespace c74::min::ui;
 
 class min_multitouch : public object<min_multitouch>, public ui_operator<140, 24> {
 private:
- //   bool	m_bang_on_change { true };
- //   number	m_unclipped_value { 0.0 };
- //   number	m_anchor;
- //   string	m_text;
- //   bool	m_mouseover {};
- //   number	m_mouse_position[2];
- //   number	m_range_delta { 1.0 };
     vector<event> m_events;
+	vector<symbol> m_event_phases;
 
 public:
     MIN_DESCRIPTION	{ "Report mouse and multitouch interactions" };
@@ -26,17 +20,21 @@ public:
     MIN_RELATED		{ "mousestate" };
 
     inlet<>     m_input         { this, "(anything) ignored" };
-    outlet<>    m_outlet_main   { this, "primary stuff: type phase xpos ypos modifiers"};
-    outlet<>    m_outlet_extra  { this, "extra info: pressure orientation rotation tiltX tiltY"};
+    outlet<>    m_outlet_main   { this, "primary stuff: type phase x y modifiers"};
+    outlet<>    m_outlet_pen    { this, "pen data: pressure orientation rotation tilt_x tilt_y"};
     outlet<>    m_outlet_index  { this, "int with index of the touch, not useful for mouse or pen"};
 
     min_multitouch(const atoms& args = {})
     : ui_operator::ui_operator {this, args} {}
 
-    void send(symbol message_name, const event& e) {
 
- //       m_outlet_index.send( e.index );
- //       m_outlet_extra.send(e->pressure, e->orientation, e->rotation, e->tiltX, e->tiltY);
+    void send(symbol message_name, const event& e) {
+        m_outlet_index.send( e.index() );
+
+        if (e.type() == event::input_type::pen)
+			m_outlet_pen.send(e.pen_pressure(), e.pen_orientation(), e.pen_rotation(), e.pen_tilt_x(), e.pen_tilt_y());
+		else
+			m_outlet_pen.send(0.0, 0.0, 0.0, 0.0, 0.0);
 
         symbol event_type;
         if (e.type() == event::input_type::mouse)
@@ -45,28 +43,22 @@ public:
             event_type = c74::max::gensym("touch");
         else
             event_type = c74::max::gensym("pen");
-
         m_outlet_main.send(message_name, event_type, e.x(), e.y(), e.is_command_key_down(), e.is_shift_key_down());
+
+        m_events.push_back(e);
+		m_event_phases.push_back(message_name);
+		redraw();
     }
 
-/*
-    message<> m_notify { this, "notify",
-        MIN_FUNCTION {
-            notification n { args };
-            symbol attr_name { n.attr_name() };
 
-            if (attr_name != k_sym__empty) {
- //               if (m_bang_on_change) {
- //                   if (attr_name == k_sym_value)
- //                       bang();
- //               }
-                update_text();
-                redraw();
-            }
+    message<> m_clear{ this, "clear", 
+        MIN_FUNCTION {
+            m_events.clear();
+        	redraw();
             return {};
         }
-    };
-*/
+	};
+
 
     message<> m_mouseenter { this, "mouseenter",
         MIN_FUNCTION {
@@ -90,29 +82,8 @@ public:
     };
 
     message<> m_mousedown { this, "mousedown", MIN_FUNCTION {
-        send("down", args);
-            
-  /*          event   e { args };
-            auto    t { e.target() };
-            auto    x { e.x() };
-            auto    y { e.y() };
-
-            // cache mouse position so we can restore it after we are done
-            m_mouse_position[0] = t.x() + x;
-            m_mouse_position[1] = t.y() + y;
-
-            // Jump to new value on mouse down?
-            if (m_clickjump) {
-                auto delta = MIN_CLAMP((x - 1.0), 0.0, t.width() - 3.0);    // substract for borders
-                delta      = delta / (t.width() - 2.0) * m_range_delta + m_range[0];
-                if (e.is_command_key_down())
-                    m_number(static_cast<int>(delta));    // when command-key pressed, jump to the nearest integer-value
-                else
-                    m_number(delta);    // otherwise jump to a float value
-            }
-
-            m_anchor = m_value;
-    */        return {};
+            send("down", args);           
+            return {};
         }
     };
 
@@ -126,37 +97,6 @@ public:
     message<> m_mousedragdelta { this, "mousedrag",
         MIN_FUNCTION {
             send("drag", args);
-  /*          event   e { args };
-            auto    x { e.x() };
-            auto    y { e.y() };
-            number  factor { e.target().width() - 2.0 };    // how much precision (vs. immediacy) you have when dragging the knob
-            number  delta;
-
-            if (e.is_command_key_down())
-                factor = factor * 0.8;
-            else if (e.is_shift_key_down())
-                factor = factor * 50.0;
-            factor = factor / m_range_delta;
-
-            if (m_tracking == tracking::horizontal)
-                delta = x;
-            else if (m_tracking == tracking::vertical)
-                delta = -y;
-            else {    //  tracking::both
-                if (fabs(x) > fabs(y))
-                    delta = x;
-                else
-                    delta = -y;
-            }
-
-            m_anchor += delta / factor;
-            m_anchor = MIN_CLAMP(m_anchor, m_range[0], m_range[1]);
-
-            if (e.is_command_key_down())
-                m_number(static_cast<int>(m_anchor));    // a change in integer-steps
-            else
-                m_number(m_anchor);
-*/
             return {};
         }
     };
@@ -171,23 +111,50 @@ public:
                 color { 0.2, 0.2, 0.2, 1.0 }
             };
 
-            for (const auto& e : m_events) {
-                number radius;
+			for (auto i = 0; i < m_events.size(); ++i) {
+				const auto& e {m_events[i]};
+				const auto& phase { m_event_phases[i]};
 
+                bool permanent = (phase == "drag") || (phase == "down") || (phase == "up");
+				number brightness = permanent ? 0.8 : 1.0;
+
+                number radius;
                 if (e.type() == event::input_type::touch)
                     radius = 50;
                 else if (e.type() == event::input_type::pen)
                     radius = 10;
                 else // input_type::mouse
                     radius = 5;
+                
+                color c {brightness, 0.2, 0.2, 1.0};
+				if (e.index() == 1)
+					c = {0.2, brightness, 0.2, 1.0};
+				else if (e.index() == 2)
+					c = {0.2, 0.2, brightness, 1.0};
+				else if (e.index() == 3)
+					c = {brightness, 0.2, brightness, 1.0};
+				else if (e.index() == 4)
+					c = {0.2, brightness, brightness, 1.0};
+				else if (e.index() == 5)
+					c = {brightness, brightness, 0.2, 1.0};
 
                 ellipse<fill> {
                     t,
-                    color { 0.8, 0.2, 0.2, 1.0 },
+                    color { c },
                     position { e.x() - radius, e.y() - radius },
                     size { radius * 2, radius * 2 }
                 };
             }
+
+            for (auto i = m_events.size(); i > 0; --i) {
+				const auto& phase {m_event_phases[i - 1]};
+				bool permanent = (phase == "drag") || (phase == "down") || (phase == "up");
+				if (!permanent) {
+					m_events.erase(m_events.begin() + (i - 1));
+					m_event_phases.erase(m_event_phases.begin() + (i - 1));
+				}
+			}
+
             return {};
         }
     };
