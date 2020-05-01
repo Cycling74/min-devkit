@@ -29,12 +29,12 @@
 
 	<methodlist>
 
-		<method name='paint'>
+		<method name='float'>
 			<digest></digest>
 			<description></description>
 		</method>
 
-		<method name='float'>
+		<method name='paint'>
 			<digest></digest>
 			<description></description>
 		</method>
@@ -56,17 +56,47 @@
 
 	<attributelist>
 
-		<attribute name='value' get='1' set='1' type='float64' size='1' >
+		<attribute name='unit' get='1' set='1' type='symbol' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>
 
-		<attribute name='knobcolor' get='1' set='1' type='float64' size='1' >
+		<attribute name='defaultvalue' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>
 
-		<attribute name='elementcolor' get='1' set='1' type='float64' size='1' >
+		<attribute name='offset' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='range' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='showvalue' get='1' set='1' type='long' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='label' get='1' set='1' type='symbol' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='fontname' get='1' set='1' type='symbol' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='fontsize' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='clickjump' get='1' set='1' type='long' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>
@@ -81,47 +111,17 @@
 			<description></description>
 		</attribute>
 
-		<attribute name='offset' get='1' set='1' type='float64' size='1' >
+		<attribute name='elementcolor' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>
 
-		<attribute name='clickjump' get='1' set='1' type='long' size='1' >
+		<attribute name='knobcolor' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>
 
-		<attribute name='fontname' get='1' set='1' type='symbol' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='showvalue' get='1' set='1' type='long' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='defaultvalue' get='1' set='1' type='float64' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='label' get='1' set='1' type='symbol' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='fontsize' get='1' set='1' type='float64' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='range' get='1' set='1' type='float64' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='unit' get='1' set='1' type='symbol' size='1' >
+		<attribute name='value' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>

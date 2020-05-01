@@ -41,17 +41,27 @@
 
 	<attributelist>
 
-		<attribute name='knobcolor' get='1' set='1' type='float64' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='bgcolor' get='1' set='1' type='float64' size='1' >
+		<attribute name='offset' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>
 
 		<attribute name='range' get='1' set='1' type='float64' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='label' get='1' set='1' type='symbol' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='fontname' get='1' set='1' type='symbol' size='1' >
+			<digest></digest>
+			<description></description>
+		</attribute>
+
+		<attribute name='bgcolor' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>
@@ -66,17 +76,7 @@
 			<description></description>
 		</attribute>
 
-		<attribute name='fontname' get='1' set='1' type='symbol' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='label' get='1' set='1' type='symbol' size='1' >
-			<digest></digest>
-			<description></description>
-		</attribute>
-
-		<attribute name='offset' get='1' set='1' type='float64' size='1' >
+		<attribute name='knobcolor' get='1' set='1' type='float64' size='1' >
 			<digest></digest>
 			<description></description>
 		</attribute>

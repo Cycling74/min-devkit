@@ -30,12 +30,17 @@
 
 	<methodlist>
 
-		<method name='mt_mousemove'>
+		<method name='mt_mousedrag'>
 			<digest></digest>
 			<description></description>
 		</method>
 
-		<method name='mt_mousedrag'>
+		<method name='clear'>
+			<digest></digest>
+			<description></description>
+		</method>
+
+		<method name='mt_mousemove'>
 			<digest></digest>
 			<description></description>
 		</method>
