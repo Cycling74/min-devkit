@@ -4,7 +4,7 @@
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min.h"
-#pragma warning(disable : 26444)    // deprecation of GetVersionEx
+
 using namespace c74::min;
 using namespace c74::min::ui;
 
