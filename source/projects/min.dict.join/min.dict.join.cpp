@@ -56,7 +56,7 @@ public:
                     dict_right = d;
                 }
             }
-            catch (std::runtime_error& e) {
+            catch (std::exception& e) {
                 cerr << e.what() << endl;
             }
             return {};
