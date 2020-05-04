@@ -81,7 +81,7 @@ puts
 `rm "#{@deploy_dir}"/package-info.json.in`
 `rm "#{@deploy_dir}"/script/deploy.rb`
 `rm "#{@deploy_dir}"/script/doc.rb`
-`rm "#{@deploy_dir}"/script/create_package.rb.rb`
+`rm "#{@deploy_dir}"/script/create_package.rb`
 
 # Pro docs -- not appropriate for PM distribution
 `rm "#{@deploy_dir}"/HowTo-Contribute.md`
