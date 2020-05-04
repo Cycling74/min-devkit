@@ -230,7 +230,7 @@ char   separator {'\\'};
 #ifdef MAC_VERSION
                 cmake_command << "\" -G Xcode .. > \"" << project_path_str << log_path << "\" 2>&1";
 #else    // WIN_VERSION
-cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path_str << log_path << "\" 2>&1";
+cmake_command << "\" -G \"Visual Studio 16 2019\" .. > \"" << project_path_str << log_path << "\" 2>&1";
 #endif
 
                 std::cout << cmake_command.str() << std::endl;
@@ -261,7 +261,7 @@ cmake_command << "\" -G \"Visual Studio 15 2017 Win64\" .. > \"" << project_path
     if (args.size() > 1) {
         std::stringstream vs_sln_path;
         vs_sln_path << "\"" << project_path_str << build_path << strrchr(project_path_str.c_str(), '/') << ".sln\"";
-        ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe",
+        ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\devenv.exe",
             vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
     }
     else {
