@@ -13,7 +13,7 @@ fi
 # $2: language (e.g. C/CXX/Fortran)
 # $3: The compiler ID, defaults to GNU.
 #     Possible values are: GNU, Intel, Clang, SunPro, HP, XL, VisualAge, PGI,
-#     PathScale, Cray, SCO, MIPSpro, MSVC
+#     PathScale, Cray, SCO, MSVC
 # $4: optional extra arguments to cmake, e.g. "-DCMAKE_SIZEOF_VOID_P=8"
 # $5: optional path to cmake binary
 AC_DEFUN([CMAKE_FIND_PACKAGE], [
@@ -24,10 +24,10 @@ AC_ARG_VAR([$1][_LIBS], [linker flags for $1. This overrides the cmake output])d
 
 failed=false
 AC_MSG_CHECKING([for $1])
-if test -n "$1[]_$2[]FLAGS"; then
+if test -z "${$1[]_$2[]FLAGS}"; then
     $1[]_$2[]FLAGS=`$CMAKE_BINARY --find-package "-DNAME=$1" "-DCOMPILER_ID=m4_default([$3], [GNU])" "-DLANGUAGE=$2" -DMODE=COMPILE $4` || failed=true
 fi
-if test -n "$1[]_LIBS"; then
+if test -z "${$1[]_LIBS}"; then
     $1[]_LIBS=`$CMAKE_BINARY --find-package "-DNAME=$1" "-DCOMPILER_ID=m4_default([$3], [GNU])" "-DLANGUAGE=$2" -DMODE=LINK $4` || failed=true
 fi
 
