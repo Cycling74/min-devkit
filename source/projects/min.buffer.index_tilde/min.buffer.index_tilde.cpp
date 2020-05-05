@@ -39,6 +39,14 @@ public:
         }
     };
 
+    message<> m_number { this, "number", "Set the channel to read from the buffer~. The channel number uses 1-based counting.",
+        MIN_FUNCTION {
+            if (inlet == 1)
+                channel = args[0];
+            return {}
+        }
+    }
+
     attribute<int, threadsafe::no, limit::clamp> channel {this, "channel", 1,
         description {"Channel to read from the buffer~. The channel number uses 1-based counting."},
         range {1, buffer_reference::k_max_channels}
