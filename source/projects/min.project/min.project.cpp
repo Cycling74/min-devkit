@@ -172,10 +172,18 @@ public:
                 path devkit_ignorefile {devkit_path_str + "/.gitignore"};
                 devkit_ignorefile.copy(package_path, ".gitignore");
 
-
                 std::stringstream open_command;
-                open_command << "open \"" << static_cast<string>(package_path) << "\"";
-                std::system(open_command.str().c_str());
+                #ifdef MAC_VERSION
+                    open_command << "open \"" << static_cast<string>(package_path) << "\"";
+                #else // WIN_VERSION
+				    string      package_path_esc = package_path;
+                    std::regex  rex {"\/"};
+					string      slash {"\\"};
+
+				    package_path_esc = std::regex_replace(package_path_esc, rex, slash);
+				    open_command << "explorer \"" << package_path_esc << "\"";
+                    std::system(open_command.str().c_str());
+                #endif
             }
             catch (...) {
                 cerr << "A problem occurred trying to create the new package" << endl;
@@ -230,14 +238,12 @@ char   separator {'\\'};
 #ifdef MAC_VERSION
                 cmake_command << "\" -G Xcode .. > \"" << project_path_str << log_path << "\" 2>&1";
 #else    // WIN_VERSION
-cmake_command << "\" -G \"Visual Studio 16 2019\" .. > \"" << project_path_str << log_path << "\" 2>&1";
+                cmake_command << "\" -G \"Visual Studio 16 2019\" .. > \"" << project_path_str << log_path << "\" 2>&1";
 #endif
 
                 std::cout << cmake_command.str() << std::endl;
 
                 auto result = std::system(cmake_command.str().c_str());
-                //			cout << "RESULT " << result << endl;
-                //			cout << std::ifstream("~/Documents/Max/min-cmake-log.txt").rdbuf() << endl;
                 if (result == 0) {
 #ifdef MAC_VERSION
                     if (args.size() > 1) {
@@ -245,7 +251,6 @@ cmake_command << "\" -G \"Visual Studio 16 2019\" .. > \"" << project_path_str <
                         open_command << "cd \"" << project_path_str << build_path << "\" && "
                                      << "open \"" << project_path_str << build_path << strrchr(project_path_str.c_str(), '/')
                                      << ".xcodeproj\"";
-                        // cout << open_command.str() << endl;
                         result = std::system(open_command.str().c_str());
                     }
                     else {
@@ -254,23 +259,32 @@ cmake_command << "\" -G \"Visual Studio 16 2019\" .. > \"" << project_path_str <
                         open_command << "cd \"" << project_path_str << build_path << "\" && "
                                      << "open \"" << project_path_str << build_path << "/source/projects/" << project_path.name()
                                      << separator << project_path.name() << ".xcodeproj\"";
-                        // cout << open_command.str() << endl;
                         result = std::system(open_command.str().c_str());
                     }
 #else    // WIN_VERSION
     if (args.size() > 1) {
         std::stringstream vs_sln_path;
         vs_sln_path << "\"" << project_path_str << build_path << strrchr(project_path_str.c_str(), '/') << ".sln\"";
-        ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\devenv.exe",
-            vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+        
+        string vs_sln_path_esc = vs_sln_path.str();
+		std::regex rex {"\/"};
+		string slash {"\\"};
+		vs_sln_path_esc = std::regex_replace(vs_sln_path_esc, rex, slash);
+
+		ShellExecute(NULL, "open", vs_sln_path_esc.c_str(), NULL, NULL, SW_SHOWNORMAL);
     }
     else {
         path              project_path {args};
         std::stringstream vs_sln_path;
-        vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_path.name() << separator
+		vs_sln_path << "\"" << project_path_str << build_path << "/source/projects/" << project_path.name() << separator
                     << project_path.name() << ".sln\"";
-        ShellExecute(NULL, "open", "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe",
-            vs_sln_path.str().c_str(), NULL, SW_SHOWNORMAL);
+
+        string vs_sln_path_esc = vs_sln_path.str();
+		std::regex rex {"\/"};
+		string slash {"\\"};
+		vs_sln_path_esc = std::regex_replace(vs_sln_path_esc, rex, slash);
+
+		ShellExecute(NULL, "open", vs_sln_path_esc.c_str(), NULL, NULL, SW_SHOWNORMAL);
     }
 #endif
                 }
