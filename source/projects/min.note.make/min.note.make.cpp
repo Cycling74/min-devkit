@@ -86,7 +86,7 @@ public:
     // it won't crash or do anything catastrophic
     // however, the wrong velocities might be paired with the wrong pitches, etc.
 
-    message<threadsafe::yes> ints {
+    message<threadsafe::yes> m_ints {
         this, "int", "MIDI note information", MIN_FUNCTION {
             switch (inlet) {
                 case 0:
