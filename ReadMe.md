@@ -77,29 +77,13 @@ Or you can run them with your IDE's debugger by selecting the "RUN_TESTS" target
 
 Continuous Integration (CI) is a process by which each code check-in is verified by an automated build and automated tests to allow developers to detect problems early and distribute software easily.
 
-The Min-DevKit project models CI using two different services, both of which are free and very easy to set up if your project is hosted publicly on Github.
+The Min-DevKit project models CI using Github Actions.
 
-* **Mac**: go to http://travis-ci.org and sign up.  If your repository follows the same model as Min-DevKit, you can copy `.travis.yml` directly with no changes.  Now every push to your repository will trigger an automatic build for the Mac with Travis CI.
-* **Windows**: go to http://appveyor.com and sign up.  If your repository follows the same model as Min-DevKit, you can copy `appveyor.yml` directly with no changes.  Now every push to your repository will trigger automatic builds for both 32 and 64-bit Windows with Appveyor.
 
 ### Fetching your builds
 
 * **Windows**: On Appveyor it is simple.  You go to the latest build, choose the "Platform" and then look under the "Artifacts" tab.
 * **Mac**: Travis CI does not host your build files for you like Appveyor. Instead, you need to configure a place for Travis to upload your builds. This is most easily done by signing up for a [free Amazon Web Services account](http://aws.amazon.com/free/).
-
-#### S3 Integration
-
-The builds from Travis for this package can be found on [this S3-hosted page](https://s3-us-west-1.amazonaws.com/cycling74-ci-public/index.html?prefix=min-devkit/).
-
-To setup your own page:
-
-0. Sign up for a free AWS account as mentioned above
-1. Create a "bucket" for your Travis builds
-2. Add the correct info to your `.travis.yml` file for your S3 bucket as described in the [Travis S3 Documentation](https://docs.travis-ci.com/user/deployment/s3).
-3. At this point, builds should go from Travis to a folder in your S3 bucket.
-4. To access the build, you can log in to your S3 account and download it. Alternatively you may want to make your builds publically available. If you wish to do the later, read on...
-5. upload the files from this folder's `source/min-api/max-api/site` folder to your S3 bucket's root folder. For more information on the content of these files, please visit the Github page for the [S3 Bucket Listing Code](https://github.com/rgrp/s3-bucket-listing).
-6. As described on the above Github page, you will need to set the permissions for your bucket such that "Everyone" has both `listing` and `viewing` access.
 
 
 ## Additional Documentation
