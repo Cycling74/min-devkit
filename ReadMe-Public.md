@@ -1,6 +1,5 @@
 # Min-DevKit
-[![Build Status](https://travis-ci.org/Cycling74/min-devkit.svg?branch=master)](https://travis-ci.org/Cycling74/min-devkit)
-[![Build status](https://ci.appveyor.com/api/projects/status/0koqc3l3qyfu0l8b/branch/master?svg=true)](https://ci.appveyor.com/project/c74/min-devkit/branch/master)
+![CI](https://github.com/Cycling74/min-devkit/workflows/CI/badge.svg)
 
 Create packages and code objects for Max using C++
 
