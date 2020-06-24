@@ -12,6 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      
+    - uses: benjlevesque/short-sha@v1.1
+      id: short-sha
+      with:
+        length: 7
 
     - name: configure_macos
       if: matrix.os == 'macos-latest'
@@ -37,12 +42,12 @@ jobs:
       env:
         GITHUB_REPOSITORY: ${{ github.repository }}
         GITHUB_SHA: ${{ github.sha }}
-        GITHUB_CONFIG: ${{ matrix.config }}  
+        GITHUB_CONFIG: ${{ matrix.config }}
       run: |
         PACKAGE_NAME=`echo $GITHUB_REPOSITORY | sed 's/.*\///g'`
         PACKAGE_REV=`echo $GITHUB_SHA | sed -e 's/^[[:alnum:]]\{7\}/&-/g' | sed 's/-.*//'`
         PACKAGE_CONFIG=`echo $GITHUB_CONFIG`
-        mkdir $PACKAGE_NAME
+        mkdir -p $PACKAGE_NAME
         if [ -e package-info.json ]; then cp package-info.json $PACKAGE_NAME; fi
         for f in *.md; do [ -e "$f" ] && cp "$f" $PACKAGE_NAME ; done
         if [ -e icon.png ]; then cp icon.png $PACKAGE_NAME; fi
@@ -66,55 +71,56 @@ jobs:
         if [ -d source ]; then cp -r source $PACKAGE_NAME; fi
         if [ -d tests ]; then cp -r tests $PACKAGE_NAME; fi
         if [ -e $PACKAGE_NAME/ReadMe-Public.md ]; then rm -f $PACKAGE_NAME/ReadMe.md; mv $PACKAGE_NAME/ReadMe-Public.md $PACKAGE_NAME/ReadMe.md; fi
-        mkdir dist
-        zip -r dist/$PACKAGE_NAME-mac-$PACKAGE_REV-$PACKAGE_CONFIG.zip $PACKAGE_NAME
 
     - name: package_windows
       if: matrix.os == 'windows-latest'
       shell: cmd
       env:
         GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}
-        GITHUB_SHA: ${{ github.sha }}
         GITHUB_CONFIG: ${{ matrix.config }}
       run: |
         set PACKAGE_NAME=%GITHUB_REPOSITORY_NAME%
-        set PACKAGE_REV=%GITHUB_SHA:~0,7%
-        set PACKAGE_CONFIG=%GITHUB_CONFIG%
-        echo PACKAGE_NAME: %PACKAGE_NAME%
-        echo PACKAGE_REV: %PACKAGE_REV%
-        echo PACKAGE_CONFIG: %GITHUB_CONFIG%
         mkdir %PACKAGE_NAME%
-        cp package-info.json %PACKAGE_NAME%
-        cp License.md %PACKAGE_NAME%
-        cp ReadMe.md %PACKAGE_NAME%
-        cp icon.png %PACKAGE_NAME%
-        cp CMakeLists.txt %PACKAGE_NAME%
-        if exist code cp -r code %PACKAGE_NAME%
-        if exist docs cp -r docs %PACKAGE_NAME%
-        if exist examples cp -r examples %PACKAGE_NAME%
         if exist extensions cp -r extensions %PACKAGE_NAME%
         if exist externals cp -r externals %PACKAGE_NAME%
-        if exist extras cp -r extras %PACKAGE_NAME%
-        if exist help cp -r help %PACKAGE_NAME%
-        if exist init cp -r init %PACKAGE_NAME%
-        if exist java-classes cp -r java-classes %PACKAGE_NAME%
-        if exist java-doc cp -r java-doc %PACKAGE_NAME%
-        if exist javascript cp -r javascript %PACKAGE_NAME
-        if exist jsui cp -r jsui %PACKAGE_NAME%
-        if exist media cp -r media %PACKAGE_NAME%
-        if exist misc cp -r misc %PACKAGE_NAME%
-        if exist patchers cp -r patchers %PACKAGE_NAME%
         if exist support cp -r support %PACKAGE_NAME%
-        if exist source cp -r source %PACKAGE_NAME%
         if exist tests cp -r tests %PACKAGE_NAME%
-        if exist ReadMe-Public.md cp ReadMe-Public.md %PACKAGE_NAME%/ReadMe.md
-        mkdir dist
-        7z a dist/%PACKAGE_NAME%-win-%PACKAGE_REV%-%PACKAGE_CONFIG%.zip %PACKAGE_NAME%
-
-    - name: upload
-      uses: shallwefootball/s3-upload-action@v1.0.1
+        
+    - uses: actions/upload-artifact@v2
       with:
-        aws_key_id: ${{ secrets.S3_ID }}
-        aws_secret_access_key: ${{ secrets.S3_KEY }}
-        aws_bucket: cycling74-ci-public
-        source_dir: 'dist'
+        name: ${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}-${{ matrix.config }}
+        path: ${{ github.event.repository.name }}
+
+  release:
+    runs-on: ubuntu-latest
+    needs: package
+    if: ${{ contains( github.ref, 'refs/tags/' ) }}
+
+    steps:
+    - uses: benjlevesque/short-sha@v1.1
+      id: short-sha
+      with:
+        length: 7
+
+    - uses: actions/download-artifact@v2
+      with:
+        name: ${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}-release
+        path: ${{ github.event.repository.name }}
+    
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: ${{ github.event.repository.name }}
+
+    - name: zip
+      run: zip -r ${{ github.event.repository.name }}-package-for-max-${{ steps.short-sha.outputs.sha }}.zip ${{ github.event.repository.name }}
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}-zipped-release
+        path: ${{ github.event.repository.name }}-package-for-max-${{ steps.short-sha.outputs.sha }}.zip
+
+    - uses: ncipollo/release-action@v1.7.1
+      with:
+        artifacts: ${{ github.event.repository.name }}-package-for-max-${{ steps.short-sha.outputs.sha }}.zip
+        body: "Max Package for all supported platforms"
+        token: ${{ secrets.GITHUB_TOKEN }}
