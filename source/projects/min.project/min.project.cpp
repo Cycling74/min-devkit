@@ -177,7 +177,7 @@ public:
                     open_command << "open \"" << static_cast<string>(package_path) << "\"";
                 #else // WIN_VERSION
 				    string      package_path_esc = package_path;
-                    std::regex  rex {"\/"};
+                    std::regex  rex {"\\/"};
 					string      slash {"\\"};
 
 				    package_path_esc = std::regex_replace(package_path_esc, rex, slash);
@@ -267,7 +267,7 @@ char   separator {'\\'};
         vs_sln_path << "\"" << project_path_str << build_path << strrchr(project_path_str.c_str(), '/') << ".sln\"";
         
         string vs_sln_path_esc = vs_sln_path.str();
-		std::regex rex {"\/"};
+		std::regex rex {"\\/"};
 		string slash {"\\"};
 		vs_sln_path_esc = std::regex_replace(vs_sln_path_esc, rex, slash);
 
@@ -280,7 +280,7 @@ char   separator {'\\'};
                     << project_path.name() << ".sln\"";
 
         string vs_sln_path_esc = vs_sln_path.str();
-		std::regex rex {"\/"};
+		std::regex rex {"\\/"};
 		string slash {"\\"};
 		vs_sln_path_esc = std::regex_replace(vs_sln_path_esc, rex, slash);
 
