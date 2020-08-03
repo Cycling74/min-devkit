@@ -65,8 +65,7 @@ On the command line you can run all unit tests using Cmake:
 
 Or you can run an individual test, which is simply a command line program:
 
-* `cd ..`
-* `cd tests`
+* `cd ./tests`
 * mac example: `./test_dcblocker_tilde -s`
 * win example: `test_dcblocker_tilde.exe -s`
 
