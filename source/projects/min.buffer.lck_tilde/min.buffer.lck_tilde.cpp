@@ -2,8 +2,6 @@
 
 using namespace c74::min;
 
-#define INCONSTRUCTOR
-
 class buffer_lck : public object<buffer_lck>, public vector_operator<> {
 public:
     MIN_DESCRIPTION	{ "buffer~ testing" };
@@ -13,14 +11,18 @@ public:
 
     std::vector<std::unique_ptr<buffer_reference>> buffers;
 
-    virtual ~buffer_lck() {
-      buffers.clear();
+    buffer_lck(const atoms& args = {}) {
+      for (int i = 0; i < 2; i++) {
+        buffers.emplace_back(std::make_unique<buffer_reference>(this, nullptr, false));
+        buffers[i]->set(symbol("test" + std::to_string(i + 1)));
+      }
     }
 
-    message<> dspsetup { this, "dspsetup",
-      MIN_FUNCTION {
-        create();
-        return {};
+    //handle the notifications for our buffer references
+    message<> notify { 
+      this, "notify",
+      [this](const c74::min::atoms& args, const int inlet) -> c74::min::atoms {
+        return buffer_reference::handle_notification(this, args, buffers.begin(), buffers.end());
       }
     };
 
@@ -31,14 +33,6 @@ public:
           l.dirty();
         }
       }
-    }
-
-private:
-    void create() {
-        for (int i = 0; i < 2; i++) {
-          buffers.emplace_back(std::make_unique<buffer_reference>(this));
-          buffers[i]->set(symbol("test" + std::to_string(i + 1)));
-        }
     }
 };
 
