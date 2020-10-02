@@ -2,7 +2,7 @@
 
 using namespace c74::min;
 
-class buffer_lck : public object<buffer_lck>, public vector_operator<> {
+class buffer_multi : public object<buffer_multi>, public vector_operator<> {
 public:
     MIN_DESCRIPTION	{ "buffer~ testing" };
     MIN_TAGS		{ "audio, sampling" };
@@ -11,7 +11,7 @@ public:
 
     std::vector<std::unique_ptr<buffer_reference>> buffers;
 
-    buffer_lck(const atoms& args = {}) {
+    buffer_multi(const atoms& args = {}) {
       for (int i = 0; i < 2; i++) {
         buffers.emplace_back(std::make_unique<buffer_reference>(this, nullptr, false));
         buffers[i]->set(symbol("test" + std::to_string(i + 1)));
@@ -36,4 +36,4 @@ public:
     }
 };
 
-MIN_EXTERNAL(buffer_lck);
+MIN_EXTERNAL(buffer_multi);
