@@ -12,6 +12,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+        fetch-depth: '0'
       
     - uses: benjlevesque/short-sha@v1.1
       id: short-sha
