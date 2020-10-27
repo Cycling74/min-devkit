@@ -66,8 +66,6 @@ FileUtils::cp "#{source_dir}/icon.png", "#{target_dir}/icon.png"
 FileUtils::cp "#{source_dir}/CMakeLists.txt",  "#{target_dir}/CMakeLists.txt"
 
 FileUtils::cp "#{source_dir}/.gitignore", "#{target_dir}/.gitignore"
-FileUtils::cp "#{source_dir}/.travis.yml", "#{target_dir}/.travis.yml"
-FileUtils::cp "#{source_dir}/appveyor.yml", "#{target_dir}/appveyor.yml"
 
 FileUtils::cp "#{source_dir}/source/projects/min.hello-world/min.hello-world.cpp", "#{target_dir}/source/projects/#{hello_world}/#{hello_world}.cpp"
 FileUtils::cp "#{source_dir}/source/projects/min.hello-world/min.hello-world_test.cpp", "#{target_dir}/source/projects/#{hello_world}/#{hello_world}_test.cpp"
