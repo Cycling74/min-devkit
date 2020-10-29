@@ -15,7 +15,12 @@ jobs:
       with:
         submodules: 'recursive'
         fetch-depth: '0'
-      
+
+    - uses: maxim-lobanov/setup-xcode@v1
+      if: matrix.os == 'macos-latest'
+      with:
+        xcode-version: '11.7'
+              
     - uses: benjlevesque/short-sha@v1.1
       id: short-sha
       with:
