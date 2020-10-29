@@ -70,6 +70,7 @@ jobs:
         if [ -d media ]; then cp -r media $PACKAGE_NAME; fi
         if [ -d misc ]; then cp -r misc $PACKAGE_NAME; fi
         if [ -d patchers ]; then cp -r patchers $PACKAGE_NAME; fi
+        if [ -d script ]; then cp -r script $PACKAGE_NAME; fi
         if [ -d support ]; then cp -r support $PACKAGE_NAME; fi
         if [ -d source ]; then cp -r source $PACKAGE_NAME; fi
         if [ -d tests ]; then cp -r tests $PACKAGE_NAME; fi
