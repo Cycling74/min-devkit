@@ -52,6 +52,7 @@ jobs:
         PACKAGE_CONFIG=`echo $GITHUB_CONFIG`
         mkdir -p $PACKAGE_NAME
         if [ -e package-info.json ]; then cp package-info.json $PACKAGE_NAME; fi
+        if [ -e package-info.json.in ]; then cp package-info.json.in $PACKAGE_NAME; fi
         for f in *.md; do [ -e "$f" ] && cp "$f" $PACKAGE_NAME ; done
         if [ -e icon.png ]; then cp icon.png $PACKAGE_NAME; fi
         if [ -e CMakeLists.txt ]; then cp CMakeLists.txt $PACKAGE_NAME; fi
