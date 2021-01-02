@@ -5,7 +5,7 @@ layout: guide
 ---
 # Min Guide to Threading in Max
 
-Min objects are external objects for Max written in C++ using a high-level declarative application programming interface.  To get started refer to [Writing Min Objects](GuideToWritingObjects.md).
+Min objects are external objects for Max written in C++ using a high-level declarative application programming interface.  To get started refer to [Writing Min Objects](./1.GuideToWritingObjects.md).
 
 Additional information on Max's threading model can be found in the excellent *Computer Music Journal* article [Creating Visual Music in Jitter](https://www.scribd.com/document/86138715/Creating-Visual-Music-in-Jitter-Approaches-and-Techniques) by Randy Jones and Ben Nevile.
 
