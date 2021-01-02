@@ -5,7 +5,7 @@ layout: guide
 ---
 # Writing User Interface (UI) Objects with Min
 
-This documentation extends the [Min Guide to Writing Objects](./GuideToWritingObjects) by adding information specific to user interface objects.
+This documentation extends the [Min Guide to Writing Objects](./1.GuideToWritingObjects) by adding information specific to user interface objects.
 
 ## UI Objects
 
