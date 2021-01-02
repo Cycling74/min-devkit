@@ -5,7 +5,7 @@ layout: guide
 ---
 # Writing Audio Objects with Min
 
-This documentation extends the [Min Guide to Writing Objects](./GuideToWritingObjects.md) by adding information specific to objects for processing audio.
+This documentation extends the [Min Guide to Writing Objects](./1.GuideToWritingObjects.md) by adding information specific to objects for processing audio.
 
 ## Audio Processing in Max
 
