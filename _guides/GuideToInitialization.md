@@ -5,7 +5,7 @@ layout: guide
 ---
 # Initialization
 
-Min objects are external objects for Max written in C++ using a high-level declarative application programming interface.  To get started refer to [Writing Min Objects](GuideToWritingObjects.md).
+Min objects are external objects for Max written in C++ using a high-level declarative application programming interface.  To get started refer to [Writing Min Objects](./1.GuideToWritingObjects.md).
 
 
 
