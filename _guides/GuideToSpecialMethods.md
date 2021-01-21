@@ -24,7 +24,7 @@ layout: guide
       };
   ```
 
-  This message will be passed two arguments: the samplerate and the vector size.	
+  This message will be passed two arguments: the *samplerate* (of type number) and the *vector size* (of type int).	
 
 * `notify` : receive notifications from Max or other objects (e.g. from a `buffer~` object to which you hold a reference)
 

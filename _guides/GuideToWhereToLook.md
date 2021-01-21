@@ -18,21 +18,33 @@ Most of the referenced example code is distributed as a part of the [Min-DevKit 
 
 ## Audio Sample Operators
 
-* `min.dcblocker~`
+* ease~` in the 
+
+  [Ease Package]: https://github.com/Cycling74/ease/blob/master/source/projects/ease_tilde/ease_tilde.cpp
+
+  
+
 * `min.xfade~`
 
 
-## Audio Perform Operators
+## Audio Vector Operators
 
 * `buffer.index~`
-* `link.phasor~` (see the **Link** package)
+
+* `filter.dcblock~` in the 
+
+  [Filter Package]: https://github.com/Cycling74/filter/blob/master/source/projects/filter.dcblock_tilde/filter.dcblock_tilde.cpp
 
 
 ## Matrix Operators
 
 * `min.jit.clamp`
+
 * `min.jit.stencil`
-* `jit.mo.func` (see the **jit.mo** package)
+
+* `jit.mo.func` in the 
+
+  [Jit.Mo Package]: https://github.com/Cycling74/jit.mo/blob/master/source/projects/jit.mo.func/jit.mo.func.cpp
 
 
 ## Linking to Apple's Carbon Framework
@@ -43,8 +55,15 @@ Most of the referenced example code is distributed as a part of the [Min-DevKit 
 ## Timers
 
 * `min.beat.random`
-* `min.beat.pattern`
+
+* `zero.resolve` in the 
+
+  [Zero Package]: https://github.com/Cycling74/zero/blob/master/source/projects/zero.resolve/zero.resolve.cpp
+
+  
+
 * `link.beat` (see the **Link** package)
+
 * `min.note.make`
 
 
@@ -52,7 +71,6 @@ Most of the referenced example code is distributed as a part of the [Min-DevKit 
 
 * `min.dict.join`
 * `min.beat.pattern`
-* `min.function`
 
 
 ## Text Editors
@@ -84,12 +102,13 @@ Most of the referenced example code is distributed as a part of the [Min-DevKit 
 ## Library
 
 * `min.beat.random` (uses random function)
+* `filter.dcblock~` (uses dcblock filter unit) (see the **filter** package)
 
 
 ## More Advanced C++
 
 * `min.xfade~` 
-* `min.function`
+* most filters in the **Filter** package
 
 ## Using DLLs/Dylibs/Libraries from other 3rd-parties
 

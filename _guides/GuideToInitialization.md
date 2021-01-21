@@ -181,7 +181,7 @@ public:
     };
 
 private:
-  	// As is common practice, we provide private memebers at the
+  	// As is common practice, we provide private members at the
     // end of the class definition.
   	// Initializing values here still serves a purpose because this will occur
   	// prior to the constructor being called.

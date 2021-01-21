@@ -23,10 +23,18 @@ In addition to inheriting from the `min::object<>` class, your audio objects wil
 
 In many cases using `sample_operator<>` will be desirable as it simplifies the code. In cases where you need to obtain a shared resource, gain better control of how variables are cached, or work on an object with a dynamic number of inputs/outputs a `vector_operator<>` will provide that additional flexibility.
 
-There are examples of both in the Min-DevKit.
+There following **buffer_loop** example is in the Min-DevKit. The **dcblocker** example is in 
+
+[the Filter Package]: https://github.com/Cycling74/filter/blob/master/source/projects/filter.dcblock_tilde/filter.dcblock_tilde.cpp
+
+. The **ease** example is in 
+
+[the Ease Package]: https://github.com/Cycling74/ease/blob/master/source/projects/ease_tilde/ease_tilde.cpp
+
+.
 
 ```c++
-class dcblocker : public object<dcblocker>, public sample_operator<1,1> {
+class ease : public object<ease>, public sample_operator<1,1> {
 public:
 	/// ...
 };
@@ -54,22 +62,30 @@ public:
 
 Note that you define your inlets and outlets for both `vector_operator<>` and `sample_operator<>` classes even though`sample_operator<>` classes will have previously indicated the number of inputs and outputs.
 
+### Attribute-Mapped Audio Inlets
+
+Audio inlets may optionally be mapped to attributes of your class. To do this, pass the member attribute as an argument following the description of the inlet. Now, if an audio signal is connected to that inlet then the attribute value will be set by the including audio.
+
+```c++
+	inlet<>  m_inlet_attack		{this, "(signal) attack",	m_attack_time};
+	inlet<>  m_inlet_release	{this, "(signal) release",	m_release_time};
+```
+
 ## Messages
 
-There are no required messages for either `vector_operator<>` or `sample_operator<>` classes. You may optionally define a 'dspsetup' message which will be called when Max is compiling the signal chain.
+There are no required messages for either `vector_operator<>` or `sample_operator<>` classes. You may optionally define a 'dspsetup' message which will be called when Max is compiling the signal chain. The message will be passed two arguments: the sample rate and the vector size.
 
 ```c++
 message<> dspsetup { this, "dspsetup", 
     MIN_FUNCTION {
-		double samplerate = args[0];
+		number samplerate = args[0];
+		int vectorsize = args[1];
 
 		m_one_over_samplerate = 1.0 / samplerate;
 		return {};
 	}
 };
 ```
-The message will be passed two arguments: the sample rate and the vector size.
-
 ## Buffers
 
 To access a **buffer~** object from your class all you need is to create an instance of a `buffer_reference`, initializing it with a pointer to an instance of your class.
@@ -101,7 +117,7 @@ Your object must define a function call operator where the samples of audio will
 
 For `sample_operator<>` classes, the function call operator will take N `sample` arguments as input and return either a `sample` or a container `samples<>` as output.  
 
-The **min.dcblocker~** example processes a single input and produces a single output.
+The **filter.dcblocker~** example processes a single input and produces a single output.
 
 ```c++
 sample operator()(sample x) {
