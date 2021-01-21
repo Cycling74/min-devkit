@@ -21,7 +21,7 @@ jobs:
       with:
         xcode-version: '11.7'
               
-    - uses: benjlevesque/short-sha@v1.1
+    - uses: benjlevesque/short-sha@v1.2
       id: short-sha
       with:
         length: 7
