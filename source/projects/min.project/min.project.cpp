@@ -173,6 +173,7 @@ public:
                 devkit_ignorefile.copy(package_path, ".gitignore");
 
                 std::stringstream open_command;
+
                 #ifdef MAC_VERSION
                     open_command << "open \"" << static_cast<string>(package_path) << "\"";
                 #else // WIN_VERSION
@@ -182,8 +183,8 @@ public:
 
 				    package_path_esc = std::regex_replace(package_path_esc, rex, slash);
 				    open_command << "explorer \"" << package_path_esc << "\"";
-                    std::system(open_command.str().c_str());
                 #endif
+				std::system(open_command.str().c_str());
             }
             catch (...) {
                 cerr << "A problem occurred trying to create the new package" << endl;
