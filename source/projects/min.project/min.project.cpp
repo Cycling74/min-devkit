@@ -132,7 +132,7 @@ public:
                     out << help_content;
                 }
 
-                path devkit_jsonfile {devkit_path_str + "/package-info.json"};
+                /*path devkit_jsonfile {devkit_path_str + "/package-info.json"};
                 devkit_jsonfile.copy(package_path, "package-info.json");
                 string json_content;
                 {
@@ -144,7 +144,10 @@ public:
                 {
                     std::ofstream out {static_cast<string>(package_path) + "/package-info.json"};
                     out << json_content;
-                }
+                }*/
+
+				path devkit_jsonfile {devkit_path_str + "/package-info.json.in"};
+                devkit_jsonfile.copy(package_path, "package-info.json.in");
 
                 path devkit_licensefile {devkit_path_str + "/License.md"};
                 devkit_licensefile.copy(package_path, "License.md");
