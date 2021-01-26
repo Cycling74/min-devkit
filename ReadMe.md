@@ -78,13 +78,7 @@ Or you can run them with your IDE's debugger by selecting the "RUN_TESTS" target
 
 Continuous Integration (CI) is a process by which each code check-in is verified by an automated build and automated tests to allow developers to detect problems early and distribute software easily.
 
-The Min-DevKit project models CI using Github Actions.
-
-
-### Fetching your builds
-
-* **Windows**: On Appveyor it is simple.  You go to the latest build, choose the "Platform" and then look under the "Artifacts" tab.
-* **Mac**: Travis CI does not host your build files for you like Appveyor. Instead, you need to configure a place for Travis to upload your builds. This is most easily done by signing up for a [free Amazon Web Services account](http://aws.amazon.com/free/).
+The Min-DevKit project models CI using [Github Actions](https://docs.github.com/en/actions).
 
 
 ## Additional Documentation
