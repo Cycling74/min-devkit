@@ -44,3 +44,6 @@ foreach (project_dir ${PROJECT_DIRS})
         add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/source/projects/${project_dir})
     endif ()
 endforeach ()
+
+# Comment the line below if you want automatic cmake regneration enabled
+set(CMAKE_SUPPRESS_REGENERATION true)
