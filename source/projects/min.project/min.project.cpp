@@ -230,6 +230,9 @@ public:
 string cmake_path {"/script/cmake-win/bin/cmake.exe"};
 char   separator {'\\'};
 #endif
+				// ensure build folder exists
+				path package_build_path {project_path_str + "/build", path::filetype::folder, true};
+
                 string build_path {"/build"};
                 string log_path {"/tmp/min-cmake-log.txt"};
 
