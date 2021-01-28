@@ -1,6 +1,7 @@
-name: CI
+name: Release
 
-on: [push, pull_request]
+on:
+  workflow_dispatch:
 
 jobs:
   package:
@@ -16,11 +17,6 @@ jobs:
         submodules: 'recursive'
         fetch-depth: '0'
 
-    - uses: maxim-lobanov/setup-xcode@v1
-      if: matrix.os == 'macos-latest'
-      with:
-        xcode-version: '11.7'
-              
     - uses: benjlevesque/short-sha@v1.2
       id: short-sha
       with:
