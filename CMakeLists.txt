@@ -25,11 +25,6 @@ execute_process(
 include(${CMAKE_CURRENT_SOURCE_DIR}/source/min-api/script/min-package.cmake)
 
 
-# Add unit tests for the API
-enable_testing()
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/source/min-api)
-
-
 # Add the Lib, if it exists
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/source/min-lib/CMakeLists.txt")
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/source/min-lib)
