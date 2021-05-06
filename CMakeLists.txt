@@ -14,14 +14,6 @@ if (${CMAKE_GENERATOR} MATCHES "Xcode")
 endif ()
 
 
-# Fetch the correct version of the min-api
-message(STATUS "Updating Git Submodules")
-execute_process(
-    COMMAND				git submodule update --init --recursive
-    WORKING_DIRECTORY	"${CMAKE_CURRENT_SOURCE_DIR}"
-)
-
-
 # Misc setup and subroutines
 include(${CMAKE_CURRENT_SOURCE_DIR}/source/min-api/script/min-package.cmake)
 
