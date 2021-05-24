@@ -17,7 +17,7 @@ public:
     inlet<>  input	{ this, "(bang) get the approximate value of pi" };
     outlet<> output	{ this, "(number) approximate value of pi" };
 
-    message<> bang { this, "bang", "Return the path to the preferences folder.",
+    message<> bang { this, "bang", "Return the approximate value of pi.",
         MIN_FUNCTION {
             output.send(M_PI);
             return {};
