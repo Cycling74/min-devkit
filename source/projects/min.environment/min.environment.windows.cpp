@@ -3,6 +3,9 @@
 ///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
+#ifdef WIN_VERSION
+#include <windows.h>
+#endif
 #include "c74_min_api.h"
 #include <regex>
 #include <strsafe.h>
