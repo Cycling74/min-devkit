@@ -5,6 +5,8 @@ enable_testing()
 
 string(REGEX REPLACE "(.*)/" "" THIS_PACKAGE_NAME "${CMAKE_CURRENT_SOURCE_DIR}")
 
+set(CMAKE_OSX_ARCHITECTURES x86_64;arm64)
+
 
 if (${CMAKE_GENERATOR} MATCHES "Xcode")
          if (${XCODE_VERSION} VERSION_LESS 10)
