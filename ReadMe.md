@@ -20,7 +20,7 @@ To build the externals in this package you will need some form of compiler suppo
 * On the Mac this means **Xcode 10 or 11** (you can get from the App Store for free). 
 * On Windows this means **Visual Studio 2017 or 2019**  (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
 
-You will also need to install a recent version of [CMake](https://cmake.org/download/) (version 3.10 or higher).
+You will also need to install a recent version of [CMake](https://cmake.org/download/) (version 3.19 or higher).
 
 
 ## Building
