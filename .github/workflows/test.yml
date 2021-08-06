@@ -2,8 +2,8 @@ name: Test
 
 on:
   push:
-    branches: 
-      - master
+    branches:
+      - main
       - develop
   pull_request:
     branches: 
