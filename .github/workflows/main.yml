@@ -65,6 +65,7 @@ jobs:
         if [ -d extras ]; then cp -r extras $PACKAGE_NAME; fi
         if [ -d help ]; then cp -r help $PACKAGE_NAME; fi
         if [ -d init ]; then cp -r init $PACKAGE_NAME; fi
+        if [ -d interfaces ]; then cp -r interfaces $PACKAGE_NAME; fi
         if [ -d java-classes ]; then cp -r java-classes $PACKAGE_NAME; fi
         if [ -d java-doc ]; then cp -r java-doc $PACKAGE_NAME; fi
         if [ -d javascript ]; then cp -r javascript $PACKAGE_NAME; fi
@@ -103,7 +104,7 @@ jobs:
     if: ${{ contains( github.ref, 'refs/tags/' ) }}
 
     steps:
-    - uses: benjlevesque/short-sha@v1.1
+    - uses: benjlevesque/short-sha@v1.2
       id: short-sha
       with:
         length: 7
@@ -125,7 +126,7 @@ jobs:
         name: ${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}-zipped-release
         path: ${{ github.event.repository.name }}-package-for-max-${{ steps.short-sha.outputs.sha }}.zip
 
-    - uses: ncipollo/release-action@v1.7.1
+    - uses: ncipollo/release-action@v1
       with:
         artifacts: ${{ github.event.repository.name }}-package-for-max-${{ steps.short-sha.outputs.sha }}.zip
         body: "Max Package for all supported platforms"
