@@ -1,5 +1,5 @@
 # Min-DevKit
-![CI](https://github.com/Cycling74/jit.mo/actions/workflows/test.yml/badge.svg)
+![CI](https://github.com/Cycling74/min-devkit/actions/workflows/test.yml/badge.svg)
 
 Tools, documentation, and reference implementation of a Max Package built using the Min-API.
 
