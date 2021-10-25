@@ -219,7 +219,7 @@ public:
                 project_path_str.resize(project_path_str.find_last_of('/'));
 
 #ifdef MAC_VERSION
-                string cmake_path {"/script/cmake-mac/bin/cmake"};
+                string cmake_path {"cmake"};
                 char   separator {'/'};
 
                 // On the Mac our path starts with the drive, e.g. /Volumes/Macintosh HD
@@ -230,7 +230,7 @@ public:
                 project_path_str.erase(0, project_path_str.find_first_of('/'));
 
 #else    // WIN_VERSION
-string cmake_path {"/script/cmake-win/bin/cmake.exe"};
+string cmake_path {"cmake"};
 char   separator {'\\'};
 #endif
 				// ensure build folder exists
@@ -244,7 +244,7 @@ char   separator {'\\'};
                 std::system(mkdir_command.str().c_str());
 
                 std::stringstream cmake_command;
-                cmake_command << "cd \"" << project_path_str << build_path << "\" && \"" << devkit_path_str << cmake_path;
+                cmake_command << "cd \"" << project_path_str << build_path << "\" && \"" << cmake_path;
 #ifdef MAC_VERSION
                 cmake_command << "\" -G Xcode .. > \"" << project_path_str << log_path << "\" 2>&1";
 #else    // WIN_VERSION
