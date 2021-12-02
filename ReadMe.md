@@ -57,7 +57,7 @@ Having generated the projects, you can now build by opening the .sln file in the
 
 ## Max 8.2 Update
 
-The Min-DevKit was updated on August 5, 2021 to support Apple silion and unify base headers with the Max SDK. There may be some modifications required to existing projects in order to integrate this update. See the [SDK 8.2 update readme](https://github.com/Cycling74/max-sdk/blob/main/README-8.2-update.md) for further details. For support with this update please use the [Max developer forum](https://cycling74.com/forums/category/Dev/page/1).
+The Min-DevKit was updated on August 5, 2021 to support Apple silion and unify base headers with the Max SDK. There may be some modifications required to existing projects in order to integrate this update. See the [SDK 8.2 update readme](https://github.com/Cycling74/max-sdk/blob/main/README-8.2-update.md) or the [Max 8.2 SDK Update Overview](https://www.youtube.com/watch?v=il5WblTBUgs) video for further details. For support with this update please use the [Max developer forum](https://cycling74.com/forums/category/Dev/page/1).
 
 ## Unit Testing
 
