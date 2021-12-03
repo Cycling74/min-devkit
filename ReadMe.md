@@ -1,5 +1,5 @@
 # Min-DevKit
-![CI](https://github.com/Cycling74/min-devkit/workflows/CI/badge.svg)
+![CI](https://github.com/Cycling74/min-devkit/actions/workflows/test.yml/badge.svg)
 
 Tools, documentation, and reference implementation of a Max Package built using the Min-API.
 
@@ -9,18 +9,18 @@ Tools, documentation, and reference implementation of a Max Package built using 
 There are two layers of material included in the Min-DevKit package. 
 
 * `min-devkit` is an example package following current best-practices for package creation.
-* `min-api` is a folder within the devkit containing all of the support files you will need to compile an external object written in modern C++.  This folder you will include in your own package's source folder.
-* `min-lib` contains building blocks, helper classes, and unit generators that may be useful in authoring  C++ code for audio, video, and data processing.
+* [min-api](https://github.com/Cycling74/min-api) is a folder within the devkit containing all of the support files you will need to compile an external object written in modern C++.  This folder you will include in your own package's source folder.
+* [min-lib](https://github.com/Cycling74/min-lib) contains building blocks, helper classes, and unit generators that may be useful in authoring  C++ code for audio, video, and data processing.
 
 
 ## Prerequisites
 
 To build the externals in this package you will need some form of compiler support on your system. 
 
-* On the Mac this means **Xcode 10 or 11** (you can get from the App Store for free). 
+* On the Mac this means **Xcode 10, 11 or 12** (you can get from the App Store for free). 
 * On Windows this means **Visual Studio 2017 or 2019**  (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
 
-You will also need to install a recent version of [CMake](https://cmake.org/download/) (version 3.10 or higher).
+You will also need to install a recent version of [CMake](https://cmake.org/download/) (version 3.19 or higher).
 
 
 ## Building
@@ -55,7 +55,9 @@ Having generated the projects, you can now build by opening the .sln file in the
 
 `cmake --build . --config Release`
 
+## Max 8.2 Update
 
+The Min-DevKit was updated on August 5, 2021 to support Apple silion and unify base headers with the Max SDK. There may be some modifications required to existing projects in order to integrate this update. See the [SDK 8.2 update readme](https://github.com/Cycling74/max-sdk/blob/main/README-8.2-update.md) or the [Max 8.2 SDK Update Overview](https://www.youtube.com/watch?v=il5WblTBUgs) video for further details. For support with this update please use the [Max developer forum](https://cycling74.com/forums/category/Dev/page/1).
 
 ## Unit Testing
 
@@ -78,13 +80,7 @@ Or you can run them with your IDE's debugger by selecting the "RUN_TESTS" target
 
 Continuous Integration (CI) is a process by which each code check-in is verified by an automated build and automated tests to allow developers to detect problems early and distribute software easily.
 
-The Min-DevKit project models CI using Github Actions.
-
-
-### Fetching your builds
-
-* **Windows**: On Appveyor it is simple.  You go to the latest build, choose the "Platform" and then look under the "Artifacts" tab.
-* **Mac**: Travis CI does not host your build files for you like Appveyor. Instead, you need to configure a place for Travis to upload your builds. This is most easily done by signing up for a [free Amazon Web Services account](http://aws.amazon.com/free/).
+The Min-DevKit project models CI using [Github Actions](https://docs.github.com/en/actions).
 
 
 ## Additional Documentation

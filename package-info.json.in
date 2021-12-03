@@ -6,7 +6,7 @@
 	"name" : "@C74_PACKAGE_NAME@",
 	"os" : {
 		"macintosh" : {
-			"platform" : [ "x64" ],
+			"platform" : [ "x64", "aarch64" ],
 			"min_version" : "none"
 		},
 		"windows" : {

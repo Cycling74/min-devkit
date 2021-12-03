@@ -95,5 +95,6 @@ Dir.chdir "#{target_dir}"
 `git init`
 `git submodule add https://github.com/Cycling74/min-api.git source/min-api`
 `git submodule add https://github.com/Cycling74/min-lib.git source/min-lib`
+`git submodule update --init --recursive`
 `git commit -m"Min-API and Min-Lib added as git submodules"`
 `git tag v0.0.1`

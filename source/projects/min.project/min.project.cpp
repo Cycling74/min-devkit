@@ -3,6 +3,9 @@
 ///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
+#ifdef WIN_VERSION
+#include <windows.h>
+#endif
 #include "c74_min.h"
 #include <regex>
 #ifdef MAC_VERSION
@@ -132,7 +135,7 @@ public:
                     out << help_content;
                 }
 
-                path devkit_jsonfile {devkit_path_str + "/package-info.json"};
+                /*path devkit_jsonfile {devkit_path_str + "/package-info.json"};
                 devkit_jsonfile.copy(package_path, "package-info.json");
                 string json_content;
                 {
@@ -144,7 +147,10 @@ public:
                 {
                     std::ofstream out {static_cast<string>(package_path) + "/package-info.json"};
                     out << json_content;
-                }
+                }*/
+
+				path devkit_jsonfile {devkit_path_str + "/package-info.json.in"};
+                devkit_jsonfile.copy(package_path, "package-info.json.in");
 
                 path devkit_licensefile {devkit_path_str + "/License.md"};
                 devkit_licensefile.copy(package_path, "License.md");
@@ -173,6 +179,7 @@ public:
                 devkit_ignorefile.copy(package_path, ".gitignore");
 
                 std::stringstream open_command;
+
                 #ifdef MAC_VERSION
                     open_command << "open \"" << static_cast<string>(package_path) << "\"";
                 #else // WIN_VERSION
@@ -182,8 +189,8 @@ public:
 
 				    package_path_esc = std::regex_replace(package_path_esc, rex, slash);
 				    open_command << "explorer \"" << package_path_esc << "\"";
-                    std::system(open_command.str().c_str());
                 #endif
+				std::system(open_command.str().c_str());
             }
             catch (...) {
                 cerr << "A problem occurred trying to create the new package" << endl;
@@ -212,7 +219,7 @@ public:
                 project_path_str.resize(project_path_str.find_last_of('/'));
 
 #ifdef MAC_VERSION
-                string cmake_path {"/script/cmake-mac/bin/cmake"};
+                string cmake_path {"cmake"};
                 char   separator {'/'};
 
                 // On the Mac our path starts with the drive, e.g. /Volumes/Macintosh HD
@@ -223,9 +230,12 @@ public:
                 project_path_str.erase(0, project_path_str.find_first_of('/'));
 
 #else    // WIN_VERSION
-string cmake_path {"/script/cmake-win/bin/cmake.exe"};
+string cmake_path {"cmake"};
 char   separator {'\\'};
 #endif
+				// ensure build folder exists
+				path package_build_path {project_path_str + "/build", path::filetype::folder, true};
+
                 string build_path {"/build"};
                 string log_path {"/tmp/min-cmake-log.txt"};
 
@@ -234,7 +244,7 @@ char   separator {'\\'};
                 std::system(mkdir_command.str().c_str());
 
                 std::stringstream cmake_command;
-                cmake_command << "cd \"" << project_path_str << build_path << "\" && \"" << devkit_path_str << cmake_path;
+                cmake_command << "cd \"" << project_path_str << build_path << "\" && \"" << cmake_path;
 #ifdef MAC_VERSION
                 cmake_command << "\" -G Xcode .. > \"" << project_path_str << log_path << "\" 2>&1";
 #else    // WIN_VERSION
