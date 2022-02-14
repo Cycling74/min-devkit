@@ -41,6 +41,8 @@ Next run `cmake --build .` or open the Xcode project from this "build" folder an
 
 Note: you can add the `-j4` option where "4" is the number of cores to use.  This can help to speed up your builds, though sometimes the error output is interleaved in such a way as to make troubleshooting more difficult.
 
+If you are running on a Mac M1 machine, you will likely see an error `cannot be loaded due to system security policy`. To resolve this, you can ad-hoc codesign your external with `codesign --force --deep -s - myobject.mxo`.
+
 ### Windows
 
 You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2019, the commands to generate the projects will look like this: 
