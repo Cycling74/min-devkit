@@ -19,8 +19,8 @@ public:
 
     inlet<>  m_inlet 			{ this, "(multichannelsignal) input to be investigated" };
     outlet<> m_outlet_chans		{ this, "(signal) channel count", "signal", };
-    outlet<> m_outlet_low_n		{ this, "(signal) signal with the lowest value", "signal", };
-    outlet<> m_outlet_high_n	{ this, "(signal) signal with the highest value", "signal" };
+    outlet<> m_outlet_low_n		{ this, "(signal) channel with the lowest value", "signal", };
+    outlet<> m_outlet_high_n	{ this, "(signal) channel with the highest value", "signal" };
     outlet<> m_outlet_low		{ this, "(signal) lowest value among the signals", "signal" };
     outlet<> m_outlet_high		{ this, "(signal) highest value among the signals", "signal" };
 
