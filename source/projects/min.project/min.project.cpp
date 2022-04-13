@@ -64,10 +64,10 @@ std::string min_devkit_path() {
 
 class project : public object<project> {
 public:
-    MIN_DESCRIPTION	{ "Get the approximate value of pi." };
-    MIN_TAGS		{ "math" };
+    MIN_DESCRIPTION	{ "Create a Min-based package." };
+    MIN_TAGS		{ "utilities" };
     MIN_AUTHOR		{ "Cycling '74" };
-    MIN_RELATED		{ "sin, cos, atan~, jit.op, gen~" };
+    MIN_RELATED		{ "min.hello-world" };
 
     inlet<>  input	{ this, "(bang) get the approximate value of pi" };
     outlet<> output	{ this, "(number) progress in percent" };
