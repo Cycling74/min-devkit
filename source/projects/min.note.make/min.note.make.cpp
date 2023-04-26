@@ -139,16 +139,17 @@ private:
 // The order of initialization is critical
 
 note::note(note_make* owner, pitch a_pitch, duration a_duration)
-: m_owner {owner}
-, m_pitch {a_pitch}
-, m_off_fn { MIN_FUNCTION {
-    m_owner->velocity_out.send(0);
-    m_owner->pitch_out.send(m_pitch);
-    m_owner->remove(m_id);
-    return {};
-}}
-, m_timer {m_owner, m_off_fn}
-, m_id {++s_counter} {
+    : m_owner {owner}
+    , m_pitch {a_pitch}
+    , m_off_fn { MIN_FUNCTION {
+        m_owner->velocity_out.send(0);
+        m_owner->pitch_out.send(m_pitch);
+        m_owner->remove(m_id);
+        return {};
+    }}
+    , m_timer {m_owner, m_off_fn}
+    , m_id {++s_counter}
+{
     m_timer.delay(a_duration);
 }
 
