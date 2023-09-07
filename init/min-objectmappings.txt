@@ -1,3 +1,0 @@
-max objectfile min.mc.phasor~ mc.wrapper~ min.phasor~;
-max objectfile min.mc.pan~ mc.wrapper~ min.pan~;
-max objectfile min.mc.xfade~ mc.wrapper~ min.xfade~;

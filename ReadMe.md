@@ -1,109 +1,59 @@
-# Min-DevKit
-![CI](https://github.com/Cycling74/min-devkit/actions/workflows/test.yml/badge.svg)
+# Brain Music Max
 
-Tools, documentation, and reference implementation of a Max Package built using the Min-API.
+### *Note*
+*This repository is a fork of Cycling '74's Min-Devkit repository. That can be found at https://github.com/Cycling74/min-devkit.*
 
+# Purpose
+This repository contains custom Max/MSP externals created using the C++ Min-Devkit. 
 
-## Structure
-
-There are two layers of material included in the Min-DevKit package. 
-
-* `min-devkit` is an example package following current best-practices for package creation.
-* [min-api](https://github.com/Cycling74/min-api) is a folder within the devkit containing all of the support files you will need to compile an external object written in modern C++.  This folder you will include in your own package's source folder.
-* [min-lib](https://github.com/Cycling74/min-lib) contains building blocks, helper classes, and unit generators that may be useful in authoring  C++ code for audio, video, and data processing.
-
+# Building
+The below sections instruct on how to build the library so that the created objects can be used.
 
 ## Prerequisites
+To build the Max Externals on your system, you need: 
+* Some form of compiler support on your system.
+    * On the Mac this means Xcode 10, 11 or 12 (you can get from the App Store for free).
+    * On Windows this means Visual Studio 2017 or 2019 (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
+    * On Linux, this is typically already taken care of out of the box. If you have trouble compiling, look into Clang and/or GCC and G++ by the GNU Project.
+* CMake (version 3.19 or higher). See https://cmake.org/download/. Make sure cmake is added to the path.
+* Git. See https://git-scm.com/downloads. Make sure git is added to the path.
 
-To build the externals in this package you will need some form of compiler support on your system. 
+## SSH Keys
+It is highly recommended to clone the repository using `ssh` instead of `https`. Cloning via `ssh` is much more secure. If you are unaware of the process for generating and utilizing ssh keys, follow the instructions below.
+1. Open a terminal of your choice.
+2. `ssh-keygen -t rsa`
+3. Take note of where it says the keys will be saved. It should be in a folder titled `.ssh` in your user directory.
+4. Optionally, set a password. 
+5. Once the keys are generated, navigate to the folder where the keys are stored in a file browser.
+6. You should see two files: `id_rsa` and `id_rsa.pub`. These are your public and private keys. Open the `.pub` file in any text editor.
+7. Copy the contents up to but not including your username located at the end of the file.
+8. Go to your github page, click your profile picture, click settings, click SSH and GPG keys, and click `New SSH key`.
+9. Paste what you copied in the `Key` box, give it any title, and click `Add SSH key`.
 
-* On the Mac this means **Xcode 10, 11 or 12** (you can get from the App Store for free). 
-* On Windows this means **Visual Studio 2017 or 2019**  (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
+## Cloning
+* This repository must be cloned in the `Max 8/Packages0` directory. Navigate there on the command line.
+* git clone git@github.com:brain-music-lab/brain-music-max.git --recursive
 
-You will also need to install a recent version of [CMake](https://cmake.org/download/) (version 3.19 or higher).
+## Generating Project Files
+* `cd brain-music-lab`
+* `mkdir build`
+* `cd build`
+* `cmake ..`
 
+*Note that this step can also be accomplished using the dedicated CMake GUI installed with the CMake CLI from before.*
 
-## Building
+## Building from Project Files
+You have multiple options here. They are listed below
+* Run the following command from within "`/Max 8/Packages/brain-music-lab/build`" in a terminal: cmake --build . --config Release`
+* (Mac Only) Open XCode and build each project.
+* (Windows Only) Open Visual Studio and build each project.
 
-0. Clone the *Min-DevKit* from Github **into Max's Packages folder**. If you clone it elsewhere you will need to make an alias to it in your Packages folder.
-   - The *Packages* folder can be found inside of your *Max 8* folder which is inside of your user's *Documents* folder.
-   - It is recommended to rename the package so as not to conflict with the legacy Max Package Manager version. (Otherwise you'll get conflict errors suggesting that you replace your local version with one on the PM server.)
-   - Also make sure you clone recursively so that all sub-modules are properly initiated.
-   - As a single command: `git clone https://github.com/Cycling74/min-devkit.git --recursive my-min-devkit`
-1. In the Terminal or Console app of your choice, change directories (cd) into the Min-Devkit folder you cloned/installed in step 0.
-2. `mkdir build` to create a folder with your various build files
-3. `cd build` to put yourself into that folder
-4. Now you can generate the projects for your choosen build environment:
+## Use!
+The Max externals should now be built. You can open max and start using them!
 
-### Mac 
+# For Developers
+## Documentation
+Cycling '74 provides documentation on the Min-Devkit at: http://cycling74.github.io/min-devkit/.
 
-Run `cmake -G Xcode ..`
+## Creating a new Max External
 
-Next run `cmake --build .` or open the Xcode project from this "build" folder and use the GUI.
-
-Note: you can add the `-j4` option where "4" is the number of cores to use.  This can help to speed up your builds, though sometimes the error output is interleaved in such a way as to make troubleshooting more difficult.
-
-If you are running on a Mac M1 machine, you will likely see an error `cannot be loaded due to system security policy` when loading your externals in Max. To resolve this, you can ad-hoc codesign your external with `codesign --force --deep -s - myobject.mxo`.
-
-### Windows
-
-You can run `cmake --help` to get a list of the options available.  Assuming some version of Visual Studio 2019, the commands to generate the projects will look like this: 
-
-`cmake -G "Visual Studio 16 2019" ..`
-
-Or using Visual Studio 2017 it will look like this:
-
-`cmake -G "Visual Studio 15 2017 Win64" ..`
-
-Having generated the projects, you can now build by opening the .sln file in the build folder with the Visual Studio app (just double-click the .sln file) or you can build on the command line like this:
-
-`cmake --build . --config Release`
-
-## Max 8.2 Update
-
-The Min-DevKit was updated on August 5, 2021 to support Apple silion and unify base headers with the Max SDK. There may be some modifications required to existing projects in order to integrate this update. See the [SDK 8.2 update readme](https://github.com/Cycling74/max-sdk/blob/main/README-8.2-update.md) or the [Max 8.2 SDK Update Overview](https://www.youtube.com/watch?v=il5WblTBUgs) video for further details. For support with this update please use the [Max developer forum](https://cycling74.com/forums/category/Dev/page/1).
-
-## Unit Testing
-
-On the command line you can run all unit tests using Cmake:
-
-* on debug builds: `ctest -C Debug .`
-* on release builds: `ctest -C Release .`
-
-Or you can run an individual test, which is simply a command line program:
-
-* `cd ..`
-* `cd tests`
-* mac example: `./test_dcblocker_tilde -s`
-* win example: `test_dcblocker_tilde.exe -s`
-
-Or you can run them with your IDE's debugger by selecting the "RUN_TESTS" target.
-
-
-## Continuous Integration
-
-Continuous Integration (CI) is a process by which each code check-in is verified by an automated build and automated tests to allow developers to detect problems early and distribute software easily.
-
-The Min-DevKit project models CI using [Github Actions](https://docs.github.com/en/actions).
-
-
-## Additional Documentation
-
-* [Min Documentation Hub](http://cycling74.github.io/min-devkit/) For guides, references, and resources
-* [Min Wiki](https://github.com/Cycling74/min-devkit/wiki) For additional topics, advanced configuration, and user submissions
-* [How to Create a New Package](./HowTo-NewPackage.md)
-* [How to Create a New Object](./HowTo-NewObject.md)
-* [How to Contribute to Min](./HowTo-Contribute.md)
-* [How to Update the underlying Max API](./HowTo-UpdateTheAPI.md)
-
-
-
-## Contributors / Acknowledgements
-
-* See the [GitHub Contributor Graph](https://github.com/Cycling74/min-api/graphs/contributors) for the API
-* See the [GitHub Contributor Graph](https://github.com/Cycling74/min-devkit/graphs/contributors) for the DevKit
-
-## Support
-
-For support, please use the developer forums at:
-http://cycling74.com/forums/
