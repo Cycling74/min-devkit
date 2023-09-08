@@ -75,3 +75,18 @@ Max has to be closed when you build an object. Close Max if it is open, and buil
 ## Unit testing
 The Min-Devkit uses the catch framework which can be found at https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md. 
 Every new object needs a unit test, and any object without a unit test should NEVER be merged into the main branch. 
+
+## Pull Requests
+*Github will default to the Cycling 74 repo as the repo to merge into. Be sure we're merging into branches on our repo!!*
+
+All PRs need to:
+* Have at least 1 reviewer
+* Give an overview of what the PR accomplishes (bullet points are fine)
+* Give instructions for how to review
+* Include any other details important to reviews.
+
+Reviewers need to:
+* Be thorough with code reviews. Don't just glance and approve.
+* Run the unit tests and be sure they pass.
+* Test new functionality inside of Max.
+
