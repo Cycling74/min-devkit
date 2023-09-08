@@ -4,7 +4,7 @@
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
 #include "c74_min_unittest.h"     // required unit test header
-#include "min.beat.random.cpp"    // need the source of our object so that we can access it
+#include "brain.music.template.cpp"    // need the source of our object so that we can access it
 
 // Unit tests are written using the Catch framework as described at
 // https://github.com/philsquared/Catch/blob/master/docs/tutorial.md
@@ -13,8 +13,6 @@ SCENARIO("object produces correct output") {
     ext_main(nullptr);    // every unit test must call ext_main() once to configure the class
 
     using namespace std::chrono_literals;
-    using std::cout;
-    using std::endl;
 
     //	std::cout << "Hello waiter" << std::endl;
     //	auto start = std::chrono::high_resolution_clock::now();
@@ -25,8 +23,8 @@ SCENARIO("object produces correct output") {
 
     GIVEN("An instance of our object") {
 
-        test_wrapper<beat_random> an_instance;
-        beat_random&              my_object = an_instance;
+        mindev::test_wrapper<example> an_instance;
+        example&              my_object = an_instance;
 
         // check that default attr values are correct
 
@@ -38,9 +36,9 @@ SCENARIO("object produces correct output") {
         INFO("When the defaults are used nothing is produced by the object after waiting 5 seconds")
 
         // 1. Wait for 5 seconds
-        cout << "About to wait for 5 seconds..." << endl;
+        std::cout << "About to wait for 5 seconds..." << std::endl;
         std::this_thread::sleep_for(5s);
-        cout << "done!" << endl;
+        std::cout << "done!" << std::endl;
 
         // 2. See if there was any output
         auto& output = *c74::max::object_getoutput(my_object, 0);
@@ -52,9 +50,9 @@ SCENARIO("object produces correct output") {
         my_object.on = true;
 
         // 1. Wait for 5 seconds
-        cout << "About to wait for 5 seconds..." << endl;
+        std::cout << "About to wait for 5 seconds..." << std::endl;
         std::this_thread::sleep_for(5s);
-        cout << "done!" << endl;
+        std::cout << "done!" << std::endl;
 
         // 2. See if there was any output
         output = *c74::max::object_getoutput(my_object, 0);

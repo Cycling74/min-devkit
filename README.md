@@ -56,4 +56,22 @@ The Max externals should now be built. You can open max and start using them!
 Cycling '74 provides documentation on the Min-Devkit at: http://cycling74.github.io/min-devkit/.
 
 ## Creating a new Max External
+To begin creating a new Max External:
+* Copy the folder `brain-music-max/sources/template/brain.music.template`
+* Paste the folder into `brain-music-max/sources/projects`
+* Change the name of the folder to something new. Keep the `brain.music` part. 
+    * For example, `brain.music.new-name`.
+    * If you are creating an MSP object, the name should be `brain.music.new-name_tilde`
+* Change the name of the two `.cpp` files in the folder to match. 
+    * For example, `brain.music.new-name.cpp` and `brain.music.new-name_test.cpp`
+    * If you are creating an MSP object, the name should be `brain.music.new-name_tilde.cpp` and `brain.music.new-name_tilde_test.cpp`
+* The CMake file does not need to be altered in any way.
+* Regenerate the CMake Project files in the `brain-music-lab/build` folder.
+* Open your text editor/IDE of choice, and create your object using the template as a guide.
 
+## Building and Testing within Max
+Max has to be closed when you build an object. Close Max if it is open, and build your object. Open Max and create your object. Try it out!
+
+## Unit testing
+The Min-Devkit uses the catch framework which can be found at https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md. 
+Every new object needs a unit test, and any object without a unit test should NEVER be merged into the main branch. 
