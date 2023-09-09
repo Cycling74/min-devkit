@@ -22,7 +22,7 @@ To build the Max Externals on your system, you need:
 It is highly recommended to clone the repository using `ssh` instead of `https`. Cloning via `ssh` is much more secure. If you are unaware of the process for generating and utilizing ssh keys, follow the instructions below.
 1. Open a terminal of your choice.
 2. `ssh-keygen -t rsa`
-3. Take note of where it says the keys will be saved. It should be in a folder titled `.ssh` in your user directory.
+3. Take note of where it says the keys will be saved. Use the default save location. Hit enter.
 4. Optionally, set a password. 
 5. Once the keys are generated, navigate to the folder where the keys are stored in a file browser.
 6. You should see two files: `id_rsa` and `id_rsa.pub`. These are your public and private keys. Open the `.pub` file in any text editor.
@@ -31,7 +31,7 @@ It is highly recommended to clone the repository using `ssh` instead of `https`.
 9. Paste what you copied in the `Key` box, give it any title, and click `Add SSH key`.
 
 ## Cloning
-* This repository must be cloned in the `Max 8/Packages0` directory. Navigate there on the command line.
+* This repository must be cloned in the `Max 8/Packages` directory. Navigate there on the command line.
 * `git clone git@github.com:brain-music-lab/brain-music-max.git --recursive`
 
 ## Generating Project Files
@@ -44,7 +44,7 @@ It is highly recommended to clone the repository using `ssh` instead of `https`.
 
 ## Building from Project Files
 You have multiple options here. They are listed below
-* Run the following command from within "`/Max 8/Packages/brain-music-lab/build`" in a terminal: cmake --build . --config Release`
+* Run the following command from within "`/Max 8/Packages/brain-music-max/build`" in a terminal: cmake --build . --config Release`
 * (Mac Only) Open XCode and build each project.
 * (Windows Only) Open Visual Studio and build each project.
 
