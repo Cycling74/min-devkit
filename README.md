@@ -12,8 +12,8 @@ The below sections instruct on how to build the library so that the created obje
 ## Prerequisites
 To build the Max Externals on your system, you need: 
 * Some form of compiler support on your system.
-    * On the Mac this means Xcode 10, 11 or 12 (you can get from the App Store for free).
-    * On Windows this means Visual Studio 2017 or 2019 (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
+    * On the Mac this means Xcode 15 (you can get from the App Store for free).
+    * On Windows this means Visual Studio 2022 (you can download a free version from Microsoft). The installer for Visual Studio 2022 offers an option to install Git, which you should choose to do.
     * On Linux, this is typically already taken care of out of the box. If you have trouble compiling, look into Clang and/or GCC and G++ by the GNU Project.
 * CMake (version 3.19 or higher). See https://cmake.org/download/. Make sure cmake is added to the path.
 * Git. See https://git-scm.com/downloads. Make sure git is added to the path.
