@@ -13,7 +13,7 @@ The below sections instruct on how to build the library so that the created obje
 To build the Max Externals on your system, you need: 
 * Some form of compiler support on your system.
     * On the Mac this means Xcode 15 (you can get from the App Store for free).
-    * On Windows this means Visual Studio 2022 (you can download a free version from Microsoft). The installer for Visual Studio 2022 offers an option to install Git, which you should choose to do.
+    * On Windows this means Visual Studio 2022 (you can download a free version from Microsoft). Also be sure to install Desktop Development for C++ during the process. There is a checkbox you'll be able to check during the installation process.
     * On Linux, this is typically already taken care of out of the box. If you have trouble compiling, look into Clang and/or GCC and G++ by the GNU Project.
 * CMake (version 3.19 or higher). See https://cmake.org/download/. Make sure cmake is added to the path.
 * Git. See https://git-scm.com/downloads. Make sure git is added to the path.
@@ -32,10 +32,10 @@ It is highly recommended to clone the repository using `ssh` instead of `https`.
 
 ## Cloning
 * This repository must be cloned in the `Max 8/Packages0` directory. Navigate there on the command line.
-* git clone git@github.com:brain-music-lab/brain-music-max.git --recursive
+* `git clone git@github.com:brain-music-lab/brain-music-max.git --recursive`
 
 ## Generating Project Files
-* `cd brain-music-lab`
+* `cd brain-music-max`
 * `mkdir build`
 * `cd build`
 * `cmake ..`
