@@ -17,4 +17,5 @@ tmp
 .DS_Store
 .vs
 package-info.json
+source/min-api/
 

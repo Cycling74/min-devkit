@@ -25,6 +25,14 @@ if (APPLE)
     endif()
 endif()
 
+include(FetchContent)
+FetchContent_Declare(
+    min-api
+    GIT_REPOSITORY https://github.com/Cycling74/min-api.git
+    GIT_TAG        552df76c2d62ba0046a6bedf2eef9becf8e06dfb
+    SOURCE_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/source/min-api"
+)
+FetchContent_MakeAvailable(min-api)
 
 # Misc setup and subroutines
 include(${CMAKE_CURRENT_SOURCE_DIR}/source/min-api/script/min-package.cmake)
