@@ -37,11 +37,13 @@ FetchContent_MakeAvailable(min-api)
 # Misc setup and subroutines
 include(${CMAKE_CURRENT_SOURCE_DIR}/source/min-api/script/min-package.cmake)
 
-
-# Add the Lib, if it exists
-if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/source/min-lib/CMakeLists.txt")
-    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/source/min-lib)
-endif ()
+FetchContent_Declare(
+    min-lib
+    GIT_REPOSITORY https://github.com/Cycling74/min-lib.git
+    GIT_TAG        050ccc10e4587219854242e2e0b42ef8e851bf05
+    SOURCE_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/source/min-lib"
+)
+FetchContent_MakeAvailable(min-lib)
 
 
 # Generate a project for every folder in the "source/projects" folder
