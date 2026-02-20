@@ -1,41 +1,16 @@
 # Copyright 2018 The Min-DevKit Authors. All rights reserved.
 # Use of this source code is governed by the MIT License found in the License.md file.
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.19)
 
-set(C74_MIN_API_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../min-api)
-include(${C74_MIN_API_DIR}/script/min-pretarget.cmake)
-
-
-#############################################################
-# MAX EXTERNAL
-#############################################################
-
-
-include_directories( 
-	"${C74_INCLUDES}"
+set_property(DIRECTORY PROPERTY min::external YES)
+set_property(DIRECTORY PROPERTY max::sources
+    "min.xfade_tilde.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../shared/signal_routing_objects.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../shared/signal_routing_objects.h"
 )
+project(min.xfade_tilde)
 
-
-set( SOURCE_FILES
-	${PROJECT_NAME}.cpp
-	../shared/signal_routing_objects.h
-	../shared/signal_routing_objects.cpp
-)
-
-
-add_library( 
-	${PROJECT_NAME} 
-	MODULE
-	${SOURCE_FILES}
-)
-
-
-include(${C74_MIN_API_DIR}/script/min-posttarget.cmake)
-
-
-#############################################################
-# UNIT TEST
-#############################################################
+target_include_directories(min.xfade_tilde PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../shared/")
 
 include(${C74_MIN_API_DIR}/test/min-object-unittest.cmake)
